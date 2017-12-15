@@ -32,12 +32,15 @@ static LWCore* sharedInstance;
 - (void)setIsSelecting:(BOOL)isSelecting{
 	_isSelecting = isSelecting;
 	
-	[[objc_getClass("SBBacklightController") sharedInstance] resetIdleTimer];
+	// Fix for iOS 11
+	if ([[objc_getClass("SBBacklightController") sharedInstance] respondsToSelector:@selector(resetIdleTimer)]) {
+		[[objc_getClass("SBBacklightController") sharedInstance] resetIdleTimer];
+	}
 	
 	if (kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 		// iOS 9
-	} else if (kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_10_3) {
-		// iOS 10
+	} else {
+		// iOS 10 - 11
 		
 		[[[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] scrollGestureController] scrollView] setScrollEnabled:!isSelecting];
 	}

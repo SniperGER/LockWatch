@@ -1,5 +1,8 @@
 #import "LockWatch.h"
 
+@interface SBDashBoardCombinedListViewController : UIViewController
+@end
+
 %group os10
 
 LWCore* lockwatch;
@@ -13,7 +16,13 @@ LWCore* lockwatch;
 	
 	SBLockScreenManager* lsManager = [%c(SBLockScreenManager) sharedInstance];
 	SBDashBoardViewController* dashBoard = [lsManager lockScreenViewController];
-	SBDashBoardMainPageViewController* mainPage = [dashBoard mainPageViewController];
+	SBDashBoardMainPageViewController* mainPage;
+	
+	if ([dashboard respondsToSelector:@selector(mainPageViewController)]) {
+		dashboard = [dashBoard mainPageViewController];
+	} else if ([dashboard respondsToSelector:@selector(mainPageContentViewController)]) {
+		dashboard = [dashBoard mainPageContentViewController];
+	}
 	
 	[mainPage.view insertSubview:lockwatch.interfaceView atIndex:0];
 	[[mainPage isolatingViewController].view removeFromSuperview];
@@ -97,6 +106,15 @@ LWCore* lockwatch;
 }
 
 %end	// %hook SBBacklightController
+
+// iOS 11
+%hook SBDashBoardCombinedListViewController
+
+- (void)viewDidLayoutSubviews {
+	[self.view removeFromSuperview];
+}
+
+%end	// %hook SBDashBoardCombinedListViewController
 
 %end	// %group os10
 

@@ -22,6 +22,13 @@
 			[self.titleLabel.layer setFilters:@[filter]];
 		} else {
 			// iOS 10.3
+			
+			backgroundView = [objc_getClass("MTMaterialView") materialViewWithRecipe:4 options:2];
+			[backgroundView setFrame:self.bounds];
+			[backgroundView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.44]];
+			[(MTMaterialView*)backgroundView _setCornerRadius:7.5];
+			[self insertSubview:backgroundView atIndex:0];
+			[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		}
 	}
 	

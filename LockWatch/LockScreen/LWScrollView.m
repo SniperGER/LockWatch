@@ -65,19 +65,20 @@
 	[overlayView setContentSize:CGSizeMake(watchFaces.count * 230, 390)];
 	
 	int currentWatchFaceIndex = 0;
-	
-	[contentView setContentOffset:CGPointMake(currentWatchFaceIndex * contentView.bounds.size.width, 0)];
-	[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
-	[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:0.0];
-	[self setWatchFacePagesAlpha:0.0 exceptForPage:[self currentWatchFacePage]];
-	[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
-	
-	[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:currentWatchFaceIndex]];
-	for (int i=0; i<watchFaces.count; i++) {
-		[overlayView setTitleAlpha:(i == currentWatchFaceIndex ? 1.0 : 0.0) atIndex:i];
+	if (watchFaces.count > currentWatchFaceIndex) {
+		[contentView setContentOffset:CGPointMake(currentWatchFaceIndex * contentView.bounds.size.width, 0)];
+		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
+		[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:0.0];
+		[self setWatchFacePagesAlpha:0.0 exceptForPage:[self currentWatchFacePage]];
+		[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
+		
+		[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:currentWatchFaceIndex]];
+		for (int i=0; i<watchFaces.count; i++) {
+			[overlayView setTitleAlpha:(i == currentWatchFaceIndex ? 1.0 : 0.0) atIndex:i];
+		}
+		
+		[[LWCore sharedInstance] startUpdatingTime];
 	}
-	
-	[[LWCore sharedInstance] startUpdatingTime];
 }
 
 - (void)setIsSelecting:(BOOL)selecting animated:(BOOL)animated {
@@ -181,7 +182,11 @@
 		return view;
 	}
 	
-	return contentView;
+	if (isSelecting) {
+		return contentView;
+	}
+	
+	return self;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

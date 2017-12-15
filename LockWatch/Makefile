@@ -5,7 +5,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = LockWatch
 LockWatch_CFLAGS = -fobjc-arc -I./headers -I ./
-LockWatch_FILES = Tweak.xm $(wildcard Core/*.m) $(wildcard LockScreen/*.m)
+LockWatch_FILES = LockWatch_iOS10.xm $(wildcard Core/*.m) $(wildcard LockScreen/*.m)
 LockWatch_EXTRA_FRAMEWORKS = LockWatchKit
 
 include $(THEOS)/makefiles/tweak.mk

@@ -16,6 +16,7 @@
 #import <objc/runtime.h>
 #import <SpringBoard/SpringBoard.h>
 #import <LockWatchKit/LockWatchKit.h>
+#import "MTMaterialView.h"
 #import "NCMaterialView.h"
 #import "_UIBackdropView.h"
 

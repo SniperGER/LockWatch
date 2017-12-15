@@ -13,6 +13,7 @@
 	UITapGestureRecognizer* tapGestureRecognizer;
 	UILongPressGestureRecognizer* longPressGestureRecognizer;
 	BOOL isSelecting;
+	BOOL isCustomizing;
 	
 	CGFloat lastTouchX;
 	CGFloat lastTouchY;
