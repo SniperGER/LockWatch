@@ -1,0 +1,10 @@
+Package: ml.festival.lockwatch10
+Name: LockWatch Internal
+Depends: mobilesubstrate
+Conflicts: ml.festival.lockwatch
+Depiction: https://connect.festival.ml/depiction/ml.festival.lockwatch10
+Architecture: iphoneos-arm
+Description: LockWatch
+Maintainer: Sniper_GER
+Author: Sniper_GER
+Section: Tweaks
