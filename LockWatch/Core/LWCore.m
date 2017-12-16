@@ -12,13 +12,14 @@ static LWCore* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		dlopen([[NSString stringWithFormat:@"%@/LockWatchKit.framework/LockWatchKit", RESOURCES_PATH] UTF8String], RTLD_NOW);
+		dlopen("/System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit", RTLD_NOW);
 		
 		_pluginManager = [LWPluginManager new];
 		_interfaceView = [[LWInterfaceView alloc] initWithFrame:CGRectMake(0, screenHeight/2 - 390/2, screenWidth, 390)];
 		
-		if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
+		//if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
-		}
+		//}
 	}
 	
 	return self;
@@ -33,16 +34,16 @@ static LWCore* sharedInstance;
 	_isSelecting = isSelecting;
 	
 	// Fix for iOS 11
-	if ([[objc_getClass("SBBacklightController") sharedInstance] respondsToSelector:@selector(resetIdleTimer)]) {
-		[[objc_getClass("SBBacklightController") sharedInstance] resetIdleTimer];
-	}
+//	if ([[objc_getClass("SBBacklightController") sharedInstance] respondsToSelector:@selector(resetIdleTimer)]) {
+//		[[objc_getClass("SBBacklightController") sharedInstance] resetIdleTimer];
+//	}
 	
 	if (kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 		// iOS 9
 	} else {
 		// iOS 10 - 11
 		
-		[[[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] scrollGestureController] scrollView] setScrollEnabled:!isSelecting];
+//		[[[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] scrollGestureController] scrollView] setScrollEnabled:!isSelecting];
 	}
 }
 

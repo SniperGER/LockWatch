@@ -325,7 +325,7 @@
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-	if (event.type == UIEventTypeTouches && !isSelecting && [self forceTouchCapable]) {
+	if (event.type == UIEventTypeTouches && [self forceTouchCapable]) {
 		[self handleForce:touches];
 	}
 }
@@ -378,23 +378,33 @@
 	}
 	
 	CGFloat forcePercentage = force / touch.maximumPossibleForce;
-	CGFloat scaleFactor = 188.0 / 312.0;
 	CGFloat pressedScaleFactor = 172.0 / 312.0;
-	CGFloat threshold = (pressedScaleFactor / scaleFactor);
+	CGFloat threshold = (1 - contentScale) * (1 / (1 - pressedScaleFactor));
+	
+	if (isSelecting) {
+		forcePercentage = MAX(forcePercentage, threshold);
+	}
 	
 	CGFloat _contentScale = 1 - (forcePercentage * (1 - pressedScaleFactor));
 	CGFloat _overlayScale = overlayScale - (forcePercentage * (overlayScale - threshold));
 	
 	[contentView setTransform:CGAffineTransformMakeScale(_contentScale, _contentScale)];
 	[overlayView setTransform:CGAffineTransformMakeScale(_overlayScale, _overlayScale)];
-	[overlayView setAlpha:forcePercentage];
+	[overlayView setAlpha:(isSelecting ? 1.0 : forcePercentage)];
 	
-	[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
-	[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:forcePercentage];
-	[self setWatchFacePagesAlpha:forcePercentage/2 exceptForPage:[self currentWatchFacePage]];
-	[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
-	
-	[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? forcePercentage : 0)];
+	if (isSelecting) {
+		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
+		[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:1.0];
+		[self setWatchFacePagesAlpha:0.5 exceptForPage:[self currentWatchFacePage]];
+		[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
+		[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? 1.0 : 0)];
+	} else {
+		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
+		[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:forcePercentage];
+		[self setWatchFacePagesAlpha:forcePercentage/2 exceptForPage:[self currentWatchFacePage]];
+		[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
+		[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? forcePercentage : 0)];
+	}
 	
 	if (forcePercentage >= threshold) {
 		[self setIsSelecting:YES animated:NO];

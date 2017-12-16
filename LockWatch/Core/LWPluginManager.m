@@ -2,9 +2,17 @@
 
 @implementation LWPluginManager
 
++ (id)pluginPath {
+	if ([[[NSBundle mainBundle] bundlePath] containsString:@"SpringBoard.app"]) {
+		return [NSString stringWithFormat:@"%@/Watch Faces", RESOURCES_PATH];
+	} else {
+		return [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/PlugIns"];
+	}
+}
+
 - (id)init {
     if (self = [super init]) {
-        NSURL* pluginsLocation = [[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Watch Faces", RESOURCES_PATH]] URLByResolvingSymlinksInPath];
+        NSURL* pluginsLocation = [[NSURL fileURLWithPath:[self.class pluginPath]] URLByResolvingSymlinksInPath];
         NSArray* contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:pluginsLocation includingPropertiesForKeys:@[NSFileType] options:(NSDirectoryEnumerationOptions)0 error:nil];
         
         if (contents.count < 1) {

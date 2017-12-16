@@ -4,6 +4,8 @@
 	NSMutableArray* loadedPlugins;
 }
 
++ (id)pluginPath;
+
 - (NSArray*)loadedPlugins;
 
 @end

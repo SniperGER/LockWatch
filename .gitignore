@@ -51,5 +51,5 @@ xcuserdata/
 
 obj/
 .theos/
-*.framework
-*.watchface
+LockWatch/Layout/var/mobile/Library/FESTIVAL/LockWatch/LockWatch.framework
+LockWatch/Layout/var/mobile/Library/FESTIVAL/LockWatch/Watch Faces/*.watchface

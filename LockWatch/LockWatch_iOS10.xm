@@ -18,10 +18,10 @@ LWCore* lockwatch;
 	SBDashBoardViewController* dashBoard = [lsManager lockScreenViewController];
 	SBDashBoardMainPageViewController* mainPage;
 	
-	if ([dashboard respondsToSelector:@selector(mainPageViewController)]) {
-		dashboard = [dashBoard mainPageViewController];
-	} else if ([dashboard respondsToSelector:@selector(mainPageContentViewController)]) {
-		dashboard = [dashBoard mainPageContentViewController];
+	if ([dashBoard respondsToSelector:@selector(mainPageViewController)]) {
+		mainPage = [dashBoard mainPageViewController];
+	} else if ([dashBoard respondsToSelector:@selector(mainPageContentViewController)]) {
+		mainPage = [dashBoard mainPageContentViewController];
 	}
 	
 	[mainPage.view insertSubview:lockwatch.interfaceView atIndex:0];
