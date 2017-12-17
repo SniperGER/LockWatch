@@ -386,7 +386,8 @@
 	}
 	
 	CGFloat _contentScale = 1 - (forcePercentage * (1 - pressedScaleFactor));
-	CGFloat _overlayScale = overlayScale - (forcePercentage * (overlayScale - threshold));
+	CGFloat _overlayScale = overlayScale - ((overlayScale - 1) * ((1 - _contentScale) / (1 - contentScale)));
+	CGFloat alpha = (1 - _contentScale) / (1 - contentScale);
 	
 	[contentView setTransform:CGAffineTransformMakeScale(_contentScale, _contentScale)];
 	[overlayView setTransform:CGAffineTransformMakeScale(_overlayScale, _overlayScale)];
@@ -400,10 +401,10 @@
 		[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? 1.0 : 0)];
 	} else {
 		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
-		[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:forcePercentage];
-		[self setWatchFacePagesAlpha:forcePercentage/2 exceptForPage:[self currentWatchFacePage]];
+		[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:alpha];
+		[self setWatchFacePagesAlpha:alpha/2 exceptForPage:[self currentWatchFacePage]];
 		[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
-		[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? forcePercentage : 0)];
+		[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? alpha : 0)];
 	}
 	
 	if (forcePercentage >= threshold) {

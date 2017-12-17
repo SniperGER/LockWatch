@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0137F91FE5EC7400ED40CE /* LWKFaceEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0137F71FE5EC7300ED40CE /* LWKFaceEditView.m */; };
+		8D0137FA1FE5EC7400ED40CE /* LWKFaceEditView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */; };
 		8D058C2E1FE3D8500073239E /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D058C2D1FE3D84B0073239E /* Customization.plist */; };
 		8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */; };
 		8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536F1FDF3E3900450F19 /* NCMaterialView.h */; };
@@ -157,6 +159,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8D0137F71FE5EC7300ED40CE /* LWKFaceEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKFaceEditView.m; sourceTree = "<group>"; };
+		8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKFaceEditView.h; sourceTree = "<group>"; };
 		8D058C2D1FE3D84B0073239E /* Customization.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
 		8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UIBackdropView.h; sourceTree = "<group>"; };
 		8D20536F1FDF3E3900450F19 /* NCMaterialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMaterialView.h; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 		8DDF22C41FE3E4D3006FA9F9 /* Customization */ = {
 			isa = PBXGroup;
 			children = (
+				8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */,
+				8D0137F71FE5EC7300ED40CE /* LWKFaceEditView.m */,
 			);
 			name = Customization;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				8D981A921FDC505F00D9F0F7 /* LWKClockHand.h in Headers */,
 				8DD4EB5D1FDC44930033FC82 /* LWKAnalogClock.h in Headers */,
 				8D8397191FE106F800703408 /* LWKDigitalClock.h in Headers */,
+				8D0137FA1FE5EC7400ED40CE /* LWKFaceEditView.h in Headers */,
 				8DFBBE0A1FDAB327007694E5 /* LWKClockBase.h in Headers */,
 				8DDF22F41FE476E4006FA9F9 /* MTMaterialView.h in Headers */,
 			);
@@ -783,6 +790,7 @@
 				8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */,
 				8D981A931FDC505F00D9F0F7 /* LWKClockHand.m in Sources */,
 				8D83971A1FE106F800703408 /* LWKDigitalClock.m in Sources */,
+				8D0137F91FE5EC7400ED40CE /* LWKFaceEditView.m in Sources */,
 				8D52DEDB1FDD388D00B54C22 /* LWKPageView.m in Sources */,
 				8DD4EB5E1FDC44930033FC82 /* LWKAnalogClock.m in Sources */,
 			);

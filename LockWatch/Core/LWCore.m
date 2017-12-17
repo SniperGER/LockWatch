@@ -17,9 +17,9 @@ static LWCore* sharedInstance;
 		_pluginManager = [LWPluginManager new];
 		_interfaceView = [[LWInterfaceView alloc] initWithFrame:CGRectMake(0, screenHeight/2 - 390/2, screenWidth, 390)];
 		
-		//if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
+		if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
-		//}
+		}
 	}
 	
 	return self;
