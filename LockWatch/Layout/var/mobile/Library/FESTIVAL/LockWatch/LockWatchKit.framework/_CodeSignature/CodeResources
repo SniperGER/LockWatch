@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/LWKClockBase.h</key>
 		<data>
-		P1/BHZAEfOPcGbSQ7vnYTV2EM4c=
+		Kgs4/Xl9sNogGPkT6mE4w54KIiM=
 		</data>
 		<key>Headers/LWKClockHand.h</key>
 		<data>
@@ -24,17 +24,21 @@
 		<data>
 		m/NKNCpl+/T536ihg26li9ga2/k=
 		</data>
+		<key>Headers/LWKFaceEditView.h</key>
+		<data>
+		TlI1yqM3MBbXr0y5LlYBET26gM8=
+		</data>
 		<key>Headers/LWKPageView.h</key>
 		<data>
 		rnfU8YlRvedDAml3fDuabh8QEeE=
 		</data>
 		<key>Headers/LockWatchKit.h</key>
 		<data>
-		17vgaUGfCvGYDnm8PF95NN0JhKY=
+		w8W6wh8KP5z+xjZKRxCGpZxB3+U=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Zeqlj2erFwLiXxoiZYeT+10qLrc=
+		4yx6+q/u2rPh9j74Z98YPUGY/nU=
 		</data>
 		<key>WatchFaces.txt</key>
 		<data>
@@ -111,11 +115,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			P1/BHZAEfOPcGbSQ7vnYTV2EM4c=
+			Kgs4/Xl9sNogGPkT6mE4w54KIiM=
 			</data>
 			<key>hash2</key>
 			<data>
-			vk1AXh+74L/7oa+Z1DU9sWsSL+DrA3yAbyQJ3/B6UQ0=
+			o4SSSGTkqAHpr33G789XqTOyZ6gBIT/fKCNYZEPnft8=
 			</data>
 		</dict>
 		<key>Headers/LWKClockHand.h</key>
@@ -140,6 +144,17 @@
 			AMbQESSaWOy5soiuvfwgclrzNShObYPoXcCj/jW0xbY=
 			</data>
 		</dict>
+		<key>Headers/LWKFaceEditView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TlI1yqM3MBbXr0y5LlYBET26gM8=
+			</data>
+			<key>hash2</key>
+			<data>
+			jeYhvtubOv/V9jf8IxFmASmNfY9FtOE7GGjXAcymPoY=
+			</data>
+		</dict>
 		<key>Headers/LWKPageView.h</key>
 		<dict>
 			<key>hash</key>
@@ -155,11 +170,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			17vgaUGfCvGYDnm8PF95NN0JhKY=
+			w8W6wh8KP5z+xjZKRxCGpZxB3+U=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Qh8Gf95Q0kVVWzE51rCFNaZiwMqYso8mk3i4LsJOVw=
+			mblgKmuzK6axiKh0jVKW8MaFDVvencEHBAWpss9C0Ew=
 			</data>
 		</dict>
 		<key>WatchFaces.txt</key>

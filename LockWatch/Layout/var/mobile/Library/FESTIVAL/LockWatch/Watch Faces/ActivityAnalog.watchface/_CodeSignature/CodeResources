@@ -4,13 +4,17 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Assets.car</key>
+		<data>
+		VRH0CtKa2lchbgbEwzS62IC5uEw=
+		</data>
 		<key>Customization.plist</key>
 		<data>
-		zmV6UqBSo6r1NOz798vd5O4zTBA=
+		3azNnr9zp0OkMh5rSBpzOF/Hogw=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0sDH8rrStHx8o95axAgem5Wmuas=
+		hC+nnWUTBRxaaea4/Otf/KBJj2k=
 		</data>
 		<key>de.lproj/InfoPlist.strings</key>
 		<dict>
@@ -41,15 +45,26 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			VRH0CtKa2lchbgbEwzS62IC5uEw=
+			</data>
+			<key>hash2</key>
+			<data>
+			ii/kVhbpWfhNCCmQ0gfhiQolui9s1uQEsEJU5JQ1kYc=
+			</data>
+		</dict>
 		<key>Customization.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
+			3azNnr9zp0OkMh5rSBpzOF/Hogw=
 			</data>
 			<key>hash2</key>
 			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
+			yU6eoqu1qoGfAzAcjUp3QUV6k77t42LNBJNbXujbNXs=
 			</data>
 		</dict>
 		<key>de.lproj/InfoPlist.strings</key>
