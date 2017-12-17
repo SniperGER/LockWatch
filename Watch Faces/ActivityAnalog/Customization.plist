@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Customization.plist
-   LockWatch
-
-   Created by Janik Schmidt on 15.12.17.
-   Copyright (c) 2017 __MyCompanyName__. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<array>
+	<dict>
+		<key>type</key>
+		<string>style</string>
+		<key>options</key>
+		<array>
+			<string>0</string>
+			<string>1</string>
+		</array>
+		<key>frame</key>
+		<string>{{14,53},{284,284}}</string>
+		<key>cornerRadius</key>
+		<integer>142</integer>
+		<key>label</key>
+		<dict>
+			<key>frame</key>
+			<string>{{119,341},{74,27}}</string>
+			<key>text</key>
+			<string>STYLE</string>
+		</dict>
+	</dict>
+</array>
 </plist>

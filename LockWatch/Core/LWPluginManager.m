@@ -43,9 +43,6 @@
                     
                     if (watchFaceBundle) {
                         [loadedPlugins addObject:watchFaceBundle];
-                        
-                        id test = [[watchFaceBundle principalClass] new];
-                        NSLog(@"[LockWatch] %@", test);
                     }
                 }
             }];

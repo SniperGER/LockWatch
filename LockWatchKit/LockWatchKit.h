@@ -10,6 +10,7 @@ FOUNDATION_EXPORT const unsigned char LockWatchKitVersionString[];
 #define deg2rad(angle) ((angle) / 180.0 * M_PI)
 
 #import <LockWatchKit/LWKActivityDataProvider.h>
+#import <LockWatchKit/LWKFaceEditView.h>
 #import <LockWatchKit/LWKPageView.h>
 #import <LockWatchKit/LWKClockHand.h>
 #import <LockWatchKit/LWKClockBase.h>

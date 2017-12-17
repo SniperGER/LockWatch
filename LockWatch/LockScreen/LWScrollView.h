@@ -13,7 +13,7 @@
 	UITapGestureRecognizer* tapGestureRecognizer;
 	UILongPressGestureRecognizer* longPressGestureRecognizer;
 	BOOL isSelecting;
-	BOOL isCustomizing;
+	BOOL isEditing;
 	
 	CGFloat lastTouchX;
 	CGFloat lastTouchY;
@@ -21,7 +21,7 @@
 	CGFloat lastScrollX;
 }
 
-- (void)setIsSelecting:(BOOL)selecting animated:(BOOL)animated;
+- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated;
 
 @end
 

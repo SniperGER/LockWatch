@@ -1,15 +1,15 @@
-#import "LWKClockBase.h"
+#import "LockWatchKit.h"
 
 @implementation LWKClockBase
 
 - (id)init {
 	if (self = [super init]) {
-		self.clockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
-		self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
-		self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
+		_clockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
+		_backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
+		_contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		
-		[self.clockView addSubview:self.backgroundView];
-		[self.clockView addSubview:self.contentView];
+		[_clockView addSubview:_backgroundView];
+		[_clockView addSubview:_contentView];
 		
 		[self prepareCustomizationMode];
 	}
@@ -26,14 +26,50 @@
 }
 
 - (void)prepareCustomizationMode {
-	NSDictionary* customizationOptions = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
+	NSArray* customizationOptions = [NSArray arrayWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
+	NSLog(@"[LockWatch] customizationOptions: %@", customizationOptions);
+	
 	
 	if (customizationOptions) {
-		self.isCustomizable = YES;
+		_isCustomizable = YES;
+		
+		_editView = [[LWKFaceEditView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
+		[_editView addCustomizationOptionsForArray:customizationOptions];
+		[_editView setHidden:YES];
+		[_clockView addSubview:_editView];
+	}
+}
+
+- (void)setIsEditing:(BOOL)isEditing {
+	_isEditing = isEditing;
+	
+	[_editView setHidden:!isEditing];
+	
+	if (isEditing) {
+		if ([self focussedViewsForEditingPage:[_editView currentPage]]) {
+			NSArray* viewsToKeep = [self focussedViewsForEditingPage:[_editView currentPage]];
+			
+			for (UIView* subview in _contentView.subviews) {
+				if (![viewsToKeep containsObject:subview]) {
+					[subview setAlpha:0];
+				}
+			}
+		}
+	} else {
+		for (UIView* subview in _contentView.subviews) {
+			[subview setAlpha:1];
+		}
 	}
 }
 
 - (void)didStartUpdatingTime {}
 - (void)didStopUpdatingTime {}
+
+- (NSArray*)focussedViewsForEditingPage:(int)page {
+	return nil;
+}
+- (NSArray*)hiddenViewsForEditingPage:(int)page {
+	return nil;
+}
 
 @end

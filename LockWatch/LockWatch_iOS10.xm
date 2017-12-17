@@ -33,8 +33,10 @@ LWCore* lockwatch;
 %hook SBLockScreenManager
 
 - (void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
-	if (lockwatch.isSelecting) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:NO animated:YES];
+	if (lockwatch.isEditing) {
+		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES];
+	} else if (lockwatch.isSelecting) {
+		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES];
 	} else {
 		%orig;
 	}
@@ -57,8 +59,10 @@ LWCore* lockwatch;
 %hook SBDashBoardViewController
 
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1 {
-	if (lockwatch.isSelecting) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:NO animated:YES];
+	if (lockwatch.isEditing) {
+		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES];
+	} else if (lockwatch.isSelecting) {
+		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES];
 	} else {
 		[lockwatch updateTimeForCurrentWatchFace];
 	}

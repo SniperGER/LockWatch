@@ -81,21 +81,22 @@
 	}
 }
 
-- (void)setIsSelecting:(BOOL)selecting animated:(BOOL)animated {
+- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated {
 	if (isSelecting == selecting) {
 		return;
 	}
 	
-	isSelecting = selecting;
-	
+	[[LWCore sharedInstance] setIsEditing:editing];
 	[[LWCore sharedInstance] setIsSelecting:selecting];
 	
-	[tapGestureRecognizer setEnabled:selecting];
-	[longPressGestureRecognizer setEnabled:(![self forceTouchCapable] && !selecting)];
+	[tapGestureRecognizer setEnabled:(selecting && !editing)];
+	[longPressGestureRecognizer setEnabled:(![self forceTouchCapable] && !selecting && !editing)];
 	[self scrollViewDidScroll:contentView];
 	
 	if (selecting) {
 		[[LWCore sharedInstance] stopUpdatingTime];
+		[[self currentWatchFace] setIsEditing:NO];
+		
 		AudioServicesPlaySystemSound(1520);
 		
 		if (animated) {
@@ -126,17 +127,25 @@
 			[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
 		}];
 		
-		[[LWCore sharedInstance] startUpdatingTime];
 		
-		if ([[[LWCore sharedInstance] currentWatchFace] isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
-			[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+		if (editing) {
+			[[self currentWatchFace] setIsEditing:YES];
 		} else {
+			[[LWCore sharedInstance] startUpdatingTime];
 			
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			if ([[[LWCore sharedInstance] currentWatchFace] isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
 				[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
-			});
+			} else {
+				
+				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+					[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+				});
+			}
 		}
 	}
+	
+	isSelecting = selecting;
+	isEditing = editing;
 }
 
 - (void)setWatchFacePageAlpha:(LWKPageView*)page alpha:(CGFloat)alpha {
@@ -364,7 +373,7 @@
 }
 
 - (void)handleForce:(NSSet<UITouch*>*)touches {
-	if (![self forceTouchCapable]) {
+	if (![self forceTouchCapable] || isEditing) {
 		return;
 	}
 	
@@ -408,7 +417,7 @@
 	}
 	
 	if (forcePercentage >= threshold) {
-		[self setIsSelecting:YES animated:NO];
+		[self setIsSelecting:YES editing:NO animated:NO];
 	}
 	
 	[overlayView setContentOffset:CGPointMake((contentView.contentOffset.x / contentView.contentSize.width) * overlayView.contentSize.width, 0)];
@@ -420,15 +429,16 @@
 #pragma mark Event Handlers
 
 - (void)tapped {
-	[self setIsSelecting:NO animated:YES];
+	[self setIsSelecting:NO editing:NO animated:YES];
 }
 
 - (void)pressed {
-	[self setIsSelecting:YES animated:YES];
+	[self setIsSelecting:YES editing:NO animated:YES];
 }
 
 - (void)customizeButtonPressed {
 	NSLog(@"[LockWatch] customizeButtonPressed: Not implemented yet");
+	[self setIsSelecting:NO editing:YES animated:YES];
 }
 
 #pragma mark Calculations

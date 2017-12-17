@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D0137F91FE5EC7400ED40CE /* LWKFaceEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0137F71FE5EC7300ED40CE /* LWKFaceEditView.m */; };
-		8D0137FA1FE5EC7400ED40CE /* LWKFaceEditView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */; };
+		8D0137FA1FE5EC7400ED40CE /* LWKFaceEditView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D058C2E1FE3D8500073239E /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D058C2D1FE3D84B0073239E /* Customization.plist */; };
 		8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */; };
 		8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536F1FDF3E3900450F19 /* NCMaterialView.h */; };
@@ -40,10 +40,11 @@
 		8D981AA41FDC674800D9F0F7 /* LWInterfaceView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D981AA21FDC674800D9F0F7 /* LWInterfaceView.h */; };
 		8DCDBE361FDFE76E0014EDD6 /* LWKActivityAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDBE331FDFE76E0014EDD6 /* LWKActivityAnalogFace.m */; };
 		8DCDBE371FDFE7B70014EDD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE2E1FDFE76E0014EDD6 /* InfoPlist.strings */; };
-		8DCDBE3B1FDFE8320014EDD6 /* dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE391FDFE8320014EDD6 /* dial@2x.png */; };
-		8DCDBE3C1FDFE8320014EDD6 /* dial@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE3A1FDFE8320014EDD6 /* dial@3x.png */; };
 		8DD4EB5D1FDC44930033FC82 /* LWKAnalogClock.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DD4EB5B1FDC44930033FC82 /* LWKAnalogClock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DD4EB5E1FDC44930033FC82 /* LWKAnalogClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD4EB5C1FDC44930033FC82 /* LWKAnalogClock.m */; };
+		8DD9C3A21FE5F33D00428F51 /* LWKFaceEditPageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DD9C3A01FE5F33D00428F51 /* LWKFaceEditPageView.h */; };
+		8DD9C3A31FE5F33D00428F51 /* LWKFaceEditPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C3A11FE5F33D00428F51 /* LWKFaceEditPageView.m */; };
+		8DD9C3A51FE679A600428F51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DD9C3A41FE679A600428F51 /* Assets.xcassets */; };
 		8DDF22CD1FE44DCA006FA9F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF22CC1FE44DCA006FA9F9 /* AppDelegate.m */; };
 		8DDF22D01FE44DCA006FA9F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF22CF1FE44DCA006FA9F9 /* ViewController.m */; };
 		8DDF22D31FE44DCA006FA9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF22D11FE44DCA006FA9F9 /* Main.storyboard */; };
@@ -205,8 +206,6 @@
 		8DCDBE311FDFE76E0014EDD6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DCDBE321FDFE76E0014EDD6 /* LWKActivityAnalogFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKActivityAnalogFace.h; sourceTree = "<group>"; };
 		8DCDBE331FDFE76E0014EDD6 /* LWKActivityAnalogFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKActivityAnalogFace.m; sourceTree = "<group>"; };
-		8DCDBE391FDFE8320014EDD6 /* dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dial@2x.png"; sourceTree = "<group>"; };
-		8DCDBE3A1FDFE8320014EDD6 /* dial@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dial@3x.png"; sourceTree = "<group>"; };
 		8DCF3FCD1FDA8BB400107325 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8DCF3FCE1FDA8C5E00107325 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
 		8DCF3FCF1FDA8C7600107325 /* LockWatch_iOS10.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = LockWatch_iOS10.xm; sourceTree = "<group>"; };
@@ -215,6 +214,9 @@
 		8DCF3FD71FDA8E2A00107325 /* LockWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockWatch.h; sourceTree = "<group>"; };
 		8DD4EB5B1FDC44930033FC82 /* LWKAnalogClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKAnalogClock.h; sourceTree = "<group>"; };
 		8DD4EB5C1FDC44930033FC82 /* LWKAnalogClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKAnalogClock.m; sourceTree = "<group>"; };
+		8DD9C3A01FE5F33D00428F51 /* LWKFaceEditPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKFaceEditPageView.h; sourceTree = "<group>"; };
+		8DD9C3A11FE5F33D00428F51 /* LWKFaceEditPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKFaceEditPageView.m; sourceTree = "<group>"; };
+		8DD9C3A41FE679A600428F51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DDF22C91FE44DCA006FA9F9 /* LockWatchDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockWatchDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DDF22CB1FE44DCA006FA9F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DDF22CC1FE44DCA006FA9F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -376,8 +378,7 @@
 		8DCDBE381FDFE80B0014EDD6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8DCDBE391FDFE8320014EDD6 /* dial@2x.png */,
-				8DCDBE3A1FDFE8320014EDD6 /* dial@3x.png */,
+				8DD9C3A41FE679A600428F51 /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -427,6 +428,8 @@
 			children = (
 				8D0137F81FE5EC7400ED40CE /* LWKFaceEditView.h */,
 				8D0137F71FE5EC7300ED40CE /* LWKFaceEditView.m */,
+				8DD9C3A01FE5F33D00428F51 /* LWKFaceEditPageView.h */,
+				8DD9C3A11FE5F33D00428F51 /* LWKFaceEditPageView.m */,
 			);
 			name = Customization;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				8D981A921FDC505F00D9F0F7 /* LWKClockHand.h in Headers */,
 				8DD4EB5D1FDC44930033FC82 /* LWKAnalogClock.h in Headers */,
 				8D8397191FE106F800703408 /* LWKDigitalClock.h in Headers */,
+				8DD9C3A21FE5F33D00428F51 /* LWKFaceEditPageView.h in Headers */,
 				8D0137FA1FE5EC7400ED40CE /* LWKFaceEditView.h in Headers */,
 				8DFBBE0A1FDAB327007694E5 /* LWKClockBase.h in Headers */,
 				8DDF22F41FE476E4006FA9F9 /* MTMaterialView.h in Headers */,
@@ -666,9 +670,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DCDBE371FDFE7B70014EDD6 /* InfoPlist.strings in Resources */,
-				8DCDBE3B1FDFE8320014EDD6 /* dial@2x.png in Resources */,
 				8D058C2E1FE3D8500073239E /* Customization.plist in Resources */,
-				8DCDBE3C1FDFE8320014EDD6 /* dial@3x.png in Resources */,
+				8DD9C3A51FE679A600428F51 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +792,7 @@
 				8D2657841FE1DCD9003414FA /* LWKActivityDataProvider.m in Sources */,
 				8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */,
 				8D981A931FDC505F00D9F0F7 /* LWKClockHand.m in Sources */,
+				8DD9C3A31FE5F33D00428F51 /* LWKFaceEditPageView.m in Sources */,
 				8D83971A1FE106F800703408 /* LWKDigitalClock.m in Sources */,
 				8D0137F91FE5EC7400ED40CE /* LWKFaceEditView.m in Sources */,
 				8D52DEDB1FDD388D00B54C22 /* LWKPageView.m in Sources */,
