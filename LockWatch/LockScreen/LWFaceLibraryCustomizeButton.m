@@ -20,9 +20,10 @@
 			
 			CAFilter* filter = [CAFilter filterWithName:@"vibrantLight"];
 			[self.titleLabel.layer setFilters:@[filter]];
-		} else {
+		} else if (kCFCoreFoundationVersionNumber == kCFCoreFoundationVersionNumber_iOS_10_3) {
 			// iOS 10.3
-			
+		} else {
+			// iOS 11
 			backgroundView = [objc_getClass("MTMaterialView") materialViewWithRecipe:4 options:2];
 			[backgroundView setFrame:self.bounds];
 			[backgroundView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.44]];

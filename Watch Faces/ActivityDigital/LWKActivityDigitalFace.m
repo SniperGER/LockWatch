@@ -60,7 +60,7 @@
 	NSDictionary* activityData = [LWKActivityDataProvider activityData];
 	HKActivitySummary* summary = [HKActivitySummary new];
 	
-	if (activityData[@"LatestCalorieBurnGoalMetCalories"]) {
+	/*if (activityData[@"LatestCalorieBurnGoalMetCalories"]) {
 		[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[activityData[@"LatestCalorieBurnGoalMetCalories"] doubleValue]]];
 	}
 	
@@ -79,9 +79,32 @@
 		[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit hourUnit] doubleValue:12]];
 		[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit hourUnit] doubleValue:[activityData[@"StandingHoursToday"] doubleValue]]];
 		[movingHours setText:activityData[@"StandingHoursToday"]];
+	}*/
+	
+	if (activityData[@"energy_burned_goal"]) {
+		[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[activityData[@"energy_burned_goal"] doubleValue]]];
+	}
+	
+	if (activityData[@"energy_burned"]) {
+		[summary setActiveEnergyBurned:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[activityData[@"energy_burned"] doubleValue]]];
+	}
+	
+	if (activityData[@"brisk_minutes"]) {
+		[summary setAppleExerciseTimeGoal:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:30]];
+		[summary setAppleExerciseTime:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:[activityData[@"brisk_minutes"] doubleValue]]];
+	}
+	
+	if (activityData[@"active_hours"]) {
+		[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:12]];
+		[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:[activityData[@"active_hours"] doubleValue]]];
 	}
 	
 	[activityRingView setActivitySummary:summary animated:YES];
+}
+
+- (void)didStartUpdatingTime {
+	[super didStartUpdatingTime];
+	[self updateActivityData];
 }
 
 @end

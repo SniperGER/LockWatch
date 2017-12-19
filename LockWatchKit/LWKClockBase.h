@@ -4,7 +4,10 @@
 
 @interface LWKClockBase : NSObject {
 	NSTimer* clockUpdateTimer;
+	NSMutableDictionary* watchFacePreferences;
 }
+
+@property (nonatomic, strong, readonly) NSBundle* watchFaceBundle;
 
 @property (nonatomic, strong) UIView* backgroundView;
 @property (nonatomic, strong) UIView* contentView;
@@ -19,6 +22,7 @@
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated;
 - (void)prepareForInit;
 
+- (void)setAccentColor:(UIColor*)color;
 - (NSArray*)focussedViewsForEditingPage:(int)page;
 - (NSArray*)hiddenViewsForEditingPage:(int)page;
 

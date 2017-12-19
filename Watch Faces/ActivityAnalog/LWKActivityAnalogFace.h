@@ -10,7 +10,37 @@
 
 @end
 
+
+@interface HKRingGroupController : NSObject
+
+- (void)setRingDiameter:(CGFloat)arg1;
+- (void)setRingThickness:(CGFloat)arg1;
+- (void)setCenter:(CGPoint)arg1;
+
+@end
+
+
+@interface HKRingsView : UIView
+
++ (id)ringsViewConfiguredForOneRingOnWatchOfType:(int)arg1 withIcon:(BOOL)arg2;
+- (NSArray<HKRingGroupController*>*)ringGroups;
+- (void)_setupIfNeccessary;
+
+@end
+
+
 @interface LWKActivityAnalogFace : LWKAnalogClock {
+	UIView* mainView;
+	
+	
+	UIView* secondaryView;
+	UILabel* activeEnergy;
+	UILabel* brisk;
+	UILabel* movingHours;
+	HKRingsView* activeEnergyRing;
+	HKRingsView* briskRing;
+	HKRingsView* movingHoursRing;
+	
 	HKActivityRingView* activityRingView;
 }
 

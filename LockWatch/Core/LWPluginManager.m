@@ -21,12 +21,26 @@
             loadedPlugins = [NSMutableArray new];
             
             // Load preinstalled watch faces
-            NSArray* stockWatchFaces = @[@"Utility.watchface", @"Simple.watchface"];
+            NSArray* stockWatchFaces = @[
+										 @"ActivityAnalog.watchface",
+										 @"ActivityDigital.watchface",
+										 @"Numerals.watchface",
+										 @"Utility.watchface",
+										 @"Simple.watchface",
+										 @"Color.watchface",
+										 @"Chronograph.watchface",
+										 @"XLarge.watchface",
+										 @"Weather.watchface"
+										 ];
             [stockWatchFaces enumerateObjectsUsingBlock:^(NSURL* internalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound) {
                     
                     NSURL* filePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", pluginsLocation, internalPlugin]];
                     NSBundle* watchFaceBundle = [NSBundle bundleWithURL:filePath];
+					
+					if (![[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
+						[[LWPreferences sharedInstance] setObject:[watchFaceBundle bundleIdentifier] forKey:@"selectedWatchFace"];
+					}
                     
                     if (watchFaceBundle) {
                         [loadedPlugins addObject:watchFaceBundle];
@@ -54,6 +68,16 @@
 
 - (NSArray*)loadedPlugins {
 	return [loadedPlugins copy];
+}
+
+- (NSArray*)loadedPluginIdentifiers {
+	NSMutableArray* identifiers = [NSMutableArray new];
+	
+	for (NSBundle* bundle in loadedPlugins) {
+		[identifiers addObject:[bundle bundleIdentifier]];
+	}
+	
+	return [identifiers copy];
 }
 
 @end

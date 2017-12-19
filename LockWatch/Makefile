@@ -8,6 +8,10 @@ LockWatch_CFLAGS = -fobjc-arc -I./headers -I ./
 LockWatch_FILES = LockWatch_iOS10.xm $(wildcard Core/*.m) $(wildcard LockScreen/*.m)
 LockWatch_EXTRA_FRAMEWORKS = LockWatchKit
 
+ifeq ($(THEOS_TARGET_NAME),iphone)
+LockWatcg_EXTRA_FRAMEWORKS = Cephei
+endif
+
 include $(THEOS)/makefiles/tweak.mk
 
 after-install::

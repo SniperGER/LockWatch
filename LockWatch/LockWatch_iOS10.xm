@@ -123,5 +123,9 @@ LWCore* lockwatch;
 %end	// %group os10
 
 %ctor {
-	%init(os10);
+	id preferences = [[LWPreferences alloc] init];
+	
+	if ([[preferences objectForKey:@"enabled"] boolValue]) {
+		%init(os10);
+	}
 }

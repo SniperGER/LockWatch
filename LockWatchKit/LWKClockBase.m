@@ -4,12 +4,16 @@
 
 - (id)init {
 	if (self = [super init]) {
+		watchFacePreferences = [NSMutableDictionary new];
+		
 		_clockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		_backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		_contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		
 		[_clockView addSubview:_backgroundView];
 		[_clockView addSubview:_contentView];
+		
+		_watchFaceBundle = [NSBundle bundleForClass:self.class];
 		
 		[self prepareCustomizationMode];
 	}
@@ -27,23 +31,16 @@
 
 - (void)prepareCustomizationMode {
 	NSArray* customizationOptions = [NSArray arrayWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
-	NSLog(@"[LockWatch] customizationOptions: %@", customizationOptions);
-	
 	
 	if (customizationOptions) {
-		_isCustomizable = YES;
-		
-		_editView = [[LWKFaceEditView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
-		[_editView addCustomizationOptionsForArray:customizationOptions];
-		[_editView setHidden:YES];
-		[_clockView addSubview:_editView];
+		//_isCustomizable = YES;
 	}
 }
 
 - (void)setIsEditing:(BOOL)isEditing {
 	_isEditing = isEditing;
 	
-	[_editView setHidden:!isEditing];
+	/*[_editView setHidden:!isEditing];
 	
 	if (isEditing) {
 		if ([self focussedViewsForEditingPage:[_editView currentPage]]) {
@@ -59,11 +56,13 @@
 		for (UIView* subview in _contentView.subviews) {
 			[subview setAlpha:1];
 		}
-	}
+	}*/
 }
 
 - (void)didStartUpdatingTime {}
 - (void)didStopUpdatingTime {}
+
+- (void)setAccentColor:(UIColor*)color {}
 
 - (NSArray*)focussedViewsForEditingPage:(int)page {
 	return nil;

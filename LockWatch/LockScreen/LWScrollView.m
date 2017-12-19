@@ -65,6 +65,13 @@
 	[overlayView setContentSize:CGSizeMake(watchFaces.count * 230, 390)];
 	
 	int currentWatchFaceIndex = 0;
+	
+	if ([[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
+		currentWatchFaceIndex = MAX(MIN([[[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"] indexOfObject:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]], watchFaces.count-1), 0);
+	}
+	
+	[[LWPreferences sharedInstance] setObject:[[watchFaces[currentWatchFaceIndex] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
+	
 	if (watchFaces.count > currentWatchFaceIndex) {
 		[contentView setContentOffset:CGPointMake(currentWatchFaceIndex * contentView.bounds.size.width, 0)];
 		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
@@ -115,6 +122,7 @@
 		}
 	} else {
 		[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:[self currentPage]]];
+		[[LWPreferences sharedInstance] setObject:[[[watchFaces objectAtIndex:[self currentPage]] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
 		
 		[UIView animateWithDuration:0.15 animations:^{
 			[contentView setTransform:CGAffineTransformIdentity];
@@ -193,6 +201,10 @@
 	
 	if (isSelecting) {
 		return contentView;
+	}
+	
+	if (isEditing) {
+		return view;
 	}
 	
 	return self;
@@ -438,13 +450,13 @@
 
 - (void)customizeButtonPressed {
 	NSLog(@"[LockWatch] customizeButtonPressed: Not implemented yet");
-	[self setIsSelecting:NO editing:YES animated:YES];
+	//[self setIsSelecting:NO editing:YES animated:YES];
 }
 
 #pragma mark Calculations
 
 - (NSInteger)currentPage {
-	return ceilf(contentView.contentOffset.x / contentView.contentSize.width);
+	return MAX(MIN(ceilf(contentView.contentOffset.x / contentView.bounds.size.width), watchFaces.count-1), 0);
 }
 
 - (LWKClockBase*)currentWatchFace {

@@ -22,6 +22,7 @@
 
 #import "Core/LWCore.h"
 #import "Core/LWPluginManager.h"
+#import "Core/LWPreferences.h"
 
 #import "LockScreen/LWInterfaceView.h"
 #import "LockScreen/LWScrollView.h"

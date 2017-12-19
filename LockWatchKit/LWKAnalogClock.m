@@ -149,4 +149,8 @@
 	} completion:nil];
 }
 
+- (void)setAccentColor:(UIColor *)color {
+	[secondHand setTintColor:color];
+}
+
 @end
