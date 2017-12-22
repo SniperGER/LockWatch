@@ -1,4 +1,5 @@
 #import "LockWatchKit.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKAnalogClock
 
@@ -149,6 +150,32 @@
 	} completion:nil];
 }
 
+#pragma mark Customization
+
+- (void)setIsEditing:(BOOL)isEditing {
+	[super setIsEditing:isEditing];
+	
+	if (isEditing) {
+		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
+			[hourHand setAlpha:0.0];
+			[minuteHand setAlpha:0.0];
+			[secondHand setAlpha:0.0];
+		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
+			// TODO
+		} else {
+			[hourHand setAlpha:1.0];
+			[minuteHand setAlpha:1.0];
+			[secondHand setAlpha:1.0];
+		}
+															 
+	} else {
+		[hourHand setAlpha:1.0];
+		[minuteHand setAlpha:1.0];
+		[secondHand setAlpha:1.0];
+	}
+}
+
+// Accent Color
 - (void)setAccentColor:(UIColor *)color {
 	[secondHand setTintColor:color];
 }

@@ -19,7 +19,7 @@
 }
 
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
-	hour = (hour > 12) ? hour - 12 : hour;
+	hour = (hour > 12 || hour <= 0) ? ABS(hour - 12) : hour;
 	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
 	
 	UIImage* hourImage = [[UIImage imageNamed:[NSString stringWithFormat:@"regular%d", (int)hour] inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -78,6 +78,9 @@
 	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
 }
 
+#pragma mark Customization
+
+// Accent Color
 - (void)setAccentColor:(UIColor *)color {
 	[super setAccentColor:color];
 	

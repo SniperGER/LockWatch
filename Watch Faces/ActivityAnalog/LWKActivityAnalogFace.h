@@ -25,13 +25,16 @@
 + (id)ringsViewConfiguredForOneRingOnWatchOfType:(int)arg1 withIcon:(BOOL)arg2;
 - (NSArray<HKRingGroupController*>*)ringGroups;
 - (void)_setupIfNeccessary;
+- (void)setActiveEnergyPercentage:(CGFloat)arg1 animated:(BOOL)arg2;
+- (void)setBriskPercentage:(CGFloat)arg1 animated:(BOOL)arg2;
+- (void)setMovingHoursPercentage:(CGFloat)arg1 animated:(BOOL)arg2;
 
 @end
 
 
 @interface LWKActivityAnalogFace : LWKAnalogClock {
+	UIImageView* dial;
 	UIView* mainView;
-	
 	
 	UIView* secondaryView;
 	UILabel* activeEnergy;
@@ -42,6 +45,8 @@
 	HKRingsView* movingHoursRing;
 	
 	HKActivityRingView* activityRingView;
+	
+	NSDictionary* activityData;
 }
 
 @end

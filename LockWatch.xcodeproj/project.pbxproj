@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		8D058C2E1FE3D8500073239E /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D058C2D1FE3D84B0073239E /* Customization.plist */; };
+		8D1437201FEA68DC001EF825 /* LWKLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D14371E1FEA68DC001EF825 /* LWKLabel.h */; };
+		8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14371F1FEA68DC001EF825 /* LWKLabel.m */; };
+		8D1437221FEC42B7001EF825 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; };
+		8D1437231FEC42B7001EF825 /* Cephei.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */; };
 		8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536F1FDF3E3900450F19 /* NCMaterialView.h */; };
 		8D2657831FE1DCD9003414FA /* LWKActivityDataProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2657811FE1DCD9003414FA /* LWKActivityDataProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D2657841FE1DCD9003414FA /* LWKActivityDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2657821FE1DCD9003414FA /* LWKActivityDataProvider.m */; };
 		8D2657871FE1E0BC003414FA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2657851FE1E060003414FA /* libsqlite3.tbd */; };
+		8D3820591FEA320700EDD891 /* Numerals.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8DD05DD41FE7B270004E3A58 /* Numerals.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D3C0BD41FE00154008D7FC2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3C0BD31FE00154008D7FC2 /* HealthKitUI.framework */; };
+		8D489DB21FEA464E009874DC /* LWPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D90B70A1FE85FF6007DA475 /* LWPreferences.m */; };
+		8D489DB41FEA4687009874DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D489DB31FEA4687009874DC /* LaunchScreen.storyboard */; };
+		8D489DB61FEA4691009874DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D489DB51FEA4691009874DC /* Main.storyboard */; };
 		8D52DED41FDD36B200B54C22 /* LockWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; };
 		8D52DEDA1FDD388D00B54C22 /* LWKPageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D52DED81FDD388D00B54C22 /* LWKPageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D52DEDB1FDD388D00B54C22 /* LWKPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D52DED91FDD388D00B54C22 /* LWKPageView.m */; };
@@ -29,7 +37,6 @@
 		8D83971D1FE1152E00703408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D83971F1FE1152E00703408 /* InfoPlist.strings */; };
 		8D8397211FE1158700703408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D83971F1FE1152E00703408 /* InfoPlist.strings */; };
 		8D901B211FE056E30037C2D9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D901B201FE056E30037C2D9 /* HealthKit.framework */; };
-		8D90B70B1FE85FF6007DA475 /* LWPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D90B70A1FE85FF6007DA475 /* LWPreferences.m */; };
 		8D90B70E1FE86537007DA475 /* WatchColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D90B70C1FE86537007DA475 /* WatchColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D90B70F1FE86537007DA475 /* WatchColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D90B70D1FE86537007DA475 /* WatchColors.m */; };
 		8D981A921FDC505F00D9F0F7 /* LWKClockHand.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D981A901FDC505F00D9F0F7 /* LWKClockHand.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,9 +82,7 @@
 		8DD9C3A71FE6891B00428F51 /* MTMaterialView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DD9C3A61FE6891B00428F51 /* MTMaterialView.h */; };
 		8DDF22CD1FE44DCA006FA9F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF22CC1FE44DCA006FA9F9 /* AppDelegate.m */; };
 		8DDF22D01FE44DCA006FA9F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF22CF1FE44DCA006FA9F9 /* ViewController.m */; };
-		8DDF22D31FE44DCA006FA9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF22D11FE44DCA006FA9F9 /* Main.storyboard */; };
 		8DDF22D51FE44DCA006FA9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF22D41FE44DCA006FA9F9 /* Assets.xcassets */; };
-		8DDF22D81FE44DCA006FA9F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF22D61FE44DCA006FA9F9 /* LaunchScreen.storyboard */; };
 		8DDF22DB1FE44DCA006FA9F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF22DA1FE44DCA006FA9F9 /* main.m */; };
 		8DDF22DF1FE44DD4006FA9F9 /* LWCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF3FD61FDA8E2100107325 /* LWCore.m */; };
 		8DDF22E01FE44DD4006FA9F9 /* LWPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6806791FDA8FD7004369D5 /* LWPluginManager.m */; };
@@ -89,6 +94,14 @@
 		8DDF22E61FE44E12006FA9F9 /* LockWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8DDF22EA1FE4508C006FA9F9 /* ActivityAnalog.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8D52DECA1FDD363D00B54C22 /* ActivityAnalog.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8DDF22EE1FE4508F006FA9F9 /* ActivityDigital.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8D8397041FE083B200703408 /* ActivityDigital.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8DFB78681FEA542C00F45A3C /* LWKFaceEditView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB78661FEA542C00F45A3C /* LWKFaceEditView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DFB78691FEA542C00F45A3C /* LWKFaceEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB78671FEA542C00F45A3C /* LWKFaceEditView.m */; };
+		8DFB78701FEA557D00F45A3C /* LWKScrollIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB786E1FEA557D00F45A3C /* LWKScrollIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DFB78711FEA557D00F45A3C /* LWKScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB786F1FEA557D00F45A3C /* LWKScrollIndicator.m */; };
+		8DFB78741FEA5CC200F45A3C /* LWKCustomizationSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB78721FEA5CC200F45A3C /* LWKCustomizationSelector.h */; };
+		8DFB78751FEA5CC200F45A3C /* LWKCustomizationSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB78731FEA5CC200F45A3C /* LWKCustomizationSelector.m */; };
+		8DFB78781FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB78761FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h */; };
+		8DFB78791FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB78771FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m */; };
 		8DFBBDFE1FDAB2DB007694E5 /* LockWatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFBBDFC1FDAB2DB007694E5 /* LockWatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DFBBE0A1FDAB327007694E5 /* LWKClockBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFBBE081FDAB327007694E5 /* LWKClockBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFBBE091FDAB327007694E5 /* LWKClockBase.m */; };
@@ -181,6 +194,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8D1437231FEC42B7001EF825 /* Cephei.framework in Embed Frameworks */,
 				8DDF22E61FE44E12006FA9F9 /* LockWatchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -192,6 +206,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8D3820591FEA320700EDD891 /* Numerals.watchface in Embed PlugIns */,
 				8DDF22EE1FE4508F006FA9F9 /* ActivityDigital.watchface in Embed PlugIns */,
 				8DDF22EA1FE4508C006FA9F9 /* ActivityAnalog.watchface in Embed PlugIns */,
 			);
@@ -202,6 +217,8 @@
 
 /* Begin PBXFileReference section */
 		8D058C2D1FE3D84B0073239E /* Customization.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
+		8D14371E1FEA68DC001EF825 /* LWKLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKLabel.h; sourceTree = "<group>"; };
+		8D14371F1FEA68DC001EF825 /* LWKLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKLabel.m; sourceTree = "<group>"; };
 		8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UIBackdropView.h; sourceTree = "<group>"; };
 		8D20536F1FDF3E3900450F19 /* NCMaterialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMaterialView.h; sourceTree = "<group>"; };
 		8D2657811FE1DCD9003414FA /* LWKActivityDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKActivityDataProvider.h; sourceTree = "<group>"; };
@@ -210,6 +227,9 @@
 		8D2657881FE25C6B003414FA /* LWFaceLibraryCustomizeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWFaceLibraryCustomizeButton.h; sourceTree = "<group>"; };
 		8D2657891FE25C6B003414FA /* LWFaceLibraryCustomizeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWFaceLibraryCustomizeButton.m; sourceTree = "<group>"; };
 		8D3C0BD31FE00154008D7FC2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/HealthKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		8D489DB31FEA4687009874DC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D489DB51FEA4691009874DC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8D489DB71FEA4E3D009874DC /* Cephei.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cephei.framework; path = ../../../../../opt/theos/lib/Cephei.framework; sourceTree = "<group>"; };
 		8D52DEC21FDD2A3200B54C22 /* LWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWScrollView.h; sourceTree = "<group>"; };
 		8D52DEC31FDD2A3200B54C22 /* LWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWScrollView.m; sourceTree = "<group>"; };
 		8D52DECA1FDD363D00B54C22 /* ActivityAnalog.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivityAnalog.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,12 +315,18 @@
 		8DDF22CC1FE44DCA006FA9F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8DDF22CE1FE44DCA006FA9F9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8DDF22CF1FE44DCA006FA9F9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8DDF22D21FE44DCA006FA9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8DDF22D41FE44DCA006FA9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8DDF22D71FE44DCA006FA9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DDF22D91FE44DCA006FA9F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DDF22DA1FE44DCA006FA9F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DF6F63C1FDAB52D00DC3E4A /* LockWatch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockWatch.plist; sourceTree = "<group>"; };
+		8DFB78661FEA542C00F45A3C /* LWKFaceEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKFaceEditView.h; sourceTree = "<group>"; };
+		8DFB78671FEA542C00F45A3C /* LWKFaceEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKFaceEditView.m; sourceTree = "<group>"; };
+		8DFB786E1FEA557D00F45A3C /* LWKScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKScrollIndicator.h; sourceTree = "<group>"; };
+		8DFB786F1FEA557D00F45A3C /* LWKScrollIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKScrollIndicator.m; sourceTree = "<group>"; };
+		8DFB78721FEA5CC200F45A3C /* LWKCustomizationSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKCustomizationSelector.h; sourceTree = "<group>"; };
+		8DFB78731FEA5CC200F45A3C /* LWKCustomizationSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKCustomizationSelector.m; sourceTree = "<group>"; };
+		8DFB78761FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKStyleCustomizationSelector.h; sourceTree = "<group>"; };
+		8DFB78771FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKStyleCustomizationSelector.m; sourceTree = "<group>"; };
 		8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LockWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFBBDFC1FDAB2DB007694E5 /* LockWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockWatchKit.h; sourceTree = "<group>"; };
 		8DFBBDFD1FDAB2DB007694E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -341,6 +367,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D1437221FEC42B7001EF825 /* Cephei.framework in Frameworks */,
 				8DDF22E51FE44E12006FA9F9 /* LockWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +412,7 @@
 		8D3C0BD21FE00154008D7FC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D489DB71FEA4E3D009874DC /* Cephei.framework */,
 				8D2657851FE1E060003414FA /* libsqlite3.tbd */,
 				8D8397151FE0930800703408 /* HealthKit.framework */,
 				8D901B201FE056E30037C2D9 /* HealthKit.framework */,
@@ -554,6 +582,16 @@
 		8DDF22C41FE3E4D3006FA9F9 /* Customization */ = {
 			isa = PBXGroup;
 			children = (
+				8DFB78661FEA542C00F45A3C /* LWKFaceEditView.h */,
+				8DFB78671FEA542C00F45A3C /* LWKFaceEditView.m */,
+				8DFB786E1FEA557D00F45A3C /* LWKScrollIndicator.h */,
+				8DFB786F1FEA557D00F45A3C /* LWKScrollIndicator.m */,
+				8D14371E1FEA68DC001EF825 /* LWKLabel.h */,
+				8D14371F1FEA68DC001EF825 /* LWKLabel.m */,
+				8DFB78721FEA5CC200F45A3C /* LWKCustomizationSelector.h */,
+				8DFB78731FEA5CC200F45A3C /* LWKCustomizationSelector.m */,
+				8DFB78761FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h */,
+				8DFB78771FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m */,
 			);
 			name = Customization;
 			sourceTree = "<group>";
@@ -565,9 +603,9 @@
 				8DDF22CC1FE44DCA006FA9F9 /* AppDelegate.m */,
 				8DDF22CE1FE44DCA006FA9F9 /* ViewController.h */,
 				8DDF22CF1FE44DCA006FA9F9 /* ViewController.m */,
-				8DDF22D11FE44DCA006FA9F9 /* Main.storyboard */,
+				8D489DB51FEA4691009874DC /* Main.storyboard */,
 				8DDF22D41FE44DCA006FA9F9 /* Assets.xcassets */,
-				8DDF22D61FE44DCA006FA9F9 /* LaunchScreen.storyboard */,
+				8D489DB31FEA4687009874DC /* LaunchScreen.storyboard */,
 				8DDF22D91FE44DCA006FA9F9 /* Info.plist */,
 				8DDF22DA1FE44DCA006FA9F9 /* main.m */,
 			);
@@ -602,13 +640,18 @@
 				8D981AA41FDC674800D9F0F7 /* LWInterfaceView.h in Headers */,
 				8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */,
 				8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */,
+				8D1437201FEA68DC001EF825 /* LWKLabel.h in Headers */,
 				8D52DEDA1FDD388D00B54C22 /* LWKPageView.h in Headers */,
+				8DFB78681FEA542C00F45A3C /* LWKFaceEditView.h in Headers */,
 				8DFBBDFE1FDAB2DB007694E5 /* LockWatchKit.h in Headers */,
 				8D2657831FE1DCD9003414FA /* LWKActivityDataProvider.h in Headers */,
 				8D981A921FDC505F00D9F0F7 /* LWKClockHand.h in Headers */,
+				8DFB78741FEA5CC200F45A3C /* LWKCustomizationSelector.h in Headers */,
 				8DD4EB5D1FDC44930033FC82 /* LWKAnalogClock.h in Headers */,
 				8D90B70E1FE86537007DA475 /* WatchColors.h in Headers */,
+				8DFB78781FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h in Headers */,
 				8DD9C3A71FE6891B00428F51 /* MTMaterialView.h in Headers */,
+				8DFB78701FEA557D00F45A3C /* LWKScrollIndicator.h in Headers */,
 				8D8397191FE106F800703408 /* LWKDigitalClock.h in Headers */,
 				8DFBBE0A1FDAB327007694E5 /* LWKClockBase.h in Headers */,
 			);
@@ -870,9 +913,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DDF22D81FE44DCA006FA9F9 /* LaunchScreen.storyboard in Resources */,
+				8D489DB61FEA4691009874DC /* Main.storyboard in Resources */,
 				8DDF22D51FE44DCA006FA9F9 /* Assets.xcassets in Resources */,
-				8DDF22D31FE44DCA006FA9F9 /* Main.storyboard in Resources */,
+				8D489DB41FEA4687009874DC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +1020,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D489DB21FEA464E009874DC /* LWPreferences.m in Sources */,
 				8DDF22D01FE44DCA006FA9F9 /* ViewController.m in Sources */,
 				8DDF22E31FE44DDB006FA9F9 /* LWFaceLibraryOverlayView.m in Sources */,
 				8DDF22E41FE44DDB006FA9F9 /* LWFaceLibraryCustomizeButton.m in Sources */,
@@ -986,7 +1030,6 @@
 				8DDF22E21FE44DDB006FA9F9 /* LWScrollView.m in Sources */,
 				8DDF22DF1FE44DD4006FA9F9 /* LWCore.m in Sources */,
 				8DDF22E01FE44DD4006FA9F9 /* LWPluginManager.m in Sources */,
-				8D90B70B1FE85FF6007DA475 /* LWPreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,10 +1039,15 @@
 			files = (
 				8D90B70F1FE86537007DA475 /* WatchColors.m in Sources */,
 				8D2657841FE1DCD9003414FA /* LWKActivityDataProvider.m in Sources */,
+				8DFB78691FEA542C00F45A3C /* LWKFaceEditView.m in Sources */,
+				8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */,
+				8DFB78791FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m in Sources */,
 				8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */,
 				8D981A931FDC505F00D9F0F7 /* LWKClockHand.m in Sources */,
 				8D83971A1FE106F800703408 /* LWKDigitalClock.m in Sources */,
+				8DFB78711FEA557D00F45A3C /* LWKScrollIndicator.m in Sources */,
 				8D52DEDB1FDD388D00B54C22 /* LWKPageView.m in Sources */,
+				8DFB78751FEA5CC200F45A3C /* LWKCustomizationSelector.m in Sources */,
 				8DD4EB5E1FDC44930033FC82 /* LWKAnalogClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1090,22 +1138,6 @@
 				8DD05DEE1FE7B5BB004E3A58 /* de */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8DDF22D11FE44DCA006FA9F9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8DDF22D21FE44DCA006FA9F9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8DDF22D61FE44DCA006FA9F9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8DDF22D71FE44DCA006FA9F9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1582,6 +1614,10 @@
 				DEVELOPMENT_TEAM = EDV7C8ZP77;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/theos/lib,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1646,6 +1682,10 @@
 				DEVELOPMENT_TEAM = EDV7C8ZP77;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/theos/lib,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

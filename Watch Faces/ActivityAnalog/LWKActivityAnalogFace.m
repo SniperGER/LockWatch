@@ -1,4 +1,5 @@
 #import "LWKActivityAnalogFace.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKActivityAnalogFace
 
@@ -10,7 +11,7 @@
 		[backgroundView setClipsToBounds:YES];
 		[self.backgroundView addSubview:backgroundView];
 		
-		UIImageView* dial = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dial" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+		dial = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dial" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
 		[dial.layer setPosition:CGPointMake(156, 195)];
 		[self.contentView insertSubview:dial atIndex:0];
 		
@@ -39,11 +40,11 @@
 		[[[activeEnergyRing ringGroups] objectAtIndex:0] setCenter:CGPointZero];
 		[secondaryView addSubview:activeEnergyRing];
 		
-		activeEnergy = [[UILabel alloc] initWithFrame:CGRectZero];
+		activeEnergy = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 56, 36)];
+		[activeEnergy setTextAlignment:NSTextAlignmentCenter];
 		[activeEnergy setFont:[UIFont fontWithName:@".SFCompactRounded-Semibold" size:25]];
 		[activeEnergy setTextColor:[UIColor colorWithRed:1.0 green:0.53 blue:0.67 alpha:1]];
 		[activeEnergy setText:@"---"];
-		[activeEnergy sizeToFit];
 		[activeEnergy setCenter:CGPointMake(156, 78)];
 		[secondaryView addSubview:activeEnergy];
 		
@@ -55,11 +56,11 @@
 		[[[briskRing ringGroups] objectAtIndex:0] setCenter:CGPointZero];
 		[secondaryView addSubview:briskRing];
 		
-		brisk = [[UILabel alloc] initWithFrame:CGRectZero];
+		brisk = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 56, 36)];
+		[brisk setTextAlignment:NSTextAlignmentCenter];
 		[brisk setFont:[UIFont fontWithName:@".SFCompactRounded-Semibold" size:25]];
 		[brisk setTextColor:[UIColor colorWithRed:0.92 green:1 blue:0.58 alpha:1]];
 		[brisk setText:@"---"];
-		[brisk sizeToFit];
 		[brisk setCenter:CGPointMake(78, 156)];
 		[secondaryView addSubview:brisk];
 		
@@ -71,51 +72,66 @@
 		[[[movingHoursRing ringGroups] objectAtIndex:0] setCenter:CGPointZero];
 		[secondaryView addSubview:movingHoursRing];
 		
-		movingHours = [[UILabel alloc] initWithFrame:CGRectZero];
+		movingHours = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 56, 36)];
+		[movingHours setTextAlignment:NSTextAlignmentCenter];
 		[movingHours setFont:[UIFont fontWithName:@".SFCompactRounded-Semibold" size:25]];
 		[movingHours setTextColor:[UIColor colorWithRed:0.53 green:0.97 blue:0.95 alpha:1]];
 		[movingHours setText:@"---"];
-		[movingHours sizeToFit];
 		[movingHours setCenter:CGPointMake(156, 234)];
 		[secondaryView addSubview:movingHours];
 		
-		//[self.contentView insertSubview:secondaryView atIndex:2];
+		[self.contentView insertSubview:secondaryView atIndex:2];
+		[secondaryView setAlpha:0];
 		
-		[self updateActivityData];
+		// Preferences
+		
+		if (![watchFacePreferences objectForKey:@"style"]) {
+			[self setFaceStyle:0];
+		} else {
+			[self setFaceStyle:[[watchFacePreferences objectForKey:@"style"] intValue]];
+		}
 	}
 	
 	return self;
-}
-
-- (void)updateActivityData {
-	NSDictionary* activityData = [LWKActivityDataProvider activityData];
-	HKActivitySummary* summary = [HKActivitySummary new];
-	
-	if (activityData[@"energy_burned_goal"]) {
-		[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[activityData[@"energy_burned_goal"] doubleValue]]];
-	}
-	
-	if (activityData[@"energy_burned"]) {
-		[summary setActiveEnergyBurned:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[activityData[@"energy_burned"] doubleValue]]];
-	}
-	
-	if (activityData[@"brisk_minutes"]) {
-		[summary setAppleExerciseTimeGoal:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:30]];
-		[summary setAppleExerciseTime:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:[activityData[@"brisk_minutes"] doubleValue]]];
-	}
-	
-	if (activityData[@"active_hours"]) {
-		[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:12]];
-		[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:[activityData[@"active_hours"] doubleValue]]];
-	}
-	
-	[activityRingView setActivitySummary:summary animated:NO];
 }
 
 - (void)didStartUpdatingTime {
 	[super didStartUpdatingTime];
 	[self updateActivityData];
 }
+
+- (void)updateActivityData {
+	activityData = [LWKActivityDataProvider activityData];
+	HKActivitySummary* summary = [HKActivitySummary new];
+	
+	// Activity
+	double activeEnergyBurnedGoal = [activityData[@"energy_burned_goal"] doubleValue];
+	double activeEnergyBurned = [activityData[@"energy_burned"] doubleValue];
+	[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurnedGoal]];
+	[summary setActiveEnergyBurned:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurned]];
+	[activeEnergyRing setMovingHoursPercentage:(activeEnergyBurned / activeEnergyBurnedGoal) animated:NO];
+	[activeEnergy setText:[NSString stringWithFormat:@"%d", (int)activeEnergyBurned]];
+	
+	// Exercise
+	double exerciseTimeGoal = [activityData[@"brisk_minutes_goal"] doubleValue];
+	double exerciseTime = [activityData[@"brisk_minutes"] doubleValue];
+	[summary setAppleExerciseTimeGoal:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTimeGoal]];
+	[summary setAppleExerciseTime:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTime]];
+	[briskRing setMovingHoursPercentage:(exerciseTime / exerciseTimeGoal) animated:NO];
+	[brisk setText:[NSString stringWithFormat:@"%d", (int)exerciseTime]];
+	
+	// Move
+	double standHoursGoal = [activityData[@"active_hours_goal"] doubleValue];
+	double standHours = [activityData[@"active_hours"] doubleValue];
+	[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHoursGoal]];
+	[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHours]];
+	[movingHoursRing setMovingHoursPercentage:(exerciseTime / exerciseTimeGoal) animated:NO];
+	[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHours]];
+	
+	[activityRingView setActivitySummary:summary animated:NO];
+}
+
+#pragma mark Customization
 
 - (void)setIsEditing:(BOOL)isEditing {
 	[super setIsEditing:isEditing];
@@ -133,20 +149,42 @@
 		[demoSummary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:1]];
 		
 		[activityRingView setActivitySummary:demoSummary animated:NO];
+		
+		// A single HKRingView needs to be updated with setMovingHoursPercentage:animated:
+		[activeEnergyRing setMovingHoursPercentage:1.0 animated:NO];
+		[briskRing setMovingHoursPercentage:1.0 animated:NO];
+		[movingHoursRing setMovingHoursPercentage:1.0 animated:NO];
+		
+		double activeEnergyBurnedGoal = [activityData[@"energy_burned_goal"] doubleValue];
+		double exerciseTimeGoal = [activityData[@"brisk_minutes_goal"] doubleValue];
+		double standHoursGoal = [activityData[@"active_hours_goal"] doubleValue];
+		
+		[activeEnergy setText:[NSString stringWithFormat:@"%d", (int)activeEnergyBurnedGoal]];
+		[brisk setText:[NSString stringWithFormat:@"%d", (int)exerciseTimeGoal]];
+		[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHoursGoal]];
+		
+		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
+			[dial setAlpha:0.0];
+		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
+			[dial setAlpha:1.0];
+		}
 	} else {
 		[self updateActivityData];
+		
+		[dial setAlpha:1.0];
 	}
 }
 
-- (NSArray*)focussedViewsForEditingPage:(int)page {
-	switch (page) {
-		case 0:
-			return @[mainView, secondaryView];
-			break;
-			
-		default:
-			return nil;
-	}
+// Style
+- (NSArray*)faceStyleViews {
+	return @[mainView, secondaryView];
+}
+
+- (void)setFaceStyle:(int)style {
+	[mainView setAlpha:(style == 0 ? 1 : 0)];
+	[secondaryView setAlpha:(style == 1 ? 1 : 0)];
+	
+	[super setFaceStyle:style];
 }
 
 @end

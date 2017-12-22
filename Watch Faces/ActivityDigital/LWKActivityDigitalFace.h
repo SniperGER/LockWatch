@@ -11,6 +11,7 @@
 @end
 
 @interface LWKActivityDigitalFace : LWKDigitalClock {
+	NSDictionary* activityData;
 	HKActivityRingView* activityRingView;
 	
 	UILabel* activeEnergy;

@@ -16,8 +16,8 @@
 		<integer>142</integer>
 		<key>label</key>
 		<dict>
-			<key>frame</key>
-			<string>{{119,341},{74,27}}</string>
+			<key>center</key>
+			<string>{156,354.5}</string>
 			<key>text</key>
 			<string>STYLE</string>
 		</dict>

@@ -80,7 +80,7 @@ static LWPreferences* sharedInstance;
 												@"ml.festival.Weather"
 												],
 										@"disabledWatchFaces": @[]
-										}]
+										}];
 #endif
 	}
 	

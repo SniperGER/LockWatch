@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+#import "LockWatchKit.h"
 #import <sqlite3.h>
 
 @interface LWKActivityDataProvider : NSObject

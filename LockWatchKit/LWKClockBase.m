@@ -1,11 +1,10 @@
 #import "LockWatchKit.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKClockBase
 
 - (id)init {
 	if (self = [super init]) {
-		watchFacePreferences = [NSMutableDictionary new];
-		
 		_clockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		_backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		_contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
@@ -14,6 +13,12 @@
 		[_clockView addSubview:_contentView];
 		
 		_watchFaceBundle = [NSBundle bundleForClass:self.class];
+		watchFacePreferences = [NSMutableDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]]];
+		
+		if (!watchFacePreferences) {
+			watchFacePreferences = [NSMutableDictionary new];
+			[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+		}
 		
 		[self prepareCustomizationMode];
 	}
@@ -21,54 +26,63 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
-	
-}
-
 - (void)prepareForInit {
 	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
 }
 
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {}
+- (void)didStartUpdatingTime {}
+- (void)didStopUpdatingTime {}
+
+#pragma mark Customization
+
 - (void)prepareCustomizationMode {
-	NSArray* customizationOptions = [NSArray arrayWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
+	customizationOptions = [NSArray arrayWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
 	
 	if (customizationOptions) {
-		//_isCustomizable = YES;
+		_isCustomizable = YES;
+		
+		_editView = [[LWKFaceEditView alloc] initWithFrame:CGRectMake(0, 0, 312, 390) options:customizationOptions forWatchFace:self];
+		[_editView setHidden:YES];
+		[_clockView addSubview:_editView];
 	}
 }
 
 - (void)setIsEditing:(BOOL)isEditing {
 	_isEditing = isEditing;
 	
-	/*[_editView setHidden:!isEditing];
+	[_editView setHidden:!isEditing];
 	
 	if (isEditing) {
-		if ([self focussedViewsForEditingPage:[_editView currentPage]]) {
-			NSArray* viewsToKeep = [self focussedViewsForEditingPage:[_editView currentPage]];
-			
-			for (UIView* subview in _contentView.subviews) {
-				if (![viewsToKeep containsObject:subview]) {
-					[subview setAlpha:0];
-				}
-			}
-		}
+		CGFloat page = MAX(MIN(ceilf(_editView.scrollView.contentOffset.x / 312), customizationOptions.count - 1), 0);
+		LWKCustomizationSelector* selector = [_editView.pages objectAtIndex:page];
+		currentCustomizationSelector = selector;
+		
+		[_editView.scrollIndicator setIndicatorHeight:[selector indicatorHeight] relativeToHeight:400];
+		[_editView.scrollIndicator setIndicatorPosition:[selector indicatorPosition]];
 	} else {
-		for (UIView* subview in _contentView.subviews) {
-			[subview setAlpha:1];
-		}
-	}*/
+		currentCustomizationSelector = nil;
+	}
 }
 
-- (void)didStartUpdatingTime {}
-- (void)didStopUpdatingTime {}
+// Style
+- (NSArray*)faceStyleViews {
+	return nil;
+}
 
+- (void)setFaceStyle:(int)style {
+	[watchFacePreferences setValue:[NSNumber numberWithInt:style] forKey:@"style"];
+	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+}
+
+// Detail
+- (NSArray*)faceDetailViews {
+	return nil;
+}
+
+- (void)setFaceDetail:(int)detail {}
+
+// Accent Color
 - (void)setAccentColor:(UIColor*)color {}
-
-- (NSArray*)focussedViewsForEditingPage:(int)page {
-	return nil;
-}
-- (NSArray*)hiddenViewsForEditingPage:(int)page {
-	return nil;
-}
 
 @end

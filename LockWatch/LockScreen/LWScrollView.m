@@ -95,6 +95,7 @@
 	
 	[[LWCore sharedInstance] setIsEditing:editing];
 	[[LWCore sharedInstance] setIsSelecting:selecting];
+	[contentView setScrollEnabled:selecting];
 	
 	[tapGestureRecognizer setEnabled:(selecting && !editing)];
 	[longPressGestureRecognizer setEnabled:(![self forceTouchCapable] && !selecting && !editing)];
@@ -450,7 +451,7 @@
 
 - (void)customizeButtonPressed {
 	NSLog(@"[LockWatch] customizeButtonPressed: Not implemented yet");
-	//[self setIsSelecting:NO editing:YES animated:YES];
+	[self setIsSelecting:NO editing:YES animated:YES];
 }
 
 #pragma mark Calculations
