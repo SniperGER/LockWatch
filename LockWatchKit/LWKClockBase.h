@@ -36,6 +36,6 @@
 - (void)setFaceStyle:(int)style;
 - (NSArray*)faceDetailViews;
 - (void)setFaceDetail:(int)detail;
-- (void)setAccentColor:(UIColor*)color;
+- (void)setAccentColor:(NSString*)color;
 
 @end

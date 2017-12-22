@@ -33,7 +33,7 @@
 
 
 @interface LWKActivityAnalogFace : LWKAnalogClock {
-	UIImageView* dial;
+	UIView* dial;
 	UIView* mainView;
 	
 	UIView* secondaryView;

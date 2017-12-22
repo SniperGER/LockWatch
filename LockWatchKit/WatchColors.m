@@ -2,6 +2,80 @@
 
 @implementation WatchColors
 
++ (NSDictionary*)colors {
+	return @{
+			 @"white": [WatchColors whiteColor],
+			 @"gray": [WatchColors grayColor],
+			 @"red": [WatchColors redColor],
+			 @"orange": [WatchColors orangeColor],
+			 @"apricot": [WatchColors apricotColor],
+			 @"lightOrange": [WatchColors lightOrangeColor],
+			 @"yellow": [WatchColors yellowColor],
+			 @"pollen": [WatchColors pollenColor],
+			 @"green": [WatchColors greenColor],
+			 @"mint": [WatchColors mintColor],
+			 @"turquoise": [WatchColors turquoiseColor],
+			 @"lightBlue": [WatchColors lightBlueColor],
+			 @"blue": [WatchColors blueColor],
+			 @"royalBlue": [WatchColors royalBlueColor],
+			 @"lilac": [WatchColors lilacColor],
+			 @"mistBlue": [WatchColors mistBlueColor],
+			 @"azure": [WatchColors azureColor],
+			 @"midnightBlue": [WatchColors midnightBlueColor],
+			 @"oceanBlue": [WatchColors oceanBlueColor],
+			 @"purple": [WatchColors purpleColor],
+			 @"lavender": [WatchColors lavenderColor],
+			 @"pinkSand": [WatchColors pinkSandColor],
+			 @"lightPink": [WatchColors lightPinkColor],
+			 @"pink": [WatchColors pinkColor],
+			 @"camellia": [WatchColors camelliaColor],
+			 @"flamingo": [WatchColors flamingoColor],
+			 @"vintageRose": [WatchColors vintageRoseColor],
+			 @"walnut": [WatchColors walnutColor],
+			 @"stone": [WatchColors stoneColor],
+			 @"antiqueWhite": [WatchColors antiqueWhiteColor],
+			 @"pebble": [WatchColors pebbleColor],
+			 @"cocoa": [WatchColors cocoaColor]
+			 };
+}
+
++ (NSArray*)colorNames {
+	return @[
+			 @"white",
+			 @"gray",
+			 @"red",
+			 @"orange",
+			 @"apricot",
+			 @"lightOrange",
+			 @"yellow",
+			 @"pollen",
+			 @"green",
+			 @"mint",
+			 @"turquoise",
+			 @"lightBlue",
+			 @"blue",
+			 @"royalBlue",
+			 @"lilac",
+			 @"mistBlue",
+			 @"azure",
+			 @"midnightBlue",
+			 @"oceanBlue",
+			 @"purple",
+			 @"lavender",
+			 @"pinkSand",
+			 @"lightPink",
+			 @"pink",
+			 @"camellia",
+			 @"flamingo",
+			 @"vintageRose",
+			 @"walnut",
+			 @"stone",
+			 @"antiqueWhite",
+			 @"pebble",
+			 @"cocoa"
+			 ];
+}
+
 + (UIColor*)whiteColor {
 	return [UIColor colorWithRed:0.9 green:0.91 blue:0.91 alpha:1.0];
 }
@@ -38,7 +112,7 @@
 	return [UIColor colorWithRed:0.55 green:0.89 blue:0.16 alpha:1.0];
 }
 
-+ (UIColor*)minColor {
++ (UIColor*)mintColor {
 	return [UIColor colorWithRed:0.68 green:0.93 blue:0.62 alpha:1.0];
 }
 

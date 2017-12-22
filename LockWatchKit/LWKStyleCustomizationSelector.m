@@ -5,14 +5,6 @@
 
 @implementation LWKStyleCustomizationSelector
 
-- (id)initWithFrame:(CGRect)frame options:(NSDictionary *)options forWatchFace:(LWKClockBase *)watchFace faceEditView:(LWKFaceEditView *)faceEditView {
-	if (self = [super initWithFrame:frame options:options forWatchFace:watchFace faceEditView:faceEditView]) {
-		
-	}
-	
-	return self;
-}
-
 - (CGFloat)indicatorHeight {
 	return customizingWatchFace.faceStyleViews.count * 400;
 }

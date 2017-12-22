@@ -2,6 +2,9 @@
 
 @interface WatchColors : NSObject
 
++ (NSDictionary*)colors;
++ (NSArray*)colorNames;
+
 + (UIColor*)whiteColor;
 + (UIColor*)grayColor;
 + (UIColor*)redColor;
@@ -11,7 +14,7 @@
 + (UIColor*)yellowColor;
 + (UIColor*)pollenColor;
 + (UIColor*)greenColor;
-+ (UIColor*)minColor;
++ (UIColor*)mintColor;
 + (UIColor*)turquoiseColor;
 + (UIColor*)lightBlueColor;
 + (UIColor*)blueColor;

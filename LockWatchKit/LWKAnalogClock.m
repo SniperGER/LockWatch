@@ -176,8 +176,9 @@
 }
 
 // Accent Color
-- (void)setAccentColor:(UIColor *)color {
-	[secondHand setTintColor:color];
+- (void)setAccentColor:(NSString *)color {
+	[secondHand setTintColor:[[WatchColors colors] objectForKey:color]];
+	[super setAccentColor:color];
 }
 
 @end

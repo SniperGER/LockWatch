@@ -12,7 +12,11 @@
 		numeralImageContainer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 230, 230)];
 		[self.backgroundView addSubview:numeralImageContainer];
 		
-		[self setAccentColor:[WatchColors lightOrangeColor]];
+		if (![watchFacePreferences objectForKey:@"accentColor"]) {
+			[self setAccentColor:@"lightOrange"];
+		} else {
+			[self setAccentColor:[watchFacePreferences objectForKey:@"accentColor"]];
+		}
 	}
 	
 	return self;
@@ -81,10 +85,11 @@
 #pragma mark Customization
 
 // Accent Color
-- (void)setAccentColor:(UIColor *)color {
+- (void)setAccentColor:(NSString *)color {
 	[super setAccentColor:color];
 	
-	[numeralImageContainer setTintColor:color];
+	UIColor* _color = [[WatchColors colors] objectForKey:color];
+	[numeralImageContainer setTintColor:_color];
 }
 
 @end

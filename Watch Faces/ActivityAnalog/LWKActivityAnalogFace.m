@@ -10,8 +10,8 @@
 		[backgroundView.layer setCornerRadius:156.0];
 		[backgroundView setClipsToBounds:YES];
 		[self.backgroundView addSubview:backgroundView];
-		
-		dial = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dial" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+
+		dial = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 310, 310)];
 		[dial.layer setPosition:CGPointMake(156, 195)];
 		[self.contentView insertSubview:dial atIndex:0];
 		
@@ -89,6 +89,12 @@
 			[self setFaceStyle:0];
 		} else {
 			[self setFaceStyle:[[watchFacePreferences objectForKey:@"style"] intValue]];
+		}
+		
+		if (![watchFacePreferences objectForKey:@"accentColor"]) {
+			[self setAccentColor:@"white"];
+		} else {
+			[self setAccentColor:[watchFacePreferences objectForKey:@"accentColor"]];
 		}
 	}
 	
@@ -185,6 +191,54 @@
 	[secondaryView setAlpha:(style == 1 ? 1 : 0)];
 	
 	[super setFaceStyle:style];
+}
+
+// Accent Color
+- (void)setAccentColor:(NSString *)color {
+	[super setAccentColor:color];
+	
+	UIColor* _color = [[WatchColors colors] objectForKey:color];
+	if (CGColorEqualToColor(_color.CGColor, [WatchColors whiteColor].CGColor)) {
+		[secondHand setTintColor:[WatchColors lightOrangeColor]];
+	}
+	
+	[[dial.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+	[dial.layer addSublayer:[self makeIndicatorsWithAccentColor:_color]];
+}
+
+- (CALayer*)makeIndicatorsWithAccentColor:(UIColor*)accentColor {
+	CALayer* dialLayer = [CALayer layer];
+	
+	// Ring
+	CAShapeLayer* ringLayer = [CAShapeLayer layer];
+	[ringLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.12].CGColor];
+	[ringLayer setFillColor:nil];
+	[ringLayer setLineWidth:16.0];
+	[ringLayer setPath:[UIBezierPath bezierPathWithOvalInRect:CGRectInset(dial.bounds, 8, 8)].CGPath];
+	[dialLayer addSublayer:ringLayer];
+	
+	// Highlights
+	CAShapeLayer* highlightLayer = [CAShapeLayer layer];
+	[highlightLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.37].CGColor];
+	[highlightLayer setLineWidth:4.0];
+	
+	UIBezierPath* path = [[UIBezierPath alloc] init];
+	for (int i=0; i<12; i++) {
+		CGFloat angle = deg2rad(i*30);
+			CGFloat innerRadius = 139;
+			CGFloat outerRadius = 155;
+			
+			CGPoint inner = CGPointMake((innerRadius * sin(angle)) + (310/2), (innerRadius * -cos(angle)) + (310/2));
+			CGPoint outer = CGPointMake((outerRadius * sin(angle)) + (310/2), (outerRadius * -cos(angle)) + (310/2));
+			
+			[path moveToPoint:inner];
+			[path addLineToPoint:outer];
+	}
+	
+	[highlightLayer setPath:path.CGPath];
+	[dialLayer addSublayer:highlightLayer];
+	
+	return dialLayer;
 }
 
 @end

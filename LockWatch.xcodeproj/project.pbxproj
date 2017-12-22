@@ -12,6 +12,8 @@
 		8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14371F1FEA68DC001EF825 /* LWKLabel.m */; };
 		8D1437221FEC42B7001EF825 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; };
 		8D1437231FEC42B7001EF825 /* Cephei.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D1437261FED0505001EF825 /* LWKColorCustomizationSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D1437241FED0505001EF825 /* LWKColorCustomizationSelector.h */; };
+		8D1437271FED0505001EF825 /* LWKColorCustomizationSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1437251FED0505001EF825 /* LWKColorCustomizationSelector.m */; };
 		8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */; };
 		8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536F1FDF3E3900450F19 /* NCMaterialView.h */; };
 		8D2657831FE1DCD9003414FA /* LWKActivityDataProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2657811FE1DCD9003414FA /* LWKActivityDataProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -219,6 +221,8 @@
 		8D058C2D1FE3D84B0073239E /* Customization.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
 		8D14371E1FEA68DC001EF825 /* LWKLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKLabel.h; sourceTree = "<group>"; };
 		8D14371F1FEA68DC001EF825 /* LWKLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKLabel.m; sourceTree = "<group>"; };
+		8D1437241FED0505001EF825 /* LWKColorCustomizationSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKColorCustomizationSelector.h; sourceTree = "<group>"; };
+		8D1437251FED0505001EF825 /* LWKColorCustomizationSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKColorCustomizationSelector.m; sourceTree = "<group>"; };
 		8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UIBackdropView.h; sourceTree = "<group>"; };
 		8D20536F1FDF3E3900450F19 /* NCMaterialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMaterialView.h; sourceTree = "<group>"; };
 		8D2657811FE1DCD9003414FA /* LWKActivityDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKActivityDataProvider.h; sourceTree = "<group>"; };
@@ -592,6 +596,8 @@
 				8DFB78731FEA5CC200F45A3C /* LWKCustomizationSelector.m */,
 				8DFB78761FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h */,
 				8DFB78771FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m */,
+				8D1437241FED0505001EF825 /* LWKColorCustomizationSelector.h */,
+				8D1437251FED0505001EF825 /* LWKColorCustomizationSelector.m */,
 			);
 			name = Customization;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D1437261FED0505001EF825 /* LWKColorCustomizationSelector.h in Headers */,
 				8D981AA41FDC674800D9F0F7 /* LWInterfaceView.h in Headers */,
 				8D2053711FDF3E3900450F19 /* NCMaterialView.h in Headers */,
 				8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */,
@@ -1040,6 +1047,7 @@
 				8D90B70F1FE86537007DA475 /* WatchColors.m in Sources */,
 				8D2657841FE1DCD9003414FA /* LWKActivityDataProvider.m in Sources */,
 				8DFB78691FEA542C00F45A3C /* LWKFaceEditView.m in Sources */,
+				8D1437271FED0505001EF825 /* LWKColorCustomizationSelector.m in Sources */,
 				8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */,
 				8DFB78791FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m in Sources */,
 				8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */,

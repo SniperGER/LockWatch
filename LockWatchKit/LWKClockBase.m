@@ -83,6 +83,8 @@
 - (void)setFaceDetail:(int)detail {}
 
 // Accent Color
-- (void)setAccentColor:(UIColor*)color {}
+- (void)setAccentColor:(NSString*)color {
+	[watchFacePreferences setObject:color forKey:@"accentColor"];
+	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];}
 
 @end
