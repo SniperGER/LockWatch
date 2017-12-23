@@ -11,6 +11,7 @@
 		[_scrollView setShowsHorizontalScrollIndicator:NO];
 		[_scrollView setShowsVerticalScrollIndicator:NO];
 		[_scrollView setDelegate:self];
+		[_scrollView setClipsToBounds:NO];
 		[self addSubview:_scrollView];
 		
 		pages = [NSMutableArray new];
@@ -24,7 +25,28 @@
 				[pages addObject:styleSelector];
 			}
 			
-			if ([customizingMode[@"type"] isEqualToString:@"detail"]) {}
+			if ([customizingMode[@"type"] isEqualToString:@"detail"]) {
+				watchFace.detailImages = [NSMutableArray new];
+				NSArray* options = [customizingMode objectForKey:@"options"];
+				
+				for (int j=0; j<options.count; j++) {
+					NSMutableArray* images = [[NSMutableArray alloc] init];
+					
+					for (int k=0; k<[options[j] count]; k++) {
+						UIImageView* detailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:options[j][k] inBundle:watchFace.watchFaceBundle compatibleWithTraitCollection:nil]];
+						[detailImage setFrame:CGRectMake(0, 0, 312, 312)];
+						[detailImage setCenter:CGPointMake(156, 195)];
+						
+						if (j != watchFace.faceDetail) {
+							[detailImage setAlpha:0];
+						}
+						
+						[watchFace.backgroundView addSubview:detailImage];
+					}
+					
+					[watchFace.detailImages addObject:images];
+				}
+			}
 			
 			if ([customizingMode[@"type"] isEqualToString:@"color"]) {
 				LWKColorCustomizationSelector* colorSelector = [[LWKColorCustomizationSelector alloc] initWithFrame:CGRectMake(i*312, 0, 312, 390) options:customizingMode forWatchFace:watchFace faceEditView:self];

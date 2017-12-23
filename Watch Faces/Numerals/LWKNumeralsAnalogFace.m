@@ -7,7 +7,7 @@
 		_UIBackdropView* backgroundView = [[_UIBackdropView alloc] initWithFrame:CGRectMake(0, 0, 312, 390) autosizesToFitSuperview:NO settings:[_UIBackdropViewSettings settingsForStyle:1]];
 		[backgroundView.layer setCornerRadius:10];
 		[backgroundView setClipsToBounds:YES];
-		[self.backgroundView addSubview:backgroundView];
+		[self.backgroundView insertSubview:backgroundView atIndex:0];
 		
 		numeralImageContainer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 230, 230)];
 		[self.backgroundView addSubview:numeralImageContainer];

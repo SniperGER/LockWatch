@@ -5,7 +5,7 @@
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		[self.titleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:32]];
-		[self setTitle:@"Customize" forState:UIControlStateNormal];
+		[self setTitle:[[NSBundle bundleForClass:[LWKClockBase class]] localizedStringForKey:@"CUSTOMIZE" value:@"" table:nil] forState:UIControlStateNormal];
 		
 		if (kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			// iOS 9

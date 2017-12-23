@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong) UIView* indicatorView;
 
+@property (nonatomic, strong) NSMutableArray* detailImages;
+
 @property (nonatomic, strong) LWKFaceEditView* editView;
 @property (nonatomic, assign) BOOL isCustomizable;
 @property (nonatomic, assign) BOOL isEditing;

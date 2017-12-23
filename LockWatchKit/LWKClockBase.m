@@ -64,6 +64,13 @@
 		LWKCustomizationSelector* selector = [_editView.pages objectAtIndex:page];
 		currentCustomizationSelector = selector;
 		
+		for (LWKCustomizationSelector* _selector in _editView.pages) {
+			if (_selector != selector) {
+				[_selector setAlpha:0.0];
+			}
+		}
+		
+		[_editView.scrollView setContentOffset:[_editView.scrollView contentOffset]];
 		[_editView.scrollIndicator setIndicatorHeight:[selector indicatorHeight] relativeToHeight:400];
 		[_editView.scrollIndicator setIndicatorPosition:[selector indicatorPosition]];
 	} else {
@@ -90,7 +97,10 @@
 	return nil;
 }
 
-- (void)setFaceDetail:(int)detail {}
+- (void)setFaceDetail:(int)detail {
+	[watchFacePreferences setValue:[NSNumber numberWithInt:detail] forKey:@"detail"];
+	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+}
 
 - (int)faceDetail {
 	return [[watchFacePreferences valueForKey:@"detail"] intValue];

@@ -9,7 +9,7 @@
 		[backgroundView.layer setPosition:CGPointMake(156, 195)];
 		[backgroundView.layer setCornerRadius:156.0];
 		[backgroundView setClipsToBounds:YES];
-		[self.backgroundView addSubview:backgroundView];
+		[self.backgroundView insertSubview:backgroundView atIndex:0];
 
 		dial = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 310, 310)];
 		[dial.layer setPosition:CGPointMake(156, 195)];
