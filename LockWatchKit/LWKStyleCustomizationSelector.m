@@ -5,8 +5,33 @@
 
 @implementation LWKStyleCustomizationSelector
 
+- (id)initWithFrame:(CGRect)frame options:(NSDictionary *)options forWatchFace:(LWKClockBase *)watchFace faceEditView:(LWKFaceEditView *)faceEditView {
+	if (self = [super initWithFrame:frame options:options forWatchFace:watchFace faceEditView:faceEditView]) {
+		[contentScrollView setDelegate:nil];
+		[contentScrollView setContentOffset:CGPointMake(0, watchFace.faceStyle * 400)];
+		[contentScrollView setDelegate:self];
+	}
+	
+	return self;
+}
+
 - (CGFloat)indicatorHeight {
 	return customizingWatchFace.faceStyleViews.count * 400;
+}
+
+- (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev {
+	[super handleSwipeLeftToRight:scrollProgress isPrev:prev];
+	
+	if (prev) {
+		for (UIView* view in customizingWatchFace.backgroundView.subviews) {
+			if (![view isKindOfClass:NSClassFromString(@"_UIBackdropView")]) {
+				[view setAlpha:1-scrollProgress];
+			}
+		}
+		
+		[customizingWatchFace.contentView setAlpha:MAX(scrollProgress, 0.15)];
+		[customizingWatchFace.indicatorView setAlpha:1-scrollProgress];
+	}
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -15,8 +40,6 @@
 	
 	CGFloat pageProgress = ((currentPage * height) - scrollView.contentOffset.y) / height;
 	pageProgress = (round(pageProgress * 100)) / 100.0;
-	
-	NSLog(@"[LockWatchKit] pageProgress: %f", pageProgress);
 	
 	int prevIndex = (currentPage > 0) ? floor(currentPage) : 0;
 	int nextIndex = (currentPage < customizingWatchFace.faceStyleViews.count - 1) ? ceil(currentPage) : (int)customizingWatchFace.faceStyleViews.count - 1;

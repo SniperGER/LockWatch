@@ -13,7 +13,7 @@
 
 		dial = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 310, 310)];
 		[dial.layer setPosition:CGPointMake(156, 195)];
-		[self.contentView insertSubview:dial atIndex:0];
+		[self.backgroundView addSubview:dial];
 		
 		// Main View
 		mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 312)];
@@ -80,6 +80,9 @@
 		[movingHours setCenter:CGPointMake(156, 234)];
 		[secondaryView addSubview:movingHours];
 		
+		dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+		[secondaryView addSubview:dateLabel];
+		
 		[self.contentView insertSubview:secondaryView atIndex:2];
 		[secondaryView setAlpha:0];
 		
@@ -101,17 +104,25 @@
 	return self;
 }
 
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
+	
+	[self updateDateLabel];
+}
+
 - (void)didStartUpdatingTime {
 	[super didStartUpdatingTime];
 	[self updateActivityData];
 }
+
+#pragma mark Additional Methods
 
 - (void)updateActivityData {
 	activityData = [LWKActivityDataProvider activityData];
 	HKActivitySummary* summary = [HKActivitySummary new];
 	
 	// Activity
-	double activeEnergyBurnedGoal = [activityData[@"energy_burned_goal"] doubleValue];
+	double activeEnergyBurnedGoal = MAX([activityData[@"energy_burned_goal"] doubleValue], 1);
 	double activeEnergyBurned = [activityData[@"energy_burned"] doubleValue];
 	[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurnedGoal]];
 	[summary setActiveEnergyBurned:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurned]];
@@ -119,7 +130,7 @@
 	[activeEnergy setText:[NSString stringWithFormat:@"%d", (int)activeEnergyBurned]];
 	
 	// Exercise
-	double exerciseTimeGoal = [activityData[@"brisk_minutes_goal"] doubleValue];
+	double exerciseTimeGoal = MAX([activityData[@"brisk_minutes_goal"] doubleValue], 1);
 	double exerciseTime = [activityData[@"brisk_minutes"] doubleValue];
 	[summary setAppleExerciseTimeGoal:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTimeGoal]];
 	[summary setAppleExerciseTime:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTime]];
@@ -127,7 +138,7 @@
 	[brisk setText:[NSString stringWithFormat:@"%d", (int)exerciseTime]];
 	
 	// Move
-	double standHoursGoal = [activityData[@"active_hours_goal"] doubleValue];
+	double standHoursGoal = MAX([activityData[@"active_hours_goal"] doubleValue], 1);
 	double standHours = [activityData[@"active_hours"] doubleValue];
 	[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHoursGoal]];
 	[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHours]];
@@ -135,6 +146,34 @@
 	[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHours]];
 	
 	[activityRingView setActivitySummary:summary animated:NO];
+}
+
+- (void)updateDateLabel {
+	UIColor* _color = [[WatchColors colors] objectForKey:[self accentColor]];
+	if (CGColorEqualToColor(_color.CGColor, [WatchColors whiteColor].CGColor)) {
+		_color = [WatchColors lightOrangeColor];
+	}
+	
+	NSDate* date = [NSDate date];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"EEEE"];
+	
+	NSString *dayName = [[[dateFormatter stringFromDate:[NSDate date]] substringWithRange:NSMakeRange(0, 3)] uppercaseString];
+	long day = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] component:NSCalendarUnitDay fromDate:date];
+	
+	NSString* dateString = [NSString stringWithFormat:@"%@ %ld", dayName, day];
+	NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
+	[attributedText setAttributes:@{
+									NSForegroundColorAttributeName: [UIColor whiteColor],
+									NSFontAttributeName: [UIFont fontWithName:@".SFCompactRounded-Semibold" size:26]
+									} range:[dateString rangeOfString:dayName]];
+	[attributedText setAttributes:@{
+									NSForegroundColorAttributeName:_color,
+									NSFontAttributeName: [UIFont fontWithName:@".SFCompactRounded-Semibold" size:26]
+									} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
+	[dateLabel setAttributedText:attributedText];
+	[dateLabel sizeToFit];
+	[dateLabel setCenter:CGPointMake(220, 156)];
 }
 
 #pragma mark Customization
@@ -169,6 +208,7 @@
 		[brisk setText:[NSString stringWithFormat:@"%d", (int)exerciseTimeGoal]];
 		[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHoursGoal]];
 		
+		[self.indicatorView setHidden:YES];
 		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
 			[dial setAlpha:0.0];
 		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
@@ -177,6 +217,7 @@
 	} else {
 		[self updateActivityData];
 		
+		[self.indicatorView setHidden:NO];
 		[dial setAlpha:1.0];
 	}
 }
@@ -199,11 +240,12 @@
 	
 	UIColor* _color = [[WatchColors colors] objectForKey:color];
 	if (CGColorEqualToColor(_color.CGColor, [WatchColors whiteColor].CGColor)) {
-		[secondHand setTintColor:[WatchColors lightOrangeColor]];
+		[self.secondHand setTintColor:[WatchColors lightOrangeColor]];
 	}
 	
 	[[dial.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 	[dial.layer addSublayer:[self makeIndicatorsWithAccentColor:_color]];
+	[self updateDateLabel];
 }
 
 - (CALayer*)makeIndicatorsWithAccentColor:(UIColor*)accentColor {
@@ -219,7 +261,7 @@
 	
 	// Highlights
 	CAShapeLayer* highlightLayer = [CAShapeLayer layer];
-	[highlightLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.37].CGColor];
+	[highlightLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.75].CGColor];
 	[highlightLayer setLineWidth:4.0];
 	
 	UIBezierPath* path = [[UIBezierPath alloc] init];
@@ -239,6 +281,14 @@
 	[dialLayer addSublayer:highlightLayer];
 	
 	return dialLayer;
+}
+
+- (NSString*)accentColor {
+	if (watchFacePreferences && [watchFacePreferences objectForKey:@"accentColor"]) {
+		return [super accentColor];
+	} else {
+		return @"white";
+	}
 }
 
 @end

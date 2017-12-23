@@ -17,7 +17,7 @@
 				while (sqlite3_step(statement) == SQLITE_ROW) {
 					for (int i=0; i<6; i++) {
 						NSString* key = [NSString stringWithUTF8String:(char*)sqlite3_column_name(statement, i)];
-						NSString* value = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, i)];
+						NSString* value = (char*)sqlite3_column_text(statement, i) ? [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, i)] : [NSString stringWithFormat:@"%d", 0];
 						[activityData setValue:value forKey:key];
 					}
 				}

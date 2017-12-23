@@ -42,6 +42,14 @@
 		[movingHours setTextAlignment:NSTextAlignmentRight];
 		[movingHours setText:@"---"];
 		[self.contentView addSubview:movingHours];
+		
+		// Preferences
+		
+		if (![watchFacePreferences objectForKey:@"accentColor"]) {
+			[self setAccentColor:@"white"];
+		} else {
+			[self setAccentColor:[watchFacePreferences objectForKey:@"accentColor"]];
+		}
 	}
 	
 	return self;
@@ -89,5 +97,21 @@
 	[activityRingView setActivitySummary:summary animated:NO];
 }
 
+#pragma mark Customization
+
+// Accent Color
+- (void)setAccentColor:(NSString *)color {
+	UIColor* _color = [[WatchColors colors] objectForKey:color];
+	
+	[clockLabel setTextColor:_color];
+}
+
+- (NSString*)accentColor {
+	if (watchFacePreferences && [watchFacePreferences objectForKey:@"accentColor"]) {
+		return [super accentColor];
+	} else {
+		return @"white";
+	}
+}
 
 @end

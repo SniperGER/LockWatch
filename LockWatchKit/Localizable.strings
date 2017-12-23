@@ -1,0 +1,46 @@
+{
+	// Style
+	"STYLE" = "Style";
+	
+	// Colors
+	"white" = "White";
+	"gray" = "Gray";
+	"red" = "Red";
+	"orange" = "Orange";
+	"apricot" = "Apricot";
+	"lightOrange" = "Light Orange";
+	"yellow" = "Yellow";
+	"pollen" = "Pollen";
+	"flash" = "Flash";
+	"green" = "Green";
+	"mint" = "Mint";
+	"turquoise" = "Turquoise";
+	"lightBlue" = "Light Blue";
+	"blue" = "Blue";
+	"royalBlue" = "Royal Blue";
+	"lilac" = "Lilac";
+	"mistBlue" = "Mist Blue";
+	"azure" = "Azure";
+	"blueCobalt" = "Blue Cobalt";
+	"darkTeal" = "Dark Teal";
+	"midnightBlue" = "Midnight Blue";
+	"oceanBlue" = "Ocean Blue";
+	"purple" = "Purple";
+	"ultraViolet" = "Ultra Violet";
+	"lavender" = "Lavender";
+	"pinkSand" = "Pink Sand";
+	"lightPink" = "Light Pink";
+	"vintageRose" = "Vintage Rose";
+	"pink" = "Pink";
+	"electricPink" = "Electric Pink";
+	"roseRed" = "Rose Red";
+	"camellia" = "Camellia";
+	"flamingo" = "Flamingo";
+	"walnut" = "Walnut";
+	"stone" = "Stone";
+	"antiqueWhite" = "Antique White";
+	"softWhite" = "Soft White";
+	"pebble" = "Pebble";
+	"cocoa" = "Cocoa";
+	"darkOlive" = "Dark Olive";
+}

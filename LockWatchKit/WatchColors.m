@@ -12,6 +12,7 @@
 			 @"lightOrange": [WatchColors lightOrangeColor],
 			 @"yellow": [WatchColors yellowColor],
 			 @"pollen": [WatchColors pollenColor],
+			 @"flash": [WatchColors flashColor],
 			 @"green": [WatchColors greenColor],
 			 @"mint": [WatchColors mintColor],
 			 @"turquoise": [WatchColors turquoiseColor],
@@ -21,21 +22,28 @@
 			 @"lilac": [WatchColors lilacColor],
 			 @"mistBlue": [WatchColors mistBlueColor],
 			 @"azure": [WatchColors azureColor],
+			 @"blueCobalt": [WatchColors blueCobaltColor],
+			 @"darkTeal": [WatchColors darkTealColor],
 			 @"midnightBlue": [WatchColors midnightBlueColor],
 			 @"oceanBlue": [WatchColors oceanBlueColor],
 			 @"purple": [WatchColors purpleColor],
+			 @"ultraViolet": [WatchColors ultraVioletColor],
 			 @"lavender": [WatchColors lavenderColor],
 			 @"pinkSand": [WatchColors pinkSandColor],
 			 @"lightPink": [WatchColors lightPinkColor],
+			 @"vintageRose": [WatchColors vintageRoseColor],
 			 @"pink": [WatchColors pinkColor],
+			 @"electricPink": [WatchColors electricPinkColor],
+			 @"roseRed": [WatchColors roseRedColor],
 			 @"camellia": [WatchColors camelliaColor],
 			 @"flamingo": [WatchColors flamingoColor],
-			 @"vintageRose": [WatchColors vintageRoseColor],
 			 @"walnut": [WatchColors walnutColor],
 			 @"stone": [WatchColors stoneColor],
 			 @"antiqueWhite": [WatchColors antiqueWhiteColor],
+			 @"softWhite": [WatchColors softWhiteColor],
 			 @"pebble": [WatchColors pebbleColor],
-			 @"cocoa": [WatchColors cocoaColor]
+			 @"cocoa": [WatchColors cocoaColor],
+			 @"darkOlive": [WatchColors darkOliveColor]
 			 };
 }
 
@@ -49,6 +57,7 @@
 			 @"lightOrange",
 			 @"yellow",
 			 @"pollen",
+			 @"flash",
 			 @"green",
 			 @"mint",
 			 @"turquoise",
@@ -58,21 +67,28 @@
 			 @"lilac",
 			 @"mistBlue",
 			 @"azure",
+			 @"blueCobalt",
+			 @"darkTeal",
 			 @"midnightBlue",
 			 @"oceanBlue",
 			 @"purple",
+			 @"ultraViolet",
 			 @"lavender",
 			 @"pinkSand",
 			 @"lightPink",
+			 @"vintageRose",
 			 @"pink",
+			 @"electricPink",
+			 @"roseRed",
 			 @"camellia",
 			 @"flamingo",
-			 @"vintageRose",
 			 @"walnut",
 			 @"stone",
 			 @"antiqueWhite",
+			 @"softWhite",
 			 @"pebble",
-			 @"cocoa"
+			 @"cocoa",
+			 @"darkOlive"
 			 ];
 }
 
@@ -106,6 +122,10 @@
 
 + (UIColor*)pollenColor {
 	return [UIColor colorWithRed:1 green:0.82 blue:0.36 alpha:1.0];
+}
+
++ (UIColor*)flashColor {
+	return [UIColor colorWithRed:0.88 green:0.95 blue:0.14 alpha:1.0];
 }
 
 + (UIColor*)greenColor {
@@ -144,6 +164,14 @@
 	return [UIColor colorWithRed:0.53 green:0.6 blue:0.63 alpha:1.0];
 }
 
++ (UIColor*)blueCobaltColor {
+	return [UIColor colorWithRed:0.28 green:0.49 blue:0.62 alpha:1.0];
+}
+
++ (UIColor*)darkTealColor {
+	return [UIColor colorWithRed:0.21 green:0.45 blue:0.58 alpha:1.0];
+}
+
 + (UIColor*)midnightBlueColor {
 	return [UIColor colorWithRed:0.38 green:0.52 blue:0.75 alpha:1.0];
 }
@@ -154,6 +182,10 @@
 
 + (UIColor*)purpleColor {
 	return [UIColor colorWithRed:0.6 green:0.49 blue:0.97 alpha:1.0];
+}
+
++ (UIColor*)ultraVioletColor {
+	return [UIColor colorWithRed:0.44 green:0.34 blue:0.75 alpha:1.0];
 }
 
 + (UIColor*)lavenderColor {
@@ -168,8 +200,20 @@
 	return [UIColor colorWithRed:0.96 green:0.69 blue:0.67 alpha:1.0];
 }
 
++ (UIColor*)vintageRoseColor {
+	return [UIColor colorWithRed:0.96 green:0.67 blue:0.65 alpha:1.0];
+}
+
 + (UIColor*)pinkColor {
 	return [UIColor colorWithRed:1 green:0.35 blue:0.39 alpha:1.0];
+}
+
++ (UIColor*)electricPinkColor {
+	return [UIColor colorWithRed:1.0 green:0.31 blue:0.32 alpha:1.0];
+}
+
++ (UIColor*)roseRedColor {
+	return [UIColor colorWithRed:0.73 green:0.16 blue:0.27 alpha:1];
 }
 
 + (UIColor*)camelliaColor {
@@ -178,10 +222,6 @@
 
 + (UIColor*)flamingoColor {
 	return [UIColor colorWithRed:0.83 green:0.51 blue:0.42 alpha:1.0];
-}
-
-+ (UIColor*)vintageRoseColor {
-	return [UIColor colorWithRed:0.96 green:0.67 blue:0.65 alpha:1.0];
 }
 
 + (UIColor*)walnutColor {
@@ -196,6 +236,10 @@
 	return [UIColor colorWithRed:0.83 green:0.71 blue:0.58 alpha:1.0];
 }
 
++ (UIColor*)softWhiteColor {
+	return [UIColor colorWithRed:0.87 green:0.82 blue:0.73 alpha:1.0];
+}
+
 + (UIColor*)pebbleColor {
 	return [UIColor colorWithRed:0.68 green:0.62 blue:0.56 alpha:1.0];
 }
@@ -204,5 +248,8 @@
 	return [UIColor colorWithRed:0.61 green:0.56 blue:0.55 alpha:1.0];
 }
 
++ (UIColor*)darkOliveColor {
+	return [UIColor colorWithRed:0.55 green:0.55 blue:0.46 alpha:1.0];
+}
 
 @end

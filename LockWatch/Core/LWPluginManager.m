@@ -51,8 +51,6 @@
             // Load third-party watch faces (if any)
             [contents enumerateObjectsUsingBlock:^(NSURL* externalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
-                    NSLog(@"[LockWatch] Attempting to load %@", [externalPlugin lastPathComponent]);
-                    
                     NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
                     
                     if (watchFaceBundle) {

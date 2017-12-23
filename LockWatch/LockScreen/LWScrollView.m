@@ -105,7 +105,9 @@
 		[[LWCore sharedInstance] stopUpdatingTime];
 		[[self currentWatchFace] setIsEditing:NO];
 		
-		AudioServicesPlaySystemSound(1520);
+		if (!isEditing) {
+			AudioServicesPlaySystemSound(1520);
+		}
 		
 		if (animated) {
 			[UIView animateWithDuration:0.15 animations:^{
@@ -450,7 +452,6 @@
 }
 
 - (void)customizeButtonPressed {
-	NSLog(@"[LockWatch] customizeButtonPressed: Not implemented yet");
 	[self setIsSelecting:NO editing:YES animated:YES];
 }
 

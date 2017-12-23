@@ -5,17 +5,17 @@
 
 - (id)init {
 	if (self = [super init]) {
-		hourHand = [LWKClockHand hour];
-		[hourHand.layer setPosition:CGPointMake(156, 195)];
-		[self.contentView addSubview:hourHand];
+		_hourHand = [LWKClockHand hour];
+		[_hourHand.layer setPosition:CGPointMake(156, 156)];
+		[self.indicatorView addSubview:_hourHand];
 		
-		minuteHand = [LWKClockHand minute];
-		[minuteHand.layer setPosition:CGPointMake(156, 195)];
-		[self.contentView addSubview:minuteHand];
+		_minuteHand = [LWKClockHand minute];
+		[_minuteHand.layer setPosition:CGPointMake(156, 156)];
+		[self.indicatorView addSubview:_minuteHand];
 		
-		secondHand = [LWKClockHand second];
-		[secondHand.layer setPosition:CGPointMake(156, 195)];
-		[self.contentView addSubview:secondHand];
+		_secondHand = [LWKClockHand second];
+		[_secondHand.layer setPosition:CGPointMake(156, 156)];
+		[self.indicatorView addSubview:_secondHand];
 	}
 	
 	return self;
@@ -29,9 +29,9 @@
 	CGFloat minuteValue = (minute / 60.0) + (secondValue / 60.0);
 	CGFloat hourValue = (hour / 12.0) + (minuteValue / 12.0);
 	
-	if (secondHand) {
-		[secondHand.layer removeAllAnimations];
-		[secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue * 360.0))];
+	if (_secondHand) {
+		[_secondHand.layer removeAllAnimations];
+		[_secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue * 360.0))];
 		
 		if (animated) {
 			CABasicAnimation* secondAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -40,13 +40,13 @@
 			[secondAnim setCumulative:YES];
 			[secondAnim setRepeatCount:HUGE_VALF];
 			
-			[secondHand.layer addAnimation:secondAnim forKey:@"secondRotation"];
+			[_secondHand.layer addAnimation:secondAnim forKey:@"secondRotation"];
 		}
 	}
 	
-	if (minuteHand) {
-		[minuteHand.layer removeAllAnimations];
-		[minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue * 360.0))];
+	if (_minuteHand) {
+		[_minuteHand.layer removeAllAnimations];
+		[_minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue * 360.0))];
 		
 		if (animated) {
 			CABasicAnimation* minuteAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -55,13 +55,13 @@
 			[minuteAnim setCumulative:YES];
 			[minuteAnim setRepeatCount:HUGE_VALF];
 			
-			[minuteHand.layer addAnimation:minuteAnim forKey:@"minuteRotation"];
+			[_minuteHand.layer addAnimation:minuteAnim forKey:@"minuteRotation"];
 		}
 	}
 	
-	if (hourHand) {
-		[(hourHand).layer removeAllAnimations];
-		[(hourHand) setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue * 360.0))];
+	if (_hourHand) {
+		[(_hourHand).layer removeAllAnimations];
+		[(_hourHand) setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue * 360.0))];
 		
 		if (animated) {
 			CABasicAnimation* hourAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -70,20 +70,20 @@
 			[hourAnim setCumulative:YES];
 			[hourAnim setRepeatCount:HUGE_VALF];
 			
-			[(hourHand).layer addAnimation:hourAnim forKey:@"hourRotation"];
+			[(_hourHand).layer addAnimation:hourAnim forKey:@"hourRotation"];
 		}
 	}
 }
 
 - (void)didStartUpdatingTime {
-	if (secondHand) {
-		[secondHand.layer removeAllAnimations];
+	if (_secondHand) {
+		[_secondHand.layer removeAllAnimations];
 	}
-	if (minuteHand) {
-		[minuteHand.layer removeAllAnimations];
+	if (_minuteHand) {
+		[_minuteHand.layer removeAllAnimations];
 	}
-	if (hourHand) {
-		[hourHand.layer removeAllAnimations];
+	if (_hourHand) {
+		[_hourHand.layer removeAllAnimations];
 	}
 	
 	NSDate* date = [NSDate date];
@@ -103,14 +103,14 @@
 	float hourValue = ((Hour/12) + minuteValue/12);
 	
 	[UIView animateWithDuration:0.25 delay: 0 options: UIViewAnimationOptionCurveLinear animations:^{
-		if (secondHand) {
-			[secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue*360))];
+		if (_secondHand) {
+			[_secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue*360))];
 		}
-		if (minuteHand) {
-			[minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue*360))];
+		if (_minuteHand) {
+			[_minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue*360))];
 		}
-		if (hourHand) {
-			[hourHand setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue*360))];
+		if (_hourHand) {
+			[_hourHand setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue*360))];
 		}
 	} completion:^(BOOL finished) {
 		
@@ -118,14 +118,14 @@
 }
 
 - (void)didStopUpdatingTime {
-	if (secondHand) {
-		[secondHand.layer removeAllAnimations];
+	if (_secondHand) {
+		[_secondHand.layer removeAllAnimations];
 	}
-	if (minuteHand) {
-		[minuteHand.layer removeAllAnimations];
+	if (_minuteHand) {
+		[_minuteHand.layer removeAllAnimations];
 	}
-	if (hourHand) {
-		[hourHand.layer removeAllAnimations];
+	if (_hourHand) {
+		[_hourHand.layer removeAllAnimations];
 	}
 	
 	float Hour = 10.0;
@@ -138,14 +138,14 @@
 	float hourValue = ((Hour/12) + minuteValue/12);
 	
 	[UIView animateWithDuration:0.25 delay:0 options: UIViewAnimationOptionCurveLinear animations:^{
-		if (secondHand) {
-			[secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue*360))];
+		if (_secondHand) {
+			[_secondHand setTransform:CGAffineTransformMakeRotation(deg2rad(secondValue*360))];
 		}
-		if (minuteHand) {
-			[minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue*360))];
+		if (_minuteHand) {
+			[_minuteHand setTransform:CGAffineTransformMakeRotation(deg2rad(minuteValue*360))];
 		}
-		if (hourHand) {
-			[hourHand setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue*360))];
+		if (_hourHand) {
+			[_hourHand setTransform:CGAffineTransformMakeRotation(deg2rad(hourValue*360))];
 		}
 	} completion:nil];
 }
@@ -157,27 +157,36 @@
 	
 	if (isEditing) {
 		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
-			[hourHand setAlpha:0.0];
-			[minuteHand setAlpha:0.0];
-			[secondHand setAlpha:0.0];
+			[_hourHand setAlpha:0.0];
+			[_minuteHand setAlpha:0.0];
+			[_secondHand setAlpha:0.0];
 		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
 			// TODO
+			[self.contentView setAlpha:0.15];
+			[self.indicatorView setAlpha:1.0];
+			
+			[_hourHand setAlpha:0.15];
+			[_minuteHand setAlpha:0.15];
+			[_secondHand setAlpha:1.0];
 		} else {
-			[hourHand setAlpha:1.0];
-			[minuteHand setAlpha:1.0];
-			[secondHand setAlpha:1.0];
+			[_hourHand setAlpha:1.0];
+			[_minuteHand setAlpha:1.0];
+			[_secondHand setAlpha:1.0];
 		}
 															 
 	} else {
-		[hourHand setAlpha:1.0];
-		[minuteHand setAlpha:1.0];
-		[secondHand setAlpha:1.0];
+		[_hourHand setAlpha:1.0];
+		[_minuteHand setAlpha:1.0];
+		[_secondHand setAlpha:1.0];
+		
+		[self.contentView setAlpha:1.0];
+		[self.indicatorView setAlpha:1.0];
 	}
 }
 
 // Accent Color
 - (void)setAccentColor:(NSString *)color {
-	[secondHand setTintColor:[[WatchColors colors] objectForKey:color]];
+	[_secondHand setTintColor:[[WatchColors colors] objectForKey:color]];
 	[super setAccentColor:color];
 }
 

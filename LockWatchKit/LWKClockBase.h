@@ -13,14 +13,17 @@
 	NSMutableDictionary* watchFacePreferences;
 	NSArray* customizationOptions;
 	
+	UILabel* dateLabel;
+	
 	LWKCustomizationSelector* currentCustomizationSelector;
 }
 
 @property (nonatomic, strong, readonly) NSBundle* watchFaceBundle;
 
+@property (nonatomic, strong) UIView* clockView;
 @property (nonatomic, strong) UIView* backgroundView;
 @property (nonatomic, strong) UIView* contentView;
-@property (nonatomic, strong) UIView* clockView;
+@property (nonatomic, strong) UIView* indicatorView;
 
 @property (nonatomic, strong) LWKFaceEditView* editView;
 @property (nonatomic, assign) BOOL isCustomizable;
@@ -34,8 +37,13 @@
 
 - (NSArray*)faceStyleViews;
 - (void)setFaceStyle:(int)style;
+- (int)faceStyle;
+
 - (NSArray*)faceDetailViews;
 - (void)setFaceDetail:(int)detail;
+- (int)faceDetail;
+
 - (void)setAccentColor:(NSString*)color;
+- (NSString*)accentColor;
 
 @end

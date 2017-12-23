@@ -26,6 +26,31 @@
 	hour = (hour > 12 || hour <= 0) ? ABS(hour - 12) : hour;
 	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
 	
+	[self updateNumeralImagesForHour:hour];
+}
+
+- (void)didStartUpdatingTime {
+	[super didStartUpdatingTime];
+	
+	NSDate* date = [NSDate date];
+	NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents* hourComp = [gregorian components:NSCalendarUnitHour fromDate:date];
+	
+	float hour = [hourComp hour];
+	
+	hour = (hour > 12 || hour <= 0) ? ABS(hour - 12) : hour;
+	[self updateNumeralImagesForHour:hour];
+}
+
+- (void)didStopUpdatingTime {
+	[super didStopUpdatingTime];
+	
+	[self updateNumeralImagesForHour:10];
+}
+
+#pragma mark Numeral Images
+
+- (void)updateNumeralImagesForHour:(double)hour {
 	UIImage* hourImage = [[UIImage imageNamed:[NSString stringWithFormat:@"regular%d", (int)hour] inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[numeralImageContainer setImage:hourImage];
 	
@@ -76,12 +101,6 @@
 	[numeralImageContainer setCenter:CGPointMake(posX, posY)];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
-	
-	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
-}
-
 #pragma mark Customization
 
 // Accent Color
@@ -90,6 +109,14 @@
 	
 	UIColor* _color = [[WatchColors colors] objectForKey:color];
 	[numeralImageContainer setTintColor:_color];
+}
+
+- (NSString*)accentColor {
+	if (watchFacePreferences && [watchFacePreferences objectForKey:@"accentColor"]) {
+		return [super accentColor];
+	} else {
+		return @"lightOrange";
+	}
 }
 
 @end

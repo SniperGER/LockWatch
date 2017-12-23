@@ -18,4 +18,7 @@
 - (CGFloat)indicatorHeight;
 - (CGFloat)indicatorPosition;
 
+- (void)handleSwipeRightToLeft:(CGFloat)scrollProgress isNext:(BOOL)next;
+- (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev;
+
 @end

@@ -24,9 +24,19 @@
 		
 		if (options[@"label"]) {
 			labelView = [[LWKLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-			[labelView setText:options[@"label"][@"text"]];
+			[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:options[@"label"][@"text"] value:@"" table:nil] uppercaseString]];
 			[labelView setCenter:CGPointFromString(options[@"label"][@"center"])];
 			[self addSubview:labelView];
+			
+			if (options[@"label"][@"align"]) {
+				CGRect labelFrame = labelView.frame;
+				if ([options[@"label"][@"align"] isEqualToString:@"left"]) {
+					labelFrame.origin.x = 0;
+				} else if ([options[@"label"][@"align"] isEqualToString:@"right"]) {
+					labelFrame.origin.x = self.bounds.size.width - labelFrame.size.width;
+				}
+				[labelView setFrame:labelFrame];
+			}
 		}
 		
 		if (options[@"options"]) {
@@ -49,6 +59,14 @@
 
 - (CGFloat)indicatorPosition {
 	return contentScrollView.contentOffset.y / (contentScrollView.contentSize.height - 400);
+}
+
+- (void)handleSwipeRightToLeft:(CGFloat)scrollProgress isNext:(BOOL)next {
+	[self setAlpha:scrollProgress];
+}
+
+- (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev {
+	[self setAlpha:scrollProgress];
 }
 
 @end

@@ -9,8 +9,12 @@
 		_backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		_contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		
+		_indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 312)];
+		[_indicatorView setCenter:CGPointMake(156, 195)];
+		
 		[_clockView addSubview:_backgroundView];
 		[_clockView addSubview:_contentView];
+		[_clockView addSubview:_indicatorView];
 		
 		_watchFaceBundle = [NSBundle bundleForClass:self.class];
 		watchFacePreferences = [NSMutableDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]]];
@@ -30,7 +34,9 @@
 	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {}
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+	
+}
 - (void)didStartUpdatingTime {}
 - (void)didStopUpdatingTime {}
 
@@ -75,6 +81,10 @@
 	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
 }
 
+- (int)faceStyle {
+	return [[watchFacePreferences objectForKey:@"style"] intValue];
+}
+
 // Detail
 - (NSArray*)faceDetailViews {
 	return nil;
@@ -82,9 +92,18 @@
 
 - (void)setFaceDetail:(int)detail {}
 
+- (int)faceDetail {
+	return [[watchFacePreferences valueForKey:@"detail"] intValue];
+}
+
 // Accent Color
 - (void)setAccentColor:(NSString*)color {
 	[watchFacePreferences setObject:color forKey:@"accentColor"];
-	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];}
+	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+}
+
+- (NSString*)accentColor {
+	return [watchFacePreferences objectForKey:@"accentColor"];
+}
 
 @end

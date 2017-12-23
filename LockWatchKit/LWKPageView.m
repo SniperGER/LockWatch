@@ -20,7 +20,7 @@
 			backgroundView = [objc_getClass("MTMaterialView") materialViewWithRecipe:4 options:2];
 			[backgroundView setFrame:CGRectMake(-16, -16, frame.size.width + 32, frame.size.height + 32)];
 			[backgroundView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.44]];
-			[(MTMaterialView*)backgroundView _setCornerRadius:15.0];
+			[backgroundView.layer setCornerRadius:15.0];
 			[backgroundView setClipsToBounds:YES];
 			[self addSubview:backgroundView];
 		}

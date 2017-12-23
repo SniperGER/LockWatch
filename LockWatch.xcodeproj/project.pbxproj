@@ -10,8 +10,6 @@
 		8D058C2E1FE3D8500073239E /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D058C2D1FE3D84B0073239E /* Customization.plist */; };
 		8D1437201FEA68DC001EF825 /* LWKLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D14371E1FEA68DC001EF825 /* LWKLabel.h */; };
 		8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14371F1FEA68DC001EF825 /* LWKLabel.m */; };
-		8D1437221FEC42B7001EF825 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; };
-		8D1437231FEC42B7001EF825 /* Cephei.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D489DB71FEA4E3D009874DC /* Cephei.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D1437261FED0505001EF825 /* LWKColorCustomizationSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D1437241FED0505001EF825 /* LWKColorCustomizationSelector.h */; };
 		8D1437271FED0505001EF825 /* LWKColorCustomizationSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1437251FED0505001EF825 /* LWKColorCustomizationSelector.m */; };
 		8D2053701FDF3E3900450F19 /* _UIBackdropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D20536E1FDF3E3900450F19 /* _UIBackdropView.h */; };
@@ -48,6 +46,9 @@
 		8D981A9F1FDC522A00D9F0F7 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D981A991FDC522A00D9F0F7 /* second@2x.png */; };
 		8D981AA01FDC522A00D9F0F7 /* second@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D981A9A1FDC522A00D9F0F7 /* second@3x.png */; };
 		8D981AA41FDC674800D9F0F7 /* LWInterfaceView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D981AA21FDC674800D9F0F7 /* LWInterfaceView.h */; };
+		8DC7D3151FEDBE780001E17C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DC7D3141FEDBE780001E17C /* Localizable.strings */; };
+		8DC7D3191FEDC6480001E17C /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC7D3181FEDC6480001E17C /* Customization.plist */; };
+		8DC7D31C1FEDCC400001E17C /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC7D31A1FEDCBEF0001E17C /* Customization.plist */; };
 		8DCDBE361FDFE76E0014EDD6 /* LWKActivityAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDBE331FDFE76E0014EDD6 /* LWKActivityAnalogFace.m */; };
 		8DCDBE371FDFE7B70014EDD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE2E1FDFE76E0014EDD6 /* InfoPlist.strings */; };
 		8DD05DE31FE7B329004E3A58 /* LWKNumeralsAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD05DE21FE7B329004E3A58 /* LWKNumeralsAnalogFace.m */; };
@@ -194,7 +195,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8D1437231FEC42B7001EF825 /* Cephei.framework in Embed Frameworks */,
 				8DDF22E61FE44E12006FA9F9 /* LockWatchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -266,6 +266,9 @@
 		8D981AA31FDC674800D9F0F7 /* LWInterfaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWInterfaceView.m; sourceTree = "<group>"; };
 		8D9C23721FDE71AF0098B316 /* LWFaceLibraryOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWFaceLibraryOverlayView.h; sourceTree = "<group>"; };
 		8D9C23731FDE71AF0098B316 /* LWFaceLibraryOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWFaceLibraryOverlayView.m; sourceTree = "<group>"; };
+		8DC7D3141FEDBE780001E17C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		8DC7D3181FEDC6480001E17C /* Customization.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
+		8DC7D31A1FEDCBEF0001E17C /* Customization.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
 		8DCDBE2F1FDFE76E0014EDD6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE301FDFE76E0014EDD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE311FDFE76E0014EDD6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -367,7 +370,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D1437221FEC42B7001EF825 /* Cephei.framework in Frameworks */,
 				8DDF22E51FE44E12006FA9F9 /* LockWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +439,7 @@
 			children = (
 				8D83970B1FE083DA00703408 /* Info.plist */,
 				8D83971F1FE1152E00703408 /* InfoPlist.strings */,
+				8DC7D3181FEDC6480001E17C /* Customization.plist */,
 				8D8397111FE084C900703408 /* LWKActivityDigitalFace.h */,
 				8D8397121FE084C900703408 /* LWKActivityDigitalFace.m */,
 			);
@@ -452,6 +455,7 @@
 				8D981A981FDC522A00D9F0F7 /* minute@3x.png */,
 				8D981A991FDC522A00D9F0F7 /* second@2x.png */,
 				8D981A9A1FDC522A00D9F0F7 /* second@3x.png */,
+				8DC7D3141FEDBE780001E17C /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -532,6 +536,7 @@
 				8DD05DEF1FE7BC54004E3A58 /* Resources */,
 				8DD05DDE1FE7B290004E3A58 /* Info.plist */,
 				8DD05DED1FE7B5BA004E3A58 /* InfoPlist.strings */,
+				8DC7D31A1FEDCBEF0001E17C /* Customization.plist */,
 				8DD05DE11FE7B329004E3A58 /* LWKNumeralsAnalogFace.h */,
 				8DD05DE21FE7B329004E3A58 /* LWKNumeralsAnalogFace.m */,
 			);
@@ -864,6 +869,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC7D3191FEDC6480001E17C /* Customization.plist in Resources */,
 				8D8397211FE1158700703408 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -872,6 +878,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC7D31C1FEDCC400001E17C /* Customization.plist in Resources */,
 				8DD05E151FE7BC65004E3A58 /* regular7@3x.png in Resources */,
 				8DD05E0F1FE7BC65004E3A58 /* regular4@3x.png in Resources */,
 				8DD05E1E1FE7BC65004E3A58 /* regular12@2x.png in Resources */,
@@ -918,6 +925,7 @@
 				8D83971D1FE1152E00703408 /* InfoPlist.strings in Resources */,
 				8D981AA01FDC522A00D9F0F7 /* second@3x.png in Resources */,
 				8D52DEDD1FDD43EE00B54C22 /* WatchFaces.txt in Resources */,
+				8DC7D3151FEDBE780001E17C /* Localizable.strings in Resources */,
 				8D981A9B1FDC522A00D9F0F7 /* hour@2x.png in Resources */,
 				8D981A9E1FDC522A00D9F0F7 /* minute@3x.png in Resources */,
 				8D981A9C1FDC522A00D9F0F7 /* hour@3x.png in Resources */,
@@ -1356,6 +1364,8 @@
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				SUPPORTED_PLATFORMS = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1364,6 +1374,8 @@
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				SUPPORTED_PLATFORMS = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1747,6 +1759,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
 				SYSROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk;
 				TARGET = "simulator:latest";
 				THEOS = /opt/theos/;
@@ -1792,6 +1805,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
 				SYSROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk;
 				TARGET = "simulator:latest";
 				THEOS = /opt/theos/;
@@ -1847,7 +1861,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = LockWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1904,7 +1918,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = LockWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.LockWatchKit;

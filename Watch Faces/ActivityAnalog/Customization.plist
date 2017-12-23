@@ -25,6 +25,17 @@
 	<dict>
 		<key>type</key>
 		<string>color</string>
+		<key>frame</key>
+		<string>{{4,42},{306,306}}</string>
+		<key>cornerRadius</key>
+		<integer>156</integer>
+		<key>label</key>
+		<dict>
+			<key>center</key>
+			<string>{156,365.5}</string>
+			<key>text</key>
+			<string>COLOR</string>
+		</dict>
 	</dict>
 </array>
 </plist>

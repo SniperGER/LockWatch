@@ -1,6 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class LWCore;
+
+@interface ViewController : UIViewController {
+	LWCore* lockwatch;
+}
 
 
 @end

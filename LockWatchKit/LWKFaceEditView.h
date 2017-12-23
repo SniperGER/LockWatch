@@ -4,6 +4,7 @@
 
 @interface LWKFaceEditView : UIView <UIScrollViewDelegate> {
 	NSMutableArray* pages;
+	CGFloat lastScrollX;
 }
 
 @property (nonatomic, strong) UIScrollView* scrollView;
