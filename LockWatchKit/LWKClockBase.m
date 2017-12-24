@@ -98,6 +98,14 @@
 }
 
 - (void)setFaceDetail:(int)detail {
+	if (self.detailImages) {
+		for (int i=0; i<[self.detailImages count]; i++) {
+			for (UIImageView* image in [self.detailImages objectAtIndex:i]) {
+				[image setAlpha: i == detail ? 1 : 0];
+			}
+		}
+	}
+	
 	[watchFacePreferences setValue:[NSNumber numberWithInt:detail] forKey:@"detail"];
 	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
 }

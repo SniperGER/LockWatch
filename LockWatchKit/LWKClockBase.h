@@ -13,8 +13,6 @@
 	NSMutableDictionary* watchFacePreferences;
 	NSArray* customizationOptions;
 	
-	UILabel* dateLabel;
-	
 	LWKCustomizationSelector* currentCustomizationSelector;
 }
 
@@ -24,6 +22,7 @@
 @property (nonatomic, strong) UIView* backgroundView;
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong) UIView* indicatorView;
+@property (nonatomic, strong) UILabel* dateLabel;
 
 @property (nonatomic, strong) NSMutableArray* detailImages;
 

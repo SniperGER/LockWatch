@@ -4,20 +4,28 @@
 <array>
 	<dict>
 		<key>type</key>
-		<string>style</string>
+		<string>detail</string>
+		<key>useBorderImage</key>
+		<true/>
 		<key>options</key>
 		<array>
-			<string>0</string>
-			<string>1</string>
+			<array>
+				<string></string>
+			</array>
+			<array>
+				<string>simple_detail_1</string>
+			</array>
+			<array>
+				<string>simple_detail_2</string>
+			</array>
+			<array>
+				<string>simple_detail_3</string>
+			</array>
 		</array>
-		<key>frame</key>
-		<string>{{14,53},{284,284}}</string>
-		<key>cornerRadius</key>
-		<integer>142</integer>
 		<key>label</key>
 		<dict>
 			<key>center</key>
-			<string>{156,354.5}</string>
+			<string>{156,370.5}</string>
 			<key>text</key>
 			<string>STYLE</string>
 		</dict>
@@ -26,15 +34,13 @@
 		<key>type</key>
 		<string>color</string>
 		<key>frame</key>
-		<string>{{0,39},{312,312}}</string>
+		<string>{{126,150},{60,221}}</string>
 		<key>cornerRadius</key>
-		<integer>156</integer>
+		<integer>30</integer>
 		<key>label</key>
 		<dict>
 			<key>center</key>
-			<string>{156,368.5}</string>
-			<key>text</key>
-			<string>COLOR</string>
+			<string>{156,132.5}</string>
 		</dict>
 	</dict>
 </array>

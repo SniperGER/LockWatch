@@ -5,6 +5,8 @@
 	<dict>
 		<key>type</key>
 		<string>detail</string>
+		<key>useBorderImage</key>
+		<true/>
 		<key>options</key>
 		<array>
 			<array>
@@ -23,6 +25,26 @@
 				<string>utility_detail_3_inner</string>
 			</array>
 		</array>
+		<key>label</key>
+		<dict>
+			<key>center</key>
+			<string>{156,370.5}</string>
+			<key>text</key>
+			<string>STYLE</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>type</key>
+		<string>color</string>
+		<key>frame</key>
+		<string>{{126,150},{60,221}}</string>
+		<key>cornerRadius</key>
+		<integer>30</integer>
+		<key>label</key>
+		<dict>
+			<key>center</key>
+			<string>{156,132.5}</string>
+		</dict>
 	</dict>
 </array>
 </plist>

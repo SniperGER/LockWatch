@@ -1,5 +1,6 @@
 #import "LockWatchKit.h"
 #import "LWKStyleCustomizationSelector.h"
+#import "LWKDetailCustomizationSelector.h"
 #import "LWKColorCustomizationSelector.h"
 
 @implementation LWKFaceEditView
@@ -41,11 +42,16 @@
 							[detailImage setAlpha:0];
 						}
 						
-						[watchFace.backgroundView addSubview:detailImage];
+						[watchFace.contentView addSubview:detailImage];
+						[images addObject:detailImage];
 					}
 					
 					[watchFace.detailImages addObject:images];
 				}
+				
+				LWKDetailCustomizationSelector* detailSelector = [[LWKDetailCustomizationSelector alloc] initWithFrame:CGRectMake(i*312, 0, 312, 390) options:customizingMode forWatchFace:watchFace faceEditView:self];
+				[_scrollView addSubview:detailSelector];
+				[pages addObject:detailSelector];
 			}
 			
 			if ([customizingMode[@"type"] isEqualToString:@"color"]) {

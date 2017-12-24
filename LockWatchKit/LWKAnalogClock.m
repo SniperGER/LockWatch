@@ -156,10 +156,15 @@
 	[super setIsEditing:isEditing];
 	
 	if (isEditing) {
-		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
+		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")] ||
+			[currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKDetailCustomizationSelector")]) {
 			[_hourHand setAlpha:0.0];
 			[_minuteHand setAlpha:0.0];
 			[_secondHand setAlpha:0.0];
+			
+			if (self.dateLabel) {
+				[self.dateLabel setAlpha:0.0];
+			}
 		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
 			// TODO
 			[self.contentView setAlpha:0.15];
@@ -168,16 +173,28 @@
 			[_hourHand setAlpha:0.15];
 			[_minuteHand setAlpha:0.15];
 			[_secondHand setAlpha:1.0];
+			
+			if (self.dateLabel) {
+				[self.dateLabel setAlpha:0.15];
+			}
 		} else {
 			[_hourHand setAlpha:1.0];
 			[_minuteHand setAlpha:1.0];
 			[_secondHand setAlpha:1.0];
+			
+			if (self.dateLabel) {
+				[self.dateLabel setAlpha:1.0];
+			}
 		}
 															 
 	} else {
 		[_hourHand setAlpha:1.0];
 		[_minuteHand setAlpha:1.0];
 		[_secondHand setAlpha:1.0];
+		
+		if (self.dateLabel) {
+			[self.dateLabel setAlpha:1.0];
+		}
 		
 		[self.contentView setAlpha:1.0];
 		[self.indicatorView setAlpha:1.0];

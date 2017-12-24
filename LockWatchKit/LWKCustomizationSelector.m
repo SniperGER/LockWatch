@@ -20,6 +20,10 @@
 			}
 			
 			[self addSubview:borderView];
+		} else if ([options[@"useBorderImage"] boolValue]) {
+			UIImageView* borderImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"customize_border" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+			[borderImage setTintColor:[UIColor colorWithRed:0.02 green:0.87 blue:0.44 alpha:1.0]];
+			[self addSubview:borderImage];
 		}
 		
 		if (options[@"label"]) {

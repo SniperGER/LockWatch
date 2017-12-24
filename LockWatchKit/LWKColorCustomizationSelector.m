@@ -58,15 +58,19 @@
 		[customizingWatchFace.indicatorView setAlpha:scrollProgress];
 		
 		if ([(LWKAnalogClock*)customizingWatchFace hourHand]) {
-			[[(LWKAnalogClock*)customizingWatchFace hourHand] setAlpha:0.25];
+			[[(LWKAnalogClock*)customizingWatchFace hourHand] setAlpha:0.15];
 		}
 		
 		if ([(LWKAnalogClock*)customizingWatchFace minuteHand]) {
-			[[(LWKAnalogClock*)customizingWatchFace minuteHand] setAlpha:0.25];
+			[[(LWKAnalogClock*)customizingWatchFace minuteHand] setAlpha:0.15];
 		}
 		
 		if ([(LWKAnalogClock*)customizingWatchFace secondHand]) {
 			[[(LWKAnalogClock*)customizingWatchFace secondHand] setAlpha:1.0];
+		}
+		
+		if (customizingWatchFace.dateLabel) {
+			[customizingWatchFace.dateLabel setAlpha:0.15];
 		}
 	} else {
 		//[customizingWatchFace.backgroundView setAlpha:1 - scrollProgress];

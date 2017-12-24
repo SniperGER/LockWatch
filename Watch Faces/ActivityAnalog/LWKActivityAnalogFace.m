@@ -80,8 +80,8 @@
 		[movingHours setCenter:CGPointMake(156, 234)];
 		[secondaryView addSubview:movingHours];
 		
-		dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-		[secondaryView addSubview:dateLabel];
+		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+		[secondaryView addSubview:self.dateLabel];
 		
 		[self.contentView insertSubview:secondaryView atIndex:2];
 		[secondaryView setAlpha:0];
@@ -171,9 +171,44 @@
 									NSForegroundColorAttributeName:_color,
 									NSFontAttributeName: [UIFont fontWithName:@".SFCompactRounded-Semibold" size:26]
 									} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
-	[dateLabel setAttributedText:attributedText];
-	[dateLabel sizeToFit];
-	[dateLabel setCenter:CGPointMake(220, 156)];
+	[self.dateLabel setAttributedText:attributedText];
+	[self.dateLabel sizeToFit];
+	[self.dateLabel setCenter:CGPointMake(220, 156)];
+}
+
+- (CALayer*)makeIndicatorsWithAccentColor:(UIColor*)accentColor {
+	CALayer* dialLayer = [CALayer layer];
+	
+	// Ring
+	CAShapeLayer* ringLayer = [CAShapeLayer layer];
+	[ringLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.12].CGColor];
+	[ringLayer setFillColor:nil];
+	[ringLayer setLineWidth:16.0];
+	[ringLayer setPath:[UIBezierPath bezierPathWithOvalInRect:CGRectInset(dial.bounds, 8, 8)].CGPath];
+	[dialLayer addSublayer:ringLayer];
+	
+	// Highlights
+	CAShapeLayer* highlightLayer = [CAShapeLayer layer];
+	[highlightLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.75].CGColor];
+	[highlightLayer setLineWidth:4.0];
+	
+	UIBezierPath* path = [[UIBezierPath alloc] init];
+	for (int i=0; i<12; i++) {
+		CGFloat angle = deg2rad(i*30);
+		CGFloat innerRadius = 139;
+		CGFloat outerRadius = 155;
+		
+		CGPoint inner = CGPointMake((innerRadius * sin(angle)) + (310/2), (innerRadius * -cos(angle)) + (310/2));
+		CGPoint outer = CGPointMake((outerRadius * sin(angle)) + (310/2), (outerRadius * -cos(angle)) + (310/2));
+		
+		[path moveToPoint:inner];
+		[path addLineToPoint:outer];
+	}
+	
+	[highlightLayer setPath:path.CGPath];
+	[dialLayer addSublayer:highlightLayer];
+	
+	return dialLayer;
 }
 
 #pragma mark Customization
@@ -246,41 +281,6 @@
 	[[dial.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 	[dial.layer addSublayer:[self makeIndicatorsWithAccentColor:_color]];
 	[self updateDateLabel];
-}
-
-- (CALayer*)makeIndicatorsWithAccentColor:(UIColor*)accentColor {
-	CALayer* dialLayer = [CALayer layer];
-	
-	// Ring
-	CAShapeLayer* ringLayer = [CAShapeLayer layer];
-	[ringLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.12].CGColor];
-	[ringLayer setFillColor:nil];
-	[ringLayer setLineWidth:16.0];
-	[ringLayer setPath:[UIBezierPath bezierPathWithOvalInRect:CGRectInset(dial.bounds, 8, 8)].CGPath];
-	[dialLayer addSublayer:ringLayer];
-	
-	// Highlights
-	CAShapeLayer* highlightLayer = [CAShapeLayer layer];
-	[highlightLayer setStrokeColor:[accentColor colorWithAlphaComponent:0.75].CGColor];
-	[highlightLayer setLineWidth:4.0];
-	
-	UIBezierPath* path = [[UIBezierPath alloc] init];
-	for (int i=0; i<12; i++) {
-		CGFloat angle = deg2rad(i*30);
-			CGFloat innerRadius = 139;
-			CGFloat outerRadius = 155;
-			
-			CGPoint inner = CGPointMake((innerRadius * sin(angle)) + (310/2), (innerRadius * -cos(angle)) + (310/2));
-			CGPoint outer = CGPointMake((outerRadius * sin(angle)) + (310/2), (outerRadius * -cos(angle)) + (310/2));
-			
-			[path moveToPoint:inner];
-			[path addLineToPoint:outer];
-	}
-	
-	[highlightLayer setPath:path.CGPath];
-	[dialLayer addSublayer:highlightLayer];
-	
-	return dialLayer;
 }
 
 - (NSString*)accentColor {
