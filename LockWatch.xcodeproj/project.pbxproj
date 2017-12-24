@@ -73,6 +73,7 @@
 		8D52DEDA1FDD388D00B54C22 /* LWKPageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D52DED81FDD388D00B54C22 /* LWKPageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D52DEDB1FDD388D00B54C22 /* LWKPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D52DED91FDD388D00B54C22 /* LWKPageView.m */; };
 		8D52DEDD1FDD43EE00B54C22 /* WatchFaces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8D52DEDC1FDD43EE00B54C22 /* WatchFaces.txt */; };
+		8D5EDB7C1FEFD911009EA507 /* Chronograph.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D8397101FE0844C00703408 /* LockWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; };
 		8D8397131FE084C900703408 /* LWKActivityDigitalFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8397121FE084C900703408 /* LWKActivityDigitalFace.m */; };
 		8D8397141FE0930800703408 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3C0BD31FE00154008D7FC2 /* HealthKitUI.framework */; };
@@ -340,6 +341,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8D5EDB7C1FEFD911009EA507 /* Chronograph.watchface in Embed PlugIns */,
 				8D3639531FEFAB6B0044A5AA /* XLarge.watchface in Embed PlugIns */,
 				8D3639521FEFAB630044A5AA /* Color.watchface in Embed PlugIns */,
 				8D28F5801FEF279200810B0E /* Simple.watchface in Embed PlugIns */,
@@ -432,6 +434,7 @@
 		8D52DED81FDD388D00B54C22 /* LWKPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKPageView.h; sourceTree = "<group>"; };
 		8D52DED91FDD388D00B54C22 /* LWKPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKPageView.m; sourceTree = "<group>"; };
 		8D52DEDC1FDD43EE00B54C22 /* WatchFaces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WatchFaces.txt; sourceTree = "<group>"; };
+		8D5DF74C1FF04189003EB352 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8D6806781FDA8FD7004369D5 /* LWPluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPluginManager.h; sourceTree = "<group>"; };
 		8D6806791FDA8FD7004369D5 /* LWPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPluginManager.m; sourceTree = "<group>"; };
 		8D8397041FE083B200703408 /* ActivityDigital.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivityDigital.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -851,6 +854,7 @@
 		8DCF3FC51FDA8A6300107325 = {
 			isa = PBXGroup;
 			children = (
+				8D5DF74C1FF04189003EB352 /* README.md */,
 				8DCF3FCC1FDA8BA900107325 /* LockWatch */,
 				8D52DED01FDD366300B54C22 /* Watch Faces */,
 				8DFBBDFB1FDAB2DB007694E5 /* LockWatchKit */,
@@ -2935,7 +2939,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2968,6 +2973,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.LockWatchDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3003,7 +3010,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3029,6 +3037,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.LockWatchDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
