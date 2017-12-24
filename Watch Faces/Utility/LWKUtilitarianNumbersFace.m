@@ -12,6 +12,7 @@
 		
 		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 		[self.indicatorView insertSubview:self.dateLabel atIndex:0];
+		[self updateDateLabel];
 		
 		if (![watchFacePreferences objectForKey:@"detail"]) {
 			[self setFaceDetail:0];

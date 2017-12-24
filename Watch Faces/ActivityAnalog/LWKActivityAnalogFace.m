@@ -82,6 +82,7 @@
 		
 		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 		[secondaryView addSubview:self.dateLabel];
+		[self updateDateLabel];
 		
 		[self.contentView insertSubview:secondaryView atIndex:2];
 		[secondaryView setAlpha:0];

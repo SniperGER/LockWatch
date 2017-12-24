@@ -36,15 +36,6 @@
 	}
 }
 
-// Detail
-- (int)faceDetail{
-	if (watchFacePreferences && [watchFacePreferences objectForKey:@"detail"]) {
-		return [super faceDetail];
-	} else {
-		return 1;
-	}
-}
-
 // Accent Color
 - (void)setAccentColor:(NSString *)color {
 	[super setAccentColor:color];

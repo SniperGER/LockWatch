@@ -46,8 +46,20 @@
 		8D28F59C1FEF2BBA00810B0E /* simple_detail_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D28F59A1FEF2BBA00810B0E /* simple_detail_2@2x.png */; };
 		8D28F59F1FEF2F2000810B0E /* simple_detail_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D28F59D1FEF2F2000810B0E /* simple_detail_3@2x.png */; };
 		8D28F5A01FEF2F2000810B0E /* simple_detail_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D28F59E1FEF2F2000810B0E /* simple_detail_3@3x.png */; };
+		8D36394D1FEFA99E0044A5AA /* LWKExtraLargeFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36394C1FEFA99E0044A5AA /* LWKExtraLargeFace.m */; };
+		8D3639521FEFAB630044A5AA /* Color.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8D51E1FD1FEFA26800B64F65 /* Color.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D3639531FEFAB6B0044A5AA /* XLarge.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8D3639431FEFA9040044A5AA /* XLarge.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D3639541FEFAB880044A5AA /* LockWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; };
+		8D3639581FEFC4650044A5AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D36395A1FEFC4650044A5AA /* InfoPlist.strings */; };
+		8D36395D1FEFC4770044A5AA /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D36395C1FEFC4770044A5AA /* Customization.plist */; };
 		8D3820591FEA320700EDD891 /* Numerals.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8DD05DD41FE7B270004E3A58 /* Numerals.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D3C0BD41FE00154008D7FC2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3C0BD31FE00154008D7FC2 /* HealthKitUI.framework */; };
+		8D3E3F391FEFD0A8000E2D39 /* chrono_minute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F371FEFD0A8000E2D39 /* chrono_minute@2x.png */; };
+		8D3E3F3A1FEFD0A8000E2D39 /* chrono_minute@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F381FEFD0A8000E2D39 /* chrono_minute@3x.png */; };
+		8D3E3F3D1FEFD116000E2D39 /* chrono_hour@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F3B1FEFD116000E2D39 /* chrono_hour@2x.png */; };
+		8D3E3F3E1FEFD116000E2D39 /* chrono_hour@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F3C1FEFD116000E2D39 /* chrono_hour@3x.png */; };
+		8D3E3F411FEFD272000E2D39 /* chrono_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F3F1FEFD272000E2D39 /* chrono_indicator@2x.png */; };
+		8D3E3F421FEFD272000E2D39 /* chrono_indicator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E3F401FEFD272000E2D39 /* chrono_indicator@3x.png */; };
 		8D489DB21FEA464E009874DC /* LWPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D90B70A1FE85FF6007DA475 /* LWPreferences.m */; };
 		8D489DB41FEA4687009874DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D489DB31FEA4687009874DC /* LaunchScreen.storyboard */; };
 		8D489DB61FEA4691009874DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D489DB51FEA4691009874DC /* Main.storyboard */; };
@@ -83,6 +95,10 @@
 		8D981AA41FDC674800D9F0F7 /* LWInterfaceView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D981AA21FDC674800D9F0F7 /* LWInterfaceView.h */; };
 		8DC7D3191FEDC6480001E17C /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC7D3181FEDC6480001E17C /* Customization.plist */; };
 		8DC7D31C1FEDCC400001E17C /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC7D31A1FEDCBEF0001E17C /* Customization.plist */; };
+		8DC8A3341FEFCE8900A9F118 /* LockWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; };
+		8DC8A3371FEFCECC00A9F118 /* LWKChronoFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8A3361FEFCECC00A9F118 /* LWKChronoFace.m */; };
+		8DC8A33B1FEFCF4500A9F118 /* chronograph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC8A3391FEFCF4500A9F118 /* chronograph@2x.png */; };
+		8DC8A33C1FEFCF4500A9F118 /* chronograph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC8A33A1FEFCF4500A9F118 /* chronograph@3x.png */; };
 		8DCDBE361FDFE76E0014EDD6 /* LWKActivityAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDBE331FDFE76E0014EDD6 /* LWKActivityAnalogFace.m */; };
 		8DCDBE371FDFE7B70014EDD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE2E1FDFE76E0014EDD6 /* InfoPlist.strings */; };
 		8DD05DE31FE7B329004E3A58 /* LWKNumeralsAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD05DE21FE7B329004E3A58 /* LWKNumeralsAnalogFace.m */; };
@@ -213,6 +229,20 @@
 			remoteGlobalIDString = 8D28F5711FEF270700810B0E;
 			remoteInfo = Simple;
 		};
+		8D36394E1FEFAB550044A5AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
+			remoteInfo = XLarge;
+		};
+		8D3639501FEFAB580044A5AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
+			remoteInfo = XLarge;
+		};
 		8D51E2031FEFA27200B64F65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
@@ -233,6 +263,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D8397031FE083B200703408;
 			remoteInfo = ActivityDigital;
+		};
+		8DC8A3321FEFCE7F00A9F118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
+			remoteInfo = Chronograph;
 		};
 		8DD05DE41FE7B354004E3A58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -303,6 +340,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8D3639531FEFAB6B0044A5AA /* XLarge.watchface in Embed PlugIns */,
+				8D3639521FEFAB630044A5AA /* Color.watchface in Embed PlugIns */,
 				8D28F5801FEF279200810B0E /* Simple.watchface in Embed PlugIns */,
 				8D28F56D1FEF189600810B0E /* Utility.watchface in Embed PlugIns */,
 				8D3820591FEA320700EDD891 /* Numerals.watchface in Embed PlugIns */,
@@ -361,7 +400,20 @@
 		8D28F59A1FEF2BBA00810B0E /* simple_detail_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_2@2x.png"; sourceTree = "<group>"; };
 		8D28F59D1FEF2F2000810B0E /* simple_detail_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_3@2x.png"; sourceTree = "<group>"; };
 		8D28F59E1FEF2F2000810B0E /* simple_detail_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_3@3x.png"; sourceTree = "<group>"; };
+		8D3639431FEFA9040044A5AA /* XLarge.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLarge.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D36394A1FEFA9760044A5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Watch Faces/XLarge/Info.plist"; sourceTree = SOURCE_ROOT; };
+		8D36394B1FEFA99E0044A5AA /* LWKExtraLargeFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWKExtraLargeFace.h; path = "Watch Faces/XLarge/LWKExtraLargeFace.h"; sourceTree = SOURCE_ROOT; };
+		8D36394C1FEFA99E0044A5AA /* LWKExtraLargeFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWKExtraLargeFace.m; path = "Watch Faces/XLarge/LWKExtraLargeFace.m"; sourceTree = SOURCE_ROOT; };
+		8D3639591FEFC4650044A5AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8D36395B1FEFC4670044A5AA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8D36395C1FEFC4770044A5AA /* Customization.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Customization.plist; path = "Watch Faces/XLarge/Customization.plist"; sourceTree = SOURCE_ROOT; };
 		8D3C0BD31FE00154008D7FC2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/HealthKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		8D3E3F371FEFD0A8000E2D39 /* chrono_minute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_minute@2x.png"; sourceTree = "<group>"; };
+		8D3E3F381FEFD0A8000E2D39 /* chrono_minute@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_minute@3x.png"; sourceTree = "<group>"; };
+		8D3E3F3B1FEFD116000E2D39 /* chrono_hour@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_hour@2x.png"; sourceTree = "<group>"; };
+		8D3E3F3C1FEFD116000E2D39 /* chrono_hour@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_hour@3x.png"; sourceTree = "<group>"; };
+		8D3E3F3F1FEFD272000E2D39 /* chrono_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_indicator@2x.png"; sourceTree = "<group>"; };
+		8D3E3F401FEFD272000E2D39 /* chrono_indicator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrono_indicator@3x.png"; sourceTree = "<group>"; };
 		8D489DB31FEA4687009874DC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D489DB51FEA4691009874DC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8D489DB71FEA4E3D009874DC /* Cephei.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cephei.framework; path = ../../../../../opt/theos/lib/Cephei.framework; sourceTree = "<group>"; };
@@ -410,6 +462,12 @@
 		8D9C23731FDE71AF0098B316 /* LWFaceLibraryOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWFaceLibraryOverlayView.m; sourceTree = "<group>"; };
 		8DC7D3181FEDC6480001E17C /* Customization.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
 		8DC7D31A1FEDCBEF0001E17C /* Customization.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
+		8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Chronograph.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC8A3301FEFCE6800A9F118 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DC8A3351FEFCECC00A9F118 /* LWKChronoFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKChronoFace.h; sourceTree = "<group>"; };
+		8DC8A3361FEFCECC00A9F118 /* LWKChronoFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKChronoFace.m; sourceTree = "<group>"; };
+		8DC8A3391FEFCF4500A9F118 /* chronograph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chronograph@2x.png"; sourceTree = "<group>"; };
+		8DC8A33A1FEFCF4500A9F118 /* chronograph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chronograph@3x.png"; sourceTree = "<group>"; };
 		8DCDBE2F1FDFE76E0014EDD6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE301FDFE76E0014EDD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE311FDFE76E0014EDD6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -495,6 +553,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D3639401FEFA9040044A5AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3639541FEFAB880044A5AA /* LockWatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D51E1FA1FEFA26800B64F65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,6 +586,14 @@
 				8D8397161FE0930800703408 /* HealthKit.framework in Frameworks */,
 				8D8397141FE0930800703408 /* HealthKitUI.framework in Frameworks */,
 				8D8397101FE0844C00703408 /* LockWatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC8A3251FEFCE3000A9F118 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC8A3341FEFCE8900A9F118 /* LockWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +704,19 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		8D3639441FEFA9050044A5AA /* XLarge */ = {
+			isa = PBXGroup;
+			children = (
+				8D36394A1FEFA9760044A5AA /* Info.plist */,
+				8D36395A1FEFC4650044A5AA /* InfoPlist.strings */,
+				8D36395C1FEFC4770044A5AA /* Customization.plist */,
+				8D36394B1FEFA99E0044A5AA /* LWKExtraLargeFace.h */,
+				8D36394C1FEFA99E0044A5AA /* LWKExtraLargeFace.m */,
+			);
+			name = XLarge;
+			path = ../XLarge;
+			sourceTree = "<group>";
+		};
 		8D3C0BD21FE00154008D7FC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +760,8 @@
 				8D1437361FEE5A57001EF825 /* Utility */,
 				8D28F5781FEF275100810B0E /* Simple */,
 				8D51E2091FEFA2E800B64F65 /* Color */,
+				8DC8A32F1FEFCE6800A9F118 /* Chronograph */,
+				8D3639441FEFA9050044A5AA /* XLarge */,
 				8D52DEDC1FDD43EE00B54C22 /* WatchFaces.txt */,
 			);
 			path = "Watch Faces";
@@ -721,6 +810,32 @@
 			path = LockScreen;
 			sourceTree = "<group>";
 		};
+		8DC8A32F1FEFCE6800A9F118 /* Chronograph */ = {
+			isa = PBXGroup;
+			children = (
+				8DC8A3381FEFCF3D00A9F118 /* Resources */,
+				8DC8A3301FEFCE6800A9F118 /* Info.plist */,
+				8DC8A3351FEFCECC00A9F118 /* LWKChronoFace.h */,
+				8DC8A3361FEFCECC00A9F118 /* LWKChronoFace.m */,
+			);
+			path = Chronograph;
+			sourceTree = "<group>";
+		};
+		8DC8A3381FEFCF3D00A9F118 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DC8A3391FEFCF4500A9F118 /* chronograph@2x.png */,
+				8DC8A33A1FEFCF4500A9F118 /* chronograph@3x.png */,
+				8D3E3F3B1FEFD116000E2D39 /* chrono_hour@2x.png */,
+				8D3E3F3C1FEFD116000E2D39 /* chrono_hour@3x.png */,
+				8D3E3F371FEFD0A8000E2D39 /* chrono_minute@2x.png */,
+				8D3E3F381FEFD0A8000E2D39 /* chrono_minute@3x.png */,
+				8D3E3F3F1FEFD272000E2D39 /* chrono_indicator@2x.png */,
+				8D3E3F401FEFD272000E2D39 /* chrono_indicator@3x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		8DCDBE2D1FDFE76E0014EDD6 /* ActivityAnalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +864,8 @@
 				8D1437301FEE59EB001EF825 /* Utility.watchface */,
 				8D28F5721FEF270700810B0E /* Simple.watchface */,
 				8D51E1FD1FEFA26800B64F65 /* Color.watchface */,
+				8D3639431FEFA9040044A5AA /* XLarge.watchface */,
+				8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */,
 			);
 			sourceTree = "<group>";
 		};
@@ -919,6 +1036,7 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
+				8D3639511FEFAB580044A5AA /* PBXTargetDependency */,
 				8D51E2041FEFA27200B64F65 /* PBXTargetDependency */,
 				8D28F57D1FEF278300810B0E /* PBXTargetDependency */,
 				8D14373E1FEE5AB1001EF825 /* PBXTargetDependency */,
@@ -940,6 +1058,8 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
+				8DC8A3331FEFCE7F00A9F118 /* PBXTargetDependency */,
+				8D36394F1FEFAB550044A5AA /* PBXTargetDependency */,
 				8D51E2061FEFA27600B64F65 /* PBXTargetDependency */,
 				8D28F57F1FEF278600810B0E /* PBXTargetDependency */,
 				8D1437401FEE5AB4001EF825 /* PBXTargetDependency */,
@@ -989,6 +1109,24 @@
 			name = Simple;
 			productName = Simple;
 			productReference = 8D28F5721FEF270700810B0E /* Simple.watchface */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8D3639421FEFA9040044A5AA /* XLarge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D3639481FEFA9050044A5AA /* Build configuration list for PBXNativeTarget "XLarge" */;
+			buildPhases = (
+				8D36393F1FEFA9040044A5AA /* Sources */,
+				8D3639401FEFA9040044A5AA /* Frameworks */,
+				8D3639411FEFA9040044A5AA /* Resources */,
+				8D3639551FEFABF90044A5AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XLarge;
+			productName = XLarge;
+			productReference = 8D3639431FEFA9040044A5AA /* XLarge.watchface */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D51E1FC1FEFA26800B64F65 /* Color */ = {
@@ -1043,6 +1181,24 @@
 			name = ActivityDigital;
 			productName = ActivityDigital;
 			productReference = 8D8397041FE083B200703408 /* ActivityDigital.watchface */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8DC8A3271FEFCE3000A9F118 /* Chronograph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC8A32D1FEFCE3000A9F118 /* Build configuration list for PBXNativeTarget "Chronograph" */;
+			buildPhases = (
+				8DC8A3241FEFCE3000A9F118 /* Sources */,
+				8DC8A3251FEFCE3000A9F118 /* Frameworks */,
+				8DC8A3261FEFCE3000A9F118 /* Resources */,
+				8DC8A32E1FEFCE4E00A9F118 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Chronograph;
+			productName = Chronograph;
+			productReference = 8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8DD05DD31FE7B270004E3A58 /* Numerals */ = {
@@ -1123,6 +1279,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					8D3639421FEFA9040044A5AA = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					8D51E1FC1FEFA26800B64F65 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -1135,6 +1295,10 @@
 					8D8397031FE083B200703408 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = EDV7C8ZP77;
+						ProvisioningStyle = Automatic;
+					};
+					8DC8A3271FEFCE3000A9F118 = {
+						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
 					8DCF3FD01FDA8DBA00107325 = {
@@ -1180,6 +1344,8 @@
 				8D14372F1FEE59EB001EF825 /* Utility */,
 				8D28F5711FEF270700810B0E /* Simple */,
 				8D51E1FC1FEFA26800B64F65 /* Color */,
+				8DC8A3271FEFCE3000A9F118 /* Chronograph */,
+				8D3639421FEFA9040044A5AA /* XLarge */,
 				8DDF22C81FE44DCA006FA9F9 /* LockWatchDemo */,
 			);
 		};
@@ -1218,6 +1384,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D3639411FEFA9040044A5AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D36395D1FEFC4770044A5AA /* Customization.plist in Resources */,
+				8D3639581FEFC4650044A5AA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D51E1FB1FEFA26800B64F65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1244,6 +1419,21 @@
 			files = (
 				8DC7D3191FEDC6480001E17C /* Customization.plist in Resources */,
 				8D8397211FE1158700703408 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC8A3261FEFCE3000A9F118 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC8A33C1FEFCF4500A9F118 /* chronograph@3x.png in Resources */,
+				8D3E3F421FEFD272000E2D39 /* chrono_indicator@3x.png in Resources */,
+				8D3E3F411FEFD272000E2D39 /* chrono_indicator@2x.png in Resources */,
+				8D3E3F3D1FEFD116000E2D39 /* chrono_hour@2x.png in Resources */,
+				8DC8A33B1FEFCF4500A9F118 /* chronograph@2x.png in Resources */,
+				8D3E3F3E1FEFD116000E2D39 /* chrono_hour@3x.png in Resources */,
+				8D3E3F3A1FEFD0A8000E2D39 /* chrono_minute@3x.png in Resources */,
+				8D3E3F391FEFD0A8000E2D39 /* chrono_minute@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1540,19 @@
 			shellPath = /bin/sh;
 			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/";
 		};
+		8D3639551FEFABF90044A5AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/";
+		};
 		8D51E2081FEFA2CA00B64F65 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1389,6 +1592,19 @@
 			shellPath = /bin/sh;
 			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$WRAPPER_NAME\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/$WRAPPER_NAME\nldid -S $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/$WRAPPER_NAME/$PRODUCT_NAME";
 		};
+		8DC8A32E1FEFCE4E00A9F118 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/";
+		};
 		8DD05DE01FE7B2B5004E3A58 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1421,6 +1637,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D36393F1FEFA9040044A5AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D36394D1FEFA99E0044A5AA /* LWKExtraLargeFace.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D51E1F91FEFA26800B64F65 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1442,6 +1666,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D8397131FE084C900703408 /* LWKActivityDigitalFace.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC8A3241FEFCE3000A9F118 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC8A3371FEFCECC00A9F118 /* LWKChronoFace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1544,6 +1776,16 @@
 			target = 8D28F5711FEF270700810B0E /* Simple */;
 			targetProxy = 8D28F5851FEF27AE00810B0E /* PBXContainerItemProxy */;
 		};
+		8D36394F1FEFAB550044A5AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3639421FEFA9040044A5AA /* XLarge */;
+			targetProxy = 8D36394E1FEFAB550044A5AA /* PBXContainerItemProxy */;
+		};
+		8D3639511FEFAB580044A5AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3639421FEFA9040044A5AA /* XLarge */;
+			targetProxy = 8D3639501FEFAB580044A5AA /* PBXContainerItemProxy */;
+		};
 		8D51E2041FEFA27200B64F65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
@@ -1558,6 +1800,11 @@
 			isa = PBXTargetDependency;
 			target = 8D8397031FE083B200703408 /* ActivityDigital */;
 			targetProxy = 8D83970E1FE0842F00703408 /* PBXContainerItemProxy */;
+		};
+		8DC8A3331FEFCE7F00A9F118 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
+			targetProxy = 8DC8A3321FEFCE7F00A9F118 /* PBXContainerItemProxy */;
 		};
 		8DD05DE51FE7B354004E3A58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1623,6 +1870,16 @@
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
+		};
+		8D36395A1FEFC4650044A5AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D3639591FEFC4650044A5AA /* en */,
+				8D36395B1FEFC4670044A5AA /* de */,
+			);
+			name = InfoPlist.strings;
+			path = "Watch Faces/XLarge";
+			sourceTree = SOURCE_ROOT;
 		};
 		8D51E2181FEFA57700B64F65 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1883,6 +2140,111 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.Simple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Release;
+		};
+		8D3639461FEFA9050044A5AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/XLarge/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.XLarge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.3;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Debug;
+		};
+		8D3639471FEFA9050044A5AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/XLarge/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.XLarge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.3;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = watchface;
@@ -2208,6 +2570,111 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.ActivityDigital;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Release;
+		};
+		8DC8A32B1FEFCE3000A9F118 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/Chronograph/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.Chronograph;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.3;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Debug;
+		};
+		8DC8A32C1FEFCE3000A9F118 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/Chronograph/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.Chronograph;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.3;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = watchface;
@@ -2812,6 +3279,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8D3639481FEFA9050044A5AA /* Build configuration list for PBXNativeTarget "XLarge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3639461FEFA9050044A5AA /* Debug */,
+				8D3639471FEFA9050044A5AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8D51E2021FEFA26800B64F65 /* Build configuration list for PBXNativeTarget "Color" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2819,6 +3295,7 @@
 				8D51E2011FEFA26800B64F65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D52DECD1FDD363D00B54C22 /* Build configuration list for PBXNativeTarget "ActivityAnalog" */ = {
 			isa = XCConfigurationList;
@@ -2834,6 +3311,15 @@
 			buildConfigurations = (
 				8D8397071FE083B200703408 /* Debug */,
 				8D8397081FE083B200703408 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC8A32D1FEFCE3000A9F118 /* Build configuration list for PBXNativeTarget "Chronograph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC8A32B1FEFCE3000A9F118 /* Debug */,
+				8DC8A32C1FEFCE3000A9F118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
