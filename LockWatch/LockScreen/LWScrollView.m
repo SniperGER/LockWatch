@@ -7,7 +7,10 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 382, 390)];
+		CGSize interfaceSize = [LWMetrics watchSize];
+		CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
+		
+		contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, interfaceSize.width + (scrollViewSpacing*2), interfaceSize.height)];
 		[contentView setCenter:CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))];
 		[contentView setPagingEnabled:YES];
 		[contentView setClipsToBounds:NO];
@@ -15,7 +18,7 @@
 		[contentView setDelegate:self];
 		[self addSubview:contentView];
 		
-		overlayView = [[LWFaceLibraryOverlayView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
+		overlayView = [[LWFaceLibraryOverlayView alloc] initWithFrame:CGRectMake(0, 0, interfaceSize.width, interfaceSize.height)];
 		[overlayView setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
 		[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
 		[overlayView setAlpha:0.0];
@@ -43,11 +46,14 @@
 	watchFacePages = [NSMutableArray new];
 	watchFaces = [NSMutableArray new];
 	
+	CGSize interfaceSize = [LWMetrics watchSize];
+	CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
+	
 	NSArray* loadedPlugins = [[[LWCore sharedInstance] pluginManager] loadedPlugins];
 	for (NSBundle* plugin in loadedPlugins) {
 		int i = [loadedPlugins indexOfObject:plugin];
 		
-		LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(35 + (i*(382)), 0, 312, 390)];
+		LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * (interfaceSize.width + (scrollViewSpacing * 2))), 0, interfaceSize.width, interfaceSize.height)];
 		[contentView addSubview:page];
 		[watchFacePages addObject:page];
 		
@@ -61,8 +67,8 @@
 		[overlayView addTitle:[[plugin objectForInfoDictionaryKey:@"CFBundleDisplayName"] uppercaseString]];
 	}
 	
-	[contentView setContentSize:CGSizeMake(watchFaces.count * 382, 390)];
-	[overlayView setContentSize:CGSizeMake(watchFaces.count * 230, 390)];
+	[contentView setContentSize:CGSizeMake(watchFaces.count * (interfaceSize.width + (scrollViewSpacing * 2)), interfaceSize.height)];
+	[overlayView setContentSize:CGSizeMake(watchFaces.count * 230, interfaceSize.height)];
 	
 	int currentWatchFaceIndex = 0;
 	

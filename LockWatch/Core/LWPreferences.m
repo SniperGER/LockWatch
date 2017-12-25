@@ -12,7 +12,7 @@ static LWPreferences* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		
-//#if (TARGET_OS_SIMULATOR)
+#if (TARGET_OS_SIMULATOR)
 		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
 		if (!preferences) {
@@ -26,6 +26,7 @@ static LWPreferences* sharedInstance;
 		
 		// Simulated watch size
 		if (![preferences objectForKey:@"watchSize"]) {
+			// regular, compact, optimized
 			[preferences setObject:@"regular" forKey:@"watchSize"];
 		}
 		
@@ -60,28 +61,28 @@ static LWPreferences* sharedInstance;
 		}
 		
 		[preferences writeToFile:PREFERENCES_PATH atomically:YES];
-//#else
-//		preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.lockwatch"];
-//
-//		[preferences registerDefaults:@{
-//										@"enabled": @YES,
-//										@"watchSize": @"regular",
-//										@"alwaysMinimized": @NO,
-//										@"yOffset": @0.0,
-//										@"watchFaceOrder": @[
-//												@"ml.festival.ActivityAnalog",
-//												@"ml.festival.ActivityDigital",
-//												@"ml.festival.Numerals",
-//												@"ml.festival.Utility",
-//												@"ml.festival.Simple",
-//												@"ml.festival.Color",
-//												@"ml.festival.Chronograph",
-//												@"ml.festival.XLarge",
-//												@"ml.festival.Weather"
-//												],
-//										@"disabledWatchFaces": @[]
-//										}];
-//#endif
+#else
+		preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.lockwatch"];
+
+		[preferences registerDefaults:@{
+										@"enabled": @YES,
+										@"watchSize": @"regular",
+										@"alwaysMinimized": @NO,
+										@"yOffset": @0.0,
+										@"watchFaceOrder": @[
+												@"ml.festival.ActivityAnalog",
+												@"ml.festival.ActivityDigital",
+												@"ml.festival.Numerals",
+												@"ml.festival.Utility",
+												@"ml.festival.Simple",
+												@"ml.festival.Color",
+												@"ml.festival.Chronograph",
+												@"ml.festival.XLarge",
+												@"ml.festival.Weather"
+												],
+										@"disabledWatchFaces": @[]
+										}];
+#endif
 	}
 	
 	return self;

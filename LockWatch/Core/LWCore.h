@@ -11,8 +11,10 @@
 @property (nonatomic, strong) LWKClockBase* currentWatchFace;
 
 @property (nonatomic, strong) LWInterfaceView* interfaceView;
+@property (nonatomic, assign) CGRect minimizedFrame;
 @property (nonatomic, assign) BOOL isSelecting;
 @property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, assign) BOOL isMinimized;
 
 + (id)sharedInstance;
 - (void)startUpdatingTime;

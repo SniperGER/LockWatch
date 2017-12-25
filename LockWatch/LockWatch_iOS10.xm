@@ -3,9 +3,23 @@
 @interface SBDashBoardCombinedListViewController : UIViewController
 @end
 
+@interface NCNotificationCombinedListViewController : UIViewController
+@end
+
 %group os10
 
 LWCore* lockwatch;
+SBDashBoardMainPageViewController* mainPage;
+
+BOOL hasNotifications;
+BOOL mediaControlsVisible;
+
+void setLockWatchVisibility() {
+	[[mainPage isolatingViewController].view setHidden:(!hasNotifications && !mediaControlsVisible)];
+	
+	[lockwatch.interfaceView setHidden:mediaControlsVisible];
+	[lockwatch setIsMinimized:(hasNotifications && !mediaControlsVisible)];
+}
 
 %hook SpringBoard
 
@@ -16,7 +30,7 @@ LWCore* lockwatch;
 	
 	SBLockScreenManager* lsManager = [%c(SBLockScreenManager) sharedInstance];
 	SBDashBoardViewController* dashBoard = [lsManager lockScreenViewController];
-	SBDashBoardMainPageViewController* mainPage;
+	
 	
 	if ([dashBoard respondsToSelector:@selector(mainPageViewController)]) {
 		mainPage = [dashBoard mainPageViewController];
@@ -25,7 +39,7 @@ LWCore* lockwatch;
 	}
 	
 	[mainPage.view insertSubview:lockwatch.interfaceView atIndex:0];
-	[[mainPage isolatingViewController].view removeFromSuperview];
+	setLockWatchVisibility();
 }
 
 %end	// %hook SpringBoard
@@ -51,6 +65,9 @@ LWCore* lockwatch;
 	[MSHookIvar<UILabel *>(self,"_dateSubtitleView") removeFromSuperview];
 	[MSHookIvar<UILabel *>(self,"_customSubtitleView") removeFromSuperview];
 	
+	[lockwatch setMinimizedFrame:self.frame];
+	setLockWatchVisibility();
+	
 	%orig;
 }
 
@@ -59,6 +76,8 @@ LWCore* lockwatch;
 %hook SBDashBoardViewController
 
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1 {
+	setLockWatchVisibility();
+	
 	if (lockwatch.isEditing) {
 		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES];
 	} else if (lockwatch.isSelecting) {
@@ -86,27 +105,35 @@ LWCore* lockwatch;
 
 %end	// %hook SBDashBoardScrollGestureController
 
+%hook SBDashBoardNotificationListViewController
+
+- (void)_setListHasContent:(BOOL)arg1 {
+	%orig;
+	
+	hasNotifications = arg1;
+	setLockWatchVisibility();
+}
+
+%end	// %hook SBDashBoardNotificationListViewController
+
 %hook SBBacklightController
 
 - (void)_lockScreenDimTimerFired {
-	/*if (lockwatch.isSelecting || lockwatch.isEditing) {
+	if (lockwatch.isSelecting || lockwatch.isEditing) {
 		[self resetIdleTimer];
 		return;
 	}
 	
-	%orig;*/
-	
-	return;
+	%orig;
 }
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-	/*if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
+	if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
 		[self resetIdleTimer];
 		return;
 	}
 	
-	%orig;*/
-	return;
+	%orig;
 }
 
 %end	// %hook SBBacklightController
@@ -119,6 +146,20 @@ LWCore* lockwatch;
 }
 
 %end	// %hook SBDashBoardCombinedListViewController
+
+// iOS 11
+%hook NCNotificationCombinedListViewController
+
+- (BOOL)hasVisibleContent {
+	BOOL r = %orig;
+	hasNotifications = r;
+	[self.view setHidden:!r];
+	setLockWatchVisibility();
+	
+	return r;
+}
+
+%end	// %hook NCNotificationCombinedListViewController
 
 %end	// %group os10
 

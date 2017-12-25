@@ -5,13 +5,13 @@
 #endif
 
 @interface LWPreferences : NSObject {
-//#if (TARGET_OS_SIMULATOR)
-//	NSMutableDictionary* preferences;
-//#else
-//	HBPreferences* preferences;
-//#endif
-	
+#if (TARGET_OS_SIMULATOR)
 	NSMutableDictionary* preferences;
+#else
+	HBPreferences* preferences;
+#endif
+	
+//	NSMutableDictionary* preferences;
 }
 
 + (_Nonnull id)sharedInstance;
