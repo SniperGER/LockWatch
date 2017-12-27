@@ -12,7 +12,7 @@ static LWPreferences* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		
-#if (TARGET_OS_SIMULATOR)
+#if (TARGET_OS_SIMULATOR || APP_CONTEXT)
 		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
 		if (!preferences) {

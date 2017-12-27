@@ -35,6 +35,7 @@ static LWCore* sharedInstance;
 - (void)setIsSelecting:(BOOL)isSelecting{
 	_isSelecting = isSelecting;
 	
+#if !APP_CONTEXT
 	// Fix for iOS 11
 	if ([[objc_getClass("SBBacklightController") sharedInstance] respondsToSelector:@selector(resetIdleTimer)]) {
 		[[objc_getClass("SBBacklightController") sharedInstance] resetIdleTimer];
@@ -47,6 +48,7 @@ static LWCore* sharedInstance;
 		
 		[[[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] scrollGestureController] scrollView] setScrollEnabled:(!_isSelecting && !_isEditing)];
 	}
+#endif
 }
 
 - (void)setIsEditing:(BOOL)isEditing {
@@ -69,9 +71,11 @@ static LWCore* sharedInstance;
 		CGSize interfaceSize = [LWMetrics watchSize];
 		CGRect labelFrame;
 		
+#if !APP_CONTEXT
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			labelFrame = [[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] dateViewController] view].frame;
 		}
+#endif
 		
 		CGRect oldFrame = CGRectMake(0, screenHeight/2 - interfaceSize.height/2, screenWidth, interfaceSize.height);
 		CGFloat scale = labelFrame.size.height / interfaceSize.width;
