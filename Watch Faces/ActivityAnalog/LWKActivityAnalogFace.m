@@ -250,11 +250,14 @@
 		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
 			[dial setAlpha:1.0];
 		}
+		
+		[self.dateLabel setAlpha:1.0];
 	} else {
 		[self updateActivityData];
 		
 		[self.indicatorView setHidden:NO];
 		[dial setAlpha:1.0];
+		[self.dateLabel setAlpha:1.0];
 	}
 }
 

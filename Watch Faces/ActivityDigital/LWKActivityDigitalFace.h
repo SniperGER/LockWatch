@@ -14,6 +14,8 @@
 	NSDictionary* activityData;
 	HKActivityRingView* activityRingView;
 	
+	UILabel* secondsLabel;
+	
 	UILabel* activeEnergy;
 	UILabel* brisk;
 	UILabel* movingHours;

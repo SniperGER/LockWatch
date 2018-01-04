@@ -11,8 +11,7 @@
 		
 		clockLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 56, 312, 96)];
 		[clockLabel setFont:[UIFont fontWithName:@".SFCompactRounded-Medium" size:78]];
-		[clockLabel setTextColor:[UIColor whiteColor]];
-		[clockLabel setTextAlignment:NSTextAlignmentCenter];
+		[clockLabel setTextAlignment:NSTextAlignmentRight];
 		[clockLabel setText:@"10:09:30"];
 		[self.contentView addSubview:clockLabel];
 		
@@ -58,16 +57,14 @@
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
 	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
 	
-	NSString* timeString = [NSString stringWithFormat:@"%d:%02d:%02d", (int)hour, (int)minute, (int)second];
-	[clockLabel setText:timeString];
+	
+	NSMutableAttributedString* timeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d:02d", (int)hour, (int)minute, (int)second]];
 }
 
 - (void)didStartUpdatingTime {
 	[super didStartUpdatingTime];
 	[self updateActivityData];
 }
-
-
 - (void)updateActivityData {
 	activityData = [LWKActivityDataProvider activityData];
 	HKActivitySummary* summary = [HKActivitySummary new];
