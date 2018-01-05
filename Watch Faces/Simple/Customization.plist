@@ -63,6 +63,11 @@
 					<string>DATE</string>
 					<key>align</key>
 					<string>center</string>
+					<key>titles</key>
+					<array>
+						<string>OFF</string>
+						<string>DATE</string>
+					</array>
 				</dict>
 				<key>options</key>
 				<array>
