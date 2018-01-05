@@ -104,7 +104,8 @@ static LWCore* sharedInstance;
 	
 	isUpdatingTime = YES;
 	[_currentWatchFace didStartUpdatingTime];
-	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+	syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
 }
 
 - (void)stopUpdatingTime {
@@ -114,6 +115,9 @@ static LWCore* sharedInstance;
 	
 	[clockUpdateTimer invalidate];
 	clockUpdateTimer = nil;
+	
+	[syncTimer invalidate];
+	syncTimer = nil;
 	
 	isUpdatingTime = NO;
 	
@@ -131,10 +135,40 @@ static LWCore* sharedInstance;
 	float hour = [hourComp hour];
 	float minute = [minuteComp minute];
 	float second = [secondComp second];
-	float mSecond = roundf([mSecondComp nanosecond]/1000000) + 250;
+	float mSecond = roundf([mSecondComp nanosecond]/1000000);
+	
+	NSLog(@"%f", mSecond);
+	
+	if (mSecond >= 0 && mSecond <= 20 && clockUpdateTimer.timeInterval < 0.5) {
+		[clockUpdateTimer invalidate];
+		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+		return;
+	} else if (mSecond < 1000 && mSecond > 750) {
+		[clockUpdateTimer invalidate];
+		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+		syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
+		return;
+	} else if (_currentWatchFace && clockUpdateTimer.timeInterval >= 0.5) {
+		[syncTimer invalidate];
+		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
+	}
+}
+
+- (void)updateTimeWhileTimeIsSyncing {
+	NSDate* date = [NSDate date];
+	NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents* hourComp = [gregorian components:NSCalendarUnitHour fromDate:date];
+	NSDateComponents* minuteComp = [gregorian components:NSCalendarUnitMinute fromDate:date];
+	NSDateComponents* secondComp = [gregorian components:NSCalendarUnitSecond fromDate:date];
+	NSDateComponents* mSecondComp = [gregorian components:NSCalendarUnitNanosecond fromDate:date];
+	
+	float hour = [hourComp hour];
+	float minute = [minuteComp minute];
+	float second = [secondComp second];
+	float mSecond = roundf([mSecondComp nanosecond]/1000000);
 	
 	if (_currentWatchFace) {
-		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:mSecond animated:YES];
+		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
 	}
 }
 

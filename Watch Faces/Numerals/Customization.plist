@@ -22,6 +22,11 @@
 			<string>STYLE</string>
 			<key>align</key>
 			<string>left</string>
+			<key>titles</key>
+			<array>
+				<string>REGULAR</string>
+				<string>ROUNDED</string>
+			</array>
 		</dict>
 	</dict>
 	<dict>

@@ -3,6 +3,8 @@
 	
 	// Style
 	"STYLE" = "Stil";
+	"REGULAR" = "Normal";
+	"ROUNDED" = "Abgerundet";
 	
 	// Colors
 	"white" = "Weiss";

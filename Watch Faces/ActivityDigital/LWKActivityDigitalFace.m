@@ -197,21 +197,21 @@
 	[summary setActiveEnergyBurnedGoal:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurnedGoal]];
 	[summary setActiveEnergyBurned:[HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:activeEnergyBurned]];
 
-	[activeEnergy setText:[NSString stringWithFormat:@"%d", (int)activeEnergyBurned]];
+	[activeEnergy setText:[NSString stringWithFormat:@"%02d", (int)activeEnergyBurned]];
 	
 	// Exercise
 	double exerciseTimeGoal = [activityData[@"brisk_minutes_goal"] doubleValue];
 	double exerciseTime = [activityData[@"brisk_minutes"] doubleValue];
 	[summary setAppleExerciseTimeGoal:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTimeGoal]];
 	[summary setAppleExerciseTime:[HKQuantity quantityWithUnit:[HKUnit minuteUnit] doubleValue:exerciseTime]];
-	[brisk setText:[NSString stringWithFormat:@"%d", (int)exerciseTime]];
+	[brisk setText:[NSString stringWithFormat:@"%02d", (int)exerciseTime]];
 	
 	// Move
 	double standHoursGoal = [activityData[@"active_hours_goal"] doubleValue];
 	double standHours = [activityData[@"active_hours"] doubleValue];
 	[summary setAppleStandHoursGoal:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHoursGoal]];
 	[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHours]];
-	[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHours]];
+	[movingHours setText:[NSString stringWithFormat:@"%02d", (int)standHours]];
 	
 	[activityRingView setActivitySummary:summary animated:NO];
 }
@@ -233,6 +233,14 @@
 	[super setFaceStyle:style];
 
 	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
+}
+
+- (int)faceStyle {
+	if (watchFacePreferences && [watchFacePreferences objectForKey:@"style"]) {
+		return [super faceStyle];
+	} else {
+		return 1;
+	}
 }
 
 // Accent Color

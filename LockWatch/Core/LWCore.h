@@ -5,6 +5,7 @@
 @interface LWCore : NSObject {
 	BOOL isUpdatingTime;
 	NSTimer* clockUpdateTimer;
+	NSTimer* syncTimer;
 }
 
 @property (nonatomic, strong) LWPluginManager* pluginManager;
@@ -20,5 +21,6 @@
 - (void)startUpdatingTime;
 - (void)stopUpdatingTime;
 - (void)updateTimeForCurrentWatchFace;
+- (void)updateTimeWhileTimeIsSyncing;
 
 @end

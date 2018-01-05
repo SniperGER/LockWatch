@@ -3,6 +3,8 @@
 	
 	// Style
 	"STYLE" = "Style";
+	"REGULAR" = "Regular";
+	"ROUNDED" = "Rounded";
 	
 	// Colors
 	"white" = "White";

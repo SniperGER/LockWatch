@@ -144,6 +144,14 @@
 	[self updateNumeralImagesForHour:10];
 }
 
+- (int)faceStyle {
+	if (watchFacePreferences && [watchFacePreferences objectForKey:@"style"]) {
+		return [super faceStyle];
+	} else {
+		return 0;
+	}
+}
+
 // Accent Color
 - (void)setAccentColor:(NSString *)color {
 	[super setAccentColor:color];
