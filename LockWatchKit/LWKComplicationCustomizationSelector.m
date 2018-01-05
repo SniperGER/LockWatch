@@ -27,7 +27,13 @@
 				
 				if (complicationOption[@"label"]) {
 					labelView = [[LWKLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-					[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:complicationOption[@"label"][@"text"] value:@"" table:nil] uppercaseString]];
+					
+					if (complicationOption[@"label"][@"titles"]) {
+						[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:complicationOption[@"label"][@"titles"][[customizingWatchFace complicationIndexForPosition:complicationOption[@"position"]]] value:@"" table:@""] uppercaseString]];
+					} else {
+						[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:complicationOption[@"label"][@"text"] value:@"" table:nil] uppercaseString]];
+					}
+					
 					[labelView setCenter:CGPointFromString(complicationOption[@"label"][@"center"])];
 					[self addSubview:labelView];
 					
@@ -91,8 +97,27 @@
 		page = ceilf(page);
 	}
 	
-	NSString* complicationPosition = customizingOptions[@"options"][[self indexForCurrentComplicationSelector]][@"position"];
+	NSDictionary* complicationOption = customizingOptions[@"options"][[self indexForCurrentComplicationSelector]];
+	
+	NSString* complicationPosition = complicationOption[@"position"];
 	[customizingWatchFace setComplicationIndex:page forPosition:complicationPosition];
+	
+	if (complicationOption[@"label"] && complicationOption[@"label"][@"titles"]) {
+		[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:complicationOption[@"label"][@"titles"][(int)page] value:@"" table:@""] uppercaseString]];
+		[labelView setCenter:CGPointFromString(complicationOption[@"label"][@"center"])];
+		
+		if (complicationOption[@"label"][@"align"]) {
+			CGRect labelFrame = labelView.frame;
+			if ([complicationOption[@"label"][@"align"] isEqualToString:@"left"]) {
+				labelFrame.origin.x = selectedComplicationView.frame.origin.x;
+			} else if ([complicationOption[@"label"][@"align"] isEqualToString:@"right"]) {
+				labelFrame.origin.x = selectedComplicationView.bounds.size.width - labelFrame.size.width;
+			} else if ([complicationOption[@"label"][@"align"] isEqualToString:@"center"]) {
+				labelFrame.origin.x = (selectedComplicationView.frame.origin.x + (selectedComplicationView.bounds.size.width / 2)) - labelFrame.size.width / 2;
+			}
+			[labelView setFrame:labelFrame];
+		}
+	}
 	
 	lastScrollY = scrollView.contentOffset.y;
 	[[customizingFaceEditView scrollIndicator] setIndicatorPosition:[self indicatorPosition]];

@@ -2,11 +2,16 @@
 #import "LWKClockBase.h"
 #import "LWKFaceEditView.h"
 #import "LWKScrollIndicator.h"
+#import "LWKLabel.h"
 
 @implementation LWKStyleCustomizationSelector
 
 - (id)initWithFrame:(CGRect)frame options:(NSDictionary *)options forWatchFace:(LWKClockBase *)watchFace faceEditView:(LWKFaceEditView *)faceEditView {
 	if (self = [super initWithFrame:frame options:options forWatchFace:watchFace faceEditView:faceEditView]) {
+		if (options[@"label"] && options[@"label"][@"titles"]) {
+			[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:options[@"label"][@"titles"][watchFace.faceStyle] value:@"" table:@""] uppercaseString]];
+			[self layoutLabel];
+		}
 		
 		[contentScrollView setDelegate:nil];
 		[contentScrollView setContentOffset:CGPointMake(0, watchFace.faceStyle * 400)];
@@ -45,6 +50,10 @@
 		
 		[customizingWatchFace setFaceStyle:page];
 		
+		if (customizingOptions[@"label"] && customizingOptions[@"label"][@"titles"]) {
+			[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:customizingOptions[@"label"][@"titles"][customizingWatchFace.faceStyle] value:@"" table:@""] uppercaseString]];
+			[self layoutLabel];
+		}
 	} else {
 		
 		CGFloat height = 400;

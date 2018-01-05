@@ -22,6 +22,11 @@
 			<string>STYLE</string>
 			<key>align</key>
 			<string>right</string>
+			<key>titles</key>
+			<array>
+				<string>MINUTES</string>
+				<string>SECONDS</string>
+			</array>
 		</dict>
 	</dict>
 	<dict>

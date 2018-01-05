@@ -26,23 +26,16 @@
 			UIImageView* borderImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"customize_border" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
 			[borderImage setTintColor:[UIColor colorWithRed:0.02 green:0.87 blue:0.44 alpha:1.0]];
 			[self addSubview:borderImage];
+			
+			borderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		}
 		
 		if (options[@"label"]) {
 			labelView = [[LWKLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 			[labelView setText:[[[NSBundle bundleForClass:self.class] localizedStringForKey:options[@"label"][@"text"] value:@"" table:nil] uppercaseString]];
-			[labelView setCenter:CGPointFromString(options[@"label"][@"center"])];
-			[self addSubview:labelView];
 			
-			if (options[@"label"][@"align"]) {
-				CGRect labelFrame = labelView.frame;
-				if ([options[@"label"][@"align"] isEqualToString:@"left"]) {
-					labelFrame.origin.x = 0;
-				} else if ([options[@"label"][@"align"] isEqualToString:@"right"]) {
-					labelFrame.origin.x = self.bounds.size.width - labelFrame.size.width;
-				}
-				[labelView setFrame:labelFrame];
-			}
+			[self layoutLabel];
+			[self addSubview:labelView];
 		}
 		
 		if (options[@"options"]) {
@@ -77,6 +70,24 @@
 
 - (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev {
 	[self setAlpha:scrollProgress];
+}
+
+- (void)layoutLabel {
+	if (customizingOptions[@"label"]) {
+		[labelView setCenter:CGPointFromString(customizingOptions[@"label"][@"center"])];
+		
+		if (customizingOptions[@"label"][@"align"]) {
+			CGRect labelFrame = labelView.frame;
+			if ([customizingOptions[@"label"][@"align"] isEqualToString:@"left"]) {
+				labelFrame.origin.x = 0;
+			} else if ([customizingOptions[@"label"][@"align"] isEqualToString:@"right"]) {
+				labelFrame.origin.x = self.bounds.size.width - labelFrame.size.width;
+			} else if ([customizingOptions[@"label"][@"align"] isEqualToString:@"center"]) {
+				labelFrame.origin.x = (borderView.frame.origin.x + (borderView.bounds.size.width / 2)) - labelFrame.size.width / 2;
+			}
+			[labelView setFrame:labelFrame];
+		}
+	}
 }
 
 @end

@@ -21,5 +21,6 @@
 
 - (void)handleSwipeRightToLeft:(CGFloat)scrollProgress isNext:(BOOL)next;
 - (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev;
+- (void)layoutLabel;
 
 @end

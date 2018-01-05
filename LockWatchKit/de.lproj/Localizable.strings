@@ -49,4 +49,8 @@
 	// Date
 	"DATE" = "Datum";
 	"OFF" = "Aus";
+	
+	// MISC
+	"MINUTES" = "Minuten";
+	"SECONDS" = "Sekunden";
 }
