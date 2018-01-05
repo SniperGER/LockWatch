@@ -73,7 +73,7 @@
 		// Preferences
 		
 		if (![watchFacePreferences objectForKey:@"style"]) {
-			[self setFaceStyle:1];
+			[self setFaceStyle:0];
 		} else {
 			[self setFaceStyle:[[watchFacePreferences objectForKey:@"style"] intValue]];
 		}
@@ -97,33 +97,6 @@
 	[self.dateLabel setText:[NSString stringWithFormat:@"%ld", day]];
 	
 	if (self.faceStyle == 0) {
-		NSMutableAttributedString* timeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d", (int)hour, (int)minute]];
-		for (int i=0; i<timeString.string.length; i++) {
-			NSString* substring = [timeString.string substringWithRange:NSMakeRange(i, 1)];
-			if ([substring isEqualToString:@":"]) {
-				[timeString addAttributes:@{
-											NSForegroundColorAttributeName: [UIColor clearColor]
-											} range:NSMakeRange(i, 1)];
-			}
-		}
-		
-		[clockLabel setAttributedText:timeString];
-		
-		NSMutableAttributedString* colonString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d", (int)hour, (int)minute]];
-		for (int i=0; i<colonString.string.length; i++) {
-			NSString* substring = [colonString.string substringWithRange:NSMakeRange(i, 1)];
-			if ([substring isEqualToString:@":"]) {
-				[colonString addAttributes:@{
-											NSForegroundColorAttributeName: accentColor
-											} range:NSMakeRange(i, 1)];
-			}
-		}
-		
-		[colonLabel setAttributedText:colonString];
-		
-		[secondsLabel1 setText:@""];
-		[secondsLabel2 setText:@""];
-	} else if (self.faceStyle == 1) {
 		NSMutableAttributedString* timeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d:99", (int)hour, (int)minute]];
 		
 		[timeString addAttributes:@{
@@ -157,6 +130,33 @@
 		NSString* secondsString = [NSString stringWithFormat:@"%02d", (int)second];
 		[secondsLabel1 setText:[secondsString substringWithRange:NSMakeRange(0, 1)]];
 		[secondsLabel2 setText:[secondsString substringWithRange:NSMakeRange(1,1)]];
+	} else if (self.faceStyle == 1) {
+		NSMutableAttributedString* timeString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d", (int)hour, (int)minute]];
+		for (int i=0; i<timeString.string.length; i++) {
+			NSString* substring = [timeString.string substringWithRange:NSMakeRange(i, 1)];
+			if ([substring isEqualToString:@":"]) {
+				[timeString addAttributes:@{
+											NSForegroundColorAttributeName: [UIColor clearColor]
+											} range:NSMakeRange(i, 1)];
+			}
+		}
+		
+		[clockLabel setAttributedText:timeString];
+		
+		NSMutableAttributedString* colonString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d:%02d", (int)hour, (int)minute]];
+		for (int i=0; i<colonString.string.length; i++) {
+			NSString* substring = [colonString.string substringWithRange:NSMakeRange(i, 1)];
+			if ([substring isEqualToString:@":"]) {
+				[colonString addAttributes:@{
+											 NSForegroundColorAttributeName: accentColor
+											 } range:NSMakeRange(i, 1)];
+			}
+		}
+		
+		[colonLabel setAttributedText:colonString];
+		
+		[secondsLabel1 setText:@""];
+		[secondsLabel2 setText:@""];
 	}
 	
 	if (cachedSecond != -1 && cachedSecond != second) {
@@ -239,7 +239,7 @@
 	if (watchFacePreferences && [watchFacePreferences objectForKey:@"style"]) {
 		return [super faceStyle];
 	} else {
-		return 1;
+		return 0;
 	}
 }
 

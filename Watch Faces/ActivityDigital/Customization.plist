@@ -24,8 +24,8 @@
 			<string>right</string>
 			<key>titles</key>
 			<array>
-				<string>MINUTES</string>
 				<string>SECONDS</string>
+				<string>MINUTES</string>
 			</array>
 		</dict>
 	</dict>

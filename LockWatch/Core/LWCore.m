@@ -142,15 +142,29 @@ static LWCore* sharedInstance;
 	if (mSecond >= 0 && mSecond <= 20 && clockUpdateTimer.timeInterval < 0.5) {
 		[clockUpdateTimer invalidate];
 		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+		
+		if (_currentWatchFace && [_currentWatchFace isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
+			[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:mSecond animated:YES];
+		}
+		
+		[syncTimer invalidate];
+		syncTimer = nil;
+		
 		return;
-	} else if (mSecond < 1000 && mSecond > 750) {
+	} else if (mSecond < 1000 && mSecond > 750 && clockUpdateTimer.timeInterval >= 0.5) {
 		[clockUpdateTimer invalidate];
 		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
-		syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
+		
+		if (!syncTimer) {
+			syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
+		}
+
 		return;
 	} else if (_currentWatchFace && clockUpdateTimer.timeInterval >= 0.5) {
-		[syncTimer invalidate];
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
+		
+		[syncTimer invalidate];
+		syncTimer = nil;
 	}
 }
 
@@ -166,6 +180,8 @@ static LWCore* sharedInstance;
 	float minute = [minuteComp minute];
 	float second = [secondComp second];
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
+	
+	NSLog(@"sync %f", mSecond);
 	
 	if (_currentWatchFace) {
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
