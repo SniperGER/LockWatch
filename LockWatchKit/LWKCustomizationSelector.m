@@ -43,6 +43,7 @@
 			[contentScrollView setContentSize:CGSizeMake(0, [options[@"options"] count] * 400)];
 			[contentScrollView setDelegate:self];
 			[contentScrollView setPagingEnabled:YES];
+			[contentScrollView setBounces:NO];
 			[contentScrollView setShowsHorizontalScrollIndicator:NO];
 			[contentScrollView setShowsVerticalScrollIndicator:NO];
 			[self addSubview:contentScrollView];

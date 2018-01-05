@@ -16,6 +16,7 @@
 		[contentScrollView setContentSize:CGSizeMake(0, ([WatchColors colorNames].count * kCellHeight) + (400 - kCellHeight))];
 		[contentScrollView setDelegate:self];
 		[contentScrollView setPagingEnabled:NO];
+		[contentScrollView setBounces:NO];
 		[contentScrollView setShowsHorizontalScrollIndicator:NO];
 		[contentScrollView setShowsVerticalScrollIndicator:NO];
 		[self addSubview:contentScrollView];

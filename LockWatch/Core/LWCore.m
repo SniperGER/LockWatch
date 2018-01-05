@@ -137,9 +137,7 @@ static LWCore* sharedInstance;
 	float second = [secondComp second];
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
 	
-	NSLog(@"%f", mSecond);
-	
-	if (mSecond >= 0 && mSecond <= 20 && clockUpdateTimer.timeInterval < 0.5) {
+	if (mSecond >= 0 && mSecond <= 10 && clockUpdateTimer.timeInterval < 0.5) {
 		[clockUpdateTimer invalidate];
 		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
 		
@@ -180,8 +178,6 @@ static LWCore* sharedInstance;
 	float minute = [minuteComp minute];
 	float second = [secondComp second];
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
-	
-	NSLog(@"sync %f", mSecond);
 	
 	if (_currentWatchFace) {
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];

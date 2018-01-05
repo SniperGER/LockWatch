@@ -159,17 +159,17 @@
 		[secondsLabel2 setText:@""];
 	}
 	
-	if (cachedSecond != -1 && cachedSecond != second) {
-		[colonLabel.layer removeAllAnimations];
-		
-		CABasicAnimation* fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-		[fadeAnimation setToValue:[NSNumber numberWithFloat:0.35]];
-		[fadeAnimation setDuration:1.0];
-		[fadeAnimation setCumulative:YES];
-		[colonLabel.layer addAnimation:fadeAnimation forKey:@"fade"];
-	}
-	
-	cachedSecond = second;
+//	if (cachedSecond != -1 && cachedSecond != second) {
+//		[colonLabel.layer removeAllAnimations];
+//		
+//		CABasicAnimation* fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//		[fadeAnimation setToValue:[NSNumber numberWithFloat:0.35]];
+//		[fadeAnimation setDuration:1.0];
+//		[fadeAnimation setCumulative:YES];
+//		[colonLabel.layer addAnimation:fadeAnimation forKey:@"fade"];
+//	}
+//	
+//	cachedSecond = second;
 }
 
 - (void)didStartUpdatingTime {

@@ -51,7 +51,7 @@
 	
 	NSArray* loadedPlugins = [[[LWCore sharedInstance] pluginManager] loadedPlugins];
 	for (NSBundle* plugin in loadedPlugins) {
-		int i = [loadedPlugins indexOfObject:plugin];
+		int i = (int)[loadedPlugins indexOfObject:plugin];
 		
 		LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * (interfaceSize.width + (scrollViewSpacing * 2))), 0, interfaceSize.width, interfaceSize.height)];
 		[contentView addSubview:page];
@@ -73,7 +73,7 @@
 	int currentWatchFaceIndex = 0;
 	
 	if ([[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
-		currentWatchFaceIndex = MAX(MIN([[[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"] indexOfObject:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]], watchFaces.count-1), 0);
+		currentWatchFaceIndex = (int)MAX(MIN([[[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"] indexOfObject:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]], watchFaces.count-1), 0);
 	}
 	
 	[[LWPreferences sharedInstance] setObject:[[watchFaces[currentWatchFaceIndex] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
@@ -228,9 +228,9 @@
 	CGFloat pageProgress = (([self currentPage] * width) - scrollView.contentOffset.x) / width;
 	pageProgress = (round(pageProgress * 100)) / 100.0;
 	
-	int page = [self currentPage];
+	int page = (int)[self currentPage];
 	int prevIndex = (page > 0) ? floor(page) : 0;
-	int nextIndex = (page < watchFacePages.count - 1) ? ceil(page) : watchFacePages.count - 1;
+	int nextIndex = (page < watchFacePages.count - 1) ? ceil(page) : (int)watchFacePages.count - 1;
 	
 	if (lastScrollX != scrollView.contentOffset.x) {
 		if (lastScrollX < scrollView.contentOffset.x) {
@@ -290,7 +290,7 @@
 			LWKPageView* prevPage = [watchFacePages objectAtIndex:prevIndex];
 			
 			if (scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x + width <= scrollView.contentSize.width) {
-				int currentIndex = MIN(prevIndex - 1, watchFacePages.count - 1);
+				int currentIndex = (int)MIN(prevIndex - 1, watchFacePages.count - 1);
 				LWKPageView* currentPage = [watchFacePages objectAtIndex:currentIndex];
 				
 				[currentPage setAlpha:MAX(0.5, pageProgress)];

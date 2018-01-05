@@ -132,6 +132,10 @@
 		8DC8A3371FEFCECC00A9F118 /* LWKChronoFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8A3361FEFCECC00A9F118 /* LWKChronoFace.m */; };
 		8DC8A33B1FEFCF4500A9F118 /* chronograph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC8A3391FEFCF4500A9F118 /* chronograph@2x.png */; };
 		8DC8A33C1FEFCF4500A9F118 /* chronograph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC8A33A1FEFCF4500A9F118 /* chronograph@3x.png */; };
+		8DC942D920002DE4001AA572 /* LockWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFBBDFA1FDAB2DB007694E5 /* LockWatchKit.framework */; };
+		8DC942E220002E3D001AA572 /* LWKWeatherFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC942E120002E3D001AA572 /* LWKWeatherFace.m */; };
+		8DC942EC20002E77001AA572 /* Weather.watchface in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 8DC942D320002D97001AA572 /* Weather.watchface */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8DC942EF20002F28001AA572 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DC942F120002F28001AA572 /* InfoPlist.strings */; };
 		8DCDBE361FDFE76E0014EDD6 /* LWKActivityAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDBE331FDFE76E0014EDD6 /* LWKActivityAnalogFace.m */; };
 		8DCDBE371FDFE7B70014EDD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDBE2E1FDFE76E0014EDD6 /* InfoPlist.strings */; };
 		8DD05DE31FE7B329004E3A58 /* LWKNumeralsAnalogFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD05DE21FE7B329004E3A58 /* LWKNumeralsAnalogFace.m */; };
@@ -318,6 +322,55 @@
 			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
 			remoteInfo = Color;
 		};
+		8DC942DA20002DF3001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC942D220002D97001AA572;
+			remoteInfo = Weather;
+		};
+		8DC942DC20002DF6001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
+			remoteInfo = Chronograph;
+		};
+		8DC942DE20002E01001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC942D220002D97001AA572;
+			remoteInfo = Weather;
+		};
+		8DC942E420002E6C001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
+			remoteInfo = Color;
+		};
+		8DC942E620002E6C001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
+			remoteInfo = Chronograph;
+		};
+		8DC942E820002E6C001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
+			remoteInfo = XLarge;
+		};
+		8DC942EA20002E6C001AA572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC942D220002D97001AA572;
+			remoteInfo = Weather;
+		};
 		8DD05DE61FE7B357004E3A58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
@@ -373,6 +426,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8DC942EC20002E77001AA572 /* Weather.watchface in Embed PlugIns */,
 				8D5EDB7C1FEFD911009EA507 /* Chronograph.watchface in Embed PlugIns */,
 				8D3639531FEFAB6B0044A5AA /* XLarge.watchface in Embed PlugIns */,
 				8D3639521FEFAB630044A5AA /* Color.watchface in Embed PlugIns */,
@@ -538,6 +592,12 @@
 		8DC8A3361FEFCECC00A9F118 /* LWKChronoFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKChronoFace.m; sourceTree = "<group>"; };
 		8DC8A3391FEFCF4500A9F118 /* chronograph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chronograph@2x.png"; sourceTree = "<group>"; };
 		8DC8A33A1FEFCF4500A9F118 /* chronograph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chronograph@3x.png"; sourceTree = "<group>"; };
+		8DC942D320002D97001AA572 /* Weather.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC942D520002D97001AA572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DC942E020002E3D001AA572 /* LWKWeatherFace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWKWeatherFace.h; sourceTree = "<group>"; };
+		8DC942E120002E3D001AA572 /* LWKWeatherFace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWKWeatherFace.m; sourceTree = "<group>"; };
+		8DC942F020002F28001AA572 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8DC942F220002F29001AA572 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE2F1FDFE76E0014EDD6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE301FDFE76E0014EDD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DCDBE311FDFE76E0014EDD6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -664,6 +724,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC8A3341FEFCE8900A9F118 /* LockWatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC942D020002D97001AA572 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC942D920002DE4001AA572 /* LockWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +901,7 @@
 				8D51E2091FEFA2E800B64F65 /* Color */,
 				8DC8A32F1FEFCE6800A9F118 /* Chronograph */,
 				8D3639441FEFA9050044A5AA /* XLarge */,
+				8DC942D420002D97001AA572 /* Weather */,
 				8D52DEDC1FDD43EE00B54C22 /* WatchFaces.txt */,
 			);
 			path = "Watch Faces";
@@ -971,6 +1040,17 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		8DC942D420002D97001AA572 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				8DC942D520002D97001AA572 /* Info.plist */,
+				8DC942F120002F28001AA572 /* InfoPlist.strings */,
+				8DC942E020002E3D001AA572 /* LWKWeatherFace.h */,
+				8DC942E120002E3D001AA572 /* LWKWeatherFace.m */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		8DCDBE2D1FDFE76E0014EDD6 /* ActivityAnalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +1082,7 @@
 				8D51E1FD1FEFA26800B64F65 /* Color.watchface */,
 				8D3639431FEFA9040044A5AA /* XLarge.watchface */,
 				8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */,
+				8DC942D320002D97001AA572 /* Weather.watchface */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1158,7 +1239,9 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
+				8DC942DB20002DF3001AA572 /* PBXTargetDependency */,
 				8D3639511FEFAB580044A5AA /* PBXTargetDependency */,
+				8DC942DD20002DF6001AA572 /* PBXTargetDependency */,
 				8D51E2041FEFA27200B64F65 /* PBXTargetDependency */,
 				8D28F57D1FEF278300810B0E /* PBXTargetDependency */,
 				8D14373E1FEE5AB1001EF825 /* PBXTargetDependency */,
@@ -1188,6 +1271,7 @@
 				8D24F1FD1FF0774900F0C8C2 /* PBXTargetDependency */,
 				8D24F1FF1FF0774900F0C8C2 /* PBXTargetDependency */,
 				8D24F2011FF0774900F0C8C2 /* PBXTargetDependency */,
+				8DC942DF20002E01001AA572 /* PBXTargetDependency */,
 				8D24F1F11FF074CA00F0C8C2 /* PBXTargetDependency */,
 			);
 			name = "Build (Simulator)";
@@ -1323,6 +1407,24 @@
 			productReference = 8DC8A3281FEFCE3000A9F118 /* Chronograph.watchface */;
 			productType = "com.apple.product-type.bundle";
 		};
+		8DC942D220002D97001AA572 /* Weather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC942D820002D97001AA572 /* Build configuration list for PBXNativeTarget "Weather" */;
+			buildPhases = (
+				8DC942CF20002D97001AA572 /* Sources */,
+				8DC942D020002D97001AA572 /* Frameworks */,
+				8DC942D120002D97001AA572 /* Resources */,
+				8DC942E320002E5D001AA572 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Weather;
+			productName = Weather;
+			productReference = 8DC942D320002D97001AA572 /* Weather.watchface */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8DD05DD31FE7B270004E3A58 /* Numerals */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DD05DD91FE7B270004E3A58 /* Build configuration list for PBXNativeTarget "Numerals" */;
@@ -1354,6 +1456,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				8DC942E520002E6C001AA572 /* PBXTargetDependency */,
+				8DC942E720002E6C001AA572 /* PBXTargetDependency */,
+				8DC942E920002E6C001AA572 /* PBXTargetDependency */,
+				8DC942EB20002E6C001AA572 /* PBXTargetDependency */,
 				8D28F5861FEF27AE00810B0E /* PBXTargetDependency */,
 				8D28F5841FEF27AB00810B0E /* PBXTargetDependency */,
 				8D28F5821FEF27A800810B0E /* PBXTargetDependency */,
@@ -1423,6 +1529,10 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
+					8DC942D220002D97001AA572 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					8DCF3FD01FDA8DBA00107325 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -1468,6 +1578,7 @@
 				8D51E1FC1FEFA26800B64F65 /* Color */,
 				8DC8A3271FEFCE3000A9F118 /* Chronograph */,
 				8D3639421FEFA9040044A5AA /* XLarge */,
+				8DC942D220002D97001AA572 /* Weather */,
 				8DDF22C81FE44DCA006FA9F9 /* LockWatchDemo */,
 			);
 		};
@@ -1558,6 +1669,14 @@
 				8D3E3F3A1FEFD0A8000E2D39 /* chrono_minute@3x.png in Resources */,
 				8D99FD931FFEE59F00BF1A7C /* InfoPlist.strings in Resources */,
 				8D3E3F391FEFD0A8000E2D39 /* chrono_minute@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC942D120002D97001AA572 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC942EF20002F28001AA572 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,6 +1874,19 @@
 			shellPath = /bin/sh;
 			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/";
 		};
+		8DC942E320002E5D001AA572 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/\n\nmkdir -p $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/Watch\\ Faces/$PRODUCT_NAME.$WRAPPER_EXTENSION/";
+		};
 		8DD05DE01FE7B2B5004E3A58 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1824,6 +1956,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC8A3371FEFCECC00A9F118 /* LWKChronoFace.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC942CF20002D97001AA572 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC942E220002E3D001AA572 /* LWKWeatherFace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1968,6 +2108,41 @@
 			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
 			targetProxy = 8D51E2031FEFA27200B64F65 /* PBXContainerItemProxy */;
 		};
+		8DC942DB20002DF3001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC942D220002D97001AA572 /* Weather */;
+			targetProxy = 8DC942DA20002DF3001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942DD20002DF6001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
+			targetProxy = 8DC942DC20002DF6001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942DF20002E01001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC942D220002D97001AA572 /* Weather */;
+			targetProxy = 8DC942DE20002E01001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942E520002E6C001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
+			targetProxy = 8DC942E420002E6C001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942E720002E6C001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
+			targetProxy = 8DC942E620002E6C001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942E920002E6C001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3639421FEFA9040044A5AA /* XLarge */;
+			targetProxy = 8DC942E820002E6C001AA572 /* PBXContainerItemProxy */;
+		};
+		8DC942EB20002E6C001AA572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC942D220002D97001AA572 /* Weather */;
+			targetProxy = 8DC942EA20002E6C001AA572 /* PBXContainerItemProxy */;
+		};
 		8DD05DE71FE7B357004E3A58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DD05DD31FE7B270004E3A58 /* Numerals */;
@@ -2065,6 +2240,15 @@
 			children = (
 				8D99FD941FFEE59F00BF1A7C /* en */,
 				8D99FD961FFEE5A000BF1A7C /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8DC942F120002F28001AA572 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DC942F020002F28001AA572 /* en */,
+				8DC942F220002F29001AA572 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2851,11 +3035,132 @@
 			};
 			name = Release;
 		};
+		8DC942D620002D97001AA572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/Weather/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.Weather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Debug;
+		};
+		8DC942D720002D97001AA572 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Watch Faces/Weather/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.Weather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = watchface;
+			};
+			name = Release;
+		};
 		8DCF3FCA1FDA8A6300107325 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2865,7 +3170,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -3133,7 +3438,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/opt/theos/include/**";
 				INFOPLIST_FILE = LockWatchDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3198,7 +3502,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/opt/theos/include/**";
 				INFOPLIST_FILE = LockWatchDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.LockWatchDemo;
@@ -3361,7 +3664,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = LockWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3419,7 +3721,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = LockWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.LockWatchKit;
@@ -3496,6 +3797,15 @@
 			buildConfigurations = (
 				8DC8A32B1FEFCE3000A9F118 /* Debug */,
 				8DC8A32C1FEFCE3000A9F118 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC942D820002D97001AA572 /* Build configuration list for PBXNativeTarget "Weather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC942D620002D97001AA572 /* Debug */,
+				8DC942D720002D97001AA572 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

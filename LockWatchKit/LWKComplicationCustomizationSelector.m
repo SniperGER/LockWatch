@@ -61,6 +61,7 @@
 		contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 312, 400)];
 		[contentScrollView setDelegate:self];
 		[contentScrollView setPagingEnabled:YES];
+		[contentScrollView setBounces:NO];
 		[contentScrollView setShowsHorizontalScrollIndicator:NO];
 		[contentScrollView setShowsVerticalScrollIndicator:NO];
 		[self addSubview:contentScrollView];
@@ -88,7 +89,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	CGFloat page = (scrollView.contentOffset.y / scrollView.bounds.size.height);
+	CGFloat page = scrollView.contentOffset.y / scrollView.bounds.size.height;
 	CGFloat pageProgress = 1 + (page - (int)page - 1);
 	
 	if (pageProgress < 0.5) {

@@ -52,7 +52,7 @@
             [contents enumerateObjectsUsingBlock:^(NSURL* externalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
                     NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
-                    
+
                     if (watchFaceBundle) {
                         [loadedPlugins addObject:watchFaceBundle];
                     }
