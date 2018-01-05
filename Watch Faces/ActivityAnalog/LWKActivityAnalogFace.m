@@ -10,7 +10,7 @@
 		[backgroundView.layer setCornerRadius:156.0];
 		[backgroundView setClipsToBounds:YES];
 		[self.backgroundView insertSubview:backgroundView atIndex:0];
-
+		
 		dial = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 310, 310)];
 		[dial.layer setPosition:CGPointMake(156, 195)];
 		[self.backgroundView addSubview:dial];
@@ -116,7 +116,7 @@
 	[self updateActivityData];
 }
 
-#pragma mark Additional Methods
+#pragma mark - Additional Methods
 
 - (void)updateActivityData {
 	activityData = [LWKActivityDataProvider activityData];
@@ -212,7 +212,7 @@
 	return dialLayer;
 }
 
-#pragma mark Customization
+#pragma mark - Customization
 
 - (void)setIsEditing:(BOOL)isEditing {
 	[super setIsEditing:isEditing];
@@ -245,9 +245,11 @@
 		[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHoursGoal]];
 		
 		[self.indicatorView setHidden:YES];
-		if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKStyleCustomizationSelector")]) {
+		if ([currentCustomizationSelector.type isEqualToString:@"style"]) {
+			[self.contentView setAlpha:1.0];
 			[dial setAlpha:0.0];
-		} else if ([currentCustomizationSelector isKindOfClass:NSClassFromString(@"LWKColorCustomizationSelector")]) {
+		} else if ([currentCustomizationSelector.type isEqualToString:@"color"]) {
+			[self.contentView setAlpha:0.15];
 			[dial setAlpha:1.0];
 		}
 		
@@ -256,6 +258,7 @@
 		[self updateActivityData];
 		
 		[self.indicatorView setHidden:NO];
+		[self.contentView setAlpha:1];
 		[dial setAlpha:1.0];
 		[self.dateLabel setAlpha:1.0];
 	}
@@ -292,6 +295,22 @@
 		return [super accentColor];
 	} else {
 		return @"white";
+	}
+}
+
+#pragma mark Customization delegate
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToLeftWithNextSelector:(LWKCustomizationSelector *)nextSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([nextSelector.type isEqualToString:@"color"]) {
+		[dial setAlpha:scrollProgress];
+		[self.contentView setAlpha:MAX(1 - scrollProgress, 0.15)];
+	}
+}
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToRightWithPreviousSelector:(LWKCustomizationSelector *)prevSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([selector.type isEqualToString:@"style"]) {
+		[self.contentView setAlpha:MAX(scrollProgress, 0.15)];
+		[dial setAlpha:1 - scrollProgress];
 	}
 }
 

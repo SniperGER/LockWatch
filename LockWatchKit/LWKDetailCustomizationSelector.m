@@ -15,23 +15,12 @@
 	return self;
 }
 
-- (CGFloat)indicatorHeight {
-	return [customizingOptions[@"options"] count] * 400;
+- (NSString*)type {
+	return @"detail";
 }
 
-- (void)handleSwipeLeftToRight:(CGFloat)scrollProgress isPrev:(BOOL)prev {
-	[super handleSwipeLeftToRight:scrollProgress isPrev:prev];
-	
-	if (prev) {
-		for (UIView* view in customizingWatchFace.backgroundView.subviews) {
-			if (![view isKindOfClass:NSClassFromString(@"_UIBackdropView")]) {
-				[view setAlpha:1-scrollProgress];
-			}
-		}
-		
-		[customizingWatchFace.contentView setAlpha:MAX(scrollProgress, 0.15)];
-		[customizingWatchFace.indicatorView setAlpha:1-scrollProgress];
-	}
+- (CGFloat)indicatorHeight {
+	return [customizingOptions[@"options"] count] * 400;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

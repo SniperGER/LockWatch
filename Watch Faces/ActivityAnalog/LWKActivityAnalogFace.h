@@ -32,7 +32,7 @@
 @end
 
 
-@interface LWKActivityAnalogFace : LWKAnalogClock {
+@interface LWKActivityAnalogFace : LWKAnalogClock <LWKCustomizationDelegate> {
 	UIView* dial;
 	UIView* mainView;
 	

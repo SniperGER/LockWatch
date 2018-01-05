@@ -10,11 +10,17 @@
 
 @end
 
-@interface LWKActivityDigitalFace : LWKDigitalClock {
+@interface LWKActivityDigitalFace : LWKDigitalClock <LWKCustomizationDelegate> {
+	double cachedSecond;
+	
 	NSDictionary* activityData;
 	HKActivityRingView* activityRingView;
 	
-	UILabel* secondsLabel;
+	UILabel* secondsLabel1;
+	UILabel* secondsLabel2;
+	UILabel* colonLabel;
+	
+	UIView* dateContainer;
 	
 	UILabel* activeEnergy;
 	UILabel* brisk;

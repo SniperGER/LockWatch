@@ -10,6 +10,8 @@
 		[backgroundView setClipsToBounds:YES];
 		[self.backgroundView insertSubview:backgroundView atIndex:0];
 		
+		dateLabelDetail = 1;
+		
 		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 		[self.indicatorView insertSubview:self.dateLabel atIndex:0];
 		[self updateDateLabel];
@@ -36,6 +38,14 @@
 		[self.indicatorView addSubview:chronoStopwatchSeconds];
 		
 		[self.contentView addSubview:indicatorImage];
+		
+		// Preferences
+		
+		if (!watchFacePreferences[@"complications"]) {
+			[self setComplicationIndex:1 forPosition:@"date"];
+		} else {
+			[self setComplicationIndex:[watchFacePreferences[@"complications"][@"date"] intValue] forPosition:@"date"];
+		}
 	}
 	
 	return self;
@@ -54,18 +64,86 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"EEEE"];
 
+	NSString* dayName = [[[dateFormatter stringFromDate:[NSDate date]] substringWithRange:NSMakeRange(0, 3)] uppercaseString];
 	long day = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] component:NSCalendarUnitDay fromDate:date];
 	
-	NSString* dateString = [NSString stringWithFormat:@"%ld", day];
-	NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
+	if (dateLabelDetail == 0) {
+		[self.dateLabel setText:@""];
+	} else if (dateLabelDetail == 1) {
+		NSString* dateString = [NSString stringWithFormat:@"%ld", day];
+		NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
 
-	[attributedText setAttributes:@{
-									NSForegroundColorAttributeName:[WatchColors lightOrangeColor],
-									NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:30]
-									} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
-	[self.dateLabel setAttributedText:attributedText];
-	[self.dateLabel sizeToFit];
-	[self.dateLabel setCenter:CGPointMake(239.5, 156)];
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName: self.isEditing ? [UIColor whiteColor] : [WatchColors lightOrangeColor],
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:30]
+										} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
+		[self.dateLabel setAttributedText:attributedText];
+		[self.dateLabel sizeToFit];
+		[self.dateLabel setCenter:CGPointMake(240, 156)];
+	} else if (dateLabelDetail == 2) {
+		NSString* dateString = [NSString stringWithFormat:@"%@ %ld", dayName, day];
+		NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
+		
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName: [UIColor whiteColor],
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:22]
+										} range:[dateString rangeOfString:dayName]];
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName: self.isEditing ? [UIColor whiteColor] : [WatchColors lightOrangeColor],
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:22]
+										} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
+		[self.dateLabel setAttributedText:attributedText];
+		
+		[self.dateLabel sizeToFit];
+		[self.dateLabel setCenter:CGPointMake(224, 156)];
+	}
+	
+	
+}
+
+#pragma mark - Customization
+
+- (void)setIsEditing:(BOOL)isEditing {
+	[super setIsEditing:isEditing];
+	
+	if (isEditing) {
+		[self.hourHand setAlpha:0.15];
+		[self.minuteHand setAlpha:0.15];
+		[self.secondHand setAlpha:0.15];
+		[chronoStopwatchMinutes setAlpha:0.15];
+		[chronoStopwatchSeconds setAlpha:0.15];
+		[self.contentView setAlpha:0.15];
+	} else {
+		[self.hourHand setAlpha:1];
+		[self.minuteHand setAlpha:1];
+		[self.secondHand setAlpha:1];
+		[chronoStopwatchMinutes setAlpha:1];
+		[chronoStopwatchSeconds setAlpha:1];
+		[self.contentView setAlpha:1];
+	}
+	
+	[self updateDateLabel];
+}
+
+// Complications
+- (void)setComplicationIndex:(int)index forPosition:(NSString *)position {
+	[super setComplicationIndex:index forPosition:position];
+	if ([position isEqualToString:@"date"]) {
+		dateLabelDetail = index;
+		[self updateDateLabel];
+	}
+}
+
+- (int)complicationIndexForPosition:(NSString *)position {
+	if ([position isEqualToString:@"date"]) {
+		if (watchFacePreferences && watchFacePreferences[@"complications"][@"date"]) {
+			return [watchFacePreferences[@"complications"][@"date"] intValue];
+		} else {
+			return 1;
+		}
+	}
+	
+	return -1;
 }
 
 @end

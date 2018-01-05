@@ -15,6 +15,7 @@
 }
 
 - (id)initWithFrame:(CGRect)frame options:(NSDictionary*)options forWatchFace:(LWKClockBase*)watchFace faceEditView:(LWKFaceEditView*)faceEditView;
+- (NSString*)type;
 - (CGFloat)indicatorHeight;
 - (CGFloat)indicatorPosition;
 

@@ -5,6 +5,7 @@
 @interface LWKFaceEditView : UIView <UIScrollViewDelegate> {
 	NSMutableArray* pages;
 	CGFloat lastScrollX;
+	LWKClockBase* customizingWatchFace;
 }
 
 @property (nonatomic, strong) UIScrollView* scrollView;

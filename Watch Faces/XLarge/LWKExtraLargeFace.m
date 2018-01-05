@@ -43,6 +43,31 @@
 	NSMutableAttributedString* colonString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@":%02d", (int)minute]];
 	[colonString addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(1, 2)];
 	[colonLabel setAttributedText:colonString];
+	
+	if (cachedSecond != -1 && cachedSecond != second) {
+		[colonLabel.layer removeAllAnimations];
+		
+		CABasicAnimation* fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+		[fadeAnimation setToValue:[NSNumber numberWithFloat:0.35]];
+		[fadeAnimation setDuration:1.0];
+		[fadeAnimation setCumulative:YES];
+		[colonLabel.layer addAnimation:fadeAnimation forKey:@"fade"];
+	}
+	
+	cachedSecond = second;
+}
+
+- (void)didStartUpdatingTime {
+	[super didStartUpdatingTime];
+	
+	cachedSecond = -1;
+	[colonLabel.layer removeAllAnimations];
+}
+
+- (void)didStopUpdatingTime {
+	[super didStopUpdatingTime];
+	
+	[colonLabel.layer removeAllAnimations];
 }
 
 #pragma mark Customization

@@ -1,4 +1,5 @@
 #import "LWKNumeralsAnalogFace.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKNumeralsAnalogFace
 
@@ -51,7 +52,19 @@
 #pragma mark Numeral Images
 
 - (void)updateNumeralImagesForHour:(double)hour {
-	UIImage* hourImage = [[UIImage imageNamed:[NSString stringWithFormat:@"regular%d", (int)hour] inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+	NSString* numeralType = @"regular";
+	
+	switch (self.faceStyle) {
+		case 0:
+			numeralType = @"regular";
+			break;
+		case 1:
+			numeralType = @"rounded";
+			break;
+		default: break;
+	}
+	
+	UIImage* hourImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@%d", numeralType, (int)hour] inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[numeralImageContainer setImage:hourImage];
 	
 	CGFloat posX = 0;
@@ -101,7 +114,35 @@
 	[numeralImageContainer setCenter:CGPointMake(posX, posY)];
 }
 
-#pragma mark Customization
+#pragma mark - Customization
+
+- (void)setIsEditing:(BOOL)isEditing {
+	[super setIsEditing:isEditing];
+	
+	if (isEditing) {
+		[numeralImageContainer setAlpha:1.0];
+		[self.hourHand setAlpha:0.15];
+		[self.minuteHand setAlpha:0.15];
+		
+		if ([currentCustomizationSelector.type isEqualToString:@"style"]) {
+			[self.secondHand setAlpha:0.15];
+		} else if ([currentCustomizationSelector.type isEqualToString:@"color"]) {
+			[self.secondHand setAlpha:1.0];
+		}
+	} else {
+		[numeralImageContainer setAlpha:1.0];
+		[self.hourHand setAlpha:1.0];
+		[self.minuteHand setAlpha:1.0];
+		[self.secondHand setAlpha:1.0];
+	}
+}
+
+// Style
+- (void)setFaceStyle:(int)style {
+	[super setFaceStyle:style];
+	
+	[self updateNumeralImagesForHour:10];
+}
 
 // Accent Color
 - (void)setAccentColor:(NSString *)color {
@@ -116,6 +157,20 @@
 		return [super accentColor];
 	} else {
 		return @"lightOrange";
+	}
+}
+
+#pragma mark Customization delegate
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToLeftWithNextSelector:(LWKCustomizationSelector *)nextSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([nextSelector.type isEqualToString:@"color"]) {
+		[self.secondHand setAlpha:MAX(scrollProgress, 0.15)];
+	}
+}
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToRightWithPreviousSelector:(LWKCustomizationSelector *)prevSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([selector.type isEqualToString:@"style"]) {
+		[self.secondHand setAlpha:MAX(1 - scrollProgress, 0.15)];
 	}
 }
 

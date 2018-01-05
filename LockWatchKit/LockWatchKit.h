@@ -17,7 +17,7 @@ FOUNDATION_EXPORT const unsigned char LockWatchKitVersionString[];
 #import <LockWatchKit/LWKDigitalClock.h>
 #import <LockWatchKit/LWKFaceEditView.h>
 #import <LockWatchKit/LWKScrollIndicator.h>
-
+#import <LockWatchKit/LWKCustomizationDelegate.h>
 
 #import "MTMaterialView.h"
 #import "NCMaterialView.h"

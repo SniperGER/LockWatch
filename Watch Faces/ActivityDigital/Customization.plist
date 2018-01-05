@@ -4,6 +4,28 @@
 <array>
 	<dict>
 		<key>type</key>
+		<string>style</string>
+		<key>frame</key>
+		<string>{{0,58},{312,92}}</string>
+		<key>cornerRadius</key>
+		<integer>12</integer>
+		<key>options</key>
+		<array>
+			<string>0</string>
+			<string>1</string>
+		</array>
+		<key>label</key>
+		<dict>
+			<key>center</key>
+			<string>{156,40.5}</string>
+			<key>text</key>
+			<string>STYLE</string>
+			<key>align</key>
+			<string>right</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>type</key>
 		<string>color</string>
 		<key>frame</key>
 		<string>{{0,58},{312,92}}</string>

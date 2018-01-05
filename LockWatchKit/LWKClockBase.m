@@ -46,6 +46,11 @@
 	customizationOptions = [NSArray arrayWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"Customization" ofType:@"plist"]];
 	
 	if (customizationOptions) {
+		if (customizationOptions.count > 1 && ![self conformsToProtocol:@protocol(LWKCustomizationDelegate)]) {
+			NSLog(@"[LockWatchKit] Watch face %@ has multiple customization options, but does not conform to LWKCustomizationDelegate. NOT CUSTOMIZABLE!", NSStringFromClass(self.class));
+			return;
+		}
+		
 		_isCustomizable = YES;
 		
 		_editView = [[LWKFaceEditView alloc] initWithFrame:CGRectMake(0, 0, 312, 390) options:customizationOptions forWatchFace:self];
@@ -122,6 +127,23 @@
 
 - (NSString*)accentColor {
 	return [watchFacePreferences objectForKey:@"accentColor"];
+}
+
+// Complications
+- (void)setComplicationIndex:(int)index forPosition:(NSString*)position {
+	NSMutableDictionary* settings = [[watchFacePreferences objectForKey:@"complications"] mutableCopy];
+	
+	if (!settings) {
+		settings = [NSMutableDictionary new];
+	}
+	
+	[settings setValue:[NSNumber numberWithInt:index] forKey:position];
+	[watchFacePreferences setObject:settings forKey:@"complications"];
+	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+}
+
+- (int)complicationIndexForPosition:(NSString*)position {
+	return -1;
 }
 
 @end

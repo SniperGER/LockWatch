@@ -45,4 +45,8 @@
 	"pebble" = "Pebble";
 	"cocoa" = "Cocoa";
 	"darkOlive" = "Dark Olive";
+	
+	// Date
+	"DATE" = "Date";
+	"OFF" = "Off";
 }

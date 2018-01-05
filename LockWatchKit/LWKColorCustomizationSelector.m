@@ -40,41 +40,12 @@
 	return self;
 }
 
-- (CGFloat)indicatorHeight {
-	return (([WatchColors colorNames].count * kCellHeight) + (400 - kCellHeight));
+- (NSString*)type {
+	return @"color";
 }
 
-- (void)handleSwipeRightToLeft:(CGFloat)scrollProgress isNext:(BOOL)next {
-	[super handleSwipeRightToLeft:scrollProgress isNext:next];
-	
-	if (next) {
-		for (UIView* view in customizingWatchFace.backgroundView.subviews) {
-			if (![view isKindOfClass:NSClassFromString(@"_UIBackdropView")]) {
-				[view setAlpha:scrollProgress];
-			}
-		}
-		
-		[customizingWatchFace.contentView setAlpha:MAX(1 - scrollProgress, 0.15)];
-		[customizingWatchFace.indicatorView setAlpha:scrollProgress];
-		
-		if ([(LWKAnalogClock*)customizingWatchFace hourHand]) {
-			[[(LWKAnalogClock*)customizingWatchFace hourHand] setAlpha:0.15];
-		}
-		
-		if ([(LWKAnalogClock*)customizingWatchFace minuteHand]) {
-			[[(LWKAnalogClock*)customizingWatchFace minuteHand] setAlpha:0.15];
-		}
-		
-		if ([(LWKAnalogClock*)customizingWatchFace secondHand]) {
-			[[(LWKAnalogClock*)customizingWatchFace secondHand] setAlpha:1.0];
-		}
-		
-		if (customizingWatchFace.dateLabel) {
-			[customizingWatchFace.dateLabel setAlpha:0.15];
-		}
-	} else {
-		//[customizingWatchFace.backgroundView setAlpha:1 - scrollProgress];
-	}
+- (CGFloat)indicatorHeight {
+	return (([WatchColors colorNames].count * kCellHeight) + (400 - kCellHeight));
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

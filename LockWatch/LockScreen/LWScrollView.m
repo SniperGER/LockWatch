@@ -260,7 +260,7 @@
 				}
 			} else if (scrollView.contentOffset.x <= 0) {
 				LWKPageView* currentPage = [watchFacePages objectAtIndex:page];
-				CGFloat alpha = MAX(0.5, 1 + ( scrollView.contentOffset.x / width));
+				CGFloat alpha = MAX(0.5, 1 + (scrollView.contentOffset.x / width));
 				
 				[currentPage setAlpha:alpha];
 				[overlayView setTitleAlpha:alpha atIndex:page];
@@ -325,7 +325,7 @@
 				}
 			} else {
 				LWKPageView* currentPage = [watchFacePages objectAtIndex:page];
-				CGFloat alpha = MAX(0.5, 1 + ( scrollView.contentOffset.x / width));
+				CGFloat alpha = MAX(0.5, 1 + (scrollView.contentOffset.x / width));
 				
 				[currentPage setAlpha:alpha];
 				[overlayView setTitleAlpha:alpha atIndex:page];

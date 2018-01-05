@@ -1,4 +1,5 @@
 #import "LWKColorAnalogFace.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKColorAnalogFace
 
@@ -25,14 +26,15 @@
 	return self;
 }
 
-#pragma mark Customization
+#pragma mark - Customization
 
 - (void)setIsEditing:(BOOL)isEditing {
 	[super setIsEditing:isEditing];
 	
 	if (isEditing) {
 		[self.indicatorView setAlpha:0.0];
-		[self.contentView setAlpha:1.0];
+	} else {
+		[self.indicatorView setAlpha:1.0];
 	}
 }
 
@@ -53,5 +55,14 @@
 	}
 }
 
+#pragma mark Customization delegate
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToLeftWithNextSelector:(LWKCustomizationSelector *)nextSelector scrollProgress:(CGFloat)scrollProgress {
+	
+}
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToRightWithPreviousSelector:(LWKCustomizationSelector *)prevSelector scrollProgress:(CGFloat)scrollProgress {
+	
+}
 
 @end

@@ -4,6 +4,28 @@
 <array>
 	<dict>
 		<key>type</key>
+		<string>style</string>
+		<key>options</key>
+		<array>
+			<string>0</string>
+			<string>1</string>
+		</array>
+		<key>frame</key>
+		<string>{{0,40},{143,121}}</string>
+		<key>cornerRadius</key>
+		<integer>8</integer>
+		<key>label</key>
+		<dict>
+			<key>center</key>
+			<string>{156,178.5}</string>
+			<key>text</key>
+			<string>STYLE</string>
+			<key>align</key>
+			<string>left</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>type</key>
 		<string>color</string>
 		<key>frame</key>
 		<string>{{0,40},{312,350}}</string>

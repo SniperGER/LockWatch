@@ -1,5 +1,7 @@
 #import "LWKCustomizationSelector.h"
+#import "LWKCustomizationDelegate.h"
 #import "LWKFaceEditView.h"
+#import "LWKClockBase.h"
 #import "LWKLabel.h"
 
 @implementation LWKCustomizationSelector
@@ -55,6 +57,10 @@
 	}
 	
 	return self;
+}
+
+- (NSString*)type {
+	return nil;
 }
 
 - (CGFloat)indicatorHeight {

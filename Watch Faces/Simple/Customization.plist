@@ -43,5 +43,34 @@
 			<string>{156,132.5}</string>
 		</dict>
 	</dict>
+	<dict>
+		<key>type</key>
+		<string>complications</string>
+		<key>options</key>
+		<array>
+			<dict>
+				<key>position</key>
+				<string>date</string>
+				<key>frame</key>
+				<string>{{194,167},{58,58}}</string>
+				<key>cornerRadius</key>
+				<integer>8</integer>
+				<key>label</key>
+				<dict>
+					<key>center</key>
+					<string>{156,149.5}</string>
+					<key>text</key>
+					<string>DATE</string>
+					<key>align</key>
+					<string>center</string>
+				</dict>
+				<key>options</key>
+				<array>
+					<string>0</string>
+					<string>1</string>
+				</array>
+			</dict>
+		</array>
+	</dict>
 </array>
 </plist>

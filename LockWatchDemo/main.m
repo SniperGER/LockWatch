@@ -1,10 +1,3 @@
-//
-//  main.m
-//  LockWatchDemo
-//
-//  Created by Janik Schmidt on 15.12.17.
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 

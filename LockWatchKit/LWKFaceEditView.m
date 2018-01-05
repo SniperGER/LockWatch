@@ -2,11 +2,14 @@
 #import "LWKStyleCustomizationSelector.h"
 #import "LWKDetailCustomizationSelector.h"
 #import "LWKColorCustomizationSelector.h"
+#import "LWKComplicationCustomizationSelector.h"
 
 @implementation LWKFaceEditView
 
 - (id)initWithFrame:(CGRect)frame options:(NSArray*)options forWatchFace:(LWKClockBase*)watchFace {
 	if (self = [super initWithFrame:frame]) {
+		customizingWatchFace = watchFace;
+		
 		_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 312, 390)];
 		[_scrollView setPagingEnabled:YES];
 		[_scrollView setShowsHorizontalScrollIndicator:NO];
@@ -59,6 +62,12 @@
 				[_scrollView addSubview:colorSelector];
 				[pages addObject:colorSelector];
 			}
+			
+			if ([customizingMode[@"type"] isEqualToString:@"complications"]) {
+				LWKComplicationCustomizationSelector* complicationSelector = [[LWKComplicationCustomizationSelector alloc] initWithFrame:CGRectMake(i*312, 0, 312, 390) options:customizingMode forWatchFace:watchFace faceEditView:self];
+				[_scrollView addSubview:complicationSelector];
+				[pages addObject:complicationSelector];
+			}
 		}
 		
 		[_scrollView setContentSize:CGSizeMake(options.count * 312, 390)];
@@ -83,7 +92,7 @@
 	int prevIndex = (page > 0) ? floor(page) : 0;
 	int nextIndex = (page < pages.count - 1) ? ceil(page) : (int)pages.count - 1;
 	
-	if (lastScrollX != scrollView.contentOffset.x ) {
+	if (lastScrollX != scrollView.contentOffset.x) {
 		if (lastScrollX < scrollView.contentOffset.x) {
 			LWKCustomizationSelector* next = [pages objectAtIndex:nextIndex];
 			
@@ -92,6 +101,7 @@
 				
 				[current handleSwipeRightToLeft:pageProgress isNext:NO];
 				[next handleSwipeRightToLeft:1-pageProgress isNext:YES];
+				[(LWKClockBase<LWKCustomizationDelegate>*)customizingWatchFace customizationSelector:current didScrollToLeftWithNextSelector:next scrollProgress:1-pageProgress];
 				
 				CGFloat scrollIndicatorHeightDelta = [current indicatorHeight] - [next indicatorHeight];
 				CGFloat scrollIndicatorPositionDelta = [current indicatorPosition] - [next indicatorPosition];
@@ -109,6 +119,7 @@
 				
 				[current handleSwipeLeftToRight:pageProgress isPrev:YES];
 				[prev handleSwipeLeftToRight:1-pageProgress isPrev:NO];
+				[(LWKClockBase<LWKCustomizationDelegate>*)customizingWatchFace customizationSelector:current didScrollToRightWithPreviousSelector:prev scrollProgress:pageProgress];
 				
 				CGFloat scrollIndicatorHeightDifference = [current indicatorHeight] - [prev indicatorHeight];
 				CGFloat scrollIndicatorPositionDelta = [current indicatorPosition] - [prev indicatorPosition];
@@ -117,6 +128,10 @@
 				[_scrollIndicator setIndicatorPosition:[current indicatorPosition] - scrollIndicatorPositionDelta * (1 - pageProgress)];
 			}
 		}
+	} else {
+		LWKCustomizationSelector* current = [pages objectAtIndex:MIN(MAX(page,0), pages.count - 1)];
+		[_scrollIndicator setIndicatorHeight:[current indicatorHeight] relativeToHeight:400];
+		[_scrollIndicator setIndicatorPosition:[current indicatorPosition]];
 	}
 	
 	lastScrollX = scrollView.contentOffset.x;

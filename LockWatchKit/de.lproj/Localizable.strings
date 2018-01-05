@@ -45,4 +45,8 @@
 	"pebble" = "Kiesel";
 	"cocoa" = "Kakao";
 	"darkOlive" = "Dunkeloliv";
+	
+	// Date
+	"DATE" = "Datum";
+	"OFF" = "Aus";
 }

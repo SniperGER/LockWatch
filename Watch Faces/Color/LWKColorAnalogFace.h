@@ -1,6 +1,6 @@
 #import <LockWatchKit/LockWatchKit.h>
 
-@interface LWKColorAnalogFace : LWKAnalogClock {
+@interface LWKColorAnalogFace : LWKAnalogClock <LWKCustomizationDelegate> {
 	UIImageView* indicatorImage;
 }
 

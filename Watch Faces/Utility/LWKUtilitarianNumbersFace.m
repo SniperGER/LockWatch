@@ -1,4 +1,5 @@
 #import "LWKUtilitarianNumbersFace.h"
+#import "LWKCustomizationSelector.h"
 
 @implementation LWKUtilitarianNumbersFace
 
@@ -9,6 +10,8 @@
 		[backgroundView.layer setCornerRadius:156.0];
 		[backgroundView setClipsToBounds:YES];
 		[self.backgroundView insertSubview:backgroundView atIndex:0];
+		
+		dateLabelDetail = 1;
 		
 		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 		[self.indicatorView insertSubview:self.dateLabel atIndex:0];
@@ -25,6 +28,12 @@
 		} else {
 			[self setAccentColor:[watchFacePreferences objectForKey:@"accentColor"]];
 		}
+		
+		if (!watchFacePreferences[@"complications"]) {
+			[self setComplicationIndex:1 forPosition:@"date"];
+		} else {
+			[self setComplicationIndex:[watchFacePreferences[@"complications"][@"date"] intValue] forPosition:@"date"];
+		}
 	}
 	
 	return self;
@@ -36,7 +45,7 @@
 	[self updateDateLabel];
 }
 
-#pragma mark Additional Methods
+#pragma mark - Additional Methods
 
 - (void)updateDateLabel {
 	UIColor* _color = [[WatchColors colors] objectForKey:[self accentColor]];
@@ -51,22 +60,68 @@
 	NSString *dayName = [[[dateFormatter stringFromDate:[NSDate date]] substringWithRange:NSMakeRange(0, 3)] uppercaseString];
 	long day = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] component:NSCalendarUnitDay fromDate:date];
 	
-	NSString* dateString = [NSString stringWithFormat:@"%ld", day];
-	NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
-	[attributedText setAttributes:@{
-									NSForegroundColorAttributeName: [UIColor whiteColor],
-									NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:34]
-									} range:[dateString rangeOfString:dayName]];
-	[attributedText setAttributes:@{
-									NSForegroundColorAttributeName:_color,
-									NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:34]
-									} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
-	[self.dateLabel setAttributedText:attributedText];
+	if (dateLabelDetail == 0) {
+		[self.dateLabel setText:@""];
+	} else if (dateLabelDetail == 1) {
+		NSString* dateString = [NSString stringWithFormat:@"%ld", day];
+		NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
+
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName:_color,
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:34]
+										} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
+		[self.dateLabel setAttributedText:attributedText];
+	} else if (dateLabelDetail == 2) {
+		NSString* dateString = [NSString stringWithFormat:@"%@ %ld", dayName, day];
+		NSMutableAttributedString* attributedText = [[NSMutableAttributedString alloc] initWithString:dateString];
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName: [UIColor whiteColor],
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:22]
+										} range:[dateString rangeOfString:dayName]];
+		[attributedText setAttributes:@{
+										NSForegroundColorAttributeName:_color,
+										NSFontAttributeName: [UIFont fontWithName:@".SFCompactText-Regular" size:22]
+										} range:[dateString rangeOfString:[NSString stringWithFormat:@"%ld", day]]];
+		[self.dateLabel setAttributedText:attributedText];
+	}
+	
 	[self.dateLabel sizeToFit];
 	[self.dateLabel setCenter:CGPointMake(218, 156)];
 }
 
-#pragma mark Customization
+#pragma mark - Customization
+
+- (void)setIsEditing:(BOOL)isEditing {
+	[super setIsEditing:isEditing];
+	
+	if (isEditing) {
+		if ([currentCustomizationSelector.type isEqualToString:@"detail"]) {
+			[self.contentView setAlpha:1];
+			[self.hourHand setAlpha:0];
+			[self.minuteHand setAlpha:0];
+			[self.secondHand setAlpha:0];
+			[self.dateLabel setAlpha:0.15];
+		} else if ([currentCustomizationSelector.type isEqualToString:@"color"]) {
+			[self.contentView setAlpha:0.15];
+			[self.hourHand setAlpha:0.15];
+			[self.minuteHand setAlpha:0.15];
+			[self.secondHand setAlpha:1];
+			[self.dateLabel setAlpha:0.15];
+		} else if ([currentCustomizationSelector.type isEqualToString:@"complications"]) {
+			[self.contentView setAlpha:0.15];
+			[self.hourHand setAlpha:0.15];
+			[self.minuteHand setAlpha:0.15];
+			[self.secondHand setAlpha:0.15];
+			[self.dateLabel setAlpha:1];
+		}
+	} else {
+		[self.contentView setAlpha:1];
+		[self.hourHand setAlpha:1];
+		[self.minuteHand setAlpha:1];
+		[self.secondHand setAlpha:1];
+		[self.dateLabel setAlpha:1];
+	}
+}
 
 // Detail
 - (int)faceDetail{
@@ -89,6 +144,53 @@
 		return [super accentColor];
 	} else {
 		return @"lightOrange";
+	}
+}
+
+// Complications
+- (void)setComplicationIndex:(int)index forPosition:(NSString *)position {
+	[super setComplicationIndex:index forPosition:position];
+	if ([position isEqualToString:@"date"]) {
+		dateLabelDetail = index;
+		[self updateDateLabel];
+	}
+}
+
+- (int)complicationIndexForPosition:(NSString *)position {
+	if ([position isEqualToString:@"date"]) {
+		if (watchFacePreferences && watchFacePreferences[@"complications"][@"date"]) {
+			return [watchFacePreferences[@"complications"][@"date"] intValue];
+		} else {
+			return 1;
+		}
+	}
+	
+	return -1;
+}
+
+#pragma mark Customization delegate
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToLeftWithNextSelector:(LWKCustomizationSelector *)nextSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([nextSelector.type isEqualToString:@"color"]) {
+		[self.contentView setAlpha:MAX(1 - scrollProgress, 0.15)];
+		[self.hourHand setAlpha:MIN(scrollProgress, 0.15)];
+		[self.minuteHand setAlpha:MIN(scrollProgress, 0.15)];
+		[self.secondHand setAlpha:MIN(scrollProgress, 1)];
+	} else if ([nextSelector.type isEqualToString:@"complications"]) {
+		[self.secondHand setAlpha:MAX(1 - scrollProgress, 0.15)];
+		[self.dateLabel setAlpha:MAX(scrollProgress, 0.15)];
+	}
+}
+
+- (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToRightWithPreviousSelector:(LWKCustomizationSelector *)prevSelector scrollProgress:(CGFloat)scrollProgress {
+	if ([selector.type isEqualToString:@"detail"]) {
+		[self.contentView setAlpha:MAX(scrollProgress, 0.15)];
+		[self.hourHand setAlpha:MIN(1 - scrollProgress, 0.15)];
+		[self.minuteHand setAlpha:MIN(1 - scrollProgress, 0.15)];
+		[self.secondHand setAlpha:MIN(1 - scrollProgress, 1)];
+	} else if ([selector.type isEqualToString:@"color"]) {
+		[self.secondHand setAlpha:MAX(scrollProgress, 0.15)];
+		[self.dateLabel setAlpha:MAX(1 - scrollProgress, 0.15)];
 	}
 }
 

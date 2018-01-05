@@ -47,4 +47,7 @@
 - (void)setAccentColor:(NSString*)color;
 - (NSString*)accentColor;
 
+- (void)setComplicationIndex:(int)index forPosition:(NSString*)position;
+- (int)complicationIndexForPosition:(NSString*)position;
+
 @end
