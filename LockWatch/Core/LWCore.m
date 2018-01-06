@@ -51,10 +51,6 @@ static LWCore* sharedInstance;
 #endif
 }
 
-- (void)setIsEditing:(BOOL)isEditing {
-	_isEditing = isEditing;
-}
-
 - (void)setIsMinimized:(BOOL)isMinimized {
 	if (isMinimized == _isMinimized) {
 		return;
@@ -98,9 +94,11 @@ static LWCore* sharedInstance;
 //- (BOOL)isUpdatingTime {}
 
 - (void)startUpdatingTime {
-	if (isUpdatingTime) {
+	if (isUpdatingTime || !_currentWatchFace) {
 		return;
 	}
+	
+	NSLog(@"start updating time");
 	
 	isUpdatingTime = YES;
 	[_currentWatchFace didStartUpdatingTime];
@@ -112,6 +110,8 @@ static LWCore* sharedInstance;
 	if (!isUpdatingTime) {
 		return;
 	}
+	
+	NSLog(@"stop updating time");
 	
 	[clockUpdateTimer invalidate];
 	clockUpdateTimer = nil;

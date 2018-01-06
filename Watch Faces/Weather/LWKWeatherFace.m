@@ -57,7 +57,6 @@
 }
 
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
-	NSLog(@"%f", hour);
 	if (hour >= 12) {
 		hour -= 12;
 	}
@@ -74,7 +73,7 @@
 		[label setTextColor:[UIColor whiteColor]];
 	}
 	[[indicatorLabels objectAtIndex:hour] setTextColor:[UIColor blackColor]];
-	[[indicatorLabels objectAtIndex:(hour-1 > 0 ? hour-1 : hour+11)] setHidden:YES];
+	[[indicatorLabels objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
 }
 
 @end

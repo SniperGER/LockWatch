@@ -129,6 +129,8 @@
 				[overlayView.customizeButton setAlpha:([[self currentWatchFace] isCustomizable] ? 1 : 0)];
 			}];
 		}
+		
+		[[LWCore sharedInstance] setCurrentWatchFace:nil];
 	} else {
 		[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:[self currentPage]]];
 		[[LWPreferences sharedInstance] setObject:[[[watchFaces objectAtIndex:[self currentPage]] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
