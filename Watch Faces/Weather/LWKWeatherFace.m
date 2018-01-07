@@ -39,7 +39,7 @@
 		indicatorLabels = [NSMutableArray new];
 		for (int i=0; i<12; i++) {
 			UILabel* indicatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-			[indicatorLabel setFont:[UIFont fontWithName:@".SFCompactText-Medium" size:20]];
+			[indicatorLabel setFont:[UIFont fontWithName:@".SFCompactText-Medium" size:18]];
 			[indicatorLabel setTextColor:[UIColor whiteColor]];
 			[indicatorLabel setText:[NSString stringWithFormat:@"%02d", i]];
 			[indicatorLabel sizeToFit];
@@ -57,22 +57,35 @@
 }
 
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+	if (minute <= 15) {
+		minute = 0;
+	} else if (minute < 45) {
+		minute = 30;
+	} else {
+		minute = 0;
+		hour = (hour == 23 ? 0 : hour+1);
+	}
+	
 	if (hour >= 12) {
 		hour -= 12;
 	}
 	
-	UIBezierPath* hourPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(102, 102) radius:86 startAngle:deg2rad(-90 + (hour*30)) endAngle:deg2rad(-90 + (hour*30) + 300) clockwise:YES];
-	[hourThing setPath:hourPath.CGPath];
+	float minuteValue = (minute/60);
+	float hourValue = (hour/12) + (minuteValue/12);
 	
-	CGFloat posX = sin(deg2rad(hour * 30)) * 86;
-	CGFloat posY = cos(deg2rad(hour * 30)) * 86;
-	[hourIndicator setCenter:CGPointMake(156 + posX, 195 - posY)];
-	
+		UIBezierPath* hourPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(102, 102) radius:86 startAngle:deg2rad(-90 + (hourValue*360)) endAngle:deg2rad(-90 + (hour*30) + 300) clockwise:YES];
+		[hourThing setPath:hourPath.CGPath];
+		
+		CGFloat posX = sin(deg2rad(hourValue * 360)) * 86;
+		CGFloat posY = cos(deg2rad(hourValue * 360)) * 86;
+		[hourIndicator setCenter:CGPointMake(156 + posX, 195 - posY)];
+		
 	for (UILabel* label in indicatorLabels) {
 		[label setHidden:NO];
 		[label setTextColor:[UIColor whiteColor]];
 	}
 	[[indicatorLabels objectAtIndex:hour] setTextColor:[UIColor blackColor]];
+	[[indicatorLabels objectAtIndex:hour] setHidden:(minute >= 15)];
 	[[indicatorLabels objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
 }
 

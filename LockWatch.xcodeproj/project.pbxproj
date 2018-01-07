@@ -322,6 +322,76 @@
 			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
 			remoteInfo = Color;
 		};
+		8D96B034200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC942D220002D97001AA572;
+			remoteInfo = Weather;
+		};
+		8D96B036200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
+			remoteInfo = XLarge;
+		};
+		8D96B038200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
+			remoteInfo = Chronograph;
+		};
+		8D96B03A200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
+			remoteInfo = Color;
+		};
+		8D96B03C200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D28F5711FEF270700810B0E;
+			remoteInfo = Simple;
+		};
+		8D96B03E200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D14372F1FEE59EB001EF825;
+			remoteInfo = Utility;
+		};
+		8D96B040200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DD05DD31FE7B270004E3A58;
+			remoteInfo = Numerals;
+		};
+		8D96B042200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D8397031FE083B200703408;
+			remoteInfo = ActivityDigital;
+		};
+		8D96B044200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D52DEC91FDD363D00B54C22;
+			remoteInfo = Utility;
+		};
+		8D96B046200215250065A35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DFBBDF91FDAB2DB007694E5;
+			remoteInfo = LockWatchKit;
+		};
 		8DC942DA20002DF3001AA572 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
@@ -1230,9 +1300,33 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
-		8DCF3FD01FDA8DBA00107325 /* Build */ = {
+		8D96B032200215250065A35B /* Install */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = do;
+			buildConfigurationList = 8D96B047200215250065A35B /* Build configuration list for PBXLegacyTarget "Install" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
+			dependencies = (
+				8D96B033200215250065A35B /* PBXTargetDependency */,
+				8D96B035200215250065A35B /* PBXTargetDependency */,
+				8D96B037200215250065A35B /* PBXTargetDependency */,
+				8D96B039200215250065A35B /* PBXTargetDependency */,
+				8D96B03B200215250065A35B /* PBXTargetDependency */,
+				8D96B03D200215250065A35B /* PBXTargetDependency */,
+				8D96B03F200215250065A35B /* PBXTargetDependency */,
+				8D96B041200215250065A35B /* PBXTargetDependency */,
+				8D96B043200215250065A35B /* PBXTargetDependency */,
+				8D96B045200215250065A35B /* PBXTargetDependency */,
+			);
+			name = Install;
+			passBuildSettingsInEnvironment = 1;
+			productName = Build;
+		};
+		8DCF3FD01FDA8DBA00107325 /* Build */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "";
 			buildConfigurationList = 8DCF3FD11FDA8DBA00107325 /* Build configuration list for PBXLegacyTarget "Build" */;
 			buildPhases = (
 			);
@@ -1568,6 +1662,7 @@
 			projectRoot = "";
 			targets = (
 				8DCF3FD01FDA8DBA00107325 /* Build */,
+				8D96B032200215250065A35B /* Install */,
 				8DFBBDEF1FDAB166007694E5 /* Build (Simulator) */,
 				8DFBBDF91FDAB2DB007694E5 /* LockWatchKit */,
 				8D52DEC91FDD363D00B54C22 /* ActivityAnalog */,
@@ -2107,6 +2202,56 @@
 			isa = PBXTargetDependency;
 			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
 			targetProxy = 8D51E2031FEFA27200B64F65 /* PBXContainerItemProxy */;
+		};
+		8D96B033200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC942D220002D97001AA572 /* Weather */;
+			targetProxy = 8D96B034200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B035200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3639421FEFA9040044A5AA /* XLarge */;
+			targetProxy = 8D96B036200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B037200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
+			targetProxy = 8D96B038200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B039200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
+			targetProxy = 8D96B03A200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B03B200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D28F5711FEF270700810B0E /* Simple */;
+			targetProxy = 8D96B03C200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B03D200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D14372F1FEE59EB001EF825 /* Utility */;
+			targetProxy = 8D96B03E200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B03F200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DD05DD31FE7B270004E3A58 /* Numerals */;
+			targetProxy = 8D96B040200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B041200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D8397031FE083B200703408 /* ActivityDigital */;
+			targetProxy = 8D96B042200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B043200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D52DEC91FDD363D00B54C22 /* ActivityAnalog */;
+			targetProxy = 8D96B044200215250065A35B /* PBXContainerItemProxy */;
+		};
+		8D96B045200215250065A35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DFBBDF91FDAB2DB007694E5 /* LockWatchKit */;
+			targetProxy = 8D96B046200215250065A35B /* PBXContainerItemProxy */;
 		};
 		8DC942DB20002DF3001AA572 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2927,6 +3072,105 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = watchface;
+			};
+			name = Release;
+		};
+		8D96B048200215250065A35B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				TARGET = "iphone:10.2";
+				THEOS = /opt/theos/;
+			};
+			name = Debug;
+		};
+		8D96B049200215250065A35B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				TARGET = "iphone:10.2";
+				THEOS = /opt/theos/;
 			};
 			name = Release;
 		};
@@ -3788,6 +4032,15 @@
 			buildConfigurations = (
 				8D8397071FE083B200703408 /* Debug */,
 				8D8397081FE083B200703408 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D96B047200215250065A35B /* Build configuration list for PBXLegacyTarget "Install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D96B048200215250065A35B /* Debug */,
+				8D96B049200215250065A35B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
