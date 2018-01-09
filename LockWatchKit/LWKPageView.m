@@ -13,8 +13,12 @@
 			[backgroundView setFrame:CGRectMake(-16, -16, frame.size.width + 32, frame.size.height + 32)];
 			[(NCMaterialView*)backgroundView setCornerRadius:15.0];
 			[self addSubview:backgroundView];
-		} else if (kCFCoreFoundationVersionNumber == kCFCoreFoundationVersionNumber_iOS_10_3) {
+		} else if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
 			// iOS 10.3
+			backgroundView = [objc_getClass("MTMaterialView") materialViewWithStyleOptions:2];
+			[backgroundView setFrame:CGRectMake(-16, -16, frame.size.width + 32, frame.size.height + 32)];
+			[(NCMaterialView*)backgroundView setCornerRadius:15.0];
+			[self addSubview:backgroundView];
 		} else {
 			// iOS 11
 			backgroundView = [objc_getClass("MTMaterialView") materialViewWithRecipe:4 options:2];

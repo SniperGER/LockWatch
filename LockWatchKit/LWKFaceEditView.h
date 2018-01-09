@@ -3,6 +3,7 @@
 @class LWKFaceEditPageView, LWKScrollIndicator, LWKClockBase;
 
 @interface LWKFaceEditView : UIView <UIScrollViewDelegate> {
+	UIPageControl* pageIndicator;
 	NSMutableArray* pages;
 	CGFloat lastScrollX;
 	LWKClockBase* customizingWatchFace;

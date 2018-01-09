@@ -73,6 +73,14 @@
 		[_scrollView setContentSize:CGSizeMake(options.count * 312, 390)];
 		_scrollIndicator = [[LWKScrollIndicator alloc] initWithFrame:CGRectMake(296, 50, 12, 75)];
 		[self addSubview:_scrollIndicator];
+		
+		if (options.count > 1) {
+			pageIndicator = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 46, 10)];
+			[pageIndicator setCenter:CGPointMake(156, 5)];
+			[pageIndicator setNumberOfPages:options.count];
+			[pageIndicator setCurrentPage:0];
+			[self addSubview:pageIndicator];
+		}
 	}
 	
 	return self;
@@ -132,6 +140,18 @@
 		LWKCustomizationSelector* current = [pages objectAtIndex:MIN(MAX(page,0), pages.count - 1)];
 		[_scrollIndicator setIndicatorHeight:[current indicatorHeight] relativeToHeight:400];
 		[_scrollIndicator setIndicatorPosition:[current indicatorPosition]];
+	}
+	
+	if (pageIndicator) {
+		CGFloat controlPage = (scrollView.contentOffset.x / scrollView.bounds.size.width);
+		CGFloat controlPageProgress = 1 + (controlPage - (int)controlPage - 1);
+		
+		if (controlPageProgress < 0.5) {
+			controlPage = floorf(controlPage);
+		} else {
+			controlPage = ceilf(controlPage);
+		}
+		[pageIndicator setCurrentPage:controlPage];
 	}
 	
 	lastScrollX = scrollView.contentOffset.x;

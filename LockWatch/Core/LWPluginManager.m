@@ -33,7 +33,7 @@
 										 @"Weather.watchface"
 										 ];
             [stockWatchFaces enumerateObjectsUsingBlock:^(NSURL* internalPlugin, NSUInteger index, BOOL* stop) {
-                if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound && ![[internalPlugin lastPathComponent] isEqualToString:@"Weather.watchface"]) {
+                if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound) {
                     
                     NSURL* filePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", pluginsLocation, internalPlugin]];
                     NSBundle* watchFaceBundle = [NSBundle bundleWithURL:filePath];

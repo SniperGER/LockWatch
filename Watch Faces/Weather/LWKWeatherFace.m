@@ -14,7 +14,7 @@
 		[temperatureLabel setFont:[UIFont fontWithName:@".SFCompactText-Medium" size:76]];
 		[temperatureLabel setTextColor:[UIColor whiteColor]];
 		[temperatureLabel setTextAlignment:NSTextAlignmentCenter];
-		[temperatureLabel setText:@"4°"];
+		[temperatureLabel setText:@"--"];
 		[temperatureLabel sizeToFit];
 		[temperatureLabel setCenter:CGPointMake(156, 195)];
 		[self.contentView addSubview:temperatureLabel];
@@ -51,6 +51,19 @@
 			[self.contentView addSubview:indicatorLabel];
 			[indicatorLabels addObject:indicatorLabel];
 		}
+		
+		weatherIcons = [NSMutableArray new];
+		for (int i=0; i<12; i++) {
+			UIImageView* weatherIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 55, 55)];
+			[weatherIcon setImage:[UIImage imageNamed:@"no_report-nc_100x100_" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+			
+			CGFloat posX = sin(deg2rad(i * 30)) * 129;
+			CGFloat posY = cos(deg2rad(i * 30)) * 129;
+			[weatherIcon setCenter:CGPointMake(156 + posX, 195 - posY)];
+			
+			[self.contentView addSubview:weatherIcon];
+			[weatherIcons addObject:weatherIcon];
+		}
 	}
 	
 	return self;
@@ -84,9 +97,16 @@
 		[label setHidden:NO];
 		[label setTextColor:[UIColor whiteColor]];
 	}
+	for (UIImageView* image in weatherIcons) {
+		[image setHidden:NO];
+	}
+	
 	[[indicatorLabels objectAtIndex:hour] setTextColor:[UIColor blackColor]];
 	[[indicatorLabels objectAtIndex:hour] setHidden:(minute >= 15)];
 	[[indicatorLabels objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
+	
+	[[weatherIcons objectAtIndex:hour] setHidden:(minute >= 15)];
+	[[weatherIcons objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
 }
 
 @end

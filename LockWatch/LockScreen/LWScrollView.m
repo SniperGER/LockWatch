@@ -53,18 +53,22 @@
 	for (NSBundle* plugin in loadedPlugins) {
 		int i = (int)[loadedPlugins indexOfObject:plugin];
 		
-		LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * (interfaceSize.width + (scrollViewSpacing * 2))), 0, interfaceSize.width, interfaceSize.height)];
-		[contentView addSubview:page];
-		[watchFacePages addObject:page];
-		
-		LWKClockBase* watchFace = [[plugin principalClass] new];
-		[page setWatchFace:watchFace];
-		[page addSubview:watchFace.clockView];
-		[watchFaces addObject:watchFace];
-		
-		[watchFace prepareForInit];
-		
-		[overlayView addTitle:[[plugin objectForInfoDictionaryKey:@"CFBundleDisplayName"] uppercaseString]];
+		@try {
+			LWKClockBase* watchFace = [[plugin principalClass] new];
+			[watchFace prepareForInit];
+			
+			LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * (interfaceSize.width + (scrollViewSpacing * 2))), 0, interfaceSize.width, interfaceSize.height)];
+			[page setWatchFace:watchFace];
+			[page addSubview:watchFace.clockView];
+			
+			[watchFaces addObject:watchFace];
+			[contentView addSubview:page];
+			[watchFacePages addObject:page];
+			
+			[overlayView addTitle:[[plugin objectForInfoDictionaryKey:@"CFBundleDisplayName"] uppercaseString]];
+		} @catch (NSException *exception) {
+			NSLog(@"[LockWatch] Failed to load a watch face. %@", exception.reason);
+		}
 	}
 	
 	[contentView setContentSize:CGSizeMake(watchFaces.count * (interfaceSize.width + (scrollViewSpacing * 2)), interfaceSize.height)];

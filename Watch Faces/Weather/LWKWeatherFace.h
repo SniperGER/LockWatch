@@ -7,7 +7,7 @@
 	UIView* hourIndicator;
 	
 	NSMutableArray<UILabel*>* indicatorLabels;
-	NSMutableArray* weatherIcons;
+	NSMutableArray<UIImageView*>* weatherIcons;
 }
 
 @end

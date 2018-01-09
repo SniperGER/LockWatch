@@ -20,8 +20,13 @@
 			
 			CAFilter* filter = [CAFilter filterWithName:@"vibrantLight"];
 			[self.titleLabel.layer setFilters:@[filter]];
-		} else if (kCFCoreFoundationVersionNumber == kCFCoreFoundationVersionNumber_iOS_10_3) {
+		} else if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
 			// iOS 10.3
+			backgroundView = [objc_getClass("MTMaterialView") materialViewWithStyleOptions:2];
+			[backgroundView setFrame:self.bounds];
+			[(NCMaterialView*)backgroundView setCornerRadius:7.5];
+			[self insertSubview:backgroundView atIndex:0];
+			[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		} else {
 			// iOS 11
 			backgroundView = [objc_getClass("MTMaterialView") materialViewWithRecipe:4 options:2];
