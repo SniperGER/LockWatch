@@ -30,6 +30,7 @@
 #import "Core/LWPreferences.h"
 #import "Core/LWMetrics.h"
 
+#import "LockScreen/LWContainerView.h"
 #import "LockScreen/LWInterfaceView.h"
 #import "LockScreen/LWScrollView.h"
 #import "LockScreen/LWFaceLibraryOverlayView.h"

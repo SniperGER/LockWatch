@@ -38,7 +38,7 @@ void setLockWatchVisibility() {
 		mainPage = [dashBoard mainPageContentViewController];
 	}
 	
-	[mainPage.view insertSubview:lockwatch.interfaceView atIndex:0];
+	[mainPage.view insertSubview:lockwatch.containerView atIndex:0];
 	setLockWatchVisibility();
 }
 
@@ -64,7 +64,7 @@ void setLockWatchVisibility() {
 	[MSHookIvar<UILabel *>(self,"_timeLabel") removeFromSuperview];
 	[MSHookIvar<UILabel *>(self,"_dateSubtitleView") removeFromSuperview];
 	[MSHookIvar<UILabel *>(self,"_customSubtitleView") removeFromSuperview];
-	
+
 	[lockwatch setMinimizedFrame:self.frame];
 	setLockWatchVisibility();
 	
@@ -116,24 +116,39 @@ void setLockWatchVisibility() {
 
 %end	// %hook SBDashBoardNotificationListViewController
 
+%hook SBDashBoardMediaArtworkViewController
+
+- (void)willTransitionToPresented:(BOOL)arg1 {
+	%orig;
+	
+	mediaControlsVisible = arg1;
+	setLockWatchVisibility();
+}
+
+%end	// %hook SBDashBoardMediaArtworkViewController
+
 %hook SBBacklightController
 
 - (void)_lockScreenDimTimerFired {
-	if (lockwatch.isSelecting || lockwatch.isEditing) {
-		[self resetIdleTimer];
-		return;
-	}
+//	if (lockwatch.isSelecting || lockwatch.isEditing) {
+//		[self resetIdleTimer];
+//		return;
+//	}
+//
+//	%orig;
 	
-	%orig;
+	return;
 }
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-	if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
-		[self resetIdleTimer];
-		return;
-	}
+//	if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
+//		[self resetIdleTimer];
+//		return;
+//	}
+//
+//	%orig;
 	
-	%orig;
+	return;
 }
 
 %end	// %hook SBBacklightController

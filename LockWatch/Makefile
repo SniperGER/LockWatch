@@ -1,4 +1,4 @@
-export THEOS_DEVICE_IP=169.254.194.91
+export THEOS_DEVICE_IP=192.168.178.98
 export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.lw-internal.$(shell date +%y%m%d)"
 
 include $(THEOS)/makefiles/common.mk
@@ -9,7 +9,7 @@ LockWatch_FILES = LockWatch_iOS10.xm $(wildcard Core/*.m) $(wildcard LockScreen/
 LockWatch_EXTRA_FRAMEWORKS = LockWatchKit
 
 ifeq ($(THEOS_TARGET_NAME),iphone)
-LockWatcg_EXTRA_FRAMEWORKS = Cephei
+LockWatch_EXTRA_FRAMEWORKS += Cephei
 endif
 
 include $(THEOS)/makefiles/tweak.mk
