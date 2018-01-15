@@ -7,12 +7,16 @@
 		[self setClipsToBounds:NO];
 		
 		titles = [NSMutableArray new];
-		titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 312, 46)];
+		titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [LWMetrics watchWidth], 46)];
 		[titleView setClipsToBounds:NO];
 		[titleView setUserInteractionEnabled:NO];
 		[self addSubview:titleView];
 		
-		_customizeButton = [[LWFaceLibraryCustomizeButton alloc] initWithFrame:CGRectMake(54, 334, 204, 56)];
+		if ([[LWMetrics sizeClass] isEqualToString:@"regular"]) {
+			_customizeButton = [[LWFaceLibraryCustomizeButton alloc] initWithFrame:CGRectMake(54, 334, 204, 56)];
+		} else if ([[LWMetrics sizeClass] isEqualToString:@"compact"]) {
+			_customizeButton = [[LWFaceLibraryCustomizeButton alloc] initWithFrame:CGRectMake(38, 290, 196, 50)];
+		}
 		[self addSubview:_customizeButton];
 	}
 	
@@ -20,14 +24,25 @@
 }
 
 - (void)addTitle:(NSString *)title {
-	UILabel* watchFaceTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titles.count*230, 0, 312, 46)];
-	[watchFaceTitleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:26]];
+	UILabel* watchFaceTitleLabel;
+	
+	if ([[LWMetrics sizeClass] isEqualToString:@"regular"]) {
+		watchFaceTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titles.count*230, 0, [LWMetrics watchWidth], 46)];
+		[watchFaceTitleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:26]];
+	} else if ([[LWMetrics sizeClass] isEqualToString:@"compact"]) {
+		watchFaceTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titles.count*207, 0, [LWMetrics watchWidth], 35)];
+		[watchFaceTitleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:24]];
+	}
+	
 	[watchFaceTitleLabel setTextAlignment:NSTextAlignmentCenter];
 	[watchFaceTitleLabel setTextColor:[UIColor whiteColor]];
 	[watchFaceTitleLabel setText:title];
+	
 	[titleView addSubview:watchFaceTitleLabel];
 	
 	[titles addObject:watchFaceTitleLabel];
+	
+	[titleView setContentSize:CGSizeMake(titles.count * ([[LWMetrics sizeClass] isEqualToString:@"regular"] ? 230 : 207), [LWMetrics watchHeight])];
 }
 
 - (void)setTitleAlpha:(CGFloat)alpha atIndex:(NSInteger)index {
@@ -55,3 +70,4 @@
 }
 
 @end
+

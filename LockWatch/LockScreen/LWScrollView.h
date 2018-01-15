@@ -21,7 +21,7 @@
 	CGFloat lastScrollX;
 }
 
-- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated;
+- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled;
 
 @end
 

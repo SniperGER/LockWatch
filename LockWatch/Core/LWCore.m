@@ -11,18 +11,16 @@ static LWCore* sharedInstance;
 - (id)init {
 	if (self = [super init]) {
 		sharedInstance = self;
-		dlopen([[NSString stringWithFormat:@"%@/LockWatchKit.framework/LockWatchKit", RESOURCES_PATH] UTF8String], RTLD_NOW);
-		dlopen("/System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit", RTLD_NOW);
+		dlopen("/System/Library/Frameworks/LockWatchKit.framework/LockWatchKit", RTLD_NOW);
 		dlopen("/System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit", RTLD_NOW);
 		
+#if !APP_CONTEXT
+		dlopen("/System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit", RTLD_NOW);
+#endif
 		_pluginManager = [LWPluginManager new];
 		
-		//CGSize interfaceSize = [LWMetrics watchSize];
-		//_interfaceView = [[LWInterfaceView alloc] initWithFrame:CGRectMake(0, screenHeight/2 - interfaceSize.height/2, screenWidth, interfaceSize.height)];
-		
-		_containerView = [[[NSBundle bundleForClass:[LWKClockBase class]] loadNibNamed:@"LockWatchInterface" owner:self options:nil] firstObject];
-		[_containerView setFrame:[[UIScreen mainScreen] bounds]];
-		_interfaceView = [_containerView.subviews firstObject];
+		_containerView = [[LWContainerView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+		_interfaceView = _containerView.interfaceView;
 		
 		if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -33,8 +31,7 @@ static LWCore* sharedInstance;
 }
 
 - (void)orientationChanged {
-	[_interfaceView setFrame:CGRectMake(0, 0, screenWidth, 390)];
-	[_interfaceView setCenter:CGPointMake(screenWidth / 2, screenHeight / 2)];
+	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 }
 
 - (void)setIsSelecting:(BOOL)isSelecting{
@@ -65,11 +62,10 @@ static LWCore* sharedInstance;
 	[_interfaceView setUserInteractionEnabled:!isMinimized];
 	
 	if (self.isSelecting) {
-		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES];
+		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	}
 	
 	if (isMinimized) {
-		CGSize interfaceSize = [LWMetrics watchSize];
 		CGRect labelFrame;
 		
 #if !APP_CONTEXT
@@ -78,13 +74,13 @@ static LWCore* sharedInstance;
 		}
 #endif
 		
-		CGRect oldFrame = CGRectMake(0, screenHeight/2 - interfaceSize.height/2, screenWidth, interfaceSize.height);
-		CGFloat scale = labelFrame.size.height / interfaceSize.width;
+		CGRect oldFrame = CGRectMake(0, screenHeight/2 - [LWMetrics watchHeight]/2, screenWidth, [LWMetrics watchHeight]);
+		CGFloat scale = labelFrame.size.height / [LWMetrics watchHeight];
 		
 		[UIView animateWithDuration:0.25 animations:^{
 			CGAffineTransform transform = CGAffineTransformIdentity;
 			
-			transform = CGAffineTransformTranslate(transform, 0, (labelFrame.origin.y - oldFrame.origin.y) - (interfaceSize.height / 2) + labelFrame.size.height/2);
+			transform = CGAffineTransformTranslate(transform, 0, (labelFrame.origin.y - oldFrame.origin.y) - ([LWMetrics watchHeight] / 2) + labelFrame.size.height/2);
 			transform = CGAffineTransformScale(transform, scale, scale);
 			
 			[_interfaceView setTransform:transform];
@@ -186,33 +182,6 @@ static LWCore* sharedInstance;
 	
 	if (_currentWatchFace) {
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
-	}
-}
-
-#pragma mark - Debugging
-
-- (void)setNotificationTestEnabled:(BOOL)arg1 {
-//	if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
-//		SBDashBoardNotificationListViewController* testController = [objc_getClass("SBDashBoardNotificationListViewController") new];
-//		[testController _setListHasContent:arg1];
-//	} else {
-//
-//	}
-	
-	[_containerView layoutIfNeeded];
-	[_containerView.notificationWidth setConstant:arc4random_uniform(screenWidth/2)];
-	
-	[UIView animateWithDuration:0.25 animations:^{
-		[_containerView layoutIfNeeded];
-	}];
-}
-
-- (void)setMediaPlayerTestEnabled:(BOOL)arg1 {
-	if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
-		SBDashBoardMediaArtworkViewController* testController = [objc_getClass("SBDashBoardMediaArtworkViewController") new];
-		[testController willTransitionToPresented:arg1];
-	} else {
-		
 	}
 }
 

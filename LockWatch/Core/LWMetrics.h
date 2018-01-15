@@ -2,14 +2,14 @@
 
 @interface LWMetrics : NSObject
 
-typedef NS_ENUM(NSUInteger, LWWatchSizeMode) {
-	LWWatchSizeModeRegular,
-	LWWatchSizeModeCompact,
-	LWWatchSizeModeOptimized,
-};
-
-+ (LWWatchSizeMode)watchSizeMode;
++ (NSString*)sizeClass;
 + (CGSize)watchSize;
-+ (CGFloat)facePageSpacing;
++ (CGFloat)watchWidth;
++ (CGFloat)watchHeight;
++ (double)interfaceScale;
++ (double)facePageSpacing;
++ (double)contentScale;
++ (double)overlayScale;
++ (double)pressedScale;
 
 @end

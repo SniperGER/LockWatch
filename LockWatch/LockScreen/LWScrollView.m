@@ -7,10 +7,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		CGSize interfaceSize = [LWMetrics watchSize];
-		CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
-		
-		contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, interfaceSize.width + (scrollViewSpacing*2), interfaceSize.height)];
+		contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [LWMetrics watchWidth] + ([LWMetrics facePageSpacing]*2), [LWMetrics watchHeight])];
 		[contentView setCenter:CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))];
 		[contentView setPagingEnabled:YES];
 		[contentView setClipsToBounds:NO];
@@ -18,7 +15,7 @@
 		[contentView setDelegate:self];
 		[self addSubview:contentView];
 		
-		overlayView = [[LWFaceLibraryOverlayView alloc] initWithFrame:CGRectMake(0, 0, interfaceSize.width, interfaceSize.height)];
+		overlayView = [[LWFaceLibraryOverlayView alloc] initWithFrame:CGRectMake(0, 0, [LWMetrics watchWidth], [LWMetrics watchHeight])];
 		[overlayView setCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))];
 		[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
 		[overlayView setAlpha:0.0];
@@ -46,7 +43,6 @@
 	watchFacePages = [NSMutableArray new];
 	watchFaces = [NSMutableArray new];
 	
-	CGSize interfaceSize = [LWMetrics watchSize];
 	CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
 	
 	NSArray* loadedPlugins = [[[LWCore sharedInstance] pluginManager] loadedPlugins];
@@ -54,25 +50,28 @@
 		int i = (int)[loadedPlugins indexOfObject:plugin];
 		
 		@try {
-			LWKClockBase* watchFace = [[plugin principalClass] new];
-			[watchFace prepareForInit];
-			
-			LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * (interfaceSize.width + (scrollViewSpacing * 2))), 0, interfaceSize.width, interfaceSize.height)];
-			[page setWatchFace:watchFace];
-			[page addSubview:watchFace.clockView];
-			
-			[watchFaces addObject:watchFace];
+			LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * ([LWMetrics watchWidth] + (scrollViewSpacing * 2))), 0, [LWMetrics watchWidth], [LWMetrics watchHeight])];
+			[page setTransform:CGAffineTransformMakeTranslation(0, [[LWMetrics sizeClass] isEqualToString:@"compact"] ? -13.0 : 0.0)];
 			[contentView addSubview:page];
 			[watchFacePages addObject:page];
 			
+			LWKClockBase* watchFace = [[plugin principalClass] new];
+			[page setWatchFace:watchFace];
+			[page addSubview:watchFace.clockView];
+			[watchFaces addObject:watchFace];
+			
+			[watchFace.clockView setTransform:CGAffineTransformMakeScale([LWMetrics interfaceScale], [LWMetrics interfaceScale])];
+			[watchFace.clockView setCenter:CGPointMake([LWMetrics watchWidth]/2, [LWMetrics watchHeight]/2)];
+			
+			[watchFace prepareForInit];
+			
 			[overlayView addTitle:[[plugin objectForInfoDictionaryKey:@"CFBundleDisplayName"] uppercaseString]];
-		} @catch (NSException *exception) {
+		} @catch (NSException* exception) {
 			NSLog(@"[LockWatch] Failed to load a watch face. %@", exception.reason);
 		}
 	}
 	
-	[contentView setContentSize:CGSizeMake(watchFaces.count * (interfaceSize.width + (scrollViewSpacing * 2)), interfaceSize.height)];
-	[overlayView setContentSize:CGSizeMake(watchFaces.count * 230, interfaceSize.height)];
+	[contentView setContentSize:CGSizeMake(watchFaces.count * ([LWMetrics watchWidth] + (scrollViewSpacing * 2)), [LWMetrics watchHeight])];
 	
 	int currentWatchFaceIndex = 0;
 	
@@ -98,7 +97,7 @@
 	}
 }
 
-- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated {
+- (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled {
 	if (isSelecting == selecting) {
 		return;
 	}
@@ -134,37 +133,53 @@
 			}];
 		}
 		
-		[[LWCore sharedInstance] setCurrentWatchFace:nil];
+		[[LWCore sharedInstance] setPreviousWatchFace:[[LWCore sharedInstance] currentWatchFace]];
+		//[[LWCore sharedInstance] setCurrentWatchFace:nil];
 	} else {
-		[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:[self currentPage]]];
-		[[LWPreferences sharedInstance] setObject:[[[watchFaces objectAtIndex:[self currentPage]] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
-		
-		[UIView animateWithDuration:0.15 animations:^{
-			[contentView setTransform:CGAffineTransformIdentity];
-			[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
-			[overlayView setAlpha:0.0];
-			
-			[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
-			[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:0.0];
-			[self setWatchFacePagesAlpha:0.0 exceptForPage:[self currentWatchFacePage]];
-			[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
-		}];
-		
-		
-		if (editing) {
-			[[self currentWatchFace] setIsEditing:YES];
-		} else {
-			[[LWCore sharedInstance] startUpdatingTime];
-			
-			if ([[[LWCore sharedInstance] currentWatchFace] isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
-				[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
-				[[LWCore sharedInstance] updateTimeWhileTimeIsSyncing];
-			} else {
-				
-				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-					[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
-				});
+		void(^stopSelecting)() = ^{
+			if (!cancelled) {
+				[[LWCore sharedInstance] setCurrentWatchFace:[watchFaces objectAtIndex:[self currentPage]]];
+				[[LWPreferences sharedInstance] setObject:[[[watchFaces objectAtIndex:[self currentPage]] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
 			}
+			
+			[UIView animateWithDuration:0.15 animations:^{
+				[contentView setTransform:CGAffineTransformIdentity];
+				[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
+				[overlayView setAlpha:0.0];
+				
+				[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
+				[self setWatchFaceBackgroundAlpha:[self currentWatchFacePage] alpha:0.0];
+				[self setWatchFacePagesAlpha:0.0 exceptForPage:[self currentWatchFacePage]];
+				[self setWatchFacesBackgroundAlpha:1.0 exceptForPage:[self currentWatchFacePage]];
+			}];
+			
+			if (editing) {
+				[[self currentWatchFace] setIsEditing:YES];
+			} else {
+				[[LWCore sharedInstance] startUpdatingTime];
+				
+				if ([[[LWCore sharedInstance] currentWatchFace] isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
+					[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+					[[LWCore sharedInstance] updateTimeWhileTimeIsSyncing];
+				} else {
+					
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+						[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+					});
+				}
+			}
+		};
+		
+		int previous = [watchFaces indexOfObject:[[LWCore sharedInstance] previousWatchFace]];
+		
+		if (cancelled && previous != [self currentPage]) {
+			[UIView animateWithDuration:0.25 animations:^{
+				[contentView setContentOffset:CGPointMake(previous * contentView.bounds.size.width, 0)];
+			} completion:^(BOOL finished) {
+				stopSelecting();
+			}];
+		} else {
+			stopSelecting();
 		}
 	}
 	
@@ -228,7 +243,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	CGFloat percent = scrollView.contentOffset.x / scrollView.contentSize.width;
-	[overlayView setContentOffset:CGPointMake(percent*overlayView.contentSize.width, 0)];
+	[overlayView setContentOffset:CGPointMake(percent * overlayView.contentSize.width, 0)];
 	
 	CGFloat width = contentView.bounds.size.width;
 	CGFloat pageProgress = (([self currentPage] * width) - scrollView.contentOffset.x) / width;
@@ -239,6 +254,14 @@
 	int nextIndex = (page < watchFacePages.count - 1) ? ceil(page) : (int)watchFacePages.count - 1;
 	
 	if (lastScrollX != scrollView.contentOffset.x) {
+		for (LWKPageView* page in watchFacePages) {
+			[page setAlpha:(isSelecting ? 0.5 : 0.0)];
+		}
+		
+		for (int i=0; i<watchFacePages.count; i++) {
+			[overlayView setTitleAlpha:0 atIndex:i];
+		}
+		
 		if (lastScrollX < scrollView.contentOffset.x) {
 			LWKPageView* nextPage = [watchFacePages objectAtIndex:nextIndex];
 			
@@ -394,6 +417,12 @@
 				[contentView setTransform:CGAffineTransformIdentity];
 				[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
 				[overlayView setAlpha:0.0];
+				
+				for (LWKPageView* page in watchFacePages) {
+					[page setAlpha:0.0];
+				}
+				
+				[[watchFacePages objectAtIndex:[self currentPage]] setAlpha:1.0];
 				[[watchFacePages objectAtIndex:[self currentPage]] setBackgroundAlpha:0.0];
 			}
 		}];
@@ -415,7 +444,7 @@
 	}
 	
 	CGFloat forcePercentage = force / touch.maximumPossibleForce;
-	CGFloat pressedScaleFactor = 172.0 / 312.0;
+	CGFloat pressedScaleFactor = [LWMetrics pressedScale];
 	CGFloat threshold = (1 - contentScale) * (1 / (1 - pressedScaleFactor));
 	
 	if (isSelecting) {
@@ -445,7 +474,7 @@
 	}
 	
 	if (forcePercentage >= threshold) {
-		[self setIsSelecting:YES editing:NO animated:NO];
+		[self setIsSelecting:YES editing:NO animated:NO didCancel:NO];
 	}
 	
 	[overlayView setContentOffset:CGPointMake((contentView.contentOffset.x / contentView.contentSize.width) * overlayView.contentSize.width, 0)];
@@ -457,15 +486,15 @@
 #pragma mark Event Handlers
 
 - (void)tapped {
-	[self setIsSelecting:NO editing:NO animated:YES];
+	[self setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 }
 
 - (void)pressed {
-	[self setIsSelecting:YES editing:NO animated:YES];
+	[self setIsSelecting:YES editing:NO animated:YES didCancel:NO];
 }
 
 - (void)customizeButtonPressed {
-	[self setIsSelecting:NO editing:YES animated:YES];
+	[self setIsSelecting:NO editing:YES animated:YES didCancel:NO];
 }
 
 #pragma mark Calculations
@@ -485,7 +514,7 @@
 #pragma mark Capabilities
 
 - (BOOL)forceTouchCapable {
-	return ((self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) || [[UIDevice currentDevice] _supportsForceTouch]) && !TESTING;
+	return ((self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) || [[UIDevice currentDevice] _supportsForceTouch]) && !DISABLE_FORCE_TOUCH;
 }
 
 @end

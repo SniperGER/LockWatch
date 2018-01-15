@@ -6,7 +6,7 @@
 
 @interface LWPreferences : NSObject {
 #if APP_CONTEXT
-	NSMutableDictionary* preferences;
+	NSUserDefaults* preferences;
 #else
 #if (TARGET_OS_SIMULATOR)
 	NSMutableDictionary* preferences;
@@ -16,8 +16,8 @@
 #endif
 }
 
-+ (_Nonnull id)sharedInstance;
-- (_Nonnull id)objectForKey:(NSString* _Nonnull)key;
-- (void)setObject:(_Nonnull id)anObject forKey:(NSString * _Nonnull)aKey;
++ (id)sharedInstance;
+- (id)objectForKey:(NSString*)key;
+- (void)setObject:(id)anObject forKey:(NSString *)aKey;
 
 @end

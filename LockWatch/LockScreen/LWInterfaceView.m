@@ -4,7 +4,6 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-
 		_scrollView = [[LWScrollView alloc] initWithFrame:self.bounds];
 		[self addSubview:_scrollView];
 	}

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,6 +24,10 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBz-4I-gp5">
                                 <rect key="frame" x="176" y="625" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="BS0-nW-A9c"/>
+                                    <constraint firstAttribute="width" constant="22" id="oTw-nb-Nf8"/>
+                                </constraints>
                                 <color key="tintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <color key="titleColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -31,17 +36,39 @@
                                     <action selector="buttonPressed:" destination="XiS-hz-wSf" eventType="touchUpInside" id="HVW-jh-d43"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qDe-0O-rTW">
+                                <rect key="frame" x="16" y="621" width="51" height="31"/>
+                                <color key="onTintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-5B-Nc1">
+                                <rect key="frame" x="73" y="626" width="95" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Mcg-wo-OWN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Db9-jn-wNI" firstAttribute="top" secondItem="qDe-0O-rTW" secondAttribute="bottom" constant="15" id="Ieg-N4-bZb"/>
                             <constraint firstItem="bBz-4I-gp5" firstAttribute="centerX" secondItem="zI2-PD-DBE" secondAttribute="centerX" id="JXP-oZ-Y6k"/>
+                            <constraint firstItem="Upr-5B-Nc1" firstAttribute="leading" secondItem="qDe-0O-rTW" secondAttribute="trailing" constant="8" id="THa-Qs-809"/>
+                            <constraint firstItem="bBz-4I-gp5" firstAttribute="leading" secondItem="Upr-5B-Nc1" secondAttribute="trailing" constant="8" id="Wga-dl-kIo"/>
+                            <constraint firstItem="qDe-0O-rTW" firstAttribute="leading" secondItem="zI2-PD-DBE" secondAttribute="leadingMargin" id="dpU-YP-blK"/>
                             <constraint firstItem="Db9-jn-wNI" firstAttribute="top" secondItem="bBz-4I-gp5" secondAttribute="bottom" constant="20" id="eCV-Qm-Jtc"/>
+                            <constraint firstItem="Db9-jn-wNI" firstAttribute="top" secondItem="Upr-5B-Nc1" secondAttribute="bottom" constant="20" id="x9k-Cl-Ynf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="watchSizeLabel" destination="Upr-5B-Nc1" id="tnK-Pn-gn4"/>
+                        <outlet property="watchSizeSwitch" destination="qDe-0O-rTW" id="Lsh-r0-lGh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJV-i6-4Go" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-197"/>
+            <point key="canvasLocation" x="548" y="-197.45127436281859"/>
         </scene>
     </scenes>
 </document>

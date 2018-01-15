@@ -10,6 +10,7 @@
 
 @property (nonatomic, strong) LWPluginManager* pluginManager;
 @property (nonatomic, strong) LWKClockBase* currentWatchFace;
+@property (nonatomic, strong) LWKClockBase* previousWatchFace;
 @property (nonatomic, strong) LWContainerView* containerView;
 @property (nonatomic, strong) LWInterfaceView* interfaceView;
 @property (nonatomic, assign) CGRect minimizedFrame;
@@ -24,19 +25,5 @@
 - (void)stopUpdatingTime;
 - (void)updateTimeForCurrentWatchFace;
 - (void)updateTimeWhileTimeIsSyncing;
-
-@end
-
-#pragma mark - Debugging
-
-@interface SBDashBoardNotificationListViewController : UIViewController
-
-- (void)_setListHasContent:(BOOL)arg1;
-
-@end
-
-@interface SBDashBoardMediaArtworkViewController : UIViewController
-
-- (void)willTransitionToPresented:(BOOL)arg1;
 
 @end

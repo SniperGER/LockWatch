@@ -1,6 +1,12 @@
 #import "LockWatchKit.h"
 #import "LWKCustomizationSelector.h"
 
+@interface LWPreferences : NSObject
++ (id)sharedInstance;
+- (id)objectForKey:(NSString*)key;
+- (void)setObject:(id)anObject forKey:(NSString *)aKey;
+@end
+
 @implementation LWKClockBase
 
 - (id)init {
@@ -17,11 +23,21 @@
 		[_clockView addSubview:_indicatorView];
 		
 		_watchFaceBundle = [NSBundle bundleForClass:self.class];
-		watchFacePreferences = [NSMutableDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]]];
+		/*watchFacePreferences = [NSMutableDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]]];
 		
 		if (!watchFacePreferences) {
 			watchFacePreferences = [NSMutableDictionary new];
 			[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+		}*/
+		
+		watchFacePreferences = [[[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] objectForKey:[_watchFaceBundle bundleIdentifier]] mutableCopy];
+		if (!watchFacePreferences) {
+			watchFacePreferences = [NSMutableDictionary new];
+			
+			NSMutableDictionary* preferencesContainer = [[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] mutableCopy];
+			[preferencesContainer setObject:watchFacePreferences forKey:[_watchFaceBundle bundleIdentifier]];
+			
+			[[objc_getClass("LWPreferences") sharedInstance] setObject:preferencesContainer forKey:@"watchFacePreferences"];
 		}
 		
 		[self prepareCustomizationMode];
@@ -90,7 +106,10 @@
 
 - (void)setFaceStyle:(int)style {
 	[watchFacePreferences setValue:[NSNumber numberWithInt:style] forKey:@"style"];
-	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+	NSMutableDictionary* preferencesContainer = [[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] mutableCopy];
+	[preferencesContainer setObject:watchFacePreferences forKey:[_watchFaceBundle bundleIdentifier]];
+	
+	[[objc_getClass("LWPreferences") sharedInstance] setObject:preferencesContainer forKey:@"watchFacePreferences"];
 }
 
 - (int)faceStyle {
@@ -112,7 +131,10 @@
 	}
 	
 	[watchFacePreferences setValue:[NSNumber numberWithInt:detail] forKey:@"detail"];
-	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+	NSMutableDictionary* preferencesContainer = [[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] mutableCopy];
+	[preferencesContainer setObject:watchFacePreferences forKey:[_watchFaceBundle bundleIdentifier]];
+	
+	[[objc_getClass("LWPreferences") sharedInstance] setObject:preferencesContainer forKey:@"watchFacePreferences"];
 }
 
 - (int)faceDetail {
@@ -122,7 +144,10 @@
 // Accent Color
 - (void)setAccentColor:(NSString*)color {
 	[watchFacePreferences setObject:color forKey:@"accentColor"];
-	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+	NSMutableDictionary* preferencesContainer = [[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] mutableCopy];
+	[preferencesContainer setObject:watchFacePreferences forKey:[_watchFaceBundle bundleIdentifier]];
+	
+	[[objc_getClass("LWPreferences") sharedInstance] setObject:preferencesContainer forKey:@"watchFacePreferences"];
 }
 
 - (NSString*)accentColor {
@@ -139,7 +164,10 @@
 	
 	[settings setValue:[NSNumber numberWithInt:index] forKey:position];
 	[watchFacePreferences setObject:settings forKey:@"complications"];
-	[watchFacePreferences writeToFile:[NSString stringWithFormat:FACE_PREFERENCES_PATH, [_watchFaceBundle bundleIdentifier]] atomically:YES];
+	NSMutableDictionary* preferencesContainer = [[[objc_getClass("LWPreferences") sharedInstance] objectForKey:@"watchFacePreferences"] mutableCopy];
+	[preferencesContainer setObject:watchFacePreferences forKey:[_watchFaceBundle bundleIdentifier]];
+	
+	[[objc_getClass("LWPreferences") sharedInstance] setObject:preferencesContainer forKey:@"watchFacePreferences"];
 }
 
 - (int)complicationIndexForPosition:(NSString*)position {

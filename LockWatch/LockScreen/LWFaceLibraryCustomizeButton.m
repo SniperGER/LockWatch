@@ -4,7 +4,12 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		[self.titleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:32]];
+		if ([[LWMetrics sizeClass] isEqualToString:@"regular"]) {
+			[self.titleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:32]];
+		} else if ([[LWMetrics sizeClass] isEqualToString:@"compact"]) {
+			[self.titleLabel setFont:[UIFont fontWithName:@".SFCompactText-Regular" size:30]];
+		}
+		
 		[self setTitle:[[NSBundle bundleForClass:[LWKClockBase class]] localizedStringForKey:@"CUSTOMIZE" value:@"" table:nil] forState:UIControlStateNormal];
 		
 		if (kCFCoreFoundationVersionNumber <= kCFCoreFoundationVersionNumber_iOS_9_x_Max) {

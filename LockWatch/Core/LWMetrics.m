@@ -2,50 +2,72 @@
 
 @implementation LWMetrics
 
-+ (LWWatchSizeMode)watchSizeMode {
-//	if ([[[LWPreferences sharedInstance] objectForKey:@"watchSize"] isEqualToString:@"regular"]) {
-		return LWWatchSizeModeRegular;
-//	} else if ([[[LWPreferences sharedInstance] objectForKey:@"watchSize"] isEqualToString:@"compact"]) {
-//		return LWWatchSizeModeCompact;
-//	} else if ([[[LWPreferences sharedInstance] objectForKey:@"watchSize"] isEqualToString:@"optimized"]) {
-//		return LWWatchSizeModeOptimized;
-//	}
-//
-//	return -1;
++ (NSString*)sizeClass {
+	return [[LWPreferences sharedInstance] objectForKey:@"watchSize"];
 }
 
 + (CGSize)watchSize {
-//	switch ([self watchSizeMode]) {
-//		case LWWatchSizeModeRegular:
-			return CGSizeMake(312, 390);
-//			break;
-//		case LWWatchSizeModeCompact:
-//			return CGSizeMake(272, 340);
-//			break;
-//		case LWWatchSizeModeOptimized:
-//			return CGSizeMake(screenWidth - 102, (screenWidth - 102) / 0.8);
-//			break;
-//		default:
-//			return CGSizeZero;
-//			break;
-//	}
+	NSString* sizeString = self.sizeClass;
+	
+	if ([sizeString isEqualToString:@"regular"]) {
+		return CGSizeMake(312, 390);
+	} else if ([sizeString isEqualToString:@"compact"]) {
+		return CGSizeMake(272, 340);
+	}
+	
+	return CGSizeZero;
 }
 
-+ (CGFloat)facePageSpacing {
-//	switch ([self watchSizeMode]) {
-//		case LWWatchSizeModeRegular:
-			return 35;
-//			break;
-//		case LWWatchSizeModeCompact:
-//			return 30;
-//			break;
-//		case LWWatchSizeModeOptimized:
-//			return (35/312) * [self watchSize].width;
-//			break;
-//		default:
-//			return 0;
-//			break;
-//	}
++ (CGFloat)watchWidth {
+	return self.watchSize.width;
+}
+
++ (CGFloat)watchHeight {
+	return self.watchSize.height;
+}
+
++ (double)interfaceScale {
+	return self.watchWidth / 312.0;
+}
+
++ (double)facePageSpacing {
+	return 35;
+}
+
++ (double)contentScale {
+	NSString* sizeString = self.sizeClass;
+	
+	if ([sizeString isEqualToString:@"regular"]) {
+		return 188.0 / 312.0;
+	} else if ([sizeString isEqualToString:@"compact"]) {
+		return 164.0 / 272.0;
+	}
+	
+	return 1;
+}
+
++ (double)overlayScale {
+	NSString* sizeString = self.sizeClass;
+	
+	if ([sizeString isEqualToString:@"regular"]) {
+		return 364.0 / 220.0;
+	} else if ([sizeString isEqualToString:@"compact"]) {
+		return 324.0 / 196.0;
+	}
+	
+	return 1;
+}
+
++ (double)pressedScale {
+	NSString* sizeString = self.sizeClass;
+	
+	if ([sizeString isEqualToString:@"regular"]) {
+		return 172.0 / 312.0;
+	} else if ([sizeString isEqualToString:@"compact"]) {
+		return 148.0 / 272.0;
+	}
+	
+	return 1;
 }
 
 @end

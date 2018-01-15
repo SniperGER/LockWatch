@@ -48,9 +48,9 @@ void setLockWatchVisibility() {
 
 - (void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
 	if (lockwatch.isEditing) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES];
+		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES didCancel:NO];
 	} else if (lockwatch.isSelecting) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES];
+		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:YES];
 	} else {
 		%orig;
 	}
@@ -79,9 +79,9 @@ void setLockWatchVisibility() {
 	setLockWatchVisibility();
 	
 	if (lockwatch.isEditing) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES];
+		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES didCancel:NO];
 	} else if (lockwatch.isSelecting) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES];
+		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	} else {
 		[lockwatch updateTimeForCurrentWatchFace];
 	}
