@@ -95,7 +95,7 @@ static LWCore* sharedInstance;
 //- (BOOL)isUpdatingTime {}
 
 - (void)startUpdatingTime {
-	if (isUpdatingTime || !_currentWatchFace) {
+	if (isUpdatingTime || !_currentWatchFace || _isSelecting || _isEditing) {
 		return;
 	}
 	
