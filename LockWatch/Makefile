@@ -25,3 +25,9 @@ after-all::
 	@ldid -S /opt/simject/$(PROJECT_NAME).dylib
 	@~/Documents/Xcode/simject/bin/respring_simulator -d "iPhone 6s Plus" -v 10.2
 endif
+
+ifeq ($(THEOS_TARGET_NAME),iphone)
+LockWatch_SUBPROJECTS = lockwatchprefs
+endif
+
+include $(THEOS_MAKE_PATH)/aggregate.mk

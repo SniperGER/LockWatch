@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0243B1200E0038003F40D4 /* entry.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0243AA200E0038003F40D4 /* entry.plist */; };
+		8D0243B2200E0038003F40D4 /* LWPRootListController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0243AB200E0038003F40D4 /* LWPRootListController.h */; };
+		8D0243B3200E0038003F40D4 /* LWPRootListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0243AC200E0038003F40D4 /* LWPRootListController.m */; };
+		8D0243B4200E0038003F40D4 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8D0243AD200E0038003F40D4 /* Makefile */; };
+		8D0243B5200E0038003F40D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0243AF200E0038003F40D4 /* Info.plist */; };
+		8D0243B6200E0038003F40D4 /* Root.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0243B0200E0038003F40D4 /* Root.plist */; };
 		8D058C2E1FE3D8500073239E /* Customization.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D058C2D1FE3D84B0073239E /* Customization.plist */; };
 		8D1437201FEA68DC001EF825 /* LWKLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D14371E1FEA68DC001EF825 /* LWKLabel.h */; };
 		8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14371F1FEA68DC001EF825 /* LWKLabel.m */; };
@@ -513,6 +519,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8D0243AA200E0038003F40D4 /* entry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entry.plist; sourceTree = "<group>"; };
+		8D0243AB200E0038003F40D4 /* LWPRootListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPRootListController.h; sourceTree = "<group>"; };
+		8D0243AC200E0038003F40D4 /* LWPRootListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPRootListController.m; sourceTree = "<group>"; };
+		8D0243AD200E0038003F40D4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8D0243AF200E0038003F40D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0243B0200E0038003F40D4 /* Root.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Root.plist; sourceTree = "<group>"; };
+		8D0243B7200E00DF003F40D4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		8D0243B8200E00DF003F40D4 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		8D0243B9200E00DF003F40D4 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		8D058C2D1FE3D84B0073239E /* Customization.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Customization.plist; sourceTree = "<group>"; };
 		8D14371E1FEA68DC001EF825 /* LWKLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWKLabel.h; sourceTree = "<group>"; };
 		8D14371F1FEA68DC001EF825 /* LWKLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWKLabel.m; sourceTree = "<group>"; };
@@ -835,6 +850,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D0243A9200E0038003F40D4 /* lockwatchprefs */ = {
+			isa = PBXGroup;
+			children = (
+				8D0243AA200E0038003F40D4 /* entry.plist */,
+				8D0243AB200E0038003F40D4 /* LWPRootListController.h */,
+				8D0243AC200E0038003F40D4 /* LWPRootListController.m */,
+				8D0243AD200E0038003F40D4 /* Makefile */,
+				8D0243AE200E0038003F40D4 /* Resources */,
+			);
+			path = lockwatchprefs;
+			sourceTree = "<group>";
+		};
+		8D0243AE200E0038003F40D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D0243AF200E0038003F40D4 /* Info.plist */,
+				8D0243B0200E0038003F40D4 /* Root.plist */,
+				8D0243B7200E00DF003F40D4 /* icon.png */,
+				8D0243B8200E00DF003F40D4 /* icon@2x.png */,
+				8D0243B9200E00DF003F40D4 /* icon@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8D058C301FE3DAB00073239E /* Watch Faces */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,6 +1210,7 @@
 				8DCF3FD71FDA8E2A00107325 /* LockWatch.h */,
 				8DCF3FD41FDA8E1600107325 /* Core */,
 				8D981AA11FDC672600D9F0F7 /* LockScreen */,
+				8D0243A9200E0038003F40D4 /* lockwatchprefs */,
 			);
 			path = LockWatch;
 			sourceTree = "<group>";
@@ -1296,6 +1336,7 @@
 				8D90B70E1FE86537007DA475 /* WatchColors.h in Headers */,
 				8DFB78781FEA5D2300F45A3C /* LWKStyleCustomizationSelector.h in Headers */,
 				8DD9C3A71FE6891B00428F51 /* MTMaterialView.h in Headers */,
+				8D0243B2200E0038003F40D4 /* LWPRootListController.h in Headers */,
 				8DFB78701FEA557D00F45A3C /* LWKScrollIndicator.h in Headers */,
 				8D8397191FE106F800703408 /* LWKDigitalClock.h in Headers */,
 				8DFBBE0A1FDAB327007694E5 /* LWKClockBase.h in Headers */,
@@ -1855,7 +1896,9 @@
 			files = (
 				8D981A9F1FDC522A00D9F0F7 /* second@2x.png in Resources */,
 				8D83971D1FE1152E00703408 /* InfoPlist.strings in Resources */,
+				8D0243B6200E0038003F40D4 /* Root.plist in Resources */,
 				8D981AA01FDC522A00D9F0F7 /* second@3x.png in Resources */,
+				8D0243B1200E0038003F40D4 /* entry.plist in Resources */,
 				8D52DEDD1FDD43EE00B54C22 /* WatchFaces.txt in Resources */,
 				8D1437281FEE5171001EF825 /* Localizable.strings in Resources */,
 				8D981A9B1FDC522A00D9F0F7 /* hour@2x.png in Resources */,
@@ -1864,6 +1907,7 @@
 				8D981A9E1FDC522A00D9F0F7 /* minute@3x.png in Resources */,
 				8D981A9C1FDC522A00D9F0F7 /* hour@3x.png in Resources */,
 				8D981A9D1FDC522A00D9F0F7 /* minute@2x.png in Resources */,
+				8D0243B5200E0038003F40D4 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2099,6 +2143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5BD1401FFE5D5400B92BF8 /* LWKComplicationCustomizationSelector.m in Sources */,
+				8D0243B4200E0038003F40D4 /* Makefile in Sources */,
 				8D90B70F1FE86537007DA475 /* WatchColors.m in Sources */,
 				8D2657841FE1DCD9003414FA /* LWKActivityDataProvider.m in Sources */,
 				8D14374D1FEE5D5B001EF825 /* LWKDetailCustomizationSelector.m in Sources */,
@@ -2107,6 +2152,7 @@
 				8D1437211FEA68DC001EF825 /* LWKLabel.m in Sources */,
 				8DFB78791FEA5D2300F45A3C /* LWKStyleCustomizationSelector.m in Sources */,
 				8DFBBE0B1FDAB327007694E5 /* LWKClockBase.m in Sources */,
+				8D0243B3200E0038003F40D4 /* LWPRootListController.m in Sources */,
 				8D981A931FDC505F00D9F0F7 /* LWKClockHand.m in Sources */,
 				8D83971A1FE106F800703408 /* LWKDigitalClock.m in Sources */,
 				8DFB78711FEA557D00F45A3C /* LWKScrollIndicator.m in Sources */,
