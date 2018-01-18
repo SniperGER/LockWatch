@@ -1,5 +1,8 @@
-#import <Preferences/PSEditableListController.h>
+#import <CepheiPrefs/HBRootListController.h>
+#import <Cephei/HBPreferences.h>
 
-@interface LWPRootListController : PSEditableListController
+@interface LWPRootListController : HBRootListController
+
+- (void)killSpringBoard;
 
 @end

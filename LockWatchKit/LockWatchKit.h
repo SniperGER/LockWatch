@@ -14,6 +14,7 @@ FOUNDATION_EXPORT const unsigned char LockWatchKitVersionString[];
 #define deg2rad(angle) ((angle) / 180.0 * M_PI)
 
 #import <LockWatchKit/LWKActivityDataProvider.h>
+#import <LockWatchKit/LWKWeatherDataProvider.h>
 #import <LockWatchKit/LWKPageView.h>
 #import <LockWatchKit/LWKClockHand.h>
 #import <LockWatchKit/LWKClockBase.h>
@@ -26,4 +27,7 @@ FOUNDATION_EXPORT const unsigned char LockWatchKitVersionString[];
 #import "MTMaterialView.h"
 #import "NCMaterialView.h"
 #import "_UIBackdropView.h"
+#import "Weather.h"
 #import "WatchColors.h"
+#import "WeatherIcons.h"
+#import "UIFont+WDCustomLoader.h"

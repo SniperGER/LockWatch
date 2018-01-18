@@ -38,6 +38,7 @@
 		
 		indicatorLabels = [NSMutableArray new];
 		for (int i=0; i<12; i++) {
+			
 			UILabel* indicatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			[indicatorLabel setFont:[UIFont fontWithName:@".SFCompactText-Medium" size:18]];
 			[indicatorLabel setTextColor:[UIColor whiteColor]];
@@ -64,12 +65,30 @@
 			[self.contentView addSubview:weatherIcon];
 			[weatherIcons addObject:weatherIcon];
 		}
+		
+		cityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 312, 35)];
+		[cityView setCenter:CGPointMake(156, 195 + 156 + 27.0)];
+		[cityView.layer setCornerRadius:17.5];
+		[cityView setClipsToBounds:YES];
+		[self.backgroundView addSubview:cityView];
+		
+		_UIBackdropView* cityBackground = [[_UIBackdropView alloc] initWithFrame:CGRectMake(0, 0, 312, 35) autosizesToFitSuperview:NO settings:[_UIBackdropViewSettings settingsForStyle:1]];
+		[cityView addSubview:cityBackground];
+		
+		cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 312, 35)];
+		[cityLabel setFont:[UIFont fontWithName:@".SFCompactRounded-Regular" size:27]];
+		[cityLabel setTextColor:[UIColor whiteColor]];
+		[cityLabel setTextAlignment:NSTextAlignmentCenter];
+		[cityLabel setText:[[self.watchFaceBundle localizedInfoDictionary][@"CFBundleDisplayName"] uppercaseString]];
+		[cityView addSubview:cityLabel];
 	}
 	
 	return self;
 }
 
 - (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+	currentHour = hour;
+	
 	if (minute <= 15) {
 		minute = 0;
 	} else if (minute < 45) {
@@ -86,13 +105,18 @@
 	float minuteValue = (minute/60);
 	float hourValue = (hour/12) + (minuteValue/12);
 	
-		UIBezierPath* hourPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(102, 102) radius:86 startAngle:deg2rad(-90 + (hourValue*360)) endAngle:deg2rad(-90 + (hour*30) + 300) clockwise:YES];
-		[hourThing setPath:hourPath.CGPath];
-		
-		CGFloat posX = sin(deg2rad(hourValue * 360)) * 86;
-		CGFloat posY = cos(deg2rad(hourValue * 360)) * 86;
-		[hourIndicator setCenter:CGPointMake(156 + posX, 195 - posY)];
-		
+	UIBezierPath* hourPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(102, 102) radius:86 startAngle:deg2rad(-90 + (hourValue*360)) endAngle:deg2rad(-90 + (hour*30) + 300) clockwise:YES];
+	
+	if (minute >= 15) {
+		hourPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(102, 102) radius:86 startAngle:deg2rad(-90 + (hourValue*360)) endAngle:deg2rad(-90 + ((hour+1)*30) + 300) clockwise:YES];
+	}
+	
+	[hourThing setPath:hourPath.CGPath];
+	
+	CGFloat posX = sin(deg2rad(hourValue * 360)) * 86;
+	CGFloat posY = cos(deg2rad(hourValue * 360)) * 86;
+	[hourIndicator setCenter:CGPointMake(156 + posX, 195 - posY)];
+	
 	for (UILabel* label in indicatorLabels) {
 		[label setHidden:NO];
 		[label setTextColor:[UIColor whiteColor]];
@@ -101,12 +125,71 @@
 		[image setHidden:NO];
 	}
 	
+	NSArray* indicatorLabelStrings = [[[NSBundle bundleForClass:self.class] localizedStringForKey:@"HOUR_LABELS" value:@"" table:nil] componentsSeparatedByString:@" "];
+	for (int i=0; i<12; i++) {
+		UILabel* label = indicatorLabels[(int)(hour + i) % 12];
+	
+		[label setText:[NSString stringWithFormat:@"%@", indicatorLabelStrings[(currentHour + i) % indicatorLabelStrings.count]]];
+		[label sizeToFit];
+		
+		CGFloat posX = sin(deg2rad((hour + i) * 30)) * 86;
+		CGFloat posY = cos(deg2rad((hour + i) * 30)) * 86;
+		[label setCenter:CGPointMake(156 + posX, 195 - posY)];
+	}
+	
 	[[indicatorLabels objectAtIndex:hour] setTextColor:[UIColor blackColor]];
 	[[indicatorLabels objectAtIndex:hour] setHidden:(minute >= 15)];
-	[[indicatorLabels objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
+	[[indicatorLabels objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:(minute < 15)];
 	
 	[[weatherIcons objectAtIndex:hour] setHidden:(minute >= 15)];
-	[[weatherIcons objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:YES];
+	[[weatherIcons objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:(minute < 15)];
+}
+
+- (void)didStartUpdatingTime {
+	[super didStartUpdatingTime];
+	
+	[self updateWeatherData];
+}
+
+- (void)didStopUpdatingTime {
+	[super didStopUpdatingTime];
+}
+
+- (void)updateWeatherData {
+	City* currentCity = [LWKWeatherDataProvider currentCity];
+	
+	if (!currentCity.cityUpdateObservers) {
+		currentCity.cityUpdateObservers = [[NSHashTable alloc] init];
+		[currentCity.cityUpdateObservers addObject:self];
+	} else {
+		if (![currentCity.cityUpdateObservers containsObject:self]) {
+			[currentCity.cityUpdateObservers addObject:self];
+		}
+	}
+	[currentCity update];
+}
+
+- (void)cityDidStartWeatherUpdate:(id)arg1 {
+	NSLog(@"[LockWatch | Weather] start weather update");
+}
+
+- (void)cityDidFinishWeatherUpdate:(City*)arg1 {
+	NSLog(@"[LockWatch|Weather] city: %@, condition code: %ld, temperature: %@, current hour %d", arg1, arg1.conditionCode, arg1.temperature, (int)currentHour);
+	
+	[cityLabel setText:[[arg1 name] uppercaseString]];
+	
+	[temperatureLabel setText:[NSString stringWithFormat:@"%d", (int)[LWKWeatherDataProvider currentTemperatureForCity:arg1]]];
+	[temperatureLabel sizeToFit];
+	[temperatureLabel setCenter:CGPointMake(156, 195)];
+	[temperatureLabel setText:[NSString stringWithFormat:@"%@°", temperatureLabel.text]];
+	[temperatureLabel sizeToFit];
+	
+	NSArray* forecasts = [arg1 hourlyForecasts];
+	for (int i=0; i<12; i++) {
+		WAHourlyForecast* forecast = [forecasts objectAtIndex:i];
+		UIImageView* conditionImage = [weatherIcons objectAtIndex:(int)(currentHour + forecast.hourIndex) % 12];
+		[conditionImage setImage:[UIImage imageNamed:[WeatherIcons imageForConditionCode:forecast.conditionCode atHour:currentHour] inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+	}
 }
 
 @end

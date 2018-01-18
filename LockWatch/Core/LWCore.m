@@ -31,7 +31,13 @@ static LWCore* sharedInstance;
 }
 
 - (void)orientationChanged {
-	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+//	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+	
+	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+			[self applyIpadLandscapeLayout];
+	} else {
+		[self applyPortraitLayout];
+	}
 }
 
 - (void)setIsSelecting:(BOOL)isSelecting{
@@ -65,7 +71,42 @@ static LWCore* sharedInstance;
 		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	}
 	
-	if (isMinimized) {
+//	if (isMinimized) {
+//		CGRect labelFrame;
+//		
+//#if !APP_CONTEXT
+//		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
+//			labelFrame = [[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] dateViewController] view].frame;
+//		}
+//#endif
+//		
+//		CGRect oldFrame = CGRectMake(0, screenHeight/2 - [LWMetrics watchHeight]/2, screenWidth, [LWMetrics watchHeight]);
+//		CGFloat scale = labelFrame.size.height / [LWMetrics watchHeight];
+//		
+//		[UIView animateWithDuration:0.25 animations:^{
+//			CGAffineTransform transform = CGAffineTransformIdentity;
+//			
+//			transform = CGAffineTransformTranslate(transform, 0, (labelFrame.origin.y - oldFrame.origin.y) - ([LWMetrics watchHeight] / 2) + labelFrame.size.height/2);
+//			transform = CGAffineTransformScale(transform, scale, scale);
+//			
+//			[_interfaceView setTransform:transform];
+//		}];
+//	} else {
+//		[UIView animateWithDuration:0.25 animations:^{
+//			[_interfaceView setTransform:CGAffineTransformIdentity];
+//		}];
+//	}
+}
+
+- (void)applyPortraitLayout {
+	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+	[_interfaceView setUserInteractionEnabled:(!self.isShowingNotifications && !self.isShowingMediaArtwork)];
+	
+//	if (self.isSelecting) {
+//		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
+//	}
+	
+	if (self.isShowingNotifications) {
 		CGRect labelFrame;
 		
 #if !APP_CONTEXT
@@ -89,6 +130,64 @@ static LWCore* sharedInstance;
 		[UIView animateWithDuration:0.25 animations:^{
 			[_interfaceView setTransform:CGAffineTransformIdentity];
 		}];
+	}
+	
+	[_containerView setHidden:self.isShowingMediaArtwork];
+}
+
+- (void)applyIpadLandscapeLayout {
+	[_interfaceView setTransform:CGAffineTransformIdentity];
+	[_interfaceView setUserInteractionEnabled:!(self.isShowingNotifications && self.isShowingMediaArtwork)];
+	
+	if (self.isShowingNotifications && !self.isShowingMediaArtwork) {
+		[_containerView setHidden:NO];
+		[_containerView setFrame:CGRectMake(screenWidth/2, 0, screenWidth/2, screenHeight)];
+	}
+	
+	if (!self.isShowingNotifications && self.isShowingMediaArtwork) {
+		[_containerView setHidden:NO];
+		[_containerView setFrame:CGRectMake(0, 0, screenWidth/2, screenHeight)];
+	}
+	
+	if (self.isShowingNotifications && self.isShowingMediaArtwork) {
+		[_containerView setHidden:YES];
+	}
+	
+	if (!self.isShowingNotifications && !self.isShowingMediaArtwork) {
+		[_containerView setHidden:NO];
+		[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+	}
+}
+
+- (void)setIsShowingNotifications:(BOOL)isShowingNotifications {
+	if (_isShowingNotifications == isShowingNotifications) {
+		return;
+	}
+	
+	_isShowingNotifications = isShowingNotifications;
+	
+	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+		[UIView animateWithDuration:0.25 animations:^{
+			[self applyIpadLandscapeLayout];
+		}];
+	} else {
+		[self applyPortraitLayout];
+	}
+}
+
+- (void)setIsShowingMediaArtwork:(BOOL)isShowingMediaArtwork {
+	if (_isShowingMediaArtwork == isShowingMediaArtwork) {
+		return;
+	}
+	
+	_isShowingMediaArtwork = isShowingMediaArtwork;
+	
+	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+		[UIView animateWithDuration:0.25 animations:^{
+			[self applyIpadLandscapeLayout];
+		}];
+	} else {
+		[self applyPortraitLayout];
 	}
 }
 

@@ -170,7 +170,7 @@
 			}
 		};
 		
-		int previous = [watchFaces indexOfObject:[[LWCore sharedInstance] previousWatchFace]];
+		int previous = (int)[watchFaces indexOfObject:[[LWCore sharedInstance] previousWatchFace]];
 		
 		if (cancelled && previous != [self currentPage]) {
 			[UIView animateWithDuration:0.25 animations:^{
@@ -419,7 +419,9 @@
 				[overlayView setAlpha:0.0];
 				
 				for (LWKPageView* page in watchFacePages) {
-					[page setAlpha:0.0];
+					if (page != [watchFacePages objectAtIndex:[self currentPage]]) {
+						[page setAlpha:0.0];
+					}
 				}
 				
 				[[watchFacePages objectAtIndex:[self currentPage]] setAlpha:1.0];

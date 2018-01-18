@@ -14,9 +14,7 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (void)killSpringBoard {
-	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@""
-																			 message:@"Restarting SpringBoard will apply all changed settings."
-																	  preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Restart SpringBoard" message:@"Restarting SpringBoard will apply all changed settings." preferredStyle:UIAlertControllerStyleAlert];
 	
 	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
 														   style:UIAlertActionStyleCancel handler:nil];

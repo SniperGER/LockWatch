@@ -5,6 +5,7 @@ LockWatchPrefs_FILES = LWPRootListController.m
 LockWatchPrefs_INSTALL_PATH = /Library/PreferenceBundles
 LockWatchPrefs_FRAMEWORKS = UIKit
 LockWatchPrefs_PRIVATE_FRAMEWORKS = Preferences
+LockWatchPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

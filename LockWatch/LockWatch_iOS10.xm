@@ -17,8 +17,10 @@ BOOL mediaControlsVisible;
 void setLockWatchVisibility() {
 	[[mainPage isolatingViewController].view setHidden:(!hasNotifications && !mediaControlsVisible)];
 	
-	[lockwatch.interfaceView setHidden:mediaControlsVisible];
-	[lockwatch setIsMinimized:(hasNotifications && !mediaControlsVisible)];
+	//[lockwatch.interfaceView setHidden:mediaControlsVisible];
+	//[lockwatch setIsMinimized:(hasNotifications && !mediaControlsVisible)];
+	[lockwatch setIsShowingNotifications:hasNotifications];
+	[lockwatch setIsShowingMediaArtwork:mediaControlsVisible];
 }
 
 %hook SpringBoard
@@ -130,25 +132,21 @@ void setLockWatchVisibility() {
 %hook SBBacklightController
 
 - (void)_lockScreenDimTimerFired {
-//	if (lockwatch.isSelecting || lockwatch.isEditing) {
-//		[self resetIdleTimer];
-//		return;
-//	}
-//
-//	%orig;
-	
-	return;
+	if (lockwatch.isSelecting || lockwatch.isEditing) {
+		[self resetIdleTimer];
+		return;
+	}
+
+	%orig;
 }
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-//	if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
-//		[self resetIdleTimer];
-//		return;
-//	}
-//
-//	%orig;
-	
-	return;
+	if (arg1 == 11 && (lockwatch.isSelecting || lockwatch.isEditing)) {
+		[self resetIdleTimer];
+		return;
+	}
+
+	%orig;
 }
 
 %end	// %hook SBBacklightController
