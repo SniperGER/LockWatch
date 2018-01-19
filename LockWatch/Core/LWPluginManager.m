@@ -39,8 +39,10 @@
 					NSURL* filePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", pluginsLocation, internalPlugin]];
 					NSBundle* watchFaceBundle = [NSBundle bundleWithURL:filePath];
 					
-					if (watchFaceBundle && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
+					if (watchFaceBundle && [watchFaceBundle load]  && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
 						[loadedPlugins addObject:watchFaceBundle];
+					} else {
+						NSLog(@"[LockWatch] watch face with identifier %@ failed to load", [watchFaceBundle bundleIdentifier]);
 					}
 				}
 			}];
@@ -54,9 +56,11 @@
 			[contents enumerateObjectsUsingBlock:^(NSURL* externalPlugin, NSUInteger index, BOOL* stop) {
 				if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
 					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
-					
-					if (watchFaceBundle && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
+
+					if (watchFaceBundle && [watchFaceBundle load]  && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
 						[loadedPlugins addObject:watchFaceBundle];
+					} else {
+						NSLog(@"[LockWatch] watch face with identifier %@ failed to load", [watchFaceBundle bundleIdentifier]);
 					}
 				}
 			}];
@@ -76,8 +80,10 @@
 				if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
 					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
 					
-					if (watchFaceBundle) {
+					if (watchFaceBundle && [watchFaceBundle load]) {
 						[loadedPlugins addObject:watchFaceBundle];
+					} else {
+						NSLog(@"[LockWatch] watch face with identifier %@ failed to load", [watchFaceBundle bundleIdentifier]);
 					}
 				}
 			}];

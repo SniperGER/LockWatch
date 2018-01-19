@@ -34,14 +34,11 @@ static LWCore* sharedInstance;
 }
 
 - (void)deviceFinishedLock {
-	NSLog(@"[LockWatch] device locked");
 	[self stopUpdatingTime];
 	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
 }
 
 - (void)orientationChanged {
-	NSLog(@"[LockWatch] orientation changed");
-	
 	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
 			[self applyIpadLandscapeLayout];
 	} else {
@@ -182,8 +179,6 @@ static LWCore* sharedInstance;
 		return;
 	}
 	
-	NSLog(@"start updating time");
-	
 	isUpdatingTime = YES;
 	[_currentWatchFace didStartUpdatingTime];
 	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
@@ -194,8 +189,6 @@ static LWCore* sharedInstance;
 	if (!isUpdatingTime) {
 		return;
 	}
-	
-	NSLog(@"stop updating time");
 	
 	[clockUpdateTimer invalidate];
 	clockUpdateTimer = nil;
@@ -211,11 +204,9 @@ static LWCore* sharedInstance;
 - (void)updateTimeForCurrentWatchFace {
 #if !APP_CONTEXT
 	if ([[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] isInScreenOffMode] && !_overrideScreenOffState) {
-		NSLog(@"[LockWatch] SCREEN IS OFF!");
 		[self stopUpdatingTime];
 		return;
 	} else if (![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
-		NSLog(@"[LockWatch] DEVICE IS UNLOCKED!");
 		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[self stopUpdatingTime];

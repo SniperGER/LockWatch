@@ -84,8 +84,6 @@
 	HBPreferences* preferences = [HBPreferences preferencesForIdentifier:@"ml.festival.lockwatch"];
 	NSArray* disabledFaces = [preferences objectForKey:@"disabledWatchFaces"];
 	
-	NSLog(@"[LockWatch] %@", disabledFaces);
-	
 	return [NSNumber numberWithBool:![disabledFaces containsObject:[specifier propertyForKey:@"bundleIdentifier"]]];
 }
 
