@@ -10,7 +10,7 @@
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 #define deg2rad(angle) ((angle) / 180.0 * M_PI)
 #define DISABLE_FORCE_TOUCH 0
-#define APP_CONTEXT 0
+#define APP_CONTEXT 1
 
 #if !APP_CONTEXT
 #import "substrate.h"

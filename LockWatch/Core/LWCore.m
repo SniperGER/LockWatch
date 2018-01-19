@@ -14,9 +14,10 @@ static LWCore* sharedInstance;
 		dlopen("/System/Library/Frameworks/LockWatchKit.framework/LockWatchKit", RTLD_NOW);
 		dlopen("/System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit", RTLD_NOW);
 		
-#if !APP_CONTEXT
-		dlopen("/System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit", RTLD_NOW);
-#endif
+		if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
+			dlopen("/System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit", RTLD_NOW);
+		}
+	
 		_pluginManager = [LWPluginManager new];
 		
 		_containerView = [[LWContainerView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
