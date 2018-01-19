@@ -19,6 +19,8 @@
             NSLog(@"[LockWatch] failed to load any watch faces");
         } else {
             loadedPlugins = [NSMutableArray new];
+			
+			NSArray* disabledFaces = [[LWPreferences sharedInstance] objectForKey:@"disabledWatchFaces"];
             
             // Load preinstalled watch faces
             NSArray* stockWatchFaces = @[
@@ -33,26 +35,26 @@
 										 ];
             [stockWatchFaces enumerateObjectsUsingBlock:^(NSURL* internalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound) {
-                    
                     NSURL* filePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", pluginsLocation, internalPlugin]];
                     NSBundle* watchFaceBundle = [NSBundle bundleWithURL:filePath];
-					
-					if (![[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
-						[[LWPreferences sharedInstance] setObject:[watchFaceBundle bundleIdentifier] forKey:@"selectedWatchFace"];
-					}
                     
-                    if (watchFaceBundle) {
+                    if (watchFaceBundle && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
                         [loadedPlugins addObject:watchFaceBundle];
                     }
                 }
             }];
+			
+			// Sort array alphabetically for third-party watch faces
+			contents = [contents sortedArrayUsingComparator:^NSComparisonResult(NSURL* url1, NSURL* url2) {
+				return [[url1 lastPathComponent] compare:[url2 lastPathComponent] options:NSCaseInsensitiveSearch];
+			}];
             
             // Load third-party watch faces (if any)
             [contents enumerateObjectsUsingBlock:^(NSURL* externalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
                     NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
 
-                    if (watchFaceBundle) {
+                    if (watchFaceBundle && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
                         [loadedPlugins addObject:watchFaceBundle];
                     }
                 }
@@ -75,6 +77,19 @@
 	}
 	
 	return [identifiers copy];
+}
+
+- (int)currentWatchFaceIndex {
+	int index = -1;
+	
+	for (int i=0; i<loadedPlugins.count; i++) {
+		if ([[loadedPlugins[i] bundleIdentifier] isEqualToString:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]]) {
+			index = i;
+			break;
+		}
+	}
+	
+	return index;
 }
 
 @end

@@ -85,6 +85,8 @@ void setLockWatchVisibility() {
 	} else if (lockwatch.isSelecting) {
 		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	} else {
+		[lockwatch setOverrideScreenOffState:YES];
+		[lockwatch startUpdatingTime];
 		[lockwatch updateTimeForCurrentWatchFace];
 	}
 	
@@ -174,6 +176,10 @@ void setLockWatchVisibility() {
 
 %end	// %hook NCNotificationCombinedListViewController
 
+static void DeviceLockedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"LockWatchDeviceLocked" object:nil];
+}
+
 %end	// %group os10
 
 %ctor {
@@ -181,5 +187,7 @@ void setLockWatchVisibility() {
 	
 	if ([[preferences objectForKey:@"enabled"] boolValue]) {
 		%init(os10);
+		
+		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, DeviceLockedCallback, CFSTR("com.apple.springboard.lockcomplete"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 	}
 }

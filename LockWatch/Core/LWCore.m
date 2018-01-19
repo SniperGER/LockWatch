@@ -25,9 +25,17 @@ static LWCore* sharedInstance;
 		if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
 		}
+		
+		//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"LockWatchDeviceLocked" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)deviceFinishedLock {
+	NSLog(@"[LockWatch] device locked");
+	[self stopUpdatingTime];
+	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
 }
 
 - (void)orientationChanged {
@@ -200,6 +208,23 @@ static LWCore* sharedInstance;
 }
 
 - (void)updateTimeForCurrentWatchFace {
+#if !APP_CONTEXT
+	if ([[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] isInScreenOffMode] && !_overrideScreenOffState) {
+		NSLog(@"[LockWatch] SCREEN IS OFF!");
+		[self stopUpdatingTime];
+		return;
+	} else if (![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
+		NSLog(@"[LockWatch] DEVICE IS UNLOCKED!");
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[self stopUpdatingTime];
+		});
+		return;
+	} else {
+		_overrideScreenOffState = NO;
+	}
+#endif
+	
 	NSDate* date = [NSDate date];
 	NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	NSDateComponents* hourComp = [gregorian components:NSCalendarUnitHour fromDate:date];

@@ -19,6 +19,7 @@
 @property (nonatomic, assign) BOOL isMinimized;
 @property (nonatomic, assign) BOOL isShowingNotifications;
 @property (nonatomic, assign) BOOL isShowingMediaArtwork;
+@property (nonatomic, assign) BOOL overrideScreenOffState;
 
 + (id)sharedInstance;
 - (void)startUpdatingTime;

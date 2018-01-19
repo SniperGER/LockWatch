@@ -73,14 +73,7 @@
 	
 	[contentView setContentSize:CGSizeMake(watchFaces.count * ([LWMetrics watchWidth] + (scrollViewSpacing * 2)), [LWMetrics watchHeight])];
 	
-	/*int currentWatchFaceIndex = 0;
-	
-	if ([[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
-		currentWatchFaceIndex = (int)MAX(MIN([[[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"] indexOfObject:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]], watchFaces.count-1), 0);
-	}
-	
-	[[LWPreferences sharedInstance] setObject:[[watchFaces[currentWatchFaceIndex] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
-	
+	int currentWatchFaceIndex = MAX(MIN([[[LWCore sharedInstance] pluginManager] currentWatchFaceIndex], watchFaces.count - 1), 0);
 	if (watchFaces.count > currentWatchFaceIndex) {
 		[contentView setContentOffset:CGPointMake(currentWatchFaceIndex * contentView.bounds.size.width, 0)];
 		[self setWatchFacePageAlpha:[self currentWatchFacePage] alpha:1.0];
@@ -94,7 +87,7 @@
 		}
 		
 		[[LWCore sharedInstance] startUpdatingTime];
-	}*/
+	}
 }
 
 - (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled {

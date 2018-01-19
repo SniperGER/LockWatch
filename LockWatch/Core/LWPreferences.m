@@ -11,16 +11,7 @@ static LWPreferences* sharedInstance;
 + (id)defaults {
 	return @{
 			 @"enabled": @YES,
-			 @"watchFaceOrder": @[
-					 @"ml.festival.ActivityAnalog",
-					 @"ml.festival.ActivityDigital",
-					 @"ml.festival.Numerals",
-					 @"ml.festival.Utility",
-					 @"ml.festival.Simple",
-					 @"ml.festival.Color",
-					 @"ml.festival.Chronograph",
-					 @"ml.festival.XLarge"
-					 ],
+			 @"selectedWatchFace": @"ml.festival.ActivityDigital",
 			 @"disabledWatchFaces": @[],
 			 @"watchSize": @"regular",
 			 @"watchFacePreferences": [@{} mutableCopy]

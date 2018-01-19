@@ -7,5 +7,6 @@
 + (id)pluginPath;
 
 - (NSArray*)loadedPlugins;
+- (int)currentWatchFaceIndex;
 
 @end
