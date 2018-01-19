@@ -73,7 +73,7 @@
 	
 	[contentView setContentSize:CGSizeMake(watchFaces.count * ([LWMetrics watchWidth] + (scrollViewSpacing * 2)), [LWMetrics watchHeight])];
 	
-	int currentWatchFaceIndex = 0;
+	/*int currentWatchFaceIndex = 0;
 	
 	if ([[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]) {
 		currentWatchFaceIndex = (int)MAX(MIN([[[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"] indexOfObject:[[LWPreferences sharedInstance] objectForKey:@"selectedWatchFace"]], watchFaces.count-1), 0);
@@ -94,7 +94,7 @@
 		}
 		
 		[[LWCore sharedInstance] startUpdatingTime];
-	}
+	}*/
 }
 
 - (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled {
@@ -516,7 +516,7 @@
 #pragma mark Capabilities
 
 - (BOOL)forceTouchCapable {
-	return ((self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) || [[UIDevice currentDevice] _supportsForceTouch]) && !DISABLE_FORCE_TOUCH;
+	return ((self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) || [[UIDevice currentDevice] _supportsForceTouch]) && ![[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && !DISABLE_FORCE_TOUCH;
 }
 
 @end

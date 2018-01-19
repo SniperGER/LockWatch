@@ -31,7 +31,7 @@ static LWCore* sharedInstance;
 }
 
 - (void)orientationChanged {
-//	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+	NSLog(@"[LockWatch] orientation changed");
 	
 	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
 			[self applyIpadLandscapeLayout];
@@ -70,43 +70,16 @@ static LWCore* sharedInstance;
 	if (self.isSelecting) {
 		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	}
-	
-//	if (isMinimized) {
-//		CGRect labelFrame;
-//		
-//#if !APP_CONTEXT
-//		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
-//			labelFrame = [[[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] dateViewController] view].frame;
-//		}
-//#endif
-//		
-//		CGRect oldFrame = CGRectMake(0, screenHeight/2 - [LWMetrics watchHeight]/2, screenWidth, [LWMetrics watchHeight]);
-//		CGFloat scale = labelFrame.size.height / [LWMetrics watchHeight];
-//		
-//		[UIView animateWithDuration:0.25 animations:^{
-//			CGAffineTransform transform = CGAffineTransformIdentity;
-//			
-//			transform = CGAffineTransformTranslate(transform, 0, (labelFrame.origin.y - oldFrame.origin.y) - ([LWMetrics watchHeight] / 2) + labelFrame.size.height/2);
-//			transform = CGAffineTransformScale(transform, scale, scale);
-//			
-//			[_interfaceView setTransform:transform];
-//		}];
-//	} else {
-//		[UIView animateWithDuration:0.25 animations:^{
-//			[_interfaceView setTransform:CGAffineTransformIdentity];
-//		}];
-//	}
 }
 
 - (void)applyPortraitLayout {
-	[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 	[_interfaceView setUserInteractionEnabled:(!self.isShowingNotifications && !self.isShowingMediaArtwork)];
 	
 //	if (self.isSelecting) {
 //		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 //	}
 	
-	if (self.isShowingNotifications) {
+	if (self.isShowingNotifications || (self.isShowingMediaArtwork && kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0)) {
 		CGRect labelFrame;
 		
 #if !APP_CONTEXT
@@ -129,10 +102,12 @@ static LWCore* sharedInstance;
 	} else {
 		[UIView animateWithDuration:0.25 animations:^{
 			[_interfaceView setTransform:CGAffineTransformIdentity];
+		} completion:^(BOOL finished) {
+			[_containerView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		}];
 	}
 	
-	[_containerView setHidden:self.isShowingMediaArtwork];
+	[_containerView setHidden:(self.isShowingMediaArtwork && kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0)];
 }
 
 - (void)applyIpadLandscapeLayout {

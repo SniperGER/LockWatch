@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = LockWatchPrefs
-LockWatchPrefs_FILES = LWPRootListController.m
+LockWatchPrefs_FILES = LWPRootListController.m LWPInstalledFacesController.m
 LockWatchPrefs_INSTALL_PATH = /Library/PreferenceBundles
 LockWatchPrefs_FRAMEWORKS = UIKit
 LockWatchPrefs_PRIVATE_FRAMEWORKS = Preferences

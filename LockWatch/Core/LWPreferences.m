@@ -19,8 +19,7 @@ static LWPreferences* sharedInstance;
 					 @"ml.festival.Simple",
 					 @"ml.festival.Color",
 					 @"ml.festival.Chronograph",
-					 @"ml.festival.XLarge",
-					 @"ml.festival.Weather"
+					 @"ml.festival.XLarge"
 					 ],
 			 @"disabledWatchFaces": @[],
 			 @"watchSize": @"regular",

@@ -23,7 +23,7 @@ after-all::
 	@cp $(THEOS_OBJ_DIR)/$(PROJECT_NAME).dylib /opt/simject
 	@cp $(PROJECT_NAME).plist /opt/simject
 	@ldid -S /opt/simject/$(PROJECT_NAME).dylib
-	@~/Documents/Xcode/simject/bin/respring_simulator -d "iPhone 6s Plus" -v 10.2
+	@~/Documents/Xcode/simject/bin/respring_simulator -d "iPad Air 2" -v 11.1
 endif
 
 ifeq ($(THEOS_TARGET_NAME),iphone)

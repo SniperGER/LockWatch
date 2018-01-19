@@ -12,7 +12,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>ml.festival.lockwatch10</string>
+			<string>ml.festival.lockwatch</string>
 			<key>default</key>
 			<true/>
 			<key>label</key>
@@ -28,7 +28,7 @@
 			<key>cell</key>
 			<string>PSLinkListCell</string>
 			<key>defaults</key>
-			<string>ml.festival.lockwatch10</string>
+			<string>ml.festival.lockwatch</string>
 			<key>default</key>
 			<string>regular</string>
 			<key>detail</key>
@@ -47,6 +47,16 @@
 				<string>38 mm</string>
 				<string>42 mm</string>
 			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Installed Watch Faces</string>
+			<key>detail</key>
+			<string>LWPInstalledFacesController</string>
+			<key>isController</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>

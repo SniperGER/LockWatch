@@ -29,8 +29,7 @@
 										 @"Simple.watchface",
 										 @"Color.watchface",
 										 @"Chronograph.watchface",
-										 @"XLarge.watchface",
-										 @"Weather.watchface"
+										 @"XLarge.watchface"
 										 ];
             [stockWatchFaces enumerateObjectsUsingBlock:^(NSURL* internalPlugin, NSUInteger index, BOOL* stop) {
                 if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound) {

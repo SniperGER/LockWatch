@@ -174,8 +174,6 @@
 }
 
 - (void)cityDidFinishWeatherUpdate:(City*)arg1 {
-	NSLog(@"[LockWatch|Weather] city: %@, condition code: %ld, temperature: %@, current hour %d", arg1, arg1.conditionCode, arg1.temperature, (int)currentHour);
-	
 	[cityLabel setText:[[arg1 name] uppercaseString]];
 	
 	[temperatureLabel setText:[NSString stringWithFormat:@"%d", (int)[LWKWeatherDataProvider currentTemperatureForCity:arg1]]];

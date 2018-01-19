@@ -15,9 +15,6 @@
 #if !APP_CONTEXT
 #import "substrate.h"
 #import <SpringBoard/SpringBoard.h>
-#import "MTMaterialView.h"
-#import "NCMaterialView.h"
-#import "_UIBackdropView.h"
 #endif
 
 #import <dlfcn.h>
