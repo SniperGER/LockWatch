@@ -1321,7 +1321,7 @@
 /* Begin PBXLegacyTarget section */
 		8D96B032200215250065A35B /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = do;
+			buildArgumentsString = "package -B";
 			buildConfigurationList = 8D96B047200215250065A35B /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /System/Library/Frameworks/
+ln -s /var/mobile/Library/FESTIVAL/LockWatch/LockWatchKit.framework
