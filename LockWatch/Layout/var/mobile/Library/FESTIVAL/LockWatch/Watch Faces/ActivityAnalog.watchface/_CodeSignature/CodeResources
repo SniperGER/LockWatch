@@ -4,17 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Assets.car</key>
-		<data>
-		VRH0CtKa2lchbgbEwzS62IC5uEw=
-		</data>
 		<key>Customization.plist</key>
 		<data>
-		3azNnr9zp0OkMh5rSBpzOF/Hogw=
+		ZyoofKu7KPPCs72TWffthl0p2Ug=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hC+nnWUTBRxaaea4/Otf/KBJj2k=
+		zjIt4mqI2PW0kkpk/60+KU3WAvQ=
 		</data>
 		<key>de.lproj/InfoPlist.strings</key>
 		<dict>
@@ -25,14 +21,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>dial@2x.png</key>
-		<data>
-		2fD1R/CIu5xchIKDUZXI7vpiZvI=
-		</data>
-		<key>dial@3x.png</key>
-		<data>
-		pyl1FHM91lvXSBx3OBRa19m1+As=
-		</data>
 		<key>en.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
@@ -45,26 +33,15 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Assets.car</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			VRH0CtKa2lchbgbEwzS62IC5uEw=
-			</data>
-			<key>hash2</key>
-			<data>
-			ii/kVhbpWfhNCCmQ0gfhiQolui9s1uQEsEJU5JQ1kYc=
-			</data>
-		</dict>
 		<key>Customization.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3azNnr9zp0OkMh5rSBpzOF/Hogw=
+			ZyoofKu7KPPCs72TWffthl0p2Ug=
 			</data>
 			<key>hash2</key>
 			<data>
-			yU6eoqu1qoGfAzAcjUp3QUV6k77t42LNBJNbXujbNXs=
+			Aiv+HmAP32AXhvyyNmY/VOmloqbCTM/mbhdrCu4XW7k=
 			</data>
 		</dict>
 		<key>de.lproj/InfoPlist.strings</key>
@@ -79,28 +56,6 @@
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>dial@2x.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2fD1R/CIu5xchIKDUZXI7vpiZvI=
-			</data>
-			<key>hash2</key>
-			<data>
-			nvoHiEIrxIizfG462ir4SzhDYAanw8if7RSLDbVVxFU=
-			</data>
-		</dict>
-		<key>dial@3x.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			pyl1FHM91lvXSBx3OBRa19m1+As=
-			</data>
-			<key>hash2</key>
-			<data>
-			2OVBEFPyN7I9pvWdP0XlB+FL0ABUoF+ortjNtM+Nt4I=
-			</data>
 		</dict>
 		<key>en.lproj/InfoPlist.strings</key>
 		<dict>

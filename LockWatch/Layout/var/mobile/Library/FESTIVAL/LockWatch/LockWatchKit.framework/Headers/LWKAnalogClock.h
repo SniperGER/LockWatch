@@ -1,10 +1,10 @@
 #import "LWKClockBase.h"
 #import "LWKClockHand.h"
 
-@interface LWKAnalogClock : LWKClockBase {
-	LWKClockHand* hourHand;
-	LWKClockHand* minuteHand;
-	LWKClockHand* secondHand;
-}
+@interface LWKAnalogClock : LWKClockBase
+
+@property (nonatomic, strong) LWKClockHand* hourHand;
+@property (nonatomic, strong) LWKClockHand* minuteHand;
+@property (nonatomic, strong) LWKClockHand* secondHand;
 
 @end

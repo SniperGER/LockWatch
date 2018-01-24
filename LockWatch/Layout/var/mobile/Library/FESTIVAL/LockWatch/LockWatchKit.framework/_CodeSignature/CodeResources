@@ -6,19 +6,23 @@
 	<dict>
 		<key>Headers/LWKActivityDataProvider.h</key>
 		<data>
-		5Ep6BaL/hh9Z9yR6kHmNDdosyb4=
+		bG8jLwDzCUmem4sps0A2Z0n2eWk=
 		</data>
 		<key>Headers/LWKAnalogClock.h</key>
 		<data>
-		+eekM+xvQQT+i+wRGmaJS4ir4aw=
+		CberJlqsB6dTlYfMA6sMBnubZoQ=
 		</data>
 		<key>Headers/LWKClockBase.h</key>
 		<data>
-		Kgs4/Xl9sNogGPkT6mE4w54KIiM=
+		mysqjhgWDwxnuqRmZrYEo4nCwpM=
 		</data>
 		<key>Headers/LWKClockHand.h</key>
 		<data>
 		Otfw3+S7VIcfQ0+8M78f9gumT/U=
+		</data>
+		<key>Headers/LWKCustomizationDelegate.h</key>
+		<data>
+		COZXBIA61zaQ4PumlJzIJXX5I68=
 		</data>
 		<key>Headers/LWKDigitalClock.h</key>
 		<data>
@@ -26,29 +30,86 @@
 		</data>
 		<key>Headers/LWKFaceEditView.h</key>
 		<data>
-		TlI1yqM3MBbXr0y5LlYBET26gM8=
+		G+4EAOALgou2pp9vm/RS97zSBik=
 		</data>
 		<key>Headers/LWKPageView.h</key>
 		<data>
 		rnfU8YlRvedDAml3fDuabh8QEeE=
 		</data>
+		<key>Headers/LWKScrollIndicator.h</key>
+		<data>
+		X8S/gFAnCzll7qZqDd4DoNv+aIk=
+		</data>
+		<key>Headers/LWKWeatherDataProvider.h</key>
+		<data>
+		Ny8xILOzgx0V7j9d27/gk1YsWjo=
+		</data>
 		<key>Headers/LockWatchKit.h</key>
 		<data>
-		w8W6wh8KP5z+xjZKRxCGpZxB3+U=
+		gKil57QAaUbdXg8IGdh8/QLVlx8=
+		</data>
+		<key>Headers/MTMaterialView.h</key>
+		<data>
+		tWZ1ksKI6UoOjQ+MTdmNvMyzxuY=
+		</data>
+		<key>Headers/NCMaterialView.h</key>
+		<data>
+		CXV3OzDtufHPO0R8RHvIOMnacHE=
+		</data>
+		<key>Headers/UIFont+WDCustomLoader.h</key>
+		<data>
+		4RgL6YSFqtddTyjJZcvTOR9KftA=
+		</data>
+		<key>Headers/WatchColors.h</key>
+		<data>
+		f5cF8LShq0nj047dS2nrhnYV8EU=
+		</data>
+		<key>Headers/Weather.h</key>
+		<data>
+		QXYFq+R9dG4LI/7t3qN4B8NZ0WU=
+		</data>
+		<key>Headers/WeatherIcons.h</key>
+		<data>
+		zmlyZCPgY4UCHp/PSsOAp1WnBJg=
+		</data>
+		<key>Headers/_UIBackdropView.h</key>
+		<data>
+		6vMHabFCpkrVEn+9PtySdK3pgww=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4yx6+q/u2rPh9j74Z98YPUGY/nU=
+		3ATte5lQpqI6bYajAfm+CV+ZGWQ=
+		</data>
+		<key>Root.plist</key>
+		<data>
+		LL7r8yqWLVGljuGeZhOkZWgi37k=
 		</data>
 		<key>WatchFaces.txt</key>
 		<data>
-		00nA5MWhjiJtpKtlSkIGZmHTCkQ=
+		t+m/6bnI9IhTKmSQV7m7Q+JBZCo=
+		</data>
+		<key>customize_border@2x.png</key>
+		<data>
+		rlRW9wCkGgIAp7FnaY6aIZtZOTg=
+		</data>
+		<key>customize_border@3x.png</key>
+		<data>
+		cQ8qjb4hpjniUe6kmnDs9LTvqvA=
 		</data>
 		<key>de.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
 			K19zcimYsTVz5l6CiswH9T3g2q4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>de.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sT2M3u2HU1hDRhOs/FBwxTwZbI8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -62,6 +123,19 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bCrMYqPImogwwI5idmuaJdpQuOI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>entry.plist</key>
+		<data>
+		7X7ZTT1I44qj7OAm3ugm+V7rXAg=
+		</data>
 		<key>hour@2x.png</key>
 		<data>
 		x/rm6CUNklnPiQJMLN+VSedZYaw=
@@ -93,33 +167,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5Ep6BaL/hh9Z9yR6kHmNDdosyb4=
+			bG8jLwDzCUmem4sps0A2Z0n2eWk=
 			</data>
 			<key>hash2</key>
 			<data>
-			/5oug4nuPC8PpStrMYQ8bgM923Z/4BTgnswtv4yvz7M=
+			TbqPH2DHbUqw6QU6pANjo5I58WYolMOvYjDGQ5HLyBA=
 			</data>
 		</dict>
 		<key>Headers/LWKAnalogClock.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+eekM+xvQQT+i+wRGmaJS4ir4aw=
+			CberJlqsB6dTlYfMA6sMBnubZoQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			s0o5pu5bVRvgnDU2b2YF3aD2B2RxVat9wTkKtxJLqdk=
+			SEgG6+5/wf8rV+6kKTeEmrRbnrH+8c+Jt/+S0t6S6No=
 			</data>
 		</dict>
 		<key>Headers/LWKClockBase.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Kgs4/Xl9sNogGPkT6mE4w54KIiM=
+			mysqjhgWDwxnuqRmZrYEo4nCwpM=
 			</data>
 			<key>hash2</key>
 			<data>
-			o4SSSGTkqAHpr33G789XqTOyZ6gBIT/fKCNYZEPnft8=
+			JNZJ9Fkpc4+CrTca2dWgo0YOoho59uOownhTQmsDsEg=
 			</data>
 		</dict>
 		<key>Headers/LWKClockHand.h</key>
@@ -131,6 +205,17 @@
 			<key>hash2</key>
 			<data>
 			JNEjWgGFHm1ej7YgGexJ6YVNalsybKdmpgeDFpqPlIo=
+			</data>
+		</dict>
+		<key>Headers/LWKCustomizationDelegate.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			COZXBIA61zaQ4PumlJzIJXX5I68=
+			</data>
+			<key>hash2</key>
+			<data>
+			CT17w4G3T44Ko9KGk0ePiOVNzm47Zo/PQl2M1c98ZuM=
 			</data>
 		</dict>
 		<key>Headers/LWKDigitalClock.h</key>
@@ -148,11 +233,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TlI1yqM3MBbXr0y5LlYBET26gM8=
+			G+4EAOALgou2pp9vm/RS97zSBik=
 			</data>
 			<key>hash2</key>
 			<data>
-			jeYhvtubOv/V9jf8IxFmASmNfY9FtOE7GGjXAcymPoY=
+			yqYmWKb3+hoCCq/UYaAj4XCpa48Q4qKQ4wYGlJ/hLkg=
 			</data>
 		</dict>
 		<key>Headers/LWKPageView.h</key>
@@ -166,26 +251,158 @@
 			JIwXaDrGBssDRPupcgvxSWu/gvsH6Bw0YjL4ToGE2So=
 			</data>
 		</dict>
+		<key>Headers/LWKScrollIndicator.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			X8S/gFAnCzll7qZqDd4DoNv+aIk=
+			</data>
+			<key>hash2</key>
+			<data>
+			QdfXVKAMDInMypBIWde3oQP/trxGl1lU2D4VnTRzf/g=
+			</data>
+		</dict>
+		<key>Headers/LWKWeatherDataProvider.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ny8xILOzgx0V7j9d27/gk1YsWjo=
+			</data>
+			<key>hash2</key>
+			<data>
+			MqLtXZmmfgd8ZC5AxglNtrGoMHCut20/bAUw8GH5HNk=
+			</data>
+		</dict>
 		<key>Headers/LockWatchKit.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			w8W6wh8KP5z+xjZKRxCGpZxB3+U=
+			gKil57QAaUbdXg8IGdh8/QLVlx8=
 			</data>
 			<key>hash2</key>
 			<data>
-			mblgKmuzK6axiKh0jVKW8MaFDVvencEHBAWpss9C0Ew=
+			XJ+m1VQeqJCewDNPGQxUHMsqLxJprDUl6+vXgDMzOfY=
+			</data>
+		</dict>
+		<key>Headers/MTMaterialView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tWZ1ksKI6UoOjQ+MTdmNvMyzxuY=
+			</data>
+			<key>hash2</key>
+			<data>
+			dnZwCccdKhUrzMs1cd2ziYDANGku8quekORzNg2i2OM=
+			</data>
+		</dict>
+		<key>Headers/NCMaterialView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CXV3OzDtufHPO0R8RHvIOMnacHE=
+			</data>
+			<key>hash2</key>
+			<data>
+			hhJ8pPYSGuVdHO4LzbMEg0DqXV3B7Zd1U6TdwYX2wws=
+			</data>
+		</dict>
+		<key>Headers/UIFont+WDCustomLoader.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4RgL6YSFqtddTyjJZcvTOR9KftA=
+			</data>
+			<key>hash2</key>
+			<data>
+			pOO3T3FI2nETOjvqJYm+1INCj4Z/AmaSwQr4EIC5HzM=
+			</data>
+		</dict>
+		<key>Headers/WatchColors.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			f5cF8LShq0nj047dS2nrhnYV8EU=
+			</data>
+			<key>hash2</key>
+			<data>
+			97Sy+GTonHwKA47prDy6AC5nDE+oNbx+jhAe9/+1Lp0=
+			</data>
+		</dict>
+		<key>Headers/Weather.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QXYFq+R9dG4LI/7t3qN4B8NZ0WU=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZDGUsWQGC0aDEkijAfFuMJum5EG7PG0nuzKKlHUryN0=
+			</data>
+		</dict>
+		<key>Headers/WeatherIcons.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zmlyZCPgY4UCHp/PSsOAp1WnBJg=
+			</data>
+			<key>hash2</key>
+			<data>
+			OqAA81Xe7YJffok7BxPkLXuB6phW/hwBrPnQZJ0WYCM=
+			</data>
+		</dict>
+		<key>Headers/_UIBackdropView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6vMHabFCpkrVEn+9PtySdK3pgww=
+			</data>
+			<key>hash2</key>
+			<data>
+			NAGQLEC4og7bBQVz8Y4iT+D0WY5RnGgMONxlsFo9pms=
+			</data>
+		</dict>
+		<key>Root.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LL7r8yqWLVGljuGeZhOkZWgi37k=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nk5yNJcQoZuHyECEMLHcxwh5TcyW8CX1IA7vIwQPM/c=
 			</data>
 		</dict>
 		<key>WatchFaces.txt</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			00nA5MWhjiJtpKtlSkIGZmHTCkQ=
+			t+m/6bnI9IhTKmSQV7m7Q+JBZCo=
 			</data>
 			<key>hash2</key>
 			<data>
-			8690RpBzeRdm1IDRe+2ibH5ZDQCB29ca7L1qiRjA3WY=
+			eLtOdaXtBKcUHEsGrHzJ5AHhu61oQIraQlKFLdhIQck=
+			</data>
+		</dict>
+		<key>customize_border@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rlRW9wCkGgIAp7FnaY6aIZtZOTg=
+			</data>
+			<key>hash2</key>
+			<data>
+			iancKdrE6U3EPdaq/V+Re63tQqCLhHwxo2IBXG/refM=
+			</data>
+		</dict>
+		<key>customize_border@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cQ8qjb4hpjniUe6kmnDs9LTvqvA=
+			</data>
+			<key>hash2</key>
+			<data>
+			8GXbRebODk8deHd7TXlwOT5Iy67Ou3HhokYaZO3/jA4=
 			</data>
 		</dict>
 		<key>de.lproj/InfoPlist.strings</key>
@@ -197,6 +414,19 @@
 			<key>hash2</key>
 			<data>
 			3jP6DLaOExaKw486EqHCtNVKvKDTzWxdfsEEefWI+Uo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>de.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sT2M3u2HU1hDRhOs/FBwxTwZbI8=
+			</data>
+			<key>hash2</key>
+			<data>
+			osEelUdOXdsNNK4nWBywcYCZOurUsEmizSD7nErsRmk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -213,6 +443,30 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bCrMYqPImogwwI5idmuaJdpQuOI=
+			</data>
+			<key>hash2</key>
+			<data>
+			iNjdvDqds0AV9PJDiMBHvri9XJYOkejwa2rMRxkRHB0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>entry.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7X7ZTT1I44qj7OAm3ugm+V7rXAg=
+			</data>
+			<key>hash2</key>
+			<data>
+			kxo7j/CzU/ByY7mBzwfM7VZj2DAl4lD3e3U4Htg6FZo=
+			</data>
 		</dict>
 		<key>hour@2x.png</key>
 		<dict>

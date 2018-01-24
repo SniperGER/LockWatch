@@ -549,6 +549,7 @@
 		8D28F59A1FEF2BBA00810B0E /* simple_detail_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_2@2x.png"; sourceTree = "<group>"; };
 		8D28F59D1FEF2F2000810B0E /* simple_detail_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_3@2x.png"; sourceTree = "<group>"; };
 		8D28F59E1FEF2F2000810B0E /* simple_detail_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_detail_3@3x.png"; sourceTree = "<group>"; };
+		8D34C36A201940E400E57F85 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8D3639431FEFA9040044A5AA /* XLarge.watchface */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLarge.watchface; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D36394A1FEFA9760044A5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Watch Faces/XLarge/Info.plist"; sourceTree = SOURCE_ROOT; };
 		8D36394B1FEFA99E0044A5AA /* LWKExtraLargeFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWKExtraLargeFace.h; path = "Watch Faces/XLarge/LWKExtraLargeFace.h"; sourceTree = SOURCE_ROOT; };
@@ -1138,6 +1139,7 @@
 		8DCF3FC51FDA8A6300107325 = {
 			isa = PBXGroup;
 			children = (
+				8D34C36A201940E400E57F85 /* .gitignore */,
 				8D5DF74C1FF04189003EB352 /* README.md */,
 				8DCF3FCC1FDA8BA900107325 /* LockWatch */,
 				8D52DED01FDD366300B54C22 /* Watch Faces */,
@@ -1321,7 +1323,7 @@
 /* Begin PBXLegacyTarget section */
 		8D96B032200215250065A35B /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "package -B";
+			buildArgumentsString = do;
 			buildConfigurationList = 8D96B047200215250065A35B /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
