@@ -36,7 +36,7 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
 	[hourLabel setText:[NSString stringWithFormat:@"%d", (int)hour]];
 	[minuteLabel setText:[NSString stringWithFormat:@"%02d", (int)minute]];
 	
