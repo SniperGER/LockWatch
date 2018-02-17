@@ -6,7 +6,7 @@
 #import "LWKLabel.h"
 #import "WatchColors.h"
 
-#define kCellHeight 60
+#define kCellHeight 120
 
 @implementation LWKColorCustomizationSelector
 

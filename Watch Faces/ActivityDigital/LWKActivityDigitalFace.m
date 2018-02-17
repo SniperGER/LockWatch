@@ -88,8 +88,8 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
-	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
+	[super updateForHour:hour minute:minute second:second millisecond:msecond startAnimation:startAnimation];
 	
 	UIColor* accentColor = [[WatchColors colors] objectForKey:[self accentColor]];
 	
@@ -172,8 +172,8 @@
 //	cachedSecond = second;
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:animated];
 	
 	[self updateActivityData];
 	
@@ -181,10 +181,14 @@
 	[colonLabel.layer removeAllAnimations];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[super didStopUpdatingTime:(BOOL)animated];
 	
 	[colonLabel.layer removeAllAnimations];
+}
+
+- (void)triggerUpdate {
+	[self updateActivityData];
 }
 
 - (void)updateActivityData {
@@ -232,7 +236,7 @@
 - (void)setFaceStyle:(int)style {
 	[super setFaceStyle:style];
 
-	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
+	[self updateForHour:10 minute:9 second:30 millisecond:0 startAnimation:NO];
 }
 
 - (int)faceStyle {

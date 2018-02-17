@@ -34,7 +34,7 @@ static LWCore* sharedInstance;
 }
 
 - (void)deviceFinishedLock {
-	[self stopUpdatingTime];
+	[self stopUpdatingTime:NO];
 	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
 }
 
@@ -174,21 +174,27 @@ static LWCore* sharedInstance;
 
 //- (BOOL)isUpdatingTime {}
 
-- (void)startUpdatingTime {
+- (void)startUpdatingTime:(BOOL)animated {
 	if (isUpdatingTime || !_currentWatchFace || _isSelecting || _isEditing) {
 		return;
 	}
 	
 	isUpdatingTime = YES;
-	[_currentWatchFace didStartUpdatingTime];
-	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+	[_currentWatchFace didStartUpdatingTime:animated];
+	[_currentWatchFace triggerManualUpdate];
+	
+	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer* timer) {
+		[self updateTimeForCurrentWatchFace:NO];
+	}];
 	syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
 }
 
-- (void)stopUpdatingTime {
+- (void)stopUpdatingTime:(BOOL)animated {
 	if (!isUpdatingTime) {
 		return;
 	}
+	
+	isUpdatingTime = NO;
 	
 	[clockUpdateTimer invalidate];
 	clockUpdateTimer = nil;
@@ -196,20 +202,19 @@ static LWCore* sharedInstance;
 	[syncTimer invalidate];
 	syncTimer = nil;
 	
-	isUpdatingTime = NO;
-	
-	[_currentWatchFace didStopUpdatingTime];
+	[_currentWatchFace didStopUpdatingTime:animated];
 }
 
-- (void)updateTimeForCurrentWatchFace {
+- (void)updateTimeForCurrentWatchFace:(BOOL)animated {
 #if !APP_CONTEXT
 	if ([[[objc_getClass("SBLockScreenManager") sharedInstance] lockScreenViewController] isInScreenOffMode] && !_overrideScreenOffState) {
-		[self stopUpdatingTime];
+		NSLog(@"[LockWatch] update while screen off");
+		[self stopUpdatingTime:NO];
 		return;
 	} else if (![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
-		
+		NSLog(@"[LockWatch] update while locked");
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self stopUpdatingTime];
+			[self stopUpdatingTime:NO];
 		});
 		return;
 	} else {
@@ -231,10 +236,12 @@ static LWCore* sharedInstance;
 	
 	if (mSecond >= 0 && mSecond <= 10 && clockUpdateTimer.timeInterval < 0.5) {
 		[clockUpdateTimer invalidate];
-		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer* timer) {
+			[self updateTimeForCurrentWatchFace:YES];
+		}];
 		
 		if (_currentWatchFace && [_currentWatchFace isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
-			[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:mSecond animated:YES];
+			[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:mSecond startAnimation:YES];
 		}
 		
 		[syncTimer invalidate];
@@ -243,7 +250,9 @@ static LWCore* sharedInstance;
 		return;
 	} else if (mSecond < 1000 && mSecond > 750 && clockUpdateTimer.timeInterval >= 0.5) {
 		[clockUpdateTimer invalidate];
-		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(updateTimeForCurrentWatchFace) userInfo:nil repeats:YES];
+		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer* timer) {
+			[self updateTimeForCurrentWatchFace:NO];
+		}];
 		
 		if (!syncTimer) {
 			syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
@@ -251,7 +260,7 @@ static LWCore* sharedInstance;
 
 		return;
 	} else if (_currentWatchFace && clockUpdateTimer.timeInterval >= 0.5) {
-		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
+		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond) startAnimation:YES];
 		
 		[syncTimer invalidate];
 		syncTimer = nil;
@@ -272,7 +281,7 @@ static LWCore* sharedInstance;
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
 	
 	if (_currentWatchFace) {
-		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond + 250) animated:YES];
+		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond) startAnimation:YES];
 	}
 }
 

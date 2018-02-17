@@ -57,15 +57,15 @@
 	cachedSecond = second;
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:animated];
 	
 	cachedSecond = -1;
 	[colonLabel.layer removeAllAnimations];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[super didStopUpdatingTime:animated];
 	
 	[colonLabel.layer removeAllAnimations];
 }

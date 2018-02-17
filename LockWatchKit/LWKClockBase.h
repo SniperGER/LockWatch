@@ -32,9 +32,10 @@
 
 - (void)prepareForInit;
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated;
-- (void)didStartUpdatingTime;
-- (void)didStopUpdatingTime;
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation;
+- (void)didStartUpdatingTime:(BOOL)animated;
+- (void)didStopUpdatingTime:(BOOL)animated;
+- (void)triggerUpdate;
 
 - (NSArray*)faceStyleViews;
 - (void)setFaceStyle:(int)style;

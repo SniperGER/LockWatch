@@ -86,7 +86,7 @@
 			[overlayView setTitleAlpha:(i == currentWatchFaceIndex ? 1.0 : 0.0) atIndex:i];
 		}
 		
-		[[LWCore sharedInstance] startUpdatingTime];
+		[[LWCore sharedInstance] startUpdatingTime:YES];
 	}
 }
 
@@ -104,7 +104,7 @@
 	[self scrollViewDidScroll:contentView];
 	
 	if (selecting) {
-		[[LWCore sharedInstance] stopUpdatingTime];
+		[[LWCore sharedInstance] stopUpdatingTime:YES];
 		[[self currentWatchFace] setIsEditing:NO];
 		
 		if (!isEditing) {
@@ -149,15 +149,15 @@
 			if (editing) {
 				[[self currentWatchFace] setIsEditing:YES];
 			} else {
-				[[LWCore sharedInstance] startUpdatingTime];
+				[[LWCore sharedInstance] startUpdatingTime:YES];
 				
 				if ([[[LWCore sharedInstance] currentWatchFace] isKindOfClass:NSClassFromString(@"LWKDigitalClock")]) {
-					[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+					[[LWCore sharedInstance] updateTimeForCurrentWatchFace:YES];
 					[[LWCore sharedInstance] updateTimeWhileTimeIsSyncing];
 				} else {
-					
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-						[[LWCore sharedInstance] updateTimeForCurrentWatchFace];
+						[[LWCore sharedInstance] updateTimeForCurrentWatchFace:YES];
+						[[LWCore sharedInstance] updateTimeWhileTimeIsSyncing];
 					});
 				}
 			}

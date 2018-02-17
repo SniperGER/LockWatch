@@ -2,8 +2,8 @@
 
 @implementation LWKDigitalClock
 
-- (void)didStopUpdatingTime {
-	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[self updateForHour:10 minute:9 second:30 millisecond:0 startAnimation:NO];
 }
 
 @end

@@ -22,9 +22,9 @@
 @property (nonatomic, assign) BOOL overrideScreenOffState;
 
 + (id)sharedInstance;
-- (void)startUpdatingTime;
-- (void)stopUpdatingTime;
-- (void)updateTimeForCurrentWatchFace;
+- (void)startUpdatingTime:(BOOL)animated;
+- (void)stopUpdatingTime:(BOOL)animated;
+- (void)updateTimeForCurrentWatchFace:(BOOL)animated;
 - (void)updateTimeWhileTimeIsSyncing;
 
 @end

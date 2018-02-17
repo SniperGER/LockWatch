@@ -86,8 +86,8 @@ void setLockWatchVisibility() {
 		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
 	} else {
 		[lockwatch setOverrideScreenOffState:YES];
-		[lockwatch startUpdatingTime];
-		[lockwatch updateTimeForCurrentWatchFace];
+		[lockwatch startUpdatingTime:NO];
+		[lockwatch updateTimeForCurrentWatchFace:NO];
 	}
 	
 	%orig;

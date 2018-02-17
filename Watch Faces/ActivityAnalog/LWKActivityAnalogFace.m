@@ -105,14 +105,18 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
-	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
+	[super updateForHour:hour minute:minute second:second millisecond:msecond startAnimation:startAnimation];
 	
 	[self updateDateLabel];
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:(BOOL)animated];
+	[self updateActivityData];
+}
+
+- (void)triggerUpdate {
 	[self updateActivityData];
 }
 

@@ -47,14 +47,15 @@
 }
 
 - (void)prepareForInit {
-	[self updateForHour:10 minute:9 second:30 millisecond:0 animated:NO];
+	[self updateForHour:10 minute:9 second:30 millisecond:0 startAnimation:NO];
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
 	
 }
-- (void)didStartUpdatingTime {}
-- (void)didStopUpdatingTime {}
+- (void)didStartUpdatingTime:(BOOL)animated {}
+- (void)didStopUpdatingTime:(BOOL)animated {}
+- (void)triggerUpdate {}
 
 #pragma mark Customization
 

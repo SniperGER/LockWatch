@@ -23,15 +23,15 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
 	hour = (hour > 12 || hour <= 0) ? ABS(hour - 12) : hour;
-	[super updateForHour:hour minute:minute second:second millisecond:msecond animated:animated];
+	[super updateForHour:hour minute:minute second:second millisecond:msecond startAnimation:startAnimation];
 	
 	[self updateNumeralImagesForHour:hour];
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:animated];
 	
 	NSDate* date = [NSDate date];
 	NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -43,8 +43,8 @@
 	[self updateNumeralImagesForHour:hour];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[super didStopUpdatingTime:animated];
 	
 	[self updateNumeralImagesForHour:10];
 }
