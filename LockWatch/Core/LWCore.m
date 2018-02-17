@@ -181,7 +181,7 @@ static LWCore* sharedInstance;
 	
 	isUpdatingTime = YES;
 	[_currentWatchFace didStartUpdatingTime:animated];
-	[_currentWatchFace triggerManualUpdate];
+	[_currentWatchFace triggerUpdate];
 	
 	clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer* timer) {
 		[self updateTimeForCurrentWatchFace:NO];

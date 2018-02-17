@@ -87,7 +87,9 @@ void setLockWatchVisibility() {
 	} else {
 		[lockwatch setOverrideScreenOffState:YES];
 		[lockwatch startUpdatingTime:NO];
+		
 		[lockwatch updateTimeForCurrentWatchFace:NO];
+		[lockwatch updateTimeWhileTimeIsSyncing];
 	}
 	
 	%orig;
