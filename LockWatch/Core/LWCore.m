@@ -17,7 +17,7 @@ static LWCore* sharedInstance;
 		if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
 			dlopen("/System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit", RTLD_NOW);
 		}
-	
+		
 		_pluginManager = [LWPluginManager new];
 		
 		_containerView = [[LWContainerView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
@@ -40,7 +40,7 @@ static LWCore* sharedInstance;
 
 - (void)orientationChanged {
 	if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"] && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-			[self applyIpadLandscapeLayout];
+		[self applyIpadLandscapeLayout];
 	} else {
 		[self applyPortraitLayout];
 	}
@@ -81,9 +81,9 @@ static LWCore* sharedInstance;
 - (void)applyPortraitLayout {
 	[_interfaceView setUserInteractionEnabled:(!self.isShowingNotifications && !self.isShowingMediaArtwork)];
 	
-//	if (self.isSelecting) {
-//		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
-//	}
+	//	if (self.isSelecting) {
+	//		[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
+	//	}
 	
 	if (self.isShowingNotifications || (self.isShowingMediaArtwork && kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0)) {
 		CGRect labelFrame;
@@ -234,6 +234,24 @@ static LWCore* sharedInstance;
 	float second = [secondComp second];
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
 	
+	// Detect regional clock format
+	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+	[formatter setLocale:[NSLocale currentLocale]];
+	[formatter setDateStyle:NSDateFormatterNoStyle];
+	[formatter setTimeStyle:NSDateFormatterShortStyle];
+	NSString* dateString = [formatter stringFromDate:[NSDate date]];
+	NSRange amRange = [dateString rangeOfString:[formatter AMSymbol]];
+	NSRange pmRange = [dateString rangeOfString:[formatter PMSymbol]];
+	BOOL is24h = (amRange.location == NSNotFound && pmRange.location == NSNotFound);
+	
+	if (!is24h) {
+		if (hour > 12) {
+			hour -= 12;
+		} else if (hour == 0) {
+			hour = 12;
+		}
+	}
+	
 	if (mSecond >= 0 && mSecond <= 10 && clockUpdateTimer.timeInterval < 0.5) {
 		[clockUpdateTimer invalidate];
 		clockUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer* timer) {
@@ -257,7 +275,7 @@ static LWCore* sharedInstance;
 		if (!syncTimer) {
 			syncTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateTimeWhileTimeIsSyncing) userInfo:nil repeats:YES];
 		}
-
+		
 		return;
 	} else if (_currentWatchFace && clockUpdateTimer.timeInterval >= 0.5) {
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond) startAnimation:YES];
@@ -279,6 +297,24 @@ static LWCore* sharedInstance;
 	float minute = [minuteComp minute];
 	float second = [secondComp second];
 	float mSecond = roundf([mSecondComp nanosecond]/1000000);
+	
+	// Detect regional clock format
+	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+	[formatter setLocale:[NSLocale currentLocale]];
+	[formatter setDateStyle:NSDateFormatterNoStyle];
+	[formatter setTimeStyle:NSDateFormatterShortStyle];
+	NSString* dateString = [formatter stringFromDate:[NSDate date]];
+	NSRange amRange = [dateString rangeOfString:[formatter AMSymbol]];
+	NSRange pmRange = [dateString rangeOfString:[formatter PMSymbol]];
+	BOOL is24h = (amRange.location == NSNotFound && pmRange.location == NSNotFound);
+	
+	if (!is24h) {
+		if (hour > 12) {
+			hour -= 12;
+		} else if (hour == 0) {
+			hour = 12;
+		}
+	}
 	
 	if (_currentWatchFace) {
 		[_currentWatchFace updateForHour:hour minute:minute second:second millisecond:(mSecond) startAnimation:YES];
