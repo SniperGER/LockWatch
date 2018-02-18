@@ -28,7 +28,14 @@
 			
 			backgroundView = [objc_getClass("NCMaterialView") materialViewWithStyleOptions:2];
 			[backgroundView setFrame:backgroundFrame];
-			[(NCMaterialView*)backgroundView setCornerRadius:15.0];
+
+			if ([backgroundView respondsToSelector:@selector(setCornerRadius:)]) {
+				[(NCMaterialView*)backgroundView setCornerRadius:15.0];
+			} else {
+				[backgroundView.layer setCornerRadius:15.0];
+				[backgroundView setClipsToBounds:YES];
+			}
+			
 			[self addSubview:backgroundView];
 		} else if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
 			// iOS 10.3

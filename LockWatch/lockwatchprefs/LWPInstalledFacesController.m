@@ -52,7 +52,7 @@
 				}
 			}];
 			
-			PSSpecifier* activeFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Active Watch Faces" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
+			PSSpecifier* activeFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Enabled" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
 			[specifiers addObject:activeFacesGroup];
 			
 			for (NSString* bundleId in [preferences objectForKey:@"watchFaceOrder"]) {
@@ -66,7 +66,7 @@
 				[specifiers addObject:faceSpecifier];
 			}
 			
-			PSSpecifier* disabledFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Disabled Watch Faces" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
+			PSSpecifier* disabledFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Disabled" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
 			[specifiers addObject:disabledFacesGroup];
 			
 			for (NSString* bundleId in [preferences objectForKey:@"disabledWatchFaces"]) {

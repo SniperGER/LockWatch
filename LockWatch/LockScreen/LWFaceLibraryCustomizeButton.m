@@ -19,7 +19,13 @@
 			
 			backgroundView = [objc_getClass("NCMaterialView") materialViewWithStyleOptions:2];
 			[backgroundView setFrame:self.bounds];
-			[(NCMaterialView*)backgroundView setCornerRadius:7.5];
+			
+			if ([backgroundView respondsToSelector:@selector(setCornerRadius:)]) {
+				[(NCMaterialView*)backgroundView setCornerRadius:7.5];
+			} else {
+				[backgroundView.layer setCornerRadius:7.5];
+				[backgroundView setClipsToBounds:YES];
+			}
 			[self insertSubview:backgroundView atIndex:0];
 			[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 			

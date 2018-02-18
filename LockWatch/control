@@ -2,7 +2,7 @@ Package: ml.festival.lockwatch10
 Name: LockWatch Internal
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: ml.festival.lockwatch
-Depiction: https://connect.festival.ml/depiction/ml.festival.lockwatch10
+Depiction: https://repo.festival.ml/depiction/ml.festival.lockwatch10
 Architecture: iphoneos-arm
 Description: LockWatch
 Maintainer: Sniper_GER
