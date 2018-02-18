@@ -217,7 +217,7 @@
 	[summary setAppleStandHours:[HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:standHours]];
 	[movingHours setText:[NSString stringWithFormat:@"%02d", (int)standHours]];
 	
-	[activityRingView setActivitySummary:summary animated:NO];
+	[activityRingView setActivitySummary:summary animated:YES];
 }
 
 #pragma mark - Customization

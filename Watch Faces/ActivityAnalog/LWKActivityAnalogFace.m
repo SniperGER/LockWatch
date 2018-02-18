@@ -150,7 +150,7 @@
 	[movingHoursRing setMovingHoursPercentage:(exerciseTime / exerciseTimeGoal) animated:NO];
 	[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHours]];
 	
-	[activityRingView setActivitySummary:summary animated:NO];
+	[activityRingView setActivitySummary:summary animated:YES];
 }
 
 - (void)updateDateLabel {
