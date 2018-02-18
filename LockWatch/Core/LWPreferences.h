@@ -5,7 +5,7 @@
 #endif
 
 @interface LWPreferences : NSObject {
-#if APP_CONTEXT
+/*#if APP_CONTEXT
 	NSUserDefaults* preferences;
 #else
 #if (TARGET_OS_SIMULATOR)
@@ -13,6 +13,11 @@
 #else
 	HBPreferences* preferences;
 #endif
+#endif*/
+#if APP_CONTEXT
+	NSUserDefaults* preferences;
+#else
+	NSMutableDictionary* preferences;
 #endif
 }
 

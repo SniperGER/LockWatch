@@ -1,12 +1,12 @@
 #import <Foundation/Foundation.h>
 
 @interface LWPluginManager : NSObject {
-	NSMutableArray* loadedPlugins;
+	NSMutableDictionary* loadedPlugins;
 }
 
 + (id)pluginPath;
 
-- (NSArray*)loadedPlugins;
+- (NSDictionary*)loadedPlugins;
 - (int)currentWatchFaceIndex;
 
 @end

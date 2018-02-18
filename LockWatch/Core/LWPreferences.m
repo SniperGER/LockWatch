@@ -11,7 +11,17 @@ static LWPreferences* sharedInstance;
 + (id)defaults {
 	return @{
 			 @"enabled": @YES,
-			 @"selectedWatchFace": @"ml.festival.ActivityDigital",
+			 @"selectedWatchFace": @"ml.festival.ActivityAnalog",
+			 @"watchFaceOrder": [@[
+								   @"ml.festival.ActivityAnalog",
+								   @"ml.festival.ActivityDigital",
+								   @"ml.festival.Numerals",
+								   @"ml.festival.Utility",
+								   @"ml.festival.Simple",
+								   @"ml.festival.Color",
+								   @"ml.festival.Chronograph",
+								   @"ml.festival.XLarge",
+								   ] mutableCopy],
 			 @"disabledWatchFaces": @[],
 			 @"watchSize": @"regular",
 			 @"watchFacePreferences": [@{} mutableCopy]
@@ -31,7 +41,7 @@ static LWPreferences* sharedInstance;
 			}
 		}
 #else
-#if (TARGET_OS_SIMULATOR)
+//#if (TARGET_OS_SIMULATOR)
 		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
 		if (!preferences) {
@@ -43,11 +53,13 @@ static LWPreferences* sharedInstance;
 				[preferences setObject:[self.class.defaults objectForKey:key] forKey:key];
 			}
 		}
-#else
+		
+		[preferences writeToFile:PREFERENCES_PATH atomically:YES];
+/*#else
 		preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.lockwatch"];
 		
 		[preferences registerDefaults:self.class.defaults];
-#endif
+#endif*/
 #endif
 
 	}
@@ -63,7 +75,7 @@ static LWPreferences* sharedInstance;
 - (void)setObject:(id)anObject forKey:(nonnull NSString *)aKey {
 	[preferences setObject:anObject forKey:aKey];
 	
-#if (TARGET_OS_SIMULATOR)
+#if (!APP_CONTEXT)
 	[preferences writeToFile:PREFERENCES_PATH atomically:YES];
 #endif
 }

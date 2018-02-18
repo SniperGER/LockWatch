@@ -67,7 +67,7 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
 	long day = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] component:NSCalendarUnitDay fromDate:[NSDate date]];
 	[self.dateLabel setText:[NSString stringWithFormat:@"%ld", day]];
 	
@@ -98,8 +98,8 @@
 	cachedSecond = second;
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:animated];
 	
 	[self updateActivityData];
 	
@@ -107,8 +107,8 @@
 	[colonLabel.layer removeAllAnimations];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[super didStopUpdatingTime:animated];
 	
 	[colonLabel.layer removeAllAnimations];
 }

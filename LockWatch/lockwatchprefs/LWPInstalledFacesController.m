@@ -12,6 +12,12 @@
 @implementation LWPInstalledFacesController
 
 - (NSArray *)specifiers {
+	if (!enabledFaces && !disabledFaces) {
+		enabledFaces = [NSMutableArray new];
+		disabledFaces = [NSMutableArray new];
+	}
+	
+	
 	if (!_specifiers) {
 		NSMutableArray* specifiers = [NSMutableArray new];
 		
@@ -23,55 +29,56 @@
 			[noFacesGroup setProperty:@"LockWatch doesn't seem to know about any Watch Face. I have a bad feeling about this." forKey:@"footerText"];
 			[specifiers addObject:noFacesGroup];
 		} else {
+			NSDictionary* preferences = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/ml.festival.lockwatch.plist"];
 			
-			PSSpecifier* stockFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Apple Watch" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
-			[specifiers addObject:stockFacesGroup];
+			NSMutableDictionary* _enabledFaces = [NSMutableDictionary new];
+			NSMutableDictionary* _disabledFaces = [NSMutableDictionary new];
 			
-			NSArray* stockWatchFaces = @[
-										 @"ActivityAnalog.watchface",
-										 @"ActivityDigital.watchface",
-										 @"Numerals.watchface",
-										 @"Utility.watchface",
-										 @"Simple.watchface",
-										 @"Color.watchface",
-										 @"Chronograph.watchface",
-										 @"XLarge.watchface"
-										 ];
-			[stockWatchFaces enumerateObjectsUsingBlock:^(NSURL* internalPlugin, NSUInteger index, BOOL* stop) {
-				if ([[internalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[internalPlugin lastPathComponent]] != NSNotFound) {
-					NSURL* filePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", pluginsLocation, internalPlugin]];
-					NSBundle* watchFaceBundle = [NSBundle bundleWithURL:filePath];
+			[contents enumerateObjectsUsingBlock:^(NSURL* plugin, NSUInteger index, BOOL* stop) {
+				if ([[plugin pathExtension] isEqualToString:@"watchface"]) {
+					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:plugin];
 					
 					if (watchFaceBundle) {
-						PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSSwitchCell edit:nil];
+						if ([[preferences objectForKey:@"watchFaceOrder"] containsObject:[watchFaceBundle bundleIdentifier]]) {
+							[_enabledFaces setObject:watchFaceBundle forKey:[watchFaceBundle bundleIdentifier]];
+						} else {
+							[_disabledFaces setObject:watchFaceBundle forKey:[watchFaceBundle bundleIdentifier]];
+						}
+						/*PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSStaticTextCell edit:nil];
 						[faceSpecifier setProperty:@YES forKey:@"enabled"];
 						[faceSpecifier setProperty:[watchFaceBundle bundleIdentifier] forKey:@"bundleIdentifier"];
-						[specifiers addObject:faceSpecifier];
+						[specifiers addObject:faceSpecifier];*/
 					}
 				}
 			}];
 			
-			PSSpecifier* pluginFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Additional Watch Faces" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
-			[specifiers addObject:pluginFacesGroup];
+			PSSpecifier* activeFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Active Watch Faces" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
+			[specifiers addObject:activeFacesGroup];
 			
-			// Sort array alphabetically for third-party watch faces
-			contents = [contents sortedArrayUsingComparator:^NSComparisonResult(NSURL* url1, NSURL* url2) {
-				return [[url1 lastPathComponent] compare:[url2 lastPathComponent] options:NSCaseInsensitiveSearch];
-			}];
+			for (NSString* bundleId in [preferences objectForKey:@"watchFaceOrder"]) {
+				NSBundle* watchFaceBundle = [_enabledFaces objectForKey:bundleId];
+				
+				[enabledFaces addObject:bundleId];
+				
+				PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSStaticTextCell edit:nil];
+				[faceSpecifier setProperty:@YES forKey:@"enabled"];
+				[faceSpecifier setProperty:[watchFaceBundle bundleIdentifier] forKey:@"bundleIdentifier"];
+				[specifiers addObject:faceSpecifier];
+			}
 			
-			// Load third-party watch faces (if any)
-			[contents enumerateObjectsUsingBlock:^(NSURL* externalPlugin, NSUInteger index, BOOL* stop) {
-				if ([[externalPlugin pathExtension] isEqualToString:@"watchface"] && [stockWatchFaces indexOfObject:[externalPlugin lastPathComponent]] == NSNotFound) {
-					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:externalPlugin];
-					
-					if (watchFaceBundle) {
-						PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSSwitchCell edit:nil];
-						[faceSpecifier setProperty:@YES forKey:@"enabled"];
-						[faceSpecifier setProperty:[watchFaceBundle bundleIdentifier] forKey:@"bundleIdentifier"];
-						[specifiers addObject:faceSpecifier];
-					}
-				}
-			}];
+			PSSpecifier* disabledFacesGroup = [PSSpecifier preferenceSpecifierNamed:@"Disabled Watch Faces" target:self set:NULL get:NULL detail:Nil cell:PSGroupCell edit:Nil];
+			[specifiers addObject:disabledFacesGroup];
+			
+			for (NSString* bundleId in [preferences objectForKey:@"disabledWatchFaces"]) {
+				NSBundle* watchFaceBundle = [_disabledFaces objectForKey:bundleId];
+				
+				[disabledFaces addObject:bundleId];
+				
+				PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSStaticTextCell edit:nil];
+				[faceSpecifier setProperty:@YES forKey:@"enabled"];
+				[faceSpecifier setProperty:[watchFaceBundle bundleIdentifier] forKey:@"bundleIdentifier"];
+				[specifiers addObject:faceSpecifier];
+			}
 		}
 		
 		_specifiers = [specifiers copy];
@@ -80,7 +87,7 @@
 	return _specifiers;
 }
 
-- (NSNumber*)getValue:(PSSpecifier*)specifier {
+/*- (NSNumber*)getValue:(PSSpecifier*)specifier {
 	HBPreferences* preferences = [HBPreferences preferencesForIdentifier:@"ml.festival.lockwatch"];
 	NSArray* disabledFaces = [preferences objectForKey:@"disabledWatchFaces"];
 	
@@ -102,6 +109,51 @@
 	}
 	
 	[preferences setObject:[disabledFaces copy] forKey:@"disabledWatchFaces"];
+}*/
+
+/*- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+	UITableViewCell* cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0,0,100,100)];
+	[cell.textLabel setText:@"test"];
+	
+	return cell;
+}*/
+
+- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath {
+	return YES;
+}
+
+- (void)tableView:(UITableView*)tableView moveRowAtIndexPath:(NSIndexPath*)fromIndexPath toIndexPath:(NSIndexPath*)toIndexPath {
+	NSString* movedObject = nil;
+	if (fromIndexPath.section == 0) {
+		movedObject = [[enabledFaces objectAtIndex:fromIndexPath.row] copy];
+		[enabledFaces removeObjectAtIndex:fromIndexPath.row];
+	} else if (fromIndexPath.section == 1) {
+		movedObject = [[disabledFaces objectAtIndex:fromIndexPath.row] copy];
+		[disabledFaces removeObjectAtIndex:fromIndexPath.row];
+	}
+	
+	if (toIndexPath.section == 0) {
+		[enabledFaces insertObject:movedObject atIndex:toIndexPath.row];
+	} else if (toIndexPath.section == 1) {
+		[disabledFaces insertObject:movedObject atIndex:toIndexPath.row];
+	}
+	
+	NSMutableDictionary* preferences = [NSMutableDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/ml.festival.lockwatch.plist"];
+	[preferences setObject:enabledFaces forKey:@"watchFaceOrder"];
+	[preferences setObject:disabledFaces forKey:@"disabledWatchFaces"];
+	[preferences writeToFile:@"/var/mobile/Library/Preferences/ml.festival.lockwatch.plist" atomically:YES];
+}
+
+- (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
+	return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(NSIndexPath*)indexPath {
+	return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL)tableView:(UITableView*)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath*)indexPath {
+	return NO;
 }
 
 @end

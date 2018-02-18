@@ -45,9 +45,11 @@
 	
 	CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
 	
-	NSArray* loadedPlugins = [[[LWCore sharedInstance] pluginManager] loadedPlugins];
-	for (NSBundle* plugin in loadedPlugins) {
-		int i = (int)[loadedPlugins indexOfObject:plugin];
+	NSDictionary* loadedPlugins = [[[LWCore sharedInstance] pluginManager] loadedPlugins];
+	NSArray* watchFaceOrder = [[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"];
+	for (NSString* bundleId in watchFaceOrder) {
+		NSBundle* plugin = [loadedPlugins objectForKey:bundleId];
+		int i = (int)[watchFaceOrder indexOfObject:bundleId];
 		
 		@try {
 			LWKPageView* page = [[LWKPageView alloc] initWithFrame:CGRectMake(scrollViewSpacing + (i * ([LWMetrics watchWidth] + (scrollViewSpacing * 2))), 0, [LWMetrics watchWidth], [LWMetrics watchHeight])];

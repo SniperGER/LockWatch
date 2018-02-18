@@ -86,7 +86,7 @@
 	return self;
 }
 
-- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond animated:(BOOL)animated {
+- (void)updateForHour:(double)hour minute:(double)minute second:(double)second millisecond:(double)msecond startAnimation:(BOOL)startAnimation {
 	currentHour = hour;
 	
 	if (minute <= 15) {
@@ -145,14 +145,14 @@
 	[[weatherIcons objectAtIndex:(hour+11 < 12 ? hour+11 : hour-1)] setHidden:(minute < 15)];
 }
 
-- (void)didStartUpdatingTime {
-	[super didStartUpdatingTime];
+- (void)didStartUpdatingTime:(BOOL)animated {
+	[super didStartUpdatingTime:animated];
 	
 	[self updateWeatherData];
 }
 
-- (void)didStopUpdatingTime {
-	[super didStopUpdatingTime];
+- (void)didStopUpdatingTime:(BOOL)animated {
+	[super didStopUpdatingTime:animated];
 }
 
 - (void)updateWeatherData {

@@ -1,5 +1,6 @@
 #import <CepheiPrefs/HBListController.h>
 #import <Cephei/HBPreferences.h>
+#import <Preferences/PSEditableListController.h>
 
 @interface PSSpecifier {
 	SEL action;
@@ -37,6 +38,9 @@ typedef enum PSCellType {
 	PSEditTextViewCell,
 } PSCellType;
 
-@interface LWPInstalledFacesController : HBListController
+@interface LWPInstalledFacesController : PSEditableListController {
+	NSMutableArray* enabledFaces;
+	NSMutableArray* disabledFaces;
+}
 
 @end

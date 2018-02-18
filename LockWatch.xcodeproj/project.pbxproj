@@ -322,68 +322,68 @@
 			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
 			remoteInfo = Color;
 		};
-		8D96B036200215250065A35B /* PBXContainerItemProxy */ = {
+		8D698BA22038F1A500000050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
-			remoteInfo = XLarge;
+			remoteGlobalIDString = 8DFBBDF91FDAB2DB007694E5;
+			remoteInfo = LockWatchKit;
 		};
-		8D96B038200215250065A35B /* PBXContainerItemProxy */ = {
+		8D698BA42038F1A500000050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
-			remoteInfo = Chronograph;
+			remoteGlobalIDString = 8D52DEC91FDD363D00B54C22;
+			remoteInfo = ActivityAnalog;
 		};
-		8D96B03A200215250065A35B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
-			remoteInfo = Color;
-		};
-		8D96B03C200215250065A35B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D28F5711FEF270700810B0E;
-			remoteInfo = Simple;
-		};
-		8D96B03E200215250065A35B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D14372F1FEE59EB001EF825;
-			remoteInfo = Utility;
-		};
-		8D96B040200215250065A35B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DD05DD31FE7B270004E3A58;
-			remoteInfo = Numerals;
-		};
-		8D96B042200215250065A35B /* PBXContainerItemProxy */ = {
+		8D698BA62038F1A500000050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8D8397031FE083B200703408;
 			remoteInfo = ActivityDigital;
 		};
-		8D96B044200215250065A35B /* PBXContainerItemProxy */ = {
+		8D698BA82038F1A500000050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D52DEC91FDD363D00B54C22;
+			remoteGlobalIDString = 8DD05DD31FE7B270004E3A58;
+			remoteInfo = Numerals;
+		};
+		8D698BAA2038F1A500000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D14372F1FEE59EB001EF825;
 			remoteInfo = Utility;
 		};
-		8D96B046200215250065A35B /* PBXContainerItemProxy */ = {
+		8D698BAC2038F1A500000050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DFBBDF91FDAB2DB007694E5;
-			remoteInfo = LockWatchKit;
+			remoteGlobalIDString = 8D28F5711FEF270700810B0E;
+			remoteInfo = Simple;
+		};
+		8D698BAE2038F1A500000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D51E1FC1FEFA26800B64F65;
+			remoteInfo = Color;
+		};
+		8D698BB02038F1A500000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC8A3271FEFCE3000A9F118;
+			remoteInfo = Chronograph;
+		};
+		8D698BB22038F1A500000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DCF3FC61FDA8A6300107325 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3639421FEFA9040044A5AA;
+			remoteInfo = XLarge;
 		};
 		8DC942DC20002DF6001AA572 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1330,15 +1330,15 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
-				8D96B035200215250065A35B /* PBXTargetDependency */,
-				8D96B037200215250065A35B /* PBXTargetDependency */,
-				8D96B039200215250065A35B /* PBXTargetDependency */,
-				8D96B03B200215250065A35B /* PBXTargetDependency */,
-				8D96B03D200215250065A35B /* PBXTargetDependency */,
-				8D96B03F200215250065A35B /* PBXTargetDependency */,
-				8D96B041200215250065A35B /* PBXTargetDependency */,
-				8D96B043200215250065A35B /* PBXTargetDependency */,
-				8D96B045200215250065A35B /* PBXTargetDependency */,
+				8D698BA32038F1A500000050 /* PBXTargetDependency */,
+				8D698BA52038F1A500000050 /* PBXTargetDependency */,
+				8D698BA72038F1A500000050 /* PBXTargetDependency */,
+				8D698BA92038F1A500000050 /* PBXTargetDependency */,
+				8D698BAB2038F1A500000050 /* PBXTargetDependency */,
+				8D698BAD2038F1A500000050 /* PBXTargetDependency */,
+				8D698BAF2038F1A500000050 /* PBXTargetDependency */,
+				8D698BB12038F1A500000050 /* PBXTargetDependency */,
+				8D698BB32038F1A500000050 /* PBXTargetDependency */,
 			);
 			name = Install;
 			passBuildSettingsInEnvironment = 1;
@@ -2170,50 +2170,50 @@
 			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
 			targetProxy = 8D51E2031FEFA27200B64F65 /* PBXContainerItemProxy */;
 		};
-		8D96B035200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D3639421FEFA9040044A5AA /* XLarge */;
-			targetProxy = 8D96B036200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B037200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
-			targetProxy = 8D96B038200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B039200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
-			targetProxy = 8D96B03A200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B03B200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D28F5711FEF270700810B0E /* Simple */;
-			targetProxy = 8D96B03C200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B03D200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D14372F1FEE59EB001EF825 /* Utility */;
-			targetProxy = 8D96B03E200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B03F200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DD05DD31FE7B270004E3A58 /* Numerals */;
-			targetProxy = 8D96B040200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B041200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D8397031FE083B200703408 /* ActivityDigital */;
-			targetProxy = 8D96B042200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B043200215250065A35B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D52DEC91FDD363D00B54C22 /* ActivityAnalog */;
-			targetProxy = 8D96B044200215250065A35B /* PBXContainerItemProxy */;
-		};
-		8D96B045200215250065A35B /* PBXTargetDependency */ = {
+		8D698BA32038F1A500000050 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DFBBDF91FDAB2DB007694E5 /* LockWatchKit */;
-			targetProxy = 8D96B046200215250065A35B /* PBXContainerItemProxy */;
+			targetProxy = 8D698BA22038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BA52038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D52DEC91FDD363D00B54C22 /* ActivityAnalog */;
+			targetProxy = 8D698BA42038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BA72038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D8397031FE083B200703408 /* ActivityDigital */;
+			targetProxy = 8D698BA62038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BA92038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DD05DD31FE7B270004E3A58 /* Numerals */;
+			targetProxy = 8D698BA82038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BAB2038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D14372F1FEE59EB001EF825 /* Utility */;
+			targetProxy = 8D698BAA2038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BAD2038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D28F5711FEF270700810B0E /* Simple */;
+			targetProxy = 8D698BAC2038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BAF2038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D51E1FC1FEFA26800B64F65 /* Color */;
+			targetProxy = 8D698BAE2038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BB12038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC8A3271FEFCE3000A9F118 /* Chronograph */;
+			targetProxy = 8D698BB02038F1A500000050 /* PBXContainerItemProxy */;
+		};
+		8D698BB32038F1A500000050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3639421FEFA9040044A5AA /* XLarge */;
+			targetProxy = 8D698BB22038F1A500000050 /* PBXContainerItemProxy */;
 		};
 		8DC942DD20002DF6001AA572 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
