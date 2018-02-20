@@ -53,6 +53,13 @@
 	[[titles objectAtIndex:index] setAlpha:alpha];
 }
 
+- (void)resetTitles {
+	titles = [NSMutableArray new];
+	[[titleView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	
+	[titleView setContentSize:CGSizeMake(0, [LWMetrics watchHeight])];
+}
+
 - (CGSize)contentSize {
 	return titleView.contentSize;
 }

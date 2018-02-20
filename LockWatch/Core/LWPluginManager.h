@@ -5,6 +5,7 @@
 }
 
 + (id)pluginPath;
+- (void)loadPlugins;
 
 - (NSDictionary*)loadedPlugins;
 - (int)currentWatchFaceIndex;

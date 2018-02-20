@@ -12,37 +12,47 @@
 
 - (id)init {
 	if (self = [super init]) {
-		NSURL* pluginsLocation = [[NSURL fileURLWithPath:[self.class pluginPath]] URLByResolvingSymlinksInPath];
-		NSArray* contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:pluginsLocation includingPropertiesForKeys:@[NSFileType] options:(NSDirectoryEnumerationOptions)0 error:nil];
-		
-		if (contents.count < 1) {
-			NSLog(@"[LockWatch] failed to load any watch faces");
-		} else {
-			loadedPlugins = [NSMutableDictionary new];
-			
-			NSMutableArray* watchFaceOrder = [[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"];
-			NSArray* disabledFaces = [[LWPreferences sharedInstance] objectForKey:@"disabledWatchFaces"];
-			
-			// Load third-party watch faces (if any)
-			[contents enumerateObjectsUsingBlock:^(NSURL* plugin, NSUInteger index, BOOL* stop) {
-				if ([[plugin pathExtension] isEqualToString:@"watchface"]) {
-					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:plugin];
+		[self loadPlugins];
+	}
+	
+	return self;
+}
 
-					if (watchFaceBundle && [watchFaceBundle load]  && ![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
-						if (![watchFaceOrder containsObject:[watchFaceBundle bundleIdentifier]]) {
-							[watchFaceOrder addObject:[watchFaceBundle bundleIdentifier]];
-						}
-						
-						[loadedPlugins setObject:watchFaceBundle forKey:[watchFaceBundle bundleIdentifier]];
-					} else {
-						NSLog(@"[LockWatch] watch face with identifier %@ failed to load", [watchFaceBundle bundleIdentifier]);
-					}
-				}
-			}];
-			
-			[[LWPreferences sharedInstance] setObject:watchFaceOrder forKey:@"watchFaceOrder"];
-		}
+- (void)loadPlugins {
+	NSURL* pluginsLocation = [[NSURL fileURLWithPath:[self.class pluginPath]] URLByResolvingSymlinksInPath];
+	NSArray* contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:pluginsLocation includingPropertiesForKeys:@[NSFileType] options:(NSDirectoryEnumerationOptions)0 error:nil];
+	
+	if (contents.count < 1) {
+		NSLog(@"[LockWatch] failed to load any watch faces");
+	} else {
+		loadedPlugins = [NSMutableDictionary new];
 		
+		NSMutableArray* watchFaceOrder = [[LWPreferences sharedInstance] objectForKey:@"watchFaceOrder"];
+		NSArray* disabledFaces = [[LWPreferences sharedInstance] objectForKey:@"disabledWatchFaces"];
+		
+		// Load third-party watch faces (if any)
+		[contents enumerateObjectsUsingBlock:^(NSURL* plugin, NSUInteger index, BOOL* stop) {
+			if ([[plugin pathExtension] isEqualToString:@"watchface"]) {
+				NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:plugin];
+
+				if (watchFaceBundle && [watchFaceBundle load] &&
+					![loadedPlugins objectForKey:[watchFaceBundle bundleIdentifier]] &&
+					![disabledFaces containsObject:[watchFaceBundle bundleIdentifier]]) {
+					if (![watchFaceOrder containsObject:[watchFaceBundle bundleIdentifier]]) {
+						[watchFaceOrder addObject:[watchFaceBundle bundleIdentifier]];
+					}
+					
+					[loadedPlugins setObject:watchFaceBundle forKey:[watchFaceBundle bundleIdentifier]];
+				} else {
+					NSLog(@"[LockWatch] watch face with identifier %@ failed to load", [watchFaceBundle bundleIdentifier]);
+				}
+			}
+		}];
+		
+		[[LWPreferences sharedInstance] setObject:watchFaceOrder forKey:@"watchFaceOrder"];
+	}
+}
+	
 		// Load watch faces from iTunes File Sharing
 /*#if APP_CONTEXT
 		NSURL* iTunesPluginsLocation = [[NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]] URLByResolvingSymlinksInPath];
@@ -66,10 +76,6 @@
 			}];
 		}
 #endif*/
-	}
-	
-	return self;
-}
 
 - (NSDictionary*)loadedPlugins {
 	return [loadedPlugins copy];

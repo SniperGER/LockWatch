@@ -22,6 +22,7 @@
 }
 
 - (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled;
+- (void)loadWatchFaces;
 
 @end
 

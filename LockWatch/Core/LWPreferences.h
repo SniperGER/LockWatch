@@ -22,6 +22,7 @@
 }
 
 + (id)sharedInstance;
+- (void)loadPreferences;
 - (id)objectForKey:(NSString*)key;
 - (void)setObject:(id)anObject forKey:(NSString *)aKey;
 

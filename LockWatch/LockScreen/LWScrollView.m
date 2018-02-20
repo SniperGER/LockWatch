@@ -32,6 +32,8 @@
 		longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed)];
 		[longPressGestureRecognizer setEnabled:![self forceTouchCapable]];
 		[self addGestureRecognizer:longPressGestureRecognizer];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadWatchFaces) name:@"LockWatchDeviceLocked" object:nil];
 	}
 	
 	return self;
@@ -42,6 +44,9 @@
 - (void)loadWatchFaces {
 	watchFacePages = [NSMutableArray new];
 	watchFaces = [NSMutableArray new];
+	
+	[[contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[overlayView resetTitles];
 	
 	CGFloat scrollViewSpacing = [LWMetrics facePageSpacing];
 	

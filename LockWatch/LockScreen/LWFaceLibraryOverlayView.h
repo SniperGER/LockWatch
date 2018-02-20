@@ -11,6 +11,7 @@
 
 - (void)addTitle:(NSString*)title;
 - (void)setTitleAlpha:(CGFloat)alpha atIndex:(NSInteger)index;
+- (void)resetTitles;
 - (CGSize)contentSize;
 - (void)setContentSize:(CGSize)contentSize;
 - (CGPoint)contentOffset;

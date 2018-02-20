@@ -27,15 +27,10 @@ static LWCore* sharedInstance;
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
 		}
 		
-		//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"LockWatchDeviceLocked" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(faceOrderChanged) name:@"LockWatchFaceOrderChanged" object:nil];
 	}
 	
 	return self;
-}
-
-- (void)deviceFinishedLock {
-	[self stopUpdatingTime:NO];
-	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
 }
 
 - (void)orientationChanged {
@@ -44,6 +39,19 @@ static LWCore* sharedInstance;
 	} else {
 		[self applyPortraitLayout];
 	}
+}
+
+- (void)deviceFinishedLock {
+	[self stopUpdatingTime:NO];
+	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
+}
+
+- (void)faceOrderChanged {
+	[self stopUpdatingTime:NO];
+	
+	[[LWPreferences sharedInstance] loadPreferences];
+	[_pluginManager loadPlugins];
+	[_interfaceView.scrollView loadWatchFaces];
 }
 
 - (void)setIsSelecting:(BOOL)isSelecting{

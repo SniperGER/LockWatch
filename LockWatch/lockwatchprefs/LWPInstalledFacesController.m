@@ -142,6 +142,8 @@
 	[preferences setObject:enabledFaces forKey:@"watchFaceOrder"];
 	[preferences setObject:disabledFaces forKey:@"disabledWatchFaces"];
 	[preferences writeToFile:@"/var/mobile/Library/Preferences/ml.festival.lockwatch.plist" atomically:YES];
+	
+	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("ml.festival.lockwatch.watchfaceorder"), NULL, NULL, YES);
 }
 
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
