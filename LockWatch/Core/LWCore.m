@@ -26,8 +26,6 @@ static LWCore* sharedInstance;
 		if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
 		}
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(faceOrderChanged) name:@"LockWatchFaceOrderChanged" object:nil];
 	}
 	
 	return self;
@@ -44,14 +42,6 @@ static LWCore* sharedInstance;
 - (void)deviceFinishedLock {
 	[self stopUpdatingTime:NO];
 	[_interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
-}
-
-- (void)faceOrderChanged {
-	[self stopUpdatingTime:NO];
-	
-	[[LWPreferences sharedInstance] loadPreferences];
-	[_pluginManager loadPlugins];
-	[_interfaceView.scrollView loadWatchFaces];
 }
 
 - (void)setIsSelecting:(BOOL)isSelecting{

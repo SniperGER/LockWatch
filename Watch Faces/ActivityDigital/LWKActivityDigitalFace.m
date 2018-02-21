@@ -175,7 +175,7 @@
 - (void)didStartUpdatingTime:(BOOL)animated {
 	[super didStartUpdatingTime:animated];
 	
-	[self updateActivityData];
+	[self updateActivityData:YES];
 	
 	cachedSecond = -1;
 	[colonLabel.layer removeAllAnimations];
@@ -188,10 +188,12 @@
 }
 
 - (void)triggerUpdate {
-	[self updateActivityData];
+	[self updateActivityData:YES];
 }
 
-- (void)updateActivityData {
+#pragma mark - Additional Methods
+
+- (void)updateActivityData:(BOOL)animated {
 	activityData = [LWKActivityDataProvider activityData];
 	HKActivitySummary* summary = [HKActivitySummary new];
 	
@@ -230,6 +232,12 @@
 	[activeEnergy setAlpha:(isEditing ? 0.15 : 1.0)];
 	[brisk setAlpha:(isEditing ? 0.15 : 1.0)];
 	[movingHours setAlpha:(isEditing ? 0.15 : 1.0)];
+	
+	if (isEditing) {
+		
+	} else {
+		[self updateActivityData:NO];
+	}
 }
 
 // Style
@@ -293,7 +301,7 @@
 	}
 }
 
-#pragma mark Customization delegate
+#pragma mark - Customization delegate
 
 - (void)customizationSelector:(LWKCustomizationSelector *)selector didScrollToLeftWithNextSelector:(LWKCustomizationSelector *)nextSelector scrollProgress:(CGFloat)scrollProgress {
 	

@@ -112,17 +112,17 @@
 }
 
 - (void)didStartUpdatingTime:(BOOL)animated {
-	[super didStartUpdatingTime:(BOOL)animated];
-	[self updateActivityData];
+	[super didStartUpdatingTime:animated];
+	[self updateActivityData:YES];
 }
 
 - (void)triggerUpdate {
-	[self updateActivityData];
+	[self updateActivityData:YES];
 }
 
 #pragma mark - Additional Methods
 
-- (void)updateActivityData {
+- (void)updateActivityData:(BOOL)animated {
 	activityData = [LWKActivityDataProvider activityData];
 	HKActivitySummary* summary = [HKActivitySummary new];
 	
@@ -150,7 +150,7 @@
 	[movingHoursRing setMovingHoursPercentage:(exerciseTime / exerciseTimeGoal) animated:NO];
 	[movingHours setText:[NSString stringWithFormat:@"%d", (int)standHours]];
 	
-	[activityRingView setActivitySummary:summary animated:YES];
+	[activityRingView setActivitySummary:summary animated:animated];
 }
 
 - (void)updateDateLabel {
@@ -259,7 +259,7 @@
 		
 		[self.dateLabel setAlpha:1.0];
 	} else {
-		[self updateActivityData];
+		[self updateActivityData:NO];
 		
 		[self.indicatorView setHidden:NO];
 		[self.contentView setAlpha:1];

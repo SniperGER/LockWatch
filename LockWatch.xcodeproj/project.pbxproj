@@ -1323,7 +1323,7 @@
 /* Begin PBXLegacyTarget section */
 		8D96B032200215250065A35B /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = do;
+			buildArgumentsString = "do -B";
 			buildConfigurationList = 8D96B047200215250065A35B /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
@@ -3066,6 +3066,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
 				TARGET = "iphone:10.2";
 				THEOS = /opt/theos/;
@@ -3111,6 +3112,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
 				TARGET = "iphone:10.2";
 				THEOS = /opt/theos/;

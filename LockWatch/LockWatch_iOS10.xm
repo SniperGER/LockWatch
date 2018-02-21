@@ -181,11 +181,6 @@ void setLockWatchVisibility() {
 static void DeviceLockedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"LockWatchDeviceLocked" object:nil];
 }
-
-static void WatchFaceOrderChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"LockWatchFaceOrderChanged" object:nil];
-}
-
 %end	// %group os10
 
 %ctor {
@@ -195,7 +190,5 @@ static void WatchFaceOrderChangedCallback(CFNotificationCenterRef center, void *
 		%init(os10);
 		
 		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, DeviceLockedCallback, CFSTR("com.apple.springboard.lockcomplete"), NULL, CFNotificationSuspensionBehaviorCoalesce);
-		
-		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, WatchFaceOrderChangedCallback, CFSTR("ml.festival.lockwatch.watchfaceorder"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 	}
 }
