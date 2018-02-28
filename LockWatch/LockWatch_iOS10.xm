@@ -17,8 +17,6 @@ BOOL mediaControlsVisible;
 void setLockWatchVisibility() {
 	[[mainPage isolatingViewController].view setHidden:(!hasNotifications && !mediaControlsVisible)];
 	
-	//[lockwatch.interfaceView setHidden:mediaControlsVisible];
-	//[lockwatch setIsMinimized:(hasNotifications && !mediaControlsVisible)];
 	[lockwatch setIsShowingNotifications:hasNotifications];
 	[lockwatch setIsShowingMediaArtwork:mediaControlsVisible];
 }

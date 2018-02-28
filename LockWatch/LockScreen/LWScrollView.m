@@ -220,8 +220,18 @@
 }
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-	UIView* view = [super hitTest:point withEvent:event];
+	// Check for view hits in current watch face
+	UIView* view;
+ 
+	if (!isSelecting && !isEditing) {
+		view = [[self currentWatchFace] hitTest:[[[self currentWatchFace] contentView] convertPoint:point fromView:self] withEvent:event];
 	
+		if (view) {
+			return view;
+		}
+	}
+	
+	view = [super hitTest:point withEvent:event];
 	
 	if (view == overlayView && isSelecting) {
 		return contentView;

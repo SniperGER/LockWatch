@@ -37,6 +37,8 @@
 - (void)didStopUpdatingTime:(BOOL)animated;
 - (void)triggerUpdate;
 
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event;
+
 - (NSArray*)faceStyleViews;
 - (void)setFaceStyle:(int)style;
 - (int)faceStyle;

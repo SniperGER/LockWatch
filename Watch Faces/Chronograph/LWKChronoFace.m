@@ -4,7 +4,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		_UIBackdropView* backgroundView = [[_UIBackdropView alloc] initWithFrame:CGRectMake(0, 0, 312, 312) autosizesToFitSuperview:NO settings:[_UIBackdropViewSettings settingsForStyle:1]];
+		backgroundView = [[_UIBackdropView alloc] initWithFrame:CGRectMake(0, 0, 312, 312) autosizesToFitSuperview:NO settings:[_UIBackdropViewSettings settingsForStyle:1]];
 		[backgroundView.layer setPosition:CGPointMake(156, 195)];
 		[backgroundView.layer setCornerRadius:156.0];
 		[backgroundView setClipsToBounds:YES];
@@ -18,6 +18,7 @@
 		
 		indicatorImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chronograph" inBundle:self.watchFaceBundle compatibleWithTraitCollection:nil]];
 		[indicatorImage setCenter:CGPointMake(156, 195)];
+		[self.contentView addSubview:indicatorImage];
 		
 		[self.hourHand setImage:[UIImage imageNamed:@"chrono_hour" inBundle:self.watchFaceBundle compatibleWithTraitCollection:nil]];
 		
@@ -31,13 +32,18 @@
 		[self.secondHand.layer setPosition:CGPointMake(156, 213)];
 		[self.indicatorView insertSubview:self.secondHand atIndex:0];
 		
+		chronoStopwatchMinutes = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"chrono_indicator" inBundle:self.watchFaceBundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+		[chronoStopwatchMinutes setTintColor:[UIColor colorWithRed:1.0 green:0.584 blue:0.0 alpha:1.0]];
+		[chronoStopwatchMinutes setFrame:CGRectMake(0, 0, 6, 47)];
+		[chronoStopwatchMinutes.layer setAnchorPoint:CGPointMake(0.5, 88.0 / 94.0)];
+		[chronoStopwatchMinutes.layer setPosition:CGPointMake(156, 99)];
+		[self.indicatorView insertSubview:chronoStopwatchMinutes atIndex:0];
+		
 		chronoStopwatchSeconds = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"second" inBundle:[NSBundle bundleForClass:[LWKClockBase class]] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
 		[chronoStopwatchSeconds setTintColor:[UIColor colorWithRed:1.0 green:0.584 blue:0.0 alpha:1.0]];
 		[chronoStopwatchSeconds.layer setAnchorPoint:CGPointMake(0.5, 311.0/362.0)];
 		[chronoStopwatchSeconds.layer setPosition:CGPointMake(156, 156)];
 		[self.indicatorView addSubview:chronoStopwatchSeconds];
-		
-		[self.contentView addSubview:indicatorImage];
 		
 		// Preferences
 		
@@ -97,8 +103,6 @@
 		[self.dateLabel sizeToFit];
 		[self.dateLabel setCenter:CGPointMake(224, 156)];
 	}
-	
-	
 }
 
 #pragma mark - Customization

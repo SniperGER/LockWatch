@@ -57,6 +57,10 @@
 - (void)didStopUpdatingTime:(BOOL)animated {}
 - (void)triggerUpdate {}
 
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+	return nil;
+}
+
 #pragma mark Customization
 
 - (void)prepareCustomizationMode {
