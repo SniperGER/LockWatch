@@ -1,5 +1,6 @@
 export THEOS_DEVICE_IP=192.168.178.98
-export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.lw-internal.$(shell date +%y%m%d)"
+#export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.lw-internal.$(shell date +%y%m%d)"
+export PACKAGE_VERSION=1.0
 
 include $(THEOS)/makefiles/common.mk
 

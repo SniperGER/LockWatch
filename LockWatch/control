@@ -1,5 +1,5 @@
 Package: ml.festival.lockwatch10
-Name: LockWatch Internal
+Name: LockWatch
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: ml.festival.lockwatch
 Depiction: https://repo.festival.ml/depiction/ml.festival.lockwatch10
