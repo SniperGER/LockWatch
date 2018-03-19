@@ -1,6 +1,6 @@
 export THEOS_DEVICE_IP=192.168.178.98
-#export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.lw-internal.$(shell date +%y%m%d)"
-export PACKAGE_VERSION=1.0
+export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.lw-debug.$(shell date +%y%m%d)"
+#export PACKAGE_VERSION=1.0
 
 include $(THEOS)/makefiles/common.mk
 
@@ -24,7 +24,7 @@ after-all::
 	@cp $(THEOS_OBJ_DIR)/$(PROJECT_NAME).dylib /opt/simject
 	@cp $(PROJECT_NAME).plist /opt/simject
 	@ldid -S /opt/simject/$(PROJECT_NAME).dylib
-	@~/Documents/Xcode/simject/bin/respring_simulator -d "iPhone 6s" -v 10.2
+	@~/Documents/Xcode/simject/bin/respring_simulator -d "iPhone 6s" -v 11.1
 endif
 
 ifeq ($(THEOS_TARGET_NAME),iphone)

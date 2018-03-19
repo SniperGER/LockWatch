@@ -189,6 +189,7 @@
 		8DE28564201093CE00E037C9 /* Weather.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DE285632010939E00E037C9 /* Weather.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DE286782010AD1E00E037C9 /* WeatherIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DE286762010AD1E00E037C9 /* WeatherIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DE286792010AD1E00E037C9 /* WeatherIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE286772010AD1E00E037C9 /* WeatherIcons.m */; };
+		8DF949FA2050833800E90CD4 /* LWPInstalledFacesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9A526320115BB000BF8F3F /* LWPInstalledFacesController.m */; };
 		8DFB78681FEA542C00F45A3C /* LWKFaceEditView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB78661FEA542C00F45A3C /* LWKFaceEditView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DFB78691FEA542C00F45A3C /* LWKFaceEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB78671FEA542C00F45A3C /* LWKFaceEditView.m */; };
 		8DFB78701FEA557D00F45A3C /* LWKScrollIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DFB786E1FEA557D00F45A3C /* LWKScrollIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1943,7 +1944,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/$WRAPPER_NAME\n\nmkdir -p $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/$WRAPPER_NAME\n\nldid -S $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/$PROJECT_NAME/$WRAPPER_NAME/$PRODUCT_NAME";
+			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME\n\nmkdir -p $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME\n\nldid -S $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME/$PRODUCT_NAME";
 		};
 		8DC8A32E1FEFCE4E00A9F118 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2048,6 +2049,7 @@
 				8DDF22E31FE44DDB006FA9F9 /* LWFaceLibraryOverlayView.m in Sources */,
 				8DDF22E41FE44DDB006FA9F9 /* LWFaceLibraryCustomizeButton.m in Sources */,
 				8D543BB8200813E20019CF58 /* LWContainerView.m in Sources */,
+				8DF949FA2050833800E90CD4 /* LWPInstalledFacesController.m in Sources */,
 				8DDF22E11FE44DDB006FA9F9 /* LWInterfaceView.m in Sources */,
 				8DDF22DB1FE44DCA006FA9F9 /* main.m in Sources */,
 				8DDF22CD1FE44DCA006FA9F9 /* AppDelegate.m in Sources */,

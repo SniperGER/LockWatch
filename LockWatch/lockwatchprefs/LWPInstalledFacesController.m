@@ -35,6 +35,7 @@
 			NSMutableDictionary* _disabledFaces = [NSMutableDictionary new];
 			
 			[contents enumerateObjectsUsingBlock:^(NSURL* plugin, NSUInteger index, BOOL* stop) {
+				NSLog(@"[LockWatch] %@", [plugin lastPathComponent]);
 				if ([[plugin pathExtension] isEqualToString:@"watchface"]) {
 					NSBundle* watchFaceBundle = [[NSBundle alloc] initWithURL:plugin];
 					
@@ -44,10 +45,8 @@
 						} else {
 							[_disabledFaces setObject:watchFaceBundle forKey:[watchFaceBundle bundleIdentifier]];
 						}
-						/*PSSpecifier* faceSpecifier = [PSSpecifier preferenceSpecifierNamed:[watchFaceBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] target:self set:@selector(setValue:forSpecifier:) get:@selector(getValue:) detail:nil cell:PSStaticTextCell edit:nil];
-						[faceSpecifier setProperty:@YES forKey:@"enabled"];
-						[faceSpecifier setProperty:[watchFaceBundle bundleIdentifier] forKey:@"bundleIdentifier"];
-						[specifiers addObject:faceSpecifier];*/
+					} else {
+						NSLog(@"[LockWatch] watch face bundle failed to load. Is this iOS 11?");
 					}
 				}
 			}];

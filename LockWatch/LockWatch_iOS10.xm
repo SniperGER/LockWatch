@@ -42,6 +42,22 @@ void setLockWatchVisibility() {
 	setLockWatchVisibility();
 }
 
+- (void)_smartCoverDidOpen:(struct __IOHIDEvent *)arg1 {
+	[lockwatch setOverrideScreenOffState:YES];
+	[lockwatch startUpdatingTime:NO];
+	
+	[lockwatch updateTimeForCurrentWatchFace:NO];
+	[lockwatch updateTimeWhileTimeIsSyncing];
+	
+	%orig;
+}
+
+- (void)_smartCoverDidClose:(struct __IOHIDEvent *)arg1 {
+	[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
+	
+	%orig;
+}
+
 %end	// %hook SpringBoard
 
 %hook SBLockScreenManager

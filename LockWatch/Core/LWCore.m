@@ -11,7 +11,7 @@ static LWCore* sharedInstance;
 - (id)init {
 	if (self = [super init]) {
 		sharedInstance = self;
-		dlopen("/System/Library/Frameworks/LockWatchKit.framework/LockWatchKit", RTLD_NOW);
+		dlopen("/System/Library/PrivateFrameworks/LockWatchKit.framework/LockWatchKit", RTLD_NOW);
 		dlopen("/System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit", RTLD_NOW);
 		
 		if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_11_0) {
@@ -209,13 +209,13 @@ static LWCore* sharedInstance;
 		NSLog(@"[LockWatch] update while screen off");
 		[self stopUpdatingTime:NO];
 		return;
-	} else if (![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
+	}/* else if (![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
 		NSLog(@"[LockWatch] update while locked");
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[self stopUpdatingTime:NO];
 		});
 		return;
-	} else {
+	}*/ else {
 		_overrideScreenOffState = NO;
 	}
 #endif
