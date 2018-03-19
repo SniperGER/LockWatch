@@ -62,13 +62,16 @@ void setLockWatchVisibility() {
 
 %hook SBLockScreenManager
 
-- (void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
+//- (void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
+- (BOOL)unlockUIFromSource:(int)arg1 withOptions:(id)arg2 {
 	if (lockwatch.isEditing) {
 		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES didCancel:NO];
+		return false;
 	} else if (lockwatch.isSelecting) {
 		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:YES];
+		return false;
 	} else {
-		%orig;
+		return %orig;
 	}
 }
 
@@ -93,18 +96,14 @@ void setLockWatchVisibility() {
 
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1 {
 	setLockWatchVisibility();
-	
-	if (lockwatch.isEditing) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:YES didCancel:NO];
-	} else if (lockwatch.isSelecting) {
-		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:YES didCancel:NO];
-	} else {
+		[lockwatch.interfaceView.scrollView setIsSelecting:YES editing:NO animated:NO didCancel:YES];
+		[lockwatch.interfaceView.scrollView setIsSelecting:NO editing:NO animated:NO didCancel:YES];
 		[lockwatch setOverrideScreenOffState:YES];
 		[lockwatch startUpdatingTime:NO];
 		
 		[lockwatch updateTimeForCurrentWatchFace:NO];
 		[lockwatch updateTimeWhileTimeIsSyncing];
-	}
+	
 	
 	%orig;
 }

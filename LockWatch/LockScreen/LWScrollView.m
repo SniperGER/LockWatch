@@ -96,6 +96,7 @@
 	}
 }
 
+// TODO: Rewrite this method to be usable from any current state
 - (void)setIsSelecting:(BOOL)selecting editing:(BOOL)editing animated:(BOOL)animated didCancel:(BOOL)cancelled {
 	if (isSelecting == selecting) {
 		return;
@@ -141,7 +142,7 @@
 				[[LWPreferences sharedInstance] setObject:[[[watchFaces objectAtIndex:[self currentPage]] watchFaceBundle] bundleIdentifier] forKey:@"selectedWatchFace"];
 			}
 			
-			[UIView animateWithDuration:0.15 animations:^{
+			[UIView animateWithDuration:(animated ? 0.15 : 0) animations:^{
 				[contentView setTransform:CGAffineTransformIdentity];
 				[overlayView setTransform:CGAffineTransformMakeScale(overlayScale, overlayScale)];
 				[overlayView setAlpha:0.0];
@@ -172,7 +173,7 @@
 		int previous = (int)[watchFaces indexOfObject:[[LWCore sharedInstance] previousWatchFace]];
 		
 		if (cancelled && previous != [self currentPage]) {
-			[UIView animateWithDuration:0.25 animations:^{
+			[UIView animateWithDuration:(animated ? 0.25 : 0) animations:^{
 				[contentView setContentOffset:CGPointMake(previous * contentView.bounds.size.width, 0)];
 			} completion:^(BOOL finished) {
 				stopSelecting();

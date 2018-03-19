@@ -1944,7 +1944,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME\n\nmkdir -p $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME\n\nldid -S $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/PrivateFrameworks/$WRAPPER_NAME/$PRODUCT_NAME";
+			shellScript = "codesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/Frameworks/$WRAPPER_NAME\n\nmkdir -p $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/Frameworks/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/Frameworks/$WRAPPER_NAME\n\nldid -S $PROJECT_DIR/$PROJECT_NAME/Layout/System/Library/Frameworks/$WRAPPER_NAME/$PRODUCT_NAME";
 		};
 		8DC8A32E1FEFCE4E00A9F118 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
